@@ -1,30 +1,42 @@
 \section{Methodology}
-
-The REIGN framework operates as a sophisticated, multi-stage pipeline designed to transform raw, nonstationary time-series data into a robust, globally consistent causal graph. The methodology is divided into four distinct components: Preprocessing, Regime Detection, Prior Injection, and Neural Granger Inference.
+The REIGN framework is designed to infer causal relationships from nonstationary multivariate time series. Given an observational time series $\mathbf{X} \in \mathbb{R}^{T \times N}$ consisting of $T$ time steps and $N$ variables, we assume the underlying data generation process follows a Structural Vector Autoregressive (SVAR) model with structural breaks:
+\begin{equation}
+    \mathbf{X}_t = \sum_{\tau=1}^L \mathbf{A}^{(\tau, S_t)} \mathbf{X}_{t-\tau} + \mathbf{E}_t
+\end{equation}
+where $L$ is the maximum time lag, $\mathbf{A}^{(\tau, S_t)}$ is the regime-dependent transition matrix at lag $\tau$ during the hidden regime state $S_t$, and $\mathbf{E}_t$ represents instantaneous exogenous noise. Our goal is to recover the global summary causal graph $\mathcal{G}$, represented by a binary adjacency matrix, summarizing all contemporaneous and lagged interactions. The framework is divided into four primary stages.
 
 \subsection{Preprocessing and Imputation}
-Given an observational multivariate time series $\mathbf{X} \in \mathbb{R}^{T \times N}$ consisting of $T$ time steps and $N$ variables, missing data and extreme outliers pose significant risks to gradient-based learning. We apply robust Z-score normalization and flag anomalies exceeding $3\sigma$. Missing continuous intervals are imputed using Multiple Imputation by Chained Equations (MICE), preserving the underlying covariance structure of the temporal features prior to network ingestion.
+Financial and physiological data streams are frequently marred by missing intervals and extreme anomalies. We implement a robust preprocessing stage applying $Z$-score normalization and clamping outliers beyond $3\sigma$. Missing intervals are imputed using Multiple Imputation by Chained Equations (MICE), effectively preserving the temporal covariance matrix necessary for down-stream Granger causality learning.
 
 \subsection{Statistical Regime Detection}
-To handle nonstationarity, we assume the generative process undergoes discrete structural breaks. We utilize the Pruned Exact Linear Time (PELT) algorithm to identify changepoints $\mathcal{T} = \{\tau_1, \tau_2, \dots, \tau_K\}$ that segment the time series into $K$ locally stationary regimes. The algorithm minimizes the penalized cost function:
+To resolve the nonstationarity violation inherent in classical methods, REIGN partitions $\mathbf{X}$ into locally stationary regimes using the Pruned Exact Linear Time (PELT) algorithm. We define a set of changepoints $\mathcal{T} = \{\tau_1, \dots, \tau_K\}$ dividing the time series into $K$ regimes. The algorithm minimizes the penalized cost function:
 \begin{equation}
     \min_{K, \mathcal{T}} \sum_{k=1}^{K+1} \left[ \mathcal{C}(\mathbf{X}_{\tau_{k-1}:\tau_k}) + \beta \right]
 \end{equation}
-where $\mathcal{C}(\cdot)$ is a cost function based on the rolling variance of the time series, and $\beta$ is a sparsity penalty preventing over-segmentation. Short regimes that fail to provide sufficient samples for deep learning are aggressively merged to ensure statistical significance.
+where $\mathcal{C}(\cdot)$ computes the rolling variance loss and $\beta$ is a sparsity penalty governing the sensitivity of the changepoint detection. To ensure the subsequent deep learning engines receive sufficient samples per regime, aggressive dynamic programming merging is applied to segments shorter than the defined minimum length threshold.
 
 \subsection{LLM-Augmented Causal Priors}
-Neural causal discovery is notoriously non-convex and prone to local minima. To regularize the search space, REIGN generates a prior adjacency matrix $\mathbf{A}^{prior} \in [0, 1]^{N \times N}$ by querying an advanced Large Language Model (e.g., Anthropic Claude). By providing the LLM with metadata and variable descriptions, we prompt it to output a confidence score $p_{ij}$ representing the likelihood of variable $i$ causing variable $j$. These scores are calibrated and topologically sorted to ensure the prior matrix inherently respects acyclicity before being passed to the neural engine.
+Unconstrained deep causal discovery suffers from massive search spaces and severe local minima. REIGN pioneers the integration of Large Language Models (LLMs) to construct zero-shot structural priors. By feeding variable metadata to an advanced LLM via structured prompts, we extract a continuous prior matrix $\mathbf{A}^{prior} \in [0,1]^{N \times N}$. To guarantee topological consistency, this matrix undergoes an iterative sorting algorithm, strictly masking backward temporal flows and cyclic dependencies, ensuring $\mathbf{A}^{prior}$ represents a valid Directed Acyclic Graph (DAG) before entering the neural engine.
 
 \subsection{Coarse-to-Fine Neural Granger Engine}
-For each identified regime $k$, we deploy an adapted CUTS+ \cite{cheng2023cuts} neural architecture. To maximize the capacity of the Graph Neural Network (GNN), we bypass traditional LASSO bottlenecks, feeding a fully connected dense graph initialization directly into a Message-Passing GNN. The objective function enforces the continuous DAG constraint popularized by NOTEARS:
+Within each isolated stationary regime $k$, we deploy an adapted Message-Passing Graph Neural Network (MPGNN) inspired by CUTS+ \cite{cheng2023cuts}. Crucially, we bypass the traditional LASSO coarse-discovery phase, initiating the GNN with a fully connected dense topology. This architectural modification prevents the inadvertent truncation of continuous causal signals. 
+
+The optimization seeks a continuous adjacency weight matrix $\mathbf{W}^{(k)}$ by minimizing the prediction loss subject to a strict continuous acyclicity constraint:
 \begin{equation}
-    h(\mathbf{W}) = \text{tr}(e^{\mathbf{W} \circ \mathbf{W}}) - N = 0
+    h(\mathbf{W}^{(k)}) = \text{tr}\left(e^{\mathbf{W}^{(k)} \circ \mathbf{W}^{(k)}}\right) - N = 0
 \end{equation}
-The GNN is trained using an augmented Lagrangian method, dynamically adjusting penalty parameters to yield a regime-specific continuous weight matrix $\mathbf{W}^{(k)}$. The LLM prior is integrated directly into the loss function, pulling the GNN weights toward the LLM's topological scaffold via an $L_2$ regularization term weighted by hyperparameter $\lambda_{prior}$.
+We optimize the GNN via an augmented Lagrangian formulation, allowing the LLM prior to anchor the loss landscape:
+\begin{equation}
+\begin{aligned}
+    \mathcal{L}(\mathbf{W}^{(k)}, \alpha, \rho) = \mathcal{L}_{MSE}(\mathbf{W}^{(k)}) + \lambda ||\mathbf{W}^{(k)} - \mathbf{A}^{prior}||_F^2 \\
+    + \alpha h(\mathbf{W}^{(k)}) + \frac{\rho}{2} |h(\mathbf{W}^{(k)})|^2 + \gamma ||\mathbf{W}^{(k)}||_1
+\end{aligned}
+\end{equation}
+where $\alpha$ is the Lagrange multiplier, $\rho$ controls the penalty stiffness, and $\gamma$ enforces sparsity.
 
 \subsection{Confidence-Weighted Ensemble}
-Because nonstationary data results in $K$ independent causal graphs, REIGN aggregates them into a global continuous confidence matrix $\mathbf{C}$:
+Because nonstationary environments yield $K$ distinct local causal models, REIGN employs an ensembling mechanism to synthesize the global summary graph. A continuous confidence matrix $\mathbf{C}$ is computed by temporally weighting the absolute magnitudes of the local regime matrices:
 \begin{equation}
     \mathbf{C} = \sum_{k=1}^{K} \omega_k |\mathbf{W}^{(k)}|
 \end{equation}
-where $\omega_k$ is proportional to the temporal duration of regime $k$. Finally, $\mathbf{C}$ is thresholded and subjected to a strict topological pruning pass to guarantee a global Directed Acyclic Graph (DAG) $\mathcal{G}^*$.
+where the weight $\omega_k$ corresponds to the relative temporal duration of regime $k$. Finally, $\mathbf{C}$ is thresholded and projected onto the space of DAGs using an edge-confidence pruning algorithm to produce the final binary predicted graph $\mathcal{G}^*$.
