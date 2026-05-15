@@ -1,17 +1,30 @@
 \section{Methodology}
-The REIGN framework consists of four primary stages.
 
-\subsection{Preprocessing}
-Data normalization and missing value imputation.
+The REIGN framework operates as a sophisticated, multi-stage pipeline designed to transform raw, nonstationary time-series data into a robust, globally consistent causal graph. The methodology is divided into four distinct components: Preprocessing, Regime Detection, Prior Injection, and Neural Granger Inference.
 
-\subsection{Regime Detection}
-Identifying structural breaks using the PELT algorithm.
+\subsection{Preprocessing and Imputation}
+Given an observational multivariate time series $\mathbf{X} \in \mathbb{R}^{T \times N}$ consisting of $T$ time steps and $N$ variables, missing data and extreme outliers pose significant risks to gradient-based learning. We apply robust Z-score normalization and flag anomalies exceeding $3\sigma$. Missing continuous intervals are imputed using Multiple Imputation by Chained Equations (MICE), preserving the underlying covariance structure of the temporal features prior to network ingestion.
 
-\subsection{LLM-Augmented Priors}
-Extracting structural priors from Large Language Models via prompt engineering.
+\subsection{Statistical Regime Detection}
+To handle nonstationarity, we assume the generative process undergoes discrete structural breaks. We utilize the Pruned Exact Linear Time (PELT) algorithm to identify changepoints $\mathcal{T} = \{\tau_1, \tau_2, \dots, \tau_K\}$ that segment the time series into $K$ locally stationary regimes. The algorithm minimizes the penalized cost function:
+\begin{equation}
+    \min_{K, \mathcal{T}} \sum_{k=1}^{K+1} \left[ \mathcal{C}(\mathbf{X}_{\tau_{k-1}:\tau_k}) + \beta \right]
+\end{equation}
+where $\mathcal{C}(\cdot)$ is a cost function based on the rolling variance of the time series, and $\beta$ is a sparsity penalty preventing over-segmentation. Short regimes that fail to provide sufficient samples for deep learning are aggressively merged to ensure statistical significance.
 
-\subsection{Neural Granger Engine (CUTS+)}
-A coarse-to-fine message passing GNN architecture constrained by an Augmented Lagrangian to enforce acyclicity.
+\subsection{LLM-Augmented Causal Priors}
+Neural causal discovery is notoriously non-convex and prone to local minima. To regularize the search space, REIGN generates a prior adjacency matrix $\mathbf{A}^{prior} \in [0, 1]^{N \times N}$ by querying an advanced Large Language Model (e.g., Anthropic Claude). By providing the LLM with metadata and variable descriptions, we prompt it to output a confidence score $p_{ij}$ representing the likelihood of variable $i$ causing variable $j$. These scores are calibrated and topologically sorted to ensure the prior matrix inherently respects acyclicity before being passed to the neural engine.
+
+\subsection{Coarse-to-Fine Neural Granger Engine}
+For each identified regime $k$, we deploy an adapted CUTS+ \cite{cheng2023cuts} neural architecture. To maximize the capacity of the Graph Neural Network (GNN), we bypass traditional LASSO bottlenecks, feeding a fully connected dense graph initialization directly into a Message-Passing GNN. The objective function enforces the continuous DAG constraint popularized by NOTEARS:
+\begin{equation}
+    h(\mathbf{W}) = \text{tr}(e^{\mathbf{W} \circ \mathbf{W}}) - N = 0
+\end{equation}
+The GNN is trained using an augmented Lagrangian method, dynamically adjusting penalty parameters to yield a regime-specific continuous weight matrix $\mathbf{W}^{(k)}$. The LLM prior is integrated directly into the loss function, pulling the GNN weights toward the LLM's topological scaffold via an $L_2$ regularization term weighted by hyperparameter $\lambda_{prior}$.
 
 \subsection{Confidence-Weighted Ensemble}
-Aggregating regime-specific DAGs into a global causal structure.
+Because nonstationary data results in $K$ independent causal graphs, REIGN aggregates them into a global continuous confidence matrix $\mathbf{C}$:
+\begin{equation}
+    \mathbf{C} = \sum_{k=1}^{K} \omega_k |\mathbf{W}^{(k)}|
+\end{equation}
+where $\omega_k$ is proportional to the temporal duration of regime $k$. Finally, $\mathbf{C}$ is thresholded and subjected to a strict topological pruning pass to guarantee a global Directed Acyclic Graph (DAG) $\mathcal{G}^*$.
