@@ -16,7 +16,7 @@ To isolate the contribution of individual architectural components, we evaluate 
     \item \textbf{REIGN-LASSO}: Dense GNN initialisation replaced with a classical LASSO coarse-discovery prefilter.
 \end{enumerate}
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering
 \caption{Group E Ablation Study: Impact of REIGN Architectural Components on VAR-Regime}
 \label{tab:ablation}
@@ -32,7 +32,7 @@ REIGN-BOCPD             & PELT $\rightarrow$ BOCPD                 & --- & --- &
 REIGN-LASSO             & Dense init $\rightarrow$ LASSO prefilter & 0.491 & 0.382 & 0.485 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 Table \ref{tab:ablation} reports quantitative results for all available variants. Results marked ``---'' are scheduled for the extended evaluation. Key observations are as follows. First, \textbf{REIGN-noRegime} produces the largest single regression, dropping Optimal F1 by 8.9 absolute points to 0.440. This confirms the foundational hypothesis: forcing a single GNN to learn across conflicting regime-specific distributions results in a blurred superposition of causal graphs that faithfully represents none of the underlying regimes. Second, \textbf{REIGN-LASSO} reduces Optimal F1 by 4.4 points to 0.485. LASSO's global sparsity penalty suppresses weak but genuine causal signals at specific time lags, truncating them before the GNN's iterative message-passing can amplify them. Third, \textbf{REIGN-noLLM} (current configuration with $\lambda=0$) achieves performance identical to REIGN (Full), confirming that the current mock-LLM uniform prior adds neither signal nor noise — the architecture is designed to gracefully degrade to data-only discovery when semantic variable descriptions are unavailable.
 
@@ -58,7 +58,7 @@ PCMCI+ suffers from a more severe variant of the same issue. Its Momentary Condi
 
 Table \ref{tab:complexity} summarizes the computational complexity of the evaluated methods.
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering
 \caption{Asymptotic Computational Complexity Comparison}
 \label{tab:complexity}
@@ -71,7 +71,7 @@ PCMCI+    & $\mathcal{O}(N^q \cdot L \cdot T)$ & Constraint-based \\
 REIGN     & $\mathcal{O}(N^3 \cdot E \cdot K)$ & Neural (per regime) \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 Here $q$ is the maximum conditioning set size in constraint-based tests, $E$ is the number of GNN training epochs, and $K$ is the number of detected regimes. The dominant bottleneck in REIGN is the matrix exponential $e^{\mathbf{W} \circ \mathbf{W}}$ required for the DAG constraint evaluation, which scales as $\mathcal{O}(N^3)$ per gradient step. For large-scale problems ($N > 100$), this is computationally demanding relative to constraint-based methods. In practice, on the 15-variable benchmark, a single regime training run completes in approximately 90 seconds on a standard CPU, with the Augmented Lagrangian outer loop requiring between 8 and 15 iterations to satisfy the acyclicity tolerance. Future work will investigate Chebyshev polynomial approximations of the matrix exponential to achieve $\mathcal{O}(N^2)$ constraint evaluation, enabling tractable deployment on macro-economic datasets with hundreds of co-integrated variables.
 
