@@ -1,0 +1,17 @@
+torch>=2.2.0
+torch-geometric>=2.5.0
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.4.0
+scipy>=1.12.0
+ruptures>=1.1.9
+networkx>=3.2.0
+optuna>=3.6.0
+anthropic>=0.25.0
+tigramite>=5.2.0        # PCMCI+
+causal-learn>=0.1.3.8   # PC, GES, LiNGAM
+matplotlib>=3.8.0
+seaborn>=0.13.0
+pyyaml>=6.0
+tqdm>=4.66.0
+pytest>=8.0.0
