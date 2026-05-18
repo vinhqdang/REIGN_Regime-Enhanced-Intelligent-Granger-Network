@@ -127,7 +127,7 @@ We present primary results on the VAR-Regime dataset, comparing REIGN against th
 \midrule
 \multirow{2}{*}{A}
   & PC            & 0.508 & 0.364 & 0.214 & \textbf{88} \\
-  & PCMCI+        & 0.406 & 0.337 & 0.414 & 141 \\
+  & PCMCI+        & 0.406 & 0.338 & 0.415 & 141 \\
 \midrule
 \multicolumn{2}{l}{\textbf{REIGN (Ours)}}
                & \textbf{0.513} & \textbf{0.400} & \textbf{0.529} & 144 \\
@@ -147,7 +147,7 @@ We present primary results on the VAR-Regime dataset, comparing REIGN against th
 \label{fig:scatter}
 \end{figure}
 
-REIGN achieves an Optimal F1 of \textbf{0.529}, outperforming PCMCI+ by +11.5 absolute points and PC by a 2.5$\times$ factor. REIGN also leads on AUROC (0.513 vs. 0.406) and AUPR (0.400 vs. 0.337), demonstrating superior calibration of its continuous confidence matrix. Under nonstationary conditions, PCMCI+'s AUROC collapses below 0.5 — worse than random — because distributional shifts between regimes corrupt the MCI test statistics, flooding the graph with spurious edges (SHD=141). PC remains conservative, but its stationary aggregation systematically suppresses regime-specific edges, producing a high false-negative rate (F1=0.214).
+REIGN achieves an Optimal F1 of \textbf{0.529}, outperforming PCMCI+ by +11.4 absolute points and PC by a factor of $2.5\times$. REIGN also leads on AUROC (0.513 vs.\ 0.406) and AUPR (0.400 vs.\ 0.338), demonstrating superior calibration of its continuous confidence matrix $\mathbf{C}$. Under nonstationary conditions, PCMCI+'s AUROC collapses to 0.406 — below the 0.5 random-guessing baseline — because distributional shifts between regimes corrupt the MCI test statistics, flooding the output graph with spurious dense connections (SHD=141). PC remains conservative: its stationary aggregation systematically suppresses regime-specific edges that only manifest within one regime, producing a critically low F1 of 0.214 despite an apparently low SHD of 88.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Precision-Recall Analysis}
