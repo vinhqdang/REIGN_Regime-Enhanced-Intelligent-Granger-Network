@@ -48,7 +48,7 @@ To guarantee topological consistency, $\mathbf{A}^{prior}$ is post-processed via
 
 \subsection{Stage 3: Coarse-to-Fine Neural Granger Engine}
 
-For each regime $\mathcal{R}_k$, we extract the corresponding slice $\mathbf{X}^{(k)} \in \mathbb{R}^{T_k \times N}$ and deploy an adapted Message-Passing Graph Neural Network (MPGNN) \cite{cheng2023cuts}. Unlike prior works that employ a LASSO bottleneck as a coarse-discovery prefilter, REIGN initializes $\mathbf{W}^{(k)}$ as a fully connected dense topology, preventing premature truncation of weak but genuine causal signals.
+For each regime $\mathcal{R}_k$, we extract the corresponding slice $\mathbf{X}^{(k)} \in \mathbb{R}^{T_k \times N}$ and deploy an adapted Message-Passing Graph Neural Network (MPGNN) \cite{Cheng2024}. Unlike prior works that employ a LASSO bottleneck as a coarse-discovery prefilter, REIGN initializes $\mathbf{W}^{(k)}$ as a fully connected dense topology, preventing premature truncation of weak but genuine causal signals.
 
 The GNN takes a historical window as input and propagates messages along the current graph estimate:
 \begin{equation}
