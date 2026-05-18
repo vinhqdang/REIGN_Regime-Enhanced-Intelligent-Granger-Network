@@ -54,7 +54,7 @@ We benchmark REIGN against two established causal discovery paradigms spanning c
 \begin{itemize}
     \item \textbf{PC Algorithm}: A foundational constraint-based method that reconstructs the Markov equivalence class of the underlying DAG via a sequence of conditional independence tests based on the Fisher-z statistic. PC assumes strict Causal Markov Faithfulness and global stationarity. Under distributional shifts, the conditional independence structure is unstable, causing PC to systematically miss regime-specific edges.
 
-    \item \textbf{PCMCI+ \cite{runge2019detecting}}: The current state-of-the-art constraint-based method specifically designed for time series. PCMCI+ addresses the autocorrelation issue in standard PC by employing Momentary Conditional Independence (MCI) tests, which condition on the past of both variables. While PCMCI+ handles lagged dependencies more robustly than PC, it remains a global stationary algorithm and degrades significantly when structural breaks are present.
+    \item \textbf{PCMCI+ \cite{Runge2020}}: The current state-of-the-art constraint-based method specifically designed for time series. PCMCI+ addresses the autocorrelation issue in standard PC by employing Momentary Conditional Independence (MCI) tests, which condition on the past of both variables. While PCMCI+ handles lagged dependencies more robustly than PC, it remains a global stationary algorithm and degrades significantly when structural breaks are present.
 \end{itemize}
 
 \subsubsection{Evaluation Protocol}
@@ -95,3 +95,15 @@ As summarized in Table \ref{tab:results} and visualized in Fig. \ref{fig:perform
 REIGN's neural Granger engine, operating on regime-specific locally stationary windows, maintains a stable AUROC of 0.513 and achieves a dominating AUPR of 0.400, reflecting a significantly better calibrated precision-recall profile. Most critically, REIGN achieves an Optimal F1 score of \textbf{0.529}, representing an absolute gain of +11.5 points over PCMCI+ and a 2.5$\times$ improvement over PC.
 
 The SHD-F1 scatter plot in Fig. \ref{fig:scatter} reveals an important diagnostic: PC achieves the lowest SHD (88) by drastically \textit{under-predicting} edges due to the high false-negative rate caused by aggregating distributions across all regimes. This conservative behavior produces a structurally sparse graph with poor F1 (0.214), confirming that low SHD alone is not indicative of a structurally accurate causal discovery.
+
+\subsection{Precision-Recall Analysis}
+
+To characterize the full precision-recall profile of each model beyond a single operating point, Fig.~\ref{fig:prcurve} plots the complete Precision-Recall (PR) curves by sweeping all confidence thresholds. REIGN's PR curve is positioned substantially above those of PCMCI+ and PC across the full recall axis, demonstrating that at every level of recall, REIGN recovers more true edges with higher precision. This is a strictly stronger validation than the scalar F1 score: it confirms that REIGN's confidence outputs are genuinely calibrated to edge presence, rather than an artifact of a single favorable threshold selection.
+
+Notably, PCMCI+'s PR curve collapses rapidly as recall increases, reflecting its tendency to flood the graph with spurious edges once the MCI significance level is relaxed. PC's curve, while maintaining moderate precision at low recall, quickly degrades as the algorithm's stationary aggregation introduces systematic false negatives for regime-specific edges that only exist in part of the time span.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.9\columnwidth]{figures/8_precision_recall_curves.png}}
+\caption{Precision-Recall (PR) curves for REIGN, PCMCI+, and PC on the synthetic nonstationary VAR dataset. Area Under the PR Curve (AUPR) is reported per model. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the continuous confidence matrix $\mathbf{C}$.}
+\label{fig:prcurve}
+\end{figure}

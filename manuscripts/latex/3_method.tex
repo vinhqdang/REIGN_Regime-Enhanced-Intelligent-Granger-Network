@@ -6,7 +6,13 @@ Let $\mathbf{X} \in \mathbb{R}^{T \times N}$ denote a multivariate time series o
 \begin{equation}
     \mathbf{X}_t = \sum_{\tau=1}^{L} \mathbf{A}^{(\tau, S_t)} \mathbf{X}_{t-\tau} + \boldsymbol{\varepsilon}_t, \quad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma}^{(S_t)})
 \end{equation}
-where $L$ is the maximum temporal lag, $\mathbf{A}^{(\tau, S_t)} \in \mathbb{R}^{N \times N}$ is the regime-dependent transition matrix at lag $\tau$ during hidden state $S_t$, and $\boldsymbol{\varepsilon}_t$ is zero-mean, regime-specific Gaussian noise. The target is to infer the global summary causal graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$, where a directed edge $(i \rightarrow j) \in \mathcal{E}$ denotes that variable $i$ Granger-causes variable $j$ under at least one regime. REIGN operates through four cascading stages to recover $\mathcal{G}$ from purely observational data.
+where $L$ is the maximum temporal lag, $\mathbf{A}^{(\tau, S_t)} \in \mathbb{R}^{N \times N}$ is the regime-dependent transition matrix at lag $\tau$ during hidden state $S_t$, and $\boldsymbol{\varepsilon}_t$ is zero-mean, regime-specific Gaussian noise. The target is to infer the global summary causal graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$, where a directed edge $(i \rightarrow j) \in \mathcal{E}$ denotes that variable $i$ Granger-causes variable $j$ under at least one regime. REIGN operates through four cascading stages to recover $\mathcal{G}$ from purely observational data, as illustrated in Fig. \ref{fig:pipeline}.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/5_reign_pipeline.png}}
+\caption{The REIGN end-to-end causal discovery pipeline. Raw multivariate time series $\mathbf{X}$ passes sequentially through robust preprocessing (Stage 1), PELT-based regime segmentation (Stage 2a), LLM prior injection (Stage 2b), per-regime MPGNN training (Stage 3), and confidence-weighted ensemble aggregation (Stage 4) to produce the final DAG $\mathcal{G}^*$.}
+\label{fig:pipeline}
+\end{figure}
 
 \subsection{Stage 1: Robust Preprocessing}
 
@@ -20,11 +26,17 @@ Financial and physiological time series commonly contain missing data segments a
 
 \subsection{Stage 2a: Statistical Regime Detection via PELT}
 
-We model the regime shifts as a sequence of abrupt changepoints partitioning $[1, T]$ into $K+1$ contiguous segments. The Pruned Exact Linear Time (PELT) algorithm \cite{killick2012optimal} efficiently identifies the optimal set of changepoints $\mathcal{T}^* = \{\tau_1^*, \dots, \tau_K^*\}$ by minimizing the penalized total cost:
+We model the regime shifts as a sequence of abrupt changepoints partitioning $[1, T]$ into $K+1$ contiguous segments. The Pruned Exact Linear Time (PELT) algorithm \cite{Killick2012} efficiently identifies the optimal set of changepoints $\mathcal{T}^* = \{\tau_1^*, \dots, \tau_K^*\}$ by minimizing the penalized total cost:
 \begin{equation}
     \mathcal{T}^* = \underset{K, \mathcal{T}}{\arg\min} \left\{ \sum_{k=0}^{K} \mathcal{C}\left(\mathbf{X}_{(\tau_k, \tau_{k+1}]}\right) + \beta (K+1) \right\}
 \end{equation}
-where $\mathcal{C}(\cdot)$ is a within-segment cost (we use the negative log-likelihood of a Gaussian fit to rolling covariance), and $\beta > 0$ is the penalty controlling the trade-off between segment count and goodness-of-fit. PELT operates with worst-case $\mathcal{O}(T)$ complexity by exploiting a pruning inequality discarding non-optimal changepoint candidates. Segments shorter than a minimum length $T_{min}$ are merged into adjacent partitions to ensure sufficient samples for stable neural training.
+where $\mathcal{C}(\cdot)$ is a within-segment cost (we use the negative log-likelihood of a Gaussian fit to rolling covariance), and $\beta > 0$ is the penalty controlling the trade-off between segment count and goodness-of-fit. PELT operates with worst-case $\mathcal{O}(T)$ complexity by exploiting a pruning inequality discarding non-optimal changepoint candidates. Segments shorter than a minimum length $T_{min}$ are merged into adjacent partitions to ensure sufficient samples for stable neural training. The PELT segmentation and the resulting cost signal are visualised in Fig. \ref{fig:pelt}.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{figures/6_pelt_segmentation.png}}
+\caption{PELT changepoint detection applied to the synthetic VAR dataset. (Top) The raw signal $X^{(1)}$ with detected changepoints (red dashed lines) and shaded regime windows $\mathcal{R}_1$–$\mathcal{R}_4$. (Bottom) The rolling variance cost signal $\mathcal{C}(t)$ used by PELT, with sharp peaks at regime transition boundaries clearly indicating distributional shifts.}
+\label{fig:pelt}
+\end{figure}
 
 \subsection{Stage 2b: Zero-Shot LLM Prior Injection}
 
