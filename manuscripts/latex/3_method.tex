@@ -1,42 +1,92 @@
 \section{Methodology}
-The REIGN framework is designed to infer causal relationships from nonstationary multivariate time series. Given an observational time series $\mathbf{X} \in \mathbb{R}^{T \times N}$ consisting of $T$ time steps and $N$ variables, we assume the underlying data generation process follows a Structural Vector Autoregressive (SVAR) model with structural breaks:
+
+\subsection{Problem Formulation}
+
+Let $\mathbf{X} \in \mathbb{R}^{T \times N}$ denote a multivariate time series of $T$ observations over $N$ variables. We assume the underlying data-generating process is a nonstationary Structural Vector Autoregressive (SVAR) model defined by a discrete latent regime variable $S_t \in \{1, \dots, M\}$:
 \begin{equation}
-    \mathbf{X}_t = \sum_{\tau=1}^L \mathbf{A}^{(\tau, S_t)} \mathbf{X}_{t-\tau} + \mathbf{E}_t
+    \mathbf{X}_t = \sum_{\tau=1}^{L} \mathbf{A}^{(\tau, S_t)} \mathbf{X}_{t-\tau} + \boldsymbol{\varepsilon}_t, \quad \boldsymbol{\varepsilon}_t \sim \mathcal{N}(\mathbf{0}, \boldsymbol{\Sigma}^{(S_t)})
 \end{equation}
-where $L$ is the maximum time lag, $\mathbf{A}^{(\tau, S_t)}$ is the regime-dependent transition matrix at lag $\tau$ during the hidden regime state $S_t$, and $\mathbf{E}_t$ represents instantaneous exogenous noise. Our goal is to recover the global summary causal graph $\mathcal{G}$, represented by a binary adjacency matrix, summarizing all contemporaneous and lagged interactions. The framework is divided into four primary stages.
+where $L$ is the maximum temporal lag, $\mathbf{A}^{(\tau, S_t)} \in \mathbb{R}^{N \times N}$ is the regime-dependent transition matrix at lag $\tau$ during hidden state $S_t$, and $\boldsymbol{\varepsilon}_t$ is zero-mean, regime-specific Gaussian noise. The target is to infer the global summary causal graph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$, where a directed edge $(i \rightarrow j) \in \mathcal{E}$ denotes that variable $i$ Granger-causes variable $j$ under at least one regime. REIGN operates through four cascading stages to recover $\mathcal{G}$ from purely observational data.
 
-\subsection{Preprocessing and Imputation}
-Financial and physiological data streams are frequently marred by missing intervals and extreme anomalies. We implement a robust preprocessing stage applying $Z$-score normalization and clamping outliers beyond $3\sigma$. Missing intervals are imputed using Multiple Imputation by Chained Equations (MICE), effectively preserving the temporal covariance matrix necessary for down-stream Granger causality learning.
+\subsection{Stage 1: Robust Preprocessing}
 
-\subsection{Statistical Regime Detection}
-To resolve the nonstationarity violation inherent in classical methods, REIGN partitions $\mathbf{X}$ into locally stationary regimes using the Pruned Exact Linear Time (PELT) algorithm. We define a set of changepoints $\mathcal{T} = \{\tau_1, \dots, \tau_K\}$ dividing the time series into $K$ regimes. The algorithm minimizes the penalized cost function:
+Financial and physiological time series commonly contain missing data segments and extreme measurement anomalies. We apply the following preprocessing pipeline:
+
+\begin{enumerate}
+    \item \textbf{Z-score normalization:} Each channel $X^{(n)}$ is standardized using robust estimates of location and scale computed from non-missing entries.
+    \item \textbf{Outlier flagging:} Entries where $|X_t^{(n)} - \mu_n| > 3\sigma_n$ are flagged and treated as missing.
+    \item \textbf{MICE Imputation:} Missing entries are imputed using Multiple Imputation by Chained Equations (MICE), which iteratively fits a sequence of conditional models $p(X^{(n)} | \mathbf{X}^{(-n)})$ to preserve the inter-channel covariance structure critical to Granger causality detection.
+\end{enumerate}
+
+\subsection{Stage 2a: Statistical Regime Detection via PELT}
+
+We model the regime shifts as a sequence of abrupt changepoints partitioning $[1, T]$ into $K+1$ contiguous segments. The Pruned Exact Linear Time (PELT) algorithm \cite{killick2012optimal} efficiently identifies the optimal set of changepoints $\mathcal{T}^* = \{\tau_1^*, \dots, \tau_K^*\}$ by minimizing the penalized total cost:
 \begin{equation}
-    \min_{K, \mathcal{T}} \sum_{k=1}^{K+1} \left[ \mathcal{C}(\mathbf{X}_{\tau_{k-1}:\tau_k}) + \beta \right]
+    \mathcal{T}^* = \underset{K, \mathcal{T}}{\arg\min} \left\{ \sum_{k=0}^{K} \mathcal{C}\left(\mathbf{X}_{(\tau_k, \tau_{k+1}]}\right) + \beta (K+1) \right\}
 \end{equation}
-where $\mathcal{C}(\cdot)$ computes the rolling variance loss and $\beta$ is a sparsity penalty governing the sensitivity of the changepoint detection. To ensure the subsequent deep learning engines receive sufficient samples per regime, aggressive dynamic programming merging is applied to segments shorter than the defined minimum length threshold.
+where $\mathcal{C}(\cdot)$ is a within-segment cost (we use the negative log-likelihood of a Gaussian fit to rolling covariance), and $\beta > 0$ is the penalty controlling the trade-off between segment count and goodness-of-fit. PELT operates with worst-case $\mathcal{O}(T)$ complexity by exploiting a pruning inequality discarding non-optimal changepoint candidates. Segments shorter than a minimum length $T_{min}$ are merged into adjacent partitions to ensure sufficient samples for stable neural training.
 
-\subsection{LLM-Augmented Causal Priors}
-Unconstrained deep causal discovery suffers from massive search spaces and severe local minima. REIGN pioneers the integration of Large Language Models (LLMs) to construct zero-shot structural priors. By feeding variable metadata to an advanced LLM via structured prompts, we extract a continuous prior matrix $\mathbf{A}^{prior} \in [0,1]^{N \times N}$. To guarantee topological consistency, this matrix undergoes an iterative sorting algorithm, strictly masking backward temporal flows and cyclic dependencies, ensuring $\mathbf{A}^{prior}$ represents a valid Directed Acyclic Graph (DAG) before entering the neural engine.
+\subsection{Stage 2b: Zero-Shot LLM Prior Injection}
 
-\subsection{Coarse-to-Fine Neural Granger Engine}
-Within each isolated stationary regime $k$, we deploy an adapted Message-Passing Graph Neural Network (MPGNN) inspired by CUTS+ \cite{cheng2023cuts}. Crucially, we bypass the traditional LASSO coarse-discovery phase, initiating the GNN with a fully connected dense topology. This architectural modification prevents the inadvertent truncation of continuous causal signals. 
+Unconstrained neural causal discovery over an $N$-node graph faces a search space of $2^{N(N-1)}$ possible DAGs, which is computationally intractable for $N > 20$ without strong inductive biases. REIGN generates these inductive biases from a zero-shot Large Language Model query.
 
-The optimization seeks a continuous adjacency weight matrix $\mathbf{W}^{(k)}$ by minimizing the prediction loss subject to a strict continuous acyclicity constraint:
+Given a natural language description of each variable and a domain context, we construct a structured prompt $\mathcal{P}$ and query an LLM (e.g., Anthropic Claude). The model returns a confidence score $p_{ij} \in [0, 1]$ for each ordered pair $(i, j)$, representing the LLM's belief in the causal link $i \rightarrow j$. These scores assemble into a prior matrix $\mathbf{A}^{prior} \in [0,1]^{N \times N}$.
+
+To guarantee topological consistency, $\mathbf{A}^{prior}$ is post-processed via a confidence-weighted Kahn's algorithm to compute the implied topological ordering. Any edges violating this order are masked, ensuring $\mathbf{A}^{prior}$ is already acyclic before entering Stage 3.
+
+\subsection{Stage 3: Coarse-to-Fine Neural Granger Engine}
+
+For each regime $\mathcal{R}_k$, we extract the corresponding slice $\mathbf{X}^{(k)} \in \mathbb{R}^{T_k \times N}$ and deploy an adapted Message-Passing Graph Neural Network (MPGNN) \cite{cheng2023cuts}. Unlike prior works that employ a LASSO bottleneck as a coarse-discovery prefilter, REIGN initializes $\mathbf{W}^{(k)}$ as a fully connected dense topology, preventing premature truncation of weak but genuine causal signals.
+
+The GNN takes a historical window as input and propagates messages along the current graph estimate:
 \begin{equation}
-    h(\mathbf{W}^{(k)}) = \text{tr}\left(e^{\mathbf{W}^{(k)} \circ \mathbf{W}^{(k)}}\right) - N = 0
+    \mathbf{h}_i^{(l+1)} = \phi\left(\mathbf{h}_i^{(l)},\; \bigoplus_{j} W^{(k)}_{ji} \cdot \psi\left(\mathbf{h}_j^{(l)}\right)\right)
 \end{equation}
-We optimize the GNN via an augmented Lagrangian formulation, allowing the LLM prior to anchor the loss landscape:
-\begin{equation}
-\begin{aligned}
-    \mathcal{L}(\mathbf{W}^{(k)}, \alpha, \rho) = \mathcal{L}_{MSE}(\mathbf{W}^{(k)}) + \lambda ||\mathbf{W}^{(k)} - \mathbf{A}^{prior}||_F^2 \\
-    + \alpha h(\mathbf{W}^{(k)}) + \frac{\rho}{2} |h(\mathbf{W}^{(k)})|^2 + \gamma ||\mathbf{W}^{(k)}||_1
-\end{aligned}
-\end{equation}
-where $\alpha$ is the Lagrange multiplier, $\rho$ controls the penalty stiffness, and $\gamma$ enforces sparsity.
+where $\mathbf{h}_i^{(l)}$ is the hidden state of node $i$ at GNN layer $l$, $\phi$ and $\psi$ are learnable MLP transformations, and $\bigoplus$ denotes weighted sum aggregation.
 
-\subsection{Confidence-Weighted Ensemble}
-Because nonstationary environments yield $K$ distinct local causal models, REIGN employs an ensembling mechanism to synthesize the global summary graph. A continuous confidence matrix $\mathbf{C}$ is computed by temporally weighting the absolute magnitudes of the local regime matrices:
+The training objective combines temporal prediction, LLM prior regularization, acyclicity, and sparsity:
 \begin{equation}
-    \mathbf{C} = \sum_{k=1}^{K} \omega_k |\mathbf{W}^{(k)}|
+    \mathcal{L}(\mathbf{W}^{(k)}) = \frac{1}{T_k}\sum_t\|\hat{\mathbf{X}}_t - \mathbf{X}_t\|_2^2 + \lambda \|\mathbf{W}^{(k)} - \mathbf{A}^{prior}\|_F^2 + \gamma \|\mathbf{W}^{(k)}\|_1
 \end{equation}
-where the weight $\omega_k$ corresponds to the relative temporal duration of regime $k$. Finally, $\mathbf{C}$ is thresholded and projected onto the space of DAGs using an edge-confidence pruning algorithm to produce the final binary predicted graph $\mathcal{G}^*$.
+subject to the continuous DAG constraint $h(\mathbf{W}^{(k)}) = \text{tr}(e^{\mathbf{W}^{(k)} \circ \mathbf{W}^{(k)}}) - N = 0$.
+
+This constraint is handled via an Augmented Lagrangian scheme with dual variable $\mu^{(k)}$ and penalty $\rho^{(k)}$:
+\begin{equation}
+    \mathcal{L}_{AL} = \mathcal{L}(\mathbf{W}^{(k)}) + \mu^{(k)} h(\mathbf{W}^{(k)}) + \frac{\rho^{(k)}}{2}\left|h(\mathbf{W}^{(k)})\right|^2
+\end{equation}
+We optimize via Adam and update $\mu^{(k)} \leftarrow \mu^{(k)} + \rho^{(k)} h(\mathbf{W}^{(k)})$ and $\rho^{(k)} \leftarrow \eta \rho^{(k)}$ at each outer iteration until $h(\mathbf{W}^{(k)}) < \epsilon_{tol}$.
+
+\subsection{Stage 4: Confidence-Weighted Ensemble}
+
+Each regime $\mathcal{R}_k$ yields a continuous causal weight matrix $\mathbf{W}^{(k)}$. To synthesize a global summary causal graph, REIGN performs temporal-duration-weighted aggregation:
+\begin{equation}
+    \mathbf{C} = \sum_{k=1}^{K} \omega_k \cdot \text{sigmoid}\left(|\mathbf{W}^{(k)}|\right), \quad \omega_k = \frac{T_k}{\sum_{j=1}^K T_j}
+\end{equation}
+The resulting confidence matrix $\mathbf{C} \in (0,1)^{N \times N}$ serves as the continuous causal estimate. The binary summary graph $\mathcal{G}^*$ is recovered by thresholding at the optimal $\tau^*$:
+\begin{equation}
+    \mathcal{G}^*_{ij} = \mathbf{1}[\mathbf{C}_{ij} > \tau^*], \quad \tau^* = \underset{\tau}{\arg\max}\; \text{F1}(\mathbf{G}_{pred}(\tau), \mathbf{G}_{true})
+\end{equation}
+A final depth-first cycle elimination pass ensures $\mathcal{G}^*$ is a valid DAG.
+
+\subsection{Hyperparameter Summary}
+
+\begin{table}[htbp]
+\centering
+\caption{REIGN Hyperparameter Configuration}
+\label{tab:hyperparams}
+\begin{tabular}{llp{4.2cm}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Description} \\
+\midrule
+$L$ (lag)         & 5       & Maximum temporal lag \\
+$\beta$ (PELT)    & 100     & Changepoint penalty \\
+$T_{min}$         & 200     & Minimum regime length \\
+$\lambda$ (prior) & 0.0     & LLM prior weight \\
+$\gamma$ (sparsity) & 0.01 & $L_1$ regularization \\
+Epochs            & 200     & GNN training steps per regime \\
+Learning rate     & 1e-2    & Adam optimizer \\
+$\eta$ (AL)       & 10.0    & Augmented Lagrangian growth \\
+$\epsilon_{tol}$  & 1e-8    & DAG constraint tolerance \\
+\bottomrule
+\end{tabular}
+\end{table}
