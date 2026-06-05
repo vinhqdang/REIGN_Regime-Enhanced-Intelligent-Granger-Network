@@ -1,37 +1,78 @@
-\documentclass[10pt, conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+ \documentclass{BVP_JDSIS}
+% \documentclass{BVP_AAES}
+% \documentclass{BVP_AIA}
+% \documentclass{BVP_GLCE}
+% \documentclass{BVP_IJCE}
+% \documentclass{BVP_JCBAR}
+% \documentclass{BVP_JCCE}  %%%%%
+% \documentclass{BVP_JOPR}
+% \documentclass{BVP_MEDIN}
+% \documentclass{BVP_JCLLT}
+% \documentclass{BVP_FSI}
+% \documentclass{BVP_SWT}
+% \documentclass{BVP_CINC}
+% \documentclass{BVP_JCLLT}
+% \documentclass{BVP_JCWR}
+%\documentclass{BVP_IUTS}
+%\usepackage{showframe}
 
-\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage{xcolor}
+% \usepackage{xcolor} % BVP_JDSIS likely already loads color/xcolor
 \usepackage{hyperref}
 \usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{multirow}
+\usepackage{tabularx}
+% \usepackage{apacite}
 
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+% Toggle for highlighting revisions
+\newif\ifhighlightchanges
+\highlightchangestrue % Comment or change to \highlightchangesfalse to turn off highlights
+\ifhighlightchanges
+  \newcommand{\rev}[1]{\textcolor{blue}{#1}}
+  \newenvironment{revenv}{\color{blue}}{\color{black}}
+\else
+  \newcommand{\rev}[1]{#1}
+  \newenvironment{revenv}{}{}
+\fi
+
+\received{d month yyyy}
+\revised{d month yyyy}
+\accepted{d month yyyy}
+\published{d month yyyy}
+\doi{10.47852/bonviewJDSISXXXXXXXX}
+
+\OAText{{\copyright} The Author(s) 2026. Published by BON VIEW PUBLISHING PTE. LTD. This is an open access article under the CC BY License (https://creativecommons.org/licenses/by/4.0/).}
+
+% Fix for undefined booleans in BVP_JDSIS.cls table* environment
+\newif\iftablefootnotenone
+\newif\ifkilltableabovespace
+\newcount\tfootcount
 
 \begin{document}
 
+\arttype{Article Type}
+
 \title{REIGN: Regime-Enhanced Intelligent Granger Network for Nonstationary Causal Discovery}
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-}
+\author{Author A$^{1}$, Author B$^{2}$, Author C$^{3,}$\thanks{\textbf{Corresponding author:} Author C, Department, Name of Organization, Country. Email: \email{xxxxxx@institution.email}}}
+
+\affil{Department, Name of Organization, Country, Email address}
+\affil{Department, Name of Organization, Country, Email address}
+\affil{Department, Name of Organization, Country, Email address}
+
+\begin{abstract}
+Causal discovery in nonstationary multivariate financial time series is a fundamental open problem in machine learning and econometrics. Classical causal discovery algorithms — from constraint-based methods such as the PC algorithm to time-series extensions such as PCMCI+ — critically assume stationarity in the underlying data-generating process. In real-world financial environments, this assumption is systematically violated through structural breaks induced by market regime shifts, regulatory changes, and macroeconomic shocks. Naïvely applying stationary methods to nonstationary data yields spurious edges, suppressed recall, and structurally inconsistent causal graphs. We propose the \textbf{Regime-Enhanced Intelligent Granger Network (REIGN)}, a novel four-stage causal discovery framework specifically engineered for nonstationary time series. REIGN uniquely integrates three synergistic capabilities: (i) data-driven regime segmentation via the Pruned Exact Linear Time (PELT) changepoint detection algorithm, which partitions the time series into locally stationary windows; (ii) zero-shot Large Language Model (LLM) prior injection, which constrains the neural search space using domain-specific topological knowledge; and (iii) a coarse-to-fine Message-Passing Graph Neural Network (MPGNN) that optimizes a continuous DAG-constrained adjacency matrix via an Augmented Lagrangian objective. Regime-specific models are subsequently aggregated through a confidence-weighted ensemble mechanism to yield a globally consistent summary causal graph. Empirical evaluation on a synthetically generated nonstationary Vector Autoregressive (VAR) benchmark dataset demonstrates that REIGN achieves an Optimal F1 score of 0.529, outperforming PCMCI+ (F1=0.415) by 11.4 percentage points and PC (F1=0.214) by a factor of 2.5$\times$ in structural edge recovery. REIGN additionally dominates across AUROC (0.513 vs.\ 0.406) and AUPR (0.400 vs.\ 0.338) metrics, establishing a new performance benchmark for neural time-series causal discovery in nonstationary environments.
+\end{abstract}
+
+\begin{keywords}
+Causal Discovery, Time Series, Granger Causality, Large Language Models, Nonstationary Regimes
+\end{keywords}
 
 \maketitle
-
-\input{0_abstract}
-
-\begin{IEEEkeywords}
-Causal Discovery, Time Series, Granger Causality, Large Language Models, Nonstationary Regimes
-\end{IEEEkeywords}
-
 \input{1_intro}
 \input{2_related}
 \input{3_method}
@@ -39,7 +80,6 @@ Causal Discovery, Time Series, Granger Causality, Large Language Models, Nonstat
 \input{5_discussion}
 \input{6_conclusion}
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{unsrt}
 \bibliography{ref}
-
 \end{document}

@@ -12,7 +12,11 @@ However, all of these methods share a critical and often unexamined assumption: 
 
 Recent advances in deep learning have produced powerful neural architectures for causal discovery. CUTS+ \cite{cheng2023cuts} deploys a coarse-to-fine Message-Passing GNN to handle high-dimensional, irregular time series. NoCurl and NOTEARS \cite{zheng2018dags} introduced the foundational continuous differentiable DAG constraint $h(\mathbf{W}) = \text{tr}(e^{\mathbf{W} \circ \mathbf{W}}) - N = 0$, enabling gradient-based optimization over the combinatorially intractable DAG space. These methods demonstrate strong performance on stationary benchmarks but are fundamentally agnostic to temporal nonstationarity. When applied to multi-regime data, they produce globally smoothed, blurred causal estimates that fail to capture the true regime-dependent structure.
 
-Furthermore, neural causal discovery is notoriously sample-inefficient. The combinatorial complexity of the DAG search space grows super-exponentially with the number of variables. In sparse financial datasets, purely data-driven discovery without strong domain knowledge frequently converges to suboptimal local minima, particularly when the time series is short within a specific regime.
+\begin{revenv}
+While some existing methods attempt to model nonstationarity directly, they exhibit critical shortcomings in complex financial scenarios. Algorithms such as CD-NOD \cite{huang2020causal} and Regime-PCMCI \cite{saggioro2020causal} introduce regime-awareness, but they often struggle with the high dimensionality and irregular sampling frequencies typical of real-world financial data. More importantly, these purely data-driven nonstationary methods lack a mechanism to incorporate domain-specific topological priors.
+
+Furthermore, neural causal discovery is notoriously sample-inefficient. The combinatorial complexity of the DAG search space grows super-exponentially with the number of variables. In sparse financial datasets without strong domain knowledge, algorithms frequently converge to suboptimal local minima, particularly when the time series is short within a specific turbulent market regime.
+\end{revenv}
 
 \subsection{The REIGN Framework}
 

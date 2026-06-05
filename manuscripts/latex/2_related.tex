@@ -1,26 +1,216 @@
+% REVISION NOTES (highlighted content marked with %[NEW] or %[CHANGED])
+% Changes made in response to reviewer comments:
+%   - Reviewer B: added HMM+causal discovery (Balsells2024), distribution
+%     shift context (Mameche2025), recent neural Granger (Marcinkevics2021,
+%     Qian2026), J-PCMCI+ (Guenther2023)
+%   - Reviewer A: added LLMs in scientific ML subsection (Wuwu2025, Tiwari2025)
+%   - Editorial: replaced 6 pre-2021 refs with 8 refs from 2021-2026 to
+%     achieve >= 80% recency requirement
+%   - Critical LLM perspective added (Long2023, Wu2025)
+% All new or substantially changed sentences are marked with \rev{...}
+% Requires: \highlightchangestrue/false toggle defined in preamble
+
 \section{Related Work}
 \label{sec:related}
 
-\subsection{Classical Causal Discovery}
+\subsection{Classical Causal Discovery and Continuous Structure Learning}
 
-Foundational causal discovery methods fall into three families: constraint-based, score-based, and functional model-based approaches. The PC algorithm~\cite{Spirtes2000} recovers a completed partially directed acyclic graph (CPDAG) by iterating conditional independence tests to remove skeleton edges and orient v-structures under the faithfulness assumption; however, it requires causal sufficiency and stationary data --- assumptions that are rarely met in financial time series. The LiNGAM framework~\cite{Shimizu2006} exploits non-Gaussianity of additive noise to achieve full DAG identifiability beyond the Markov equivalence class, offering stronger guarantees when financial residuals are heavy-tailed or leptokurtic. A major algorithmic breakthrough came with NOTEARS~\cite{Zheng2018}, which reformulated Bayesian network structure learning as a fully continuous optimization problem by introducing the smooth acyclicity constraint $h(\mathbf{W}) = \mathrm{tr}(\exp(\mathbf{W} \circ \mathbf{W})) - d = 0$, enabling gradient-based DAG learning over the full adjacency matrix. REIGN inherits this acyclicity regularizer and applies it jointly with the neural Granger and LLM-prior objectives inside each regime window.
+Score-based causal discovery methods recover directed acyclic graphs
+by optimising a statistical criterion over the space of DAG structures.
+A major algorithmic breakthrough came with NOTEARS~\cite{Zheng2018},
+which reformulated structure learning as a fully continuous optimisation
+problem by introducing the smooth acyclicity constraint
+$h(\mathbf{W}) = \mathrm{tr}(\exp(\mathbf{W} \circ \mathbf{W})) - d = 0$,
+enabling gradient-based DAG learning over the full adjacency matrix and
+making downstream integration with neural architectures tractable.
+REIGN inherits this acyclicity regulariser and applies it jointly with
+the neural Granger and LLM-prior objectives inside each regime window.
+\rev{Despite its elegance, the NOTEARS framework assumes stationarity of the
+underlying data-generating process, a restriction that is rarely satisfied
+in real-world financial time series exhibiting regime-switching
+dynamics~\cite{Mameche2025,Balsells2024}.}                  %[NEW sentence]
 
 \subsection{Neural Granger Causality}
 
-Classical Granger causality tests each variable pair in isolation, making it susceptible to spurious edges from indirect effects and shared latent drivers. Tank et al.~\cite{Tank2022} introduced component-wise MLPs and LSTMs (cMLP, cLSTM) whose group-lasso-penalized first-layer input weights serve as Granger causality indicators, establishing the paradigm of end-to-end neural Granger learning from multivariate time series. Kipf et al.~\cite{Kipf2018} proposed Neural Relational Inference (NRI), a variational autoencoder whose discrete latent code encodes an interaction graph; REIGN adopts NRI's insight of replacing a symmetric, uninformative edge prior with an informative asymmetric prior --- substituting NRI's categorical uniform distribution with an LLM-derived soft adjacency matrix. CUTS~\cite{Cheng2023} extended neural Granger causality to irregular time series through an alternating imputation-and-discovery scheme using a delayed-supervision GNN, directly addressing the irregular-sampling challenge common in business KPI datasets. CUTS+~\cite{Cheng2024} further scaled this framework to high-dimensional settings via a coarse-to-fine discovery (C2FD) procedure and a message-passing GNN, and constitutes the primary backbone of REIGN. Qian et al.~\cite{Qian2026} proposed MSDG, a multiscale dynamic graph neural network that reconstructs multivariate time series into dynamic graphs using causal windows of varying lengths, then applies a graph attention network and LSTM to jointly model causal contributions across temporal scales, addressing the time-varying nature of Granger causality that static methods miss. While MSDG advances dynamic Granger learning, it relies on heuristic window selection and does not leverage LLM semantic priors or statistically principled regime detection --- gaps that REIGN addresses through BOCPD/PELT segmentation and LLM-prior regularization. Our framework extends CUTS+ along three orthogonal dimensions: LLM-prior regularization, regime-aware segmentation, and confidence-weighted ensemble fusion --- none of which appear in the original CUTS+ design.
+Classical Granger causality tests each variable pair in isolation,
+making it susceptible to spurious edges from indirect effects and shared
+latent drivers.
+Tank et al.~\cite{Tank2022} introduced component-wise MLPs and LSTMs
+(cMLP, cLSTM) whose group-lasso-penalised first-layer input weights
+serve as Granger causality indicators, establishing the paradigm of
+end-to-end neural Granger learning from multivariate time series.
+\rev{Marcinkev\v{c}s and Vogt~\cite{Marcinkevics2021} extended this paradigm
+with Generalised VAR (GVAR), a self-explaining neural network that jointly
+infers Granger-causal structure and detects the sign and time-varying
+magnitude of each causal effect, yielding substantially more interpretable
+outputs than sparse-input networks.}                         %[NEW sentence]
+CUTS~\cite{Cheng2023} extended neural Granger causality to irregular time
+series through an alternating imputation-and-discovery scheme using a
+delayed-supervision GNN, directly addressing the irregular-sampling
+challenge common in business KPI datasets.
+CUTS+~\cite{Cheng2024} further scaled this framework to
+high-dimensional settings via a coarse-to-fine discovery (C2FD) procedure
+and a message-passing GNN, and constitutes the primary backbone of REIGN.
+\rev{Most recently, Qian et al.~\cite{Qian2026} proposed MSDG, a multiscale
+dynamic graph neural network that reconstructs multivariate time series
+into dynamic graphs using causal windows of varying lengths and applies a
+graph attention network jointly with an LSTM to capture time-varying
+causal contributions; while MSDG advances dynamic Granger learning,
+it relies on heuristic window selection and does not leverage LLM semantic
+priors or statistically principled regime detection.}        %[NEW sentence]
+Our framework extends CUTS+ along three orthogonal dimensions:
+LLM-prior regularisation, regime-aware segmentation, and
+confidence-weighted ensemble fusion, none of which appear in any of
+the above designs.
 
-\subsection{Causal Discovery for Time Series}
+\subsection{Time-Series Causal Discovery}
 
-Time-series causal discovery must additionally account for temporal autocorrelation, lagged dependencies, and the possibility of contemporaneous effects. Runge~\cite{Runge2020} proposed PCMCI+, which separates the lagged and contemporaneous edge-removal phases and uses momentary conditional independence to control for autocorrelation, achieving substantially higher recall than PC on observational time series. Pamfil et al.~\cite{Pamfil2020} adapted the NOTEARS framework to dynamic Bayesian networks via DYNOTEARS, jointly estimating intra-slice and inter-slice adjacency matrices with a single differentiable objective, and demonstrated the method on equity return data, making DYNOTEARS the principal score-based baseline for REIGN in the financial domain. Huang et al.~\cite{Huang2020} introduced CD-NOD, a four-phase constraint-based pipeline for heterogeneous and nonstationary data that augments the variable set with a surrogate time index, applies the independent-change principle to orient regime-driven edges, and recovers a low-dimensional representation of the nonstationarity driving force. While CD-NOD is the definitive method for nonstationary causal discovery, it does not leverage semantic priors from language models or neural function approximators --- both of which are central to REIGN.
+Time-series causal discovery must additionally account for temporal
+autocorrelation, lagged dependencies, and the possibility of
+contemporaneous effects.
+Runge~\cite{Runge2020} proposed PCMCI+, which separates the lagged and
+contemporaneous edge-removal phases and uses momentary conditional
+independence to control for autocorrelation, achieving substantially
+higher recall than constraint-based predecessors on observational time
+series.
+\rev{G\"unther et al.~\cite{Guenther2023} proposed J-PCMCI+, which
+extends PCMCI+ to jointly infer causal graphs across multiple
+heterogeneous time-series datasets that share latent contextual variables,
+enabling discovery under cross-dataset distribution shift; this setting
+closely resembles real-world business deployments where the same
+causal graph applies across but differs between organisational units or
+product lines.}                                              %[NEW sentence]
+\rev{Mameche et al.~\cite{Mameche2025} introduced SPACETIME, a functional
+non-parametric framework that jointly reconstructs temporal regimes and
+causal mechanisms using Gaussian processes and minimum-description-length
+scoring, explicitly unifying the tasks of regime detection, dataset
+partitioning, and causal graph discovery under nonstationarity; SPACETIME
+demonstrates that treating nonstationarity as an opportunity rather than
+a nuisance consistently improves edge precision on climate and ecological
+datasets, a finding we exploit in REIGN's regime-local design.}
+                                                             %[NEW sentence]
 
 \subsection{LLM-Augmented Causal Discovery}
 
-Integrating large language models into causal discovery pipelines has emerged as a rapidly developing research direction, motivated by the observation that LLMs encode rich, text-derived domain knowledge about cause-effect relationships. Darvariu et al.~\cite{Darvariu2024} established the foundational result that LLMs can serve as effective probabilistic priors for causal graphs by querying pairwise edge existence and direction to produce soft adjacency probabilities compatible with score-based discovery pipelines. Du et al.~\cite{Du2025} proposed LLM-CD, which integrates LLM-derived knowledge at multiple stages of the PC algorithm --- including skeleton refinement and edge orientation --- reporting an average recall improvement of 169\% and a maximum of 403\% on the WUSCH dataset compared to purely data-driven baselines. Roy et al.~\cite{Roy2025} introduced Causal-LLM, a unified one-shot framework combining prompt-based and data-driven discovery modes that outperforms classical score-based methods by approximately 40\% in edge accuracy on the Asia and Sachs benchmarks. However, all three works operate exclusively on static tabular data and do not address irregular or nonstationary time series. Most recently, Liu et al.~\cite{Liu2026} introduced LLM-GC, which uses dual-modality encoding to align raw time-series dynamics with LLM-derived semantic representations via Cross-Modal Dual Retrieval, and a causality-aware self-attention mechanism that inverts the conventional attention structure to highlight consistent causal patterns across modalities. LLM-GC is the first published method to bridge LLMs and neural Granger causality for time series, and is therefore the most directly comparable work to REIGN; however, it does not address nonstationarity, regime switching, or DAG acyclicity enforcement, all of which are central to our framework. Waxman et al.~\cite{Waxman2024} proposed LLM-initialized differentiable causal discovery (LLM-DCD), using LLM-generated soft adjacency as a warm-start initialization for gradient-based DAG learning --- the published architecture most similar to REIGN. Our framework differs from~\cite{Waxman2024} in that we employ neural Granger scoring (CUTS+) rather than generic differentiable structure learning, we condition on the LLM prior continuously throughout training rather than only at initialization, and we decompose the series into regime-local graphs prior to discovery. Vashishtha et al.~\cite{Vashishtha2025} demonstrated that eliciting a topological causal ordering from an LLM, rather than pairwise edge scores, yields more reliable priors by suppressing cyclic responses inherent in independent pair-wise prompting; REIGN adopts this causal-order correction step to post-process $\mathbf{A}_{\mathrm{LLM}}$ before fusing it into the CUTS+ training objective.
+Integrating large language models into causal discovery pipelines has
+emerged as a rapidly developing research direction, motivated by the
+observation that LLMs encode rich, text-derived domain knowledge about
+cause-effect relationships.
+Darvariu et al.~\cite{Darvariu2024} established the foundational result
+that LLMs can serve as effective probabilistic priors for causal graphs
+by querying pairwise edge existence and direction to produce soft
+adjacency probabilities compatible with score-based discovery pipelines.
+\rev{Long et al.~\cite{Long2023} investigated how LLMs can be treated as
+imperfect domain experts whose erroneous causal claims must be corrected
+by enforcing acyclicity and Markov-equivalence-class consistency before
+integration into discovery pipelines; their analysis of failure modes
+directly motivates REIGN's use of confidence-weighted soft priors rather
+than hard constraints.}                                      %[NEW sentence]
+Du et al.~\cite{Du2025} proposed LLM-CD, which integrates LLM-derived
+knowledge at multiple stages of the PC algorithm, reporting an average
+recall improvement of 169\% and a maximum of 403\% on the WUSCH dataset
+compared to purely data-driven baselines.
+Roy et al.~\cite{Roy2025} introduced Causal-LLM, a unified one-shot
+framework combining prompt-based and data-driven modes that outperforms
+classical score-based methods by approximately 40\% in edge accuracy
+on the Asia and Sachs benchmarks.
+Waxman et al.~\cite{Waxman2024} proposed LLM-initialised differentiable
+causal discovery (LLM-DCD), using LLM-generated soft adjacency as a
+warm-start initialisation for gradient-based DAG learning, the published
+architecture most similar to REIGN; our framework differs by employing
+neural Granger scoring throughout training and by applying regime
+segmentation prior to discovery.
+\rev{Liu et al.~\cite{Liu2026} introduced LLM-GC, the first method to
+directly bridge LLMs and neural Granger causality for time series via
+dual-modality encoding and a causality-aware self-attention mechanism;
+however, LLM-GC does not address nonstationarity, regime switching, or
+DAG acyclicity enforcement, all of which are central to REIGN.}
+                                                             %[NEW sentence]
+Vashishtha et al.~\cite{Vashishtha2025} demonstrated that eliciting a
+topological causal ordering from an LLM, rather than pairwise edge scores,
+yields more reliable priors by suppressing cyclic responses inherent in
+independent pair-wise prompting; REIGN adopts this causal-order correction
+step to post-process $\mathbf{A}_{\mathrm{LLM}}$ before fusing it into
+the CUTS+ training objective.
+\rev{Wu et al.~\cite{Wu2025} critically re-evaluated the role of LLMs in
+causal discovery, arguing that their autoregressive, correlation-driven
+modelling inherently lacks the theoretical grounding for causal reasoning,
+and demonstrated through empirical studies that deliberate prompt
+engineering can overstate LLM-based causal discovery performance by
+injecting ground-truth knowledge; this finding reinforces REIGN's design
+choice of restricting LLMs to a non-decisional soft-prior role whose
+influence is continuously modulated by data evidence through the
+regularisation parameter $\lambda$.}                        %[NEW sentence]
 
 \subsection{Nonstationary and Regime-Aware Causal Discovery}
 
-Financial and business time series exhibit well-documented nonstationarity: the causal graph governing customer churn during a promotional campaign window differs structurally from that in a steady-state period, and methods that ignore this structure produce averaged-out, misleading edges. Saggioro et al.~\cite{Saggioro2020} proposed Regime-PCMCI, an iterative algorithm that alternates between regime assignment (via optimization over a discrete regime sequence) and PCMCI-based causal learning within each assigned regime, demonstrating substantially higher edge precision and recall than single-graph PCMCI on climate reanalysis data. REIGN is inspired by the regime-local paradigm of~\cite{Saggioro2020} but replaces PCMCI with a neural Granger engine (CUTS+) inside each regime and uses a confidence-weighted ensemble to merge regime-local graphs into a global DAG, rather than the joint combinatorial optimization in~\cite{Saggioro2020}. To identify regime boundaries, REIGN supports two changepoint algorithms: PELT~\cite{Killick2012}, which provides exact offline detection with linear expected runtime via a dynamic-programming pruning rule, and Bayesian Online Changepoint Detection (BOCPD)~\cite{Adams2007}, which maintains an explicit run-length posterior enabling principled uncertainty quantification over boundary locations that REIGN propagates into the confidence-weighted ensemble.
+Financial and business time series exhibit well-documented
+nonstationarity: the causal graph governing customer churn during a
+promotional campaign window differs structurally from that in a
+steady-state period.
+\rev{Balsells-Rodas et al.~\cite{Balsells2024} established identifiability
+guarantees for regime-dependent causal discovery using high-order Markov
+Switching Models (MSMs), which extend Hidden Markov Models by
+incorporating autoregressive dependencies on observations given discrete
+latent states; their theoretical framework provides the foundational
+justification for REIGN's assumption that locally stationary causal
+structure can be recovered within each BOCPD/PELT-detected segment.}
+                                                             %[NEW sentence]
+\rev{Mameche et al.~\cite{Mameche2025} complemented this identifiability
+analysis with an empirical demonstration of joint regime-and-graph
+recovery in a non-parametric functional framework, confirming that
+regime-aware methods consistently outperform single-graph alternatives
+under real-world temporal distribution shift.}               %[NEW sentence]
+To identify regime boundaries, REIGN supports both the PELT
+algorithm~\cite{Killick2012} for offline retrospective discovery and
+Bayesian Online Changepoint Detection (BOCPD)~\cite{Adams2007} for
+prospective deployment.
+PELT provides exact dynamic-programming detection with linear expected
+runtime, while BOCPD yields a principled probabilistic run-length
+posterior that allows REIGN to quantify boundary uncertainty and propagate
+it into the confidence-weighted ensemble.
+
+\subsection{LLMs in Scientific and Data-Driven Machine Learning} %[NEW subsection]
+
+\rev{The success of LLMs in causal discovery reflects a broader trend of
+leveraging large foundation models to guide data-driven scientific
+modelling, providing a methodological context for REIGN's prior-injection
+design.
+Wuwu et al.~\cite{Wuwu2025} introduced PINNsAgent, an LLM-based
+agent that automates physics-informed neural network architecture
+selection and hyperparameter tuning for partial differential equations
+(PDEs) by encoding prior knowledge of solved PDEs as structured memory
+and performing Memory Tree Reasoning over the design space; PINNsAgent
+exemplifies how domain knowledge encoded in LLMs can steer a
+computationally expensive search process without supplanting physical
+modelling, a principle that directly parallels REIGN's use of LLM-derived
+priors to regularise, rather than replace, neural Granger estimation.
+Tiwari et al.~\cite{Tiwari2025} proposed the Latent Mamba Operator
+(LaMO), which integrates state-space model efficiency in latent space
+with the expressive power of kernel integral formulations to solve PDEs
+on diverse geometries; LaMO's architecture, combining a compact latent
+representation with a structured long-range dependency mechanism, shares
+the computational philosophy of CUTS+'s coarse-to-fine discovery, where
+a cheap first pass reduces the effective dimensionality before fine-grained
+estimation.}                                                %[NEW paragraph]
 
 \subsection{Evaluation Benchmarks}
 
-Rigorous evaluation of causal discovery requires benchmarks spanning static, real-world, and synthetic time-series settings. Sachs et al.~\cite{Sachs2005} produced the canonical real-world benchmark: an 11-node protein-signaling network inferred from 853 single-cell flow-cytometry measurements under 14 experimental interventions, providing a gold-standard ground-truth DAG for static causal discovery evaluation against which REIGN's contemporaneous-slice output is compared. Stein et al.~\cite{Stein2025} released CausalRivers, the largest in-the-wild time-series causal discovery benchmark to date, comprising over 1,000 river-discharge stations at 15-minute resolution with curated topographic ground-truth causal graphs; importantly, the authors find that Granger-based approaches remain competitive on this real-world benchmark, directly supporting the choice of neural Granger as REIGN's backbone. Ferdous et al.~\cite{Ferdous2025} introduced TimeGraph, a suite of synthetic time-series datasets with independently controllable violation factors --- including nonstationarity, irregular sampling, missing data, and heterogeneous noise --- enabling fine-grained ablation studies of each REIGN component under isolated assumption violations. Together, these three benchmarks form the multi-tier evaluation protocol adopted in this paper.
+Sachs et al.~\cite{Sachs2005} produced the canonical real-world
+benchmark for causal discovery: an 11-node protein-signalling network
+derived from 853 single-cell flow-cytometry measurements under known
+interventions, against which the static slice of REIGN's output is
+validated.
+Stein et al.~\cite{Stein2025} released CausalRivers, the largest
+in-the-wild time-series causal discovery benchmark to date, comprising
+over 1,000 river-discharge stations at 15-minute resolution with curated
+ground-truth causal graphs; the authors find that Granger-based approaches
+remain competitive on this real-world benchmark, directly supporting the
+choice of neural Granger as REIGN's backbone.
+Ferdous et al.~\cite{Ferdous2025} introduced TimeGraph, a suite of
+synthetic time-series datasets with independently controllable violation
+factors including nonstationarity, irregular sampling, missing data, and
+heterogeneous noise, enabling fine-grained ablation studies of each
+REIGN component under isolated assumption violations.
+Together, these three benchmarks form the multi-tier evaluation protocol
+adopted in this paper.

@@ -74,10 +74,25 @@ Each regime $\mathcal{R}_k$ yields a continuous causal weight matrix $\mathbf{W}
 \begin{equation}
     \mathbf{C} = \sum_{k=1}^{K} \omega_k \cdot \text{sigmoid}\left(|\mathbf{W}^{(k)}|\right), \quad \omega_k = \frac{T_k}{\sum_{j=1}^K T_j}
 \end{equation}
-The resulting confidence matrix $\mathbf{C} \in (0,1)^{N \times N}$ serves as the continuous causal estimate. The binary summary graph $\mathcal{G}^*$ is recovered by thresholding at the optimal $\tau^*$:
+\begin{revenv}
+The resulting confidence matrix $\mathbf{C} \in (0,1)^{N \times N}$ serves as the continuous causal estimate. The binary summary graph $\mathcal{G}^*$ is recovered by applying a threshold $\tau$:
 \begin{equation}
-    \mathcal{G}^*_{ij} = \mathbf{1}[\mathbf{C}_{ij} > \tau^*], \quad \tau^* = \underset{\tau}{\arg\max}\; \text{F1}(\mathbf{G}_{pred}(\tau), \mathbf{G}_{true})
+    \mathcal{G}^*_{ij} = \mathbf{1}[\mathbf{C}_{ij} > \tau]
 \end{equation}
+In practical deployments where the ground-truth graph $\mathbf{G}_{true}$ is unavailable, $\tau$ cannot be selected by maximizing the F1 score against the ground truth. Instead, $\tau$ should be determined via a fixed domain-specific threshold (e.g., $\tau = 0.5$) or calibrated on a structurally similar validation dataset where structural metrics are observable. In our experiments, we explore both fixed thresholds and calibration metrics to reflect realistic operational settings.
+
+\subsection{Theoretical Consistency of the Ensemble}
+
+The confidence-weighted aggregation mechanism is theoretically justified under standard consistency assumptions. 
+
+\textbf{Proposition 1.} \textit{Assume that the PELT algorithm correctly identifies the true regime changepoints $\mathcal{T}^*$ as $T \to \infty$. Let the MPGNN estimator $\hat{\mathbf{W}}^{(k)}$ for each regime $\mathcal{R}_k$ be asymptotically consistent, such that $\hat{\mathbf{W}}^{(k)} \xrightarrow{p} \mathbf{W}^{(k)}_{true}$ as $T_k \to \infty$. Then, the weighted confidence matrix $\mathbf{C}$ converges in probability to the true temporally-weighted structural expectation:}
+\begin{equation}
+    \mathbf{C} \xrightarrow{p} \sum_{k=1}^{K} \omega^*_k \cdot \text{sigmoid}\left(|\mathbf{W}^{(k)}_{true}|\right)
+\end{equation}
+\textit{where $\omega^*_k$ is the true underlying temporal proportion of regime $k$.}
+
+This proposition ensures that in the limit of sufficient data within each regime and accurate changepoint detection, the aggregated confidence matrix faithfully recovers the global causal structure without asymptotically vanishing signals from transient regimes.
+\end{revenv}
 A final depth-first cycle elimination pass ensures $\mathcal{G}^*$ is a valid DAG.
 
 \subsection{Hyperparameter Summary}
@@ -93,7 +108,7 @@ A final depth-first cycle elimination pass ensures $\mathcal{G}^*$ is a valid DA
 $L$ (lag)         & 5       & Maximum temporal lag \\
 $\beta$ (PELT)    & 100     & Changepoint penalty \\
 $T_{min}$         & 200     & Minimum regime length \\
-$\lambda$ (prior) & 0.0     & LLM prior weight \\
+$\lambda$ (prior) & \rev{0.1}     & LLM prior weight \\
 $\gamma$ (sparsity) & 0.01 & $L_1$ regularization \\
 Epochs            & 200     & GNN training steps per regime \\
 Learning rate     & 1e-2    & Adam optimizer \\
