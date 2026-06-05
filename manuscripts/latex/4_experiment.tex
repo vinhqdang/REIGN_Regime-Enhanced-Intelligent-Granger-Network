@@ -53,7 +53,7 @@ The four slices are concatenated to form $\mathbf{X} \in \mathbb{R}^{3000 \times
 \centering
 \caption{Tier 2: Real-World Causal Benchmarks}
 \label{tab:tier2}
-\begin{tabular}{lclp{3.2cm}}
+\begin{tabular}{l c l l}
 \toprule
 \textbf{Dataset} & \textbf{$N$} & \textbf{Description} & \textbf{Source} \\
 \midrule
@@ -93,11 +93,11 @@ We organise baselines into five groups covering the complete landscape of causal
 
 \textbf{Group A — Classical Constraint-Based.} The PC algorithm \cite{Spirtes2000} applies conditional independence tests under the Faithfulness assumption. PCMCI+ \cite{Runge2020} extends PC to auto-correlated time series via Momentary Conditional Independence (MCI) tests. Both assume strict stationarity.
 
-\textbf{Group B — Score-Based / Continuous.} NOTEARS \cite{Zheng2018} reformulates DAG learning as continuous optimisation using the matrix-exponential acyclicity constraint. DYNOTEARS \cite{Pamfil2020} extends this to temporal data by incorporating lagged adjacency matrices. These methods provide strong continuous-optimisation baselines but are stationary by design.
+\textbf{Group B — Score-Based / Continuous.} NOTEARS \cite{Zheng2018} reformulates DAG learning as continuous optimisation using the matrix-exponential acyclicity constraint. DYNOTEARS \cite{pamfil2020dynotears} extends this to temporal data by incorporating lagged adjacency matrices. These methods provide strong continuous-optimisation baselines but are stationary by design.
 
 \textbf{Group C — Neural Granger.} cMLP/cLSTM \cite{Tank2022} represent the seminal neural Granger approach using component-wise prediction. CUTS \cite{Cheng2023} and CUTS+ \cite{Cheng2024} are the direct backbone architectures of REIGN's Stage 3 engine, evaluated without regime detection or LLM priors to quantify REIGN's incremental contribution over the pure neural engine.
 
-\textbf{Group D — LLM-Augmented.} LLM-DCD \cite{Waxman2024} initialises a differentiable causal discovery objective with LLM-derived priors, making it the closest competitor to REIGN's LLM integration mechanism. LLM-CD \cite{Du2025} combines LLMs with PC without a neural Granger engine. Regime-PCMCI \cite{Saggioro2020} and CD-NOD \cite{Huang2020} represent regime-aware baselines without LLM augmentation.
+\textbf{Group D — LLM-Augmented.} LLM-DCD \cite{Waxman2024} initialises a differentiable causal discovery objective with LLM-derived priors, making it the closest competitor to REIGN's LLM integration mechanism. LLM-CD \cite{Du2025} combines LLMs with PC without a neural Granger engine. Regime-PCMCI \cite{saggioro2020causal} and CD-NOD \cite{huang2020causal} represent regime-aware baselines without LLM augmentation.
 
 \textbf{Group E — REIGN Ablations (Internal).} To precisely attribute REIGN's performance gains, we evaluate six internal ablation variants detailed in Section \ref{sec:ablation}.
 
