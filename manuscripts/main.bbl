@@ -42,7 +42,7 @@ Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
 \newblock {DAGs} with {NO TEARS}: Continuous optimization for structure
   learning.
 \newblock In \emph{NIPS}, volume~31. Curran Associates, Inc., 2018.
-\newblock \doi{https://dl.acm.org/doi/abs/10.5555/3327546.3327618}.
+\newblock URL \url{https://dl.acm.org/doi/abs/10.5555/3327546.3327618}.
 
 \bibitem[Huang et~al.(2020)Huang, Zhang, Zhang, Ramsey, Sanchez-Romero,
   Glymour, and Sch{\"o}lkopf]{huang2020causal}
