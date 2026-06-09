@@ -7,16 +7,16 @@ Warning--can't use both volume and number fields in Mameche2025
 Warning--can't use both volume and number fields in Cheng2024
 You've used 65 entries,
             2481 wiz_defined-function locations,
-            989 strings with 20961 characters,
-and the built_in function-call counts, 28353 in all, are:
-= -- 2142
+            990 strings with 21009 characters,
+and the built_in function-call counts, 28367 in all, are:
+= -- 2145
 > -- 2019
 < -- 29
 + -- 742
 - -- 610
-* -- 2358
-:= -- 4712
-add.period$ -- 264
+* -- 2360
+:= -- 4715
+add.period$ -- 265
 call.type$ -- 65
 change.case$ -- 129
 chr.to.int$ -- 63
@@ -24,13 +24,13 @@ cite$ -- 67
 duplicate$ -- 1406
 empty$ -- 2361
 format.name$ -- 688
-if$ -- 5962
+if$ -- 5965
 int.to.chr$ -- 3
 int.to.str$ -- 66
 missing$ -- 66
-newline$ -- 393
+newline$ -- 394
 num.names$ -- 195
-pop$ -- 602
+pop$ -- 601
 preamble$ -- 1
 purify$ -- 65
 quote$ -- 0
@@ -45,5 +45,5 @@ type$ -- 452
 warning$ -- 2
 while$ -- 171
 width$ -- 0
-write$ -- 946
+write$ -- 948
 (There were 2 warnings)

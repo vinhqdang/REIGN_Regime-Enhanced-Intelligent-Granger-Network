@@ -10,7 +10,7 @@ Clive~WJ Granger.
 \newblock Investigating causal relations by econometric models and
   cross-spectral methods.
 \newblock \emph{Econometrica}, pages 424--438, 1969.
-\newblock \doi{10.2307/1912791}.
+\newblock URL \url{https://doi.org/10.2307/1912791}.
 
 \bibitem[Runge et~al.(2019)Runge, Nowack, Kretschmer, Flaxman, and
   Sejdinovic]{runge2019detecting}
@@ -454,6 +454,7 @@ Mingzhou Liu, Xinwei Sun, Yu~Qiao, and Yizhou Wang.
 \newblock Causal discovery via conditional independence testing with proxy
   variables.
 \newblock In \emph{ICML}, 2024{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2305.05281}.
 
 \bibitem[Mogensen and Hansen(2024)]{Mogensen2024Compat}
 S{\o}ren~Wengel Mogensen and Niels~Richard Hansen.
