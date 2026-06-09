@@ -1,434 +1,523 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{66}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem{granger1969investigating}
+\bibitem[Granger(1969)]{granger1969investigating}
 Clive~WJ Granger.
 \newblock Investigating causal relations by econometric models and
   cross-spectral methods.
-\newblock {\em Econometrica}, pages 424--438, 1969.
+\newblock \emph{Econometrica}, pages 424--438, 1969.
 
-\bibitem{runge2019detecting}
+\bibitem[Runge et~al.(2019)Runge, Nowack, Kretschmer, Flaxman, and
+  Sejdinovic]{runge2019detecting}
 Jakob Runge, Peer Nowack, Marlene Kretschmer, Seth Flaxman, and Dino
   Sejdinovic.
 \newblock Detecting and quantifying causal associations in large nonlinear time
   series datasets.
-\newblock {\em Science advances}, 5(11), 2019.
+\newblock \emph{Science advances}, 5\penalty0 (11), 2019.
 
-\bibitem{pamfil2020dynotears}
+\bibitem[Pamfil et~al.(2020)Pamfil, Sriwattanaworachai, Desai, Pilgerstorfer,
+  Georgatzis, Beaumont, and Aragam]{pamfil2020dynotears}
 Roxana Pamfil, Nisara Sriwattanaworachai, Shaan Desai, Paul Pilgerstorfer,
   Konstantinos Georgatzis, Paul Beaumont, and Bryon Aragam.
 \newblock Dynotears: Structure learning from time-series data.
-\newblock In {\em International Conference on Artificial Intelligence and
+\newblock In \emph{International Conference on Artificial Intelligence and
   Statistics}, pages 1595--1605. PMLR, 2020.
 
-\bibitem{Cheng2023}
+\bibitem[Cheng et~al.(2023)Cheng, Yang, Xiao, Li, Suo, He, and Dai]{Cheng2023}
 Yue Cheng, Ryuichi Yang, Tian Xiao, Zhuomin Li, Jinwei Suo, Kun He, and
   Qionghai Dai.
 \newblock {CUTS}: Neural causal discovery from irregular time-series data.
-\newblock In {\em Proceedings of the Eleventh International Conference on
+\newblock In \emph{Proceedings of the Eleventh International Conference on
   Learning Representations}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2302.07458}.
 
-\bibitem{Zheng2018}
+\bibitem[Zheng et~al.(2018)Zheng, Aragam, Ravikumar, and Xing]{Zheng2018}
 Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
 \newblock {DAGs} with {NO TEARS}: Continuous optimization for structure
   learning.
-\newblock In {\em Advances in Neural Information Processing Systems},
+\newblock In \emph{Advances in Neural Information Processing Systems},
   volume~31. Curran Associates, Inc., 2018.
+\newblock \doi{https://dl.acm.org/doi/abs/10.5555/3327546.3327618}.
 
-\bibitem{huang2020causal}
+\bibitem[Huang et~al.(2020)Huang, Zhang, Zhang, Ramsey, Sanchez-Romero,
+  Glymour, and Sch{\"o}lkopf]{huang2020causal}
 Biwei Huang, Kun Zhang, Jiji Zhang, Joseph Ramsey, Ruben Sanchez-Romero, Clark
   Glymour, and Bernhard Sch{\"o}lkopf.
 \newblock Causal discovery from heterogeneous/nonstationary data.
-\newblock {\em Journal of Machine Learning Research}, 21(173):1--53, 2020.
+\newblock \emph{Journal of Machine Learning Research}, 21\penalty0
+  (173):\penalty0 1--53, 2020.
+\newblock URL \url{https://dl.acm.org/doi/abs/10.5555/3455716.3455805}.
 
-\bibitem{saggioro2020causal}
+\bibitem[Saggioro et~al.(2020)]{saggioro2020causal}
 Elena Saggioro et~al.
 \newblock Reconstructing regime-dependent causal networks from observational
   time series.
-\newblock {\em Chaos: An Interdisciplinary Journal of Nonlinear Science},
-  30(11):113115, 2020.
+\newblock \emph{Chaos: An Interdisciplinary Journal of Nonlinear Science},
+  30\penalty0 (11):\penalty0 113115, 2020.
 
-\bibitem{Mameche2025}
+\bibitem[Mameche et~al.(2025)Mameche, Cornanguer, Ninad, and
+  Vreeken]{Mameche2025}
 Sarah Mameche, L{\'e}na{\"i}g Cornanguer, Urmi Ninad, and Jilles Vreeken.
 \newblock {SPACETIME}: Causal discovery from non-stationary time series.
-\newblock In {\em Proceedings of the 39th AAAI Conference on Artificial
+\newblock In \emph{Proceedings of the 39th AAAI Conference on Artificial
   Intelligence}, volume~39, pages 19405--19413, 2025.
+\newblock \doi{10.1609/aaai.v39i18.34136}.
+\newblock URL \url{https://arxiv.org/abs/2501.10235}.
 
-\bibitem{Balsells2024}
+\bibitem[Balsells-Rodas et~al.(2024)Balsells-Rodas, Wang, Mediano, and
+  Li]{Balsells2024}
 Carles Balsells-Rodas, Yixin Wang, Pedro A.~M. Mediano, and Yingzhen Li.
 \newblock Identifying nonstationary causal structures with high-order markov
   switching models.
-\newblock In {\em Proceedings of the 41st International Conference on Machine
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
   Learning}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.17698}.
 
-\bibitem{Tank2022}
+\bibitem[Tank et~al.(2022)Tank, Covert, Foti, Shojaie, and Fox]{Tank2022}
 Alex Tank, Ian Covert, Nicholas Foti, Ali Shojaie, and Emily~B. Fox.
 \newblock Neural {G}ranger causality.
-\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  44(8):4267--4279, 2022.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 44\penalty0 (8):\penalty0 4267--4279, 2022.
+\newblock \doi{10.1109/tpami.2021.3065601}.
 
-\bibitem{Marcinkevics2021}
+\bibitem[Marcinkevi{\v{c}}s and Vogt(2021)]{Marcinkevics2021}
 Ri{\v{c}}ards Marcinkevi{\v{c}}s and Julia~E. Vogt.
 \newblock Interpretable models for {G}ranger causality using self-explaining
   neural networks.
-\newblock In {\em Proceedings of the Ninth International Conference on Learning
-  Representations}, 2021.
+\newblock In \emph{Proceedings of the Ninth International Conference on
+  Learning Representations}, 2021.
+\newblock URL \url{https://arxiv.org/abs/2101.07600}.
 
-\bibitem{Cheng2024}
+\bibitem[Cheng et~al.(2024{\natexlab{a}})Cheng, Li, Xiao, Li, Lin, Hao, He, and
+  Dai]{Cheng2024}
 Yue Cheng, Linrui Li, Tian Xiao, Xuexin Li, Haoxun Lin, Zhifeng Hao, Kun He,
   and Qionghai Dai.
 \newblock {CUTS+}: High-dimensional causal discovery from irregular
   time-series.
-\newblock In {\em Proceedings of the AAAI Conference on Artificial
-  Intelligence}, volume~38. AAAI Press, 2024.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~38. AAAI Press, 2024{\natexlab{a}}.
+\newblock URL \url{https://ojs.aaai.org/index.php/AAAI/article/view/29034}.
 
-\bibitem{Qian2026}
+\bibitem[Qian et~al.(2026)Qian, Zuo, Liu, and Zhu]{Qian2026}
 Lipeng Qian, Qiong Zuo, Wei Liu, and Hong Zhu.
 \newblock {MSDG}: A multiscale dynamic graph neural network for inferring
   dynamic {G}ranger causality in multivariate time series.
-\newblock {\em Information Sciences}, 2026.
+\newblock \emph{Information Sciences}, 2026.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/abs/pii/S0020025526002185}.
 
-\bibitem{Runge2020}
+\bibitem[Runge(2020)]{Runge2020}
 Jakob Runge.
 \newblock Discovering contemporaneous and lagged causal relations in
   autocorrelated nonlinear time series datasets.
-\newblock In {\em Proceedings of the 36th Conference on Uncertainty in
-  Artificial Intelligence}, volume 124 of {\em Proceedings of Machine Learning
+\newblock In \emph{Proceedings of the 36th Conference on Uncertainty in
+  Artificial Intelligence}, volume 124 of \emph{Proceedings of Machine Learning
   Research}, pages 1388--1397. PMLR, 2020.
 
-\bibitem{Guenther2023}
+\bibitem[G{\"u}nther et~al.(2023)G{\"u}nther, Ninad, and Runge]{Guenther2023}
 Wiebke G{\"u}nther, Urmi Ninad, and Jakob Runge.
 \newblock Causal discovery for time series from multiple datasets with latent
   contexts.
-\newblock In {\em Proceedings of the 39th Conference on Uncertainty in
-  Artificial Intelligence}, volume 216 of {\em Proceedings of Machine Learning
+\newblock In \emph{Proceedings of the 39th Conference on Uncertainty in
+  Artificial Intelligence}, volume 216 of \emph{Proceedings of Machine Learning
   Research}, pages 766--776. PMLR, 2023.
 
-\bibitem{Darvariu2024}
+\bibitem[Darvariu et~al.(2024)Darvariu, Hailes, and Musolesi]{Darvariu2024}
 Victor{-}Alexandru Darvariu, Stephen Hailes, and Mirco Musolesi.
 \newblock Large language models are effective priors for causal graph
   discovery.
-\newblock {\em arXiv preprint arXiv:2405.13551}, 2024.
+\newblock \emph{arXiv preprint arXiv:2405.13551}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.13551}.
 
-\bibitem{Long2023}
+\bibitem[Long et~al.(2023)Long, Pich{\'e}, Zantedeschi, Schuster, and
+  Drouin]{Long2023}
 Simon Long, Alexandre Pich{\'e}, Valentine Zantedeschi, Thomas Schuster, and
   Alexandre Drouin.
 \newblock Causal discovery with language models as imperfect experts.
-\newblock {\em arXiv preprint arXiv:2307.02390}, 2023.
+\newblock \emph{arXiv preprint arXiv:2307.02390}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2307.02390}.
 
-\bibitem{Du2025}
+\bibitem[Du et~al.(2025)Du, Zheng, Jing, Zhao, Kou, Liu, Gu, Li, and
+  Yang]{Du2025}
 Hao Du, Yue Zheng, Bokai Jing, Yue Zhao, Gang Kou, Gang Liu, Tao Gu, Wei Li,
   and Carl Yang.
 \newblock Causal discovery through synergizing large language model and
   data-driven reasoning.
-\newblock In {\em Proceedings of the 31st ACM SIGKDD Conference on Knowledge
+\newblock In \emph{Proceedings of the 31st ACM SIGKDD Conference on Knowledge
   Discovery and Data Mining}. ACM, 2025.
+\newblock \doi{10.1145/3711896.3736874}.
+\newblock URL \url{https://dl.acm.org/doi/10.1145/3711896.3736874}.
 
-\bibitem{Roy2025}
+\bibitem[Roy et~al.(2025)Roy, Devharish, Ganguly, and Ghosh]{Roy2025}
 Arnab Roy, Nishant Devharish, Saurabh Ganguly, and Kaushik Ghosh.
 \newblock Causal-{LLM}: A unified one-shot framework for prompt- and
   data-driven causal graph discovery.
-\newblock In {\em Findings of the Association for Computational Linguistics:
+\newblock In \emph{Findings of the Association for Computational Linguistics:
   {EMNLP} 2025}, pages 8259--8279. Association for Computational Linguistics,
   2025.
+\newblock URL \url{https://aclanthology.org/2025.findings-emnlp.439/}.
 
-\bibitem{Waxman2024}
+\bibitem[Waxman et~al.(2024)Waxman, Butler, and Djuri{\'c}]{Waxman2024}
 Daniel Waxman, Kevin Butler, and Petar~M. Djuri{\'c}.
 \newblock {LLM}-initialized differentiable causal discovery.
-\newblock {\em arXiv preprint arXiv:2410.21141}, 2024.
+\newblock \emph{arXiv preprint arXiv:2410.21141}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2410.21141}.
 
-\bibitem{Liu2026}
+\bibitem[Liu et~al.(2026)Liu, Li, and Hong]{Liu2026}
 Bo~Liu, Hongyan Li, and Shenda Hong.
 \newblock {LLM-GC}: Advancing granger causal discovery from time series with
   multimodel language modeling.
-\newblock In {\em Proceedings of the Nineteenth ACM International Conference on
-  Web Search and Data Mining}, pages 387--395. ACM, 2026.
+\newblock In \emph{Proceedings of the Nineteenth ACM International Conference
+  on Web Search and Data Mining}, pages 387--395. ACM, 2026.
+\newblock \doi{10.1145/3773966.3777994}.
+\newblock URL \url{https://dl.acm.org/doi/10.1145/3773966.3777994}.
 
-\bibitem{Vashishtha2025}
+\bibitem[Vashishtha et~al.(2025)Vashishtha, Reddy, Kumar, Bachu,
+  Balasubramanian, and Sharma]{Vashishtha2025}
 Abhinav Vashishtha, Abbavaram~Gowtham Reddy, Abhinav Kumar, Saurabh Bachu,
   Vineeth~N. Balasubramanian, and Amit Sharma.
 \newblock Causal order: The key to leveraging imperfect experts in causal
   inference.
-\newblock In {\em Proceedings of the Thirteenth International Conference on
+\newblock In \emph{Proceedings of the Thirteenth International Conference on
   Learning Representations}, 2025.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2025/hash/edcbd38b2509b57954d38de6cd9c05b3-Abstract-Conference.html}.
 
-\bibitem{Wu2025}
+\bibitem[Wu et~al.(2025)Wu, Wu, Yu, and Tan]{Wu2025}
 Xingyu Wu, Jibin Wu, Kui Yu, and Kay~Chen Tan.
 \newblock {LLM} cannot discover causality, and should be restricted to
   non-decisional support in causal discovery.
-\newblock {\em arXiv preprint arXiv:2506.00844}, 2025.
+\newblock \emph{arXiv preprint arXiv:2506.00844}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2506.00844}.
 
-\bibitem{Killick2012}
+\bibitem[Killick et~al.(2012)Killick, Fearnhead, and Eckley]{Killick2012}
 Rebecca Killick, Paul Fearnhead, and Idris~A. Eckley.
 \newblock Optimal detection of changepoints with a linear computational cost.
-\newblock {\em Journal of the American Statistical Association},
-  107(500):1590--1598, 2012.
+\newblock \emph{Journal of the American Statistical Association}, 107\penalty0
+  (500):\penalty0 1590--1598, 2012.
 
-\bibitem{Adams2007}
+\bibitem[Adams and MacKay(2007)]{Adams2007}
 Ryan~Prescott Adams and David J.~C. MacKay.
 \newblock Bayesian online changepoint detection.
-\newblock {\em arXiv preprint arXiv:0710.3742}, 2007.
+\newblock \emph{arXiv preprint arXiv:0710.3742}, 2007.
+\newblock URL \url{https://arxiv.org/abs/0710.3742}.
 
-\bibitem{Wuwu2025}
+\bibitem[Wuwu et~al.(2025)Wuwu, Gao, Chen, Huang, Zhang, Wang, Li, Zhou, and
+  Zhang]{Wuwu2025}
 Qingpo Wuwu, Chonghan Gao, Tianyu Chen, Yihang Huang, Yuekai Zhang, Jianing
   Wang, Jianxin Li, Haoyi Zhou, and Shanghang Zhang.
 \newblock {PINNsAgent}: Automated {PDE} surrogation with large language models.
-\newblock In {\em Proceedings of the 42nd International Conference on Machine
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
   Learning}, Proceedings of Machine Learning Research, 2025.
+\newblock URL \url{https://arxiv.org/abs/2501.12053}.
 
-\bibitem{Tiwari2025}
+\bibitem[Tiwari et~al.(2025)Tiwari, Dutta, Krishnan, and P.]{Tiwari2025}
 Karn Tiwari, Niladri Dutta, N.~M.~Anoop Krishnan, and Prathosh~A. P.
 \newblock Latent mamba operator for partial differential equations.
-\newblock In {\em Proceedings of the 42nd International Conference on Machine
-  Learning}, volume 267 of {\em Proceedings of Machine Learning Research},
+\newblock In \emph{Proceedings of the 42nd International Conference on Machine
+  Learning}, volume 267 of \emph{Proceedings of Machine Learning Research},
   2025.
+\newblock URL \url{https://arxiv.org/abs/2505.19105}.
 
-\bibitem{Sachs2005}
+\bibitem[Sachs et~al.(2005)Sachs, Perez, Pe'er, Lauffenburger, and
+  Nolan]{Sachs2005}
 Karen Sachs, Omar Perez, Dana Pe'er, Douglas~A. Lauffenburger, and Garry~P.
   Nolan.
 \newblock Causal protein-signaling networks derived from multiparameter
   single-cell data.
-\newblock {\em Science}, 308(5721):523--529, 2005.
+\newblock \emph{Science}, 308\penalty0 (5721):\penalty0 523--529, 2005.
 
-\bibitem{Stein2025}
+\bibitem[Stein et~al.(2025)Stein, Shadaydeh, Blunk, Penzel, and
+  Denzler]{Stein2025}
 Gideon Stein, Maha Shadaydeh, Jan Blunk, Niklas Penzel, and Joachim Denzler.
 \newblock {CausalRivers}: Scaling up benchmarking of causal discovery for
   real-world time-series.
-\newblock In {\em Proceedings of the Thirteenth International Conference on
+\newblock In \emph{Proceedings of the Thirteenth International Conference on
   Learning Representations}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=wmV4cIbgl6}.
 
-\bibitem{Ferdous2025}
+\bibitem[Ferdous et~al.(2025)Ferdous, Hossain, and Gani]{Ferdous2025}
 Md~Hasan Ferdous, Ehsan Hossain, and Md~Osman Gani.
 \newblock {TimeGraph}: Synthetic benchmark datasets for robust time-series
   causal discovery.
-\newblock In {\em Proceedings of the 31st ACM SIGKDD Conference on Knowledge
+\newblock In \emph{Proceedings of the 31st ACM SIGKDD Conference on Knowledge
   Discovery and Data Mining}. ACM, 2025.
+\newblock \doi{10.1145/3711896.3737439}.
+\newblock URL \url{https://dl.acm.org/doi/10.1145/3711896.3737439}.
 
-\bibitem{Gong2023Rhino}
+\bibitem[Gong et~al.(2023)Gong, Jennings, Zhang, and Pawlowski]{Gong2023Rhino}
 Wenbo Gong, Joel Jennings, Cheng Zhang, and Nick Pawlowski.
 \newblock Rhino: Deep causal temporal relationship learning with
   history-dependent noise.
-\newblock In {\em Proceedings of the Eleventh International Conference on
+\newblock In \emph{Proceedings of the Eleventh International Conference on
   Learning Representations}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2210.14706}.
 
-\bibitem{Lippe2022CITRIS}
+\bibitem[Lippe et~al.(2022)Lippe, Magliacane, L{\"o}we, Asano, Cohen, and
+  Gavves]{Lippe2022CITRIS}
 Phillip Lippe, Sara Magliacane, Sindy L{\"o}we, Yuki~M. Asano, Taco Cohen, and
   Efstratios Gavves.
 \newblock {CITRIS}: Causal identifiability from temporal intervened sequences.
-\newblock In {\em Proceedings of the 39th International Conference on Machine
-  Learning}, volume 162 of {\em Proceedings of Machine Learning Research},
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning}, volume 162 of \emph{Proceedings of Machine Learning Research},
   2022.
+\newblock URL \url{https://arxiv.org/abs/2202.03169}.
 
-\bibitem{Annadani2023BayesDAG}
+\bibitem[Annadani et~al.(2023)Annadani, Pawlowski, Jennings, Bauer, Zhang, and
+  Gong]{Annadani2023BayesDAG}
 Yashas Annadani, Nick Pawlowski, Joel Jennings, Stefan Bauer, Cheng Zhang, and
   Wenbo Gong.
 \newblock {BayesDAG}: Gradient-based posterior inference for causal discovery.
-\newblock In {\em Advances in Neural Information Processing Systems},
+\newblock In \emph{Advances in Neural Information Processing Systems},
   volume~36, 2023.
+\newblock URL \url{https://arxiv.org/abs/2307.13917}.
 
-\bibitem{Geffner2022DECI}
+\bibitem[Geffner et~al.(2022)Geffner, Antoran, Foster, Gong, Ma, Kiciman,
+  Sharma, Lamb, Kukla, Pawlowski, Allamanis, and Zhang]{Geffner2022DECI}
 Tomas Geffner, Javier Antoran, Adam Foster, Wenbo Gong, Chao Ma, Emre Kiciman,
   Amit Sharma, Angus Lamb, Martin Kukla, Nick Pawlowski, Miltiadis Allamanis,
   and Cheng Zhang.
 \newblock Deep end-to-end causal inference.
-\newblock {\em arXiv preprint arXiv:2202.02195}, 2022.
+\newblock \emph{arXiv preprint arXiv:2202.02195}, 2022.
+\newblock URL \url{https://arxiv.org/abs/2202.02195}.
 
-\bibitem{Ashman2023ADMG}
+\bibitem[Ashman et~al.(2023)Ashman, Ma, Hilmkil, Jennings, and
+  Zhang]{Ashman2023ADMG}
 Matthew Ashman, Chao Ma, Agrin Hilmkil, Joel Jennings, and Cheng Zhang.
 \newblock Causal reasoning in the presence of latent confounders via neural
   {ADMG} learning.
-\newblock In {\em Proceedings of the Eleventh International Conference on
+\newblock In \emph{Proceedings of the Eleventh International Conference on
   Learning Representations}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2210.00035}.
 
-\bibitem{Assaad2022Survey}
+\bibitem[Assaad et~al.(2022)Assaad, Devijver, and Gaussier]{Assaad2022Survey}
 Chekroud~Karim Assaad, Emilie Devijver, and Eric Gaussier.
 \newblock Survey and evaluation of causal discovery methods for {IID} and time
   series data.
-\newblock {\em Journal of Artificial Intelligence Research}, 73:767--819, 2022.
+\newblock \emph{Journal of Artificial Intelligence Research}, 73:\penalty0
+  767--819, 2022.
 
-\bibitem{Cheng2024CausalTime}
+\bibitem[Cheng et~al.(2024{\natexlab{b}})Cheng, Wang, Xiao, Zhong, Suo, and
+  He]{Cheng2024CausalTime}
 Yuxiao Cheng, Ziqian Wang, Tingxiong Xiao, Qin Zhong, Jinli Suo, and Kunlun He.
 \newblock {CausalTime}: Realistically generated time-series for benchmarking of
   causal discovery.
-\newblock In {\em Proceedings of the Twelfth International Conference on
-  Learning Representations}, 2024.
+\newblock In \emph{Proceedings of the Twelfth International Conference on
+  Learning Representations}, 2024{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2310.01753}.
 
-\bibitem{Lorch2022AVICI}
+\bibitem[Lorch et~al.(2022)Lorch, Sussex, Rothfuss, Krause, and
+  Sch{\"o}lkopf]{Lorch2022AVICI}
 Lars Lorch, Scott Sussex, Jonas Rothfuss, Andreas Krause, and Bernhard
   Sch{\"o}lkopf.
 \newblock {AVICI}: Amortised variational causal inference.
-\newblock {\em arXiv preprint arXiv:2205.09612}, 2022.
+\newblock \emph{arXiv preprint arXiv:2205.09612}, 2022.
+\newblock URL \url{https://arxiv.org/abs/2205.09612}.
 
-\bibitem{Sanchez2023DiffAN}
+\bibitem[Sanchez et~al.(2022)Sanchez, Liu, O'Neil, and
+  Tsaftaris]{Sanchez2023DiffAN}
 Pedro Sanchez, Xiao Liu, Alison~Q O'Neil, and Sotirios~A Tsaftaris.
 \newblock Diffusion models for causal discovery via topological ordering.
-\newblock {\em arXiv preprint arXiv:2210.06201}, 2022.
+\newblock \emph{arXiv preprint arXiv:2210.06201}, 2022.
 
-\bibitem{Kiciman2024TMLR}
+\bibitem[K{\i}c{\i}man et~al.(2024)K{\i}c{\i}man, Ness, Sharma, and
+  Tan]{Kiciman2024TMLR}
 Emre K{\i}c{\i}man, Robert~Osazuwa Ness, Amit Sharma, and Chenhao Tan.
 \newblock Causal reasoning and large language models: Opening a new frontier
   for causality.
-\newblock {\em Transactions on Machine Learning Research}, 2024.
+\newblock \emph{Transactions on Machine Learning Research}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2305.00050}.
 
-\bibitem{Liu2024Survey}
+\bibitem[Liu et~al.(2024{\natexlab{a}})Liu, Xu, Wu, Yuan, Yang, Zhou, Liu,
+  Guan, Wang, Yu, McAuley, Ai, and Huang]{Liu2024Survey}
 Xiaoyu Liu, Paiheng Xu, Junda Wu, Jiaxin Yuan, Yifan Yang, Yuhang Zhou, Fuxiao
   Liu, Tianrui Guan, Haoliang Wang, Tong Yu, Julian McAuley, Wei Ai, and Furong
   Huang.
 \newblock Large language models and causal inference in collaboration: A
   survey.
-\newblock {\em arXiv preprint arXiv:2403.09606}, 2024.
+\newblock \emph{arXiv preprint arXiv:2403.09606}, 2024{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2403.09606}.
 
-\bibitem{Jin2024ICLR}
+\bibitem[Jin et~al.(2024)Jin, Liu, Lyu, Poff, Sachan, Mihalcea, Diab, and
+  Sch{\"o}lkopf]{Jin2024ICLR}
 Zhijing Jin, Jiarui Liu, Zhiheng Lyu, Spencer Poff, Mrinmaya Sachan, Rada
   Mihalcea, Mona Diab, and Bernhard Sch{\"o}lkopf.
 \newblock Can large language models infer causation from correlation?
-\newblock In {\em Proceedings of the Twelfth International Conference on
+\newblock In \emph{Proceedings of the Twelfth International Conference on
   Learning Representations}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2306.05836}.
 
-\bibitem{Survey2025IJCAI}
+\bibitem[Wan et~al.(2025)Wan, Lu, Wu, Hu, and Li]{Survey2025IJCAI}
 Guangya Wan, Yunsheng Lu, Yuqi Wu, Mengxuan Hu, and Sheng Li.
 \newblock Large language models for causal discovery: Current landscape and
   future directions.
-\newblock In {\em Proceedings of the Thirty-Fourth International Joint
+\newblock In \emph{Proceedings of the Thirty-Fourth International Joint
   Conference on Artificial Intelligence}, 2025.
+\newblock URL \url{https://www.ijcai.org/proceedings/2025/1186}.
 
-\bibitem{Kang2025Copilot}
+\bibitem[Wang et~al.(2025)Wang, Zhou, Wu, Singh, Nan, Jin, Philip, Patnaik,
+  Zhu, Singh, Prashant, Shen, and Huang]{Kang2025Copilot}
 Xinyue Wang, Kun Zhou, Wenyi Wu, Har~Simrat Singh, Fang Nan, Songyao Jin, Aryan
   Philip, Saloni Patnaik, Hou Zhu, Shivam Singh, Parjanya Prashant, Qian Shen,
   and Biwei Huang.
 \newblock Causal-copilot: An autonomous causal analysis agent.
-\newblock {\em arXiv:2504.13263}, 2025.
+\newblock \emph{arXiv:2504.13263}, 2025.
 
-\bibitem{Chen2024CLEAR}
+\bibitem[Chen et~al.(2024)Chen, Xu, Wang, Zeng, Zhao, Zhao, and
+  Lu]{Chen2024CLEAR}
 Sirui Chen, Mengying Xu, Kun Wang, Xingyu Zeng, Rui Zhao, Shengjie Zhao, and
   Chaochao Lu.
 \newblock {CLEAR}: Can language models really understand causal graphs?
-\newblock In {\em EMNLP}, 2024.
+\newblock In \emph{EMNLP}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.16984}.
 
-\bibitem{Kasetty2024Interventional}
+\bibitem[Kasetty et~al.(2024)Kasetty, Mahajan, Dziugaite, Drouin, and
+  Sridhar]{Kasetty2024Interventional}
 Tejas Kasetty, Divyat Mahajan, Gintare~Karolina Dziugaite, Alexandre Drouin,
   and Dhanya Sridhar.
 \newblock Evaluating interventional reasoning capabilities of large language
   models.
-\newblock {\em https://arxiv.org/abs/2404.09044}, 2024.
+\newblock \emph{https://arxiv.org/abs/2404.09044}, 2024.
 
-\bibitem{Joshi2024Fallacies}
+\bibitem[Joshi et~al.(2024)Joshi, Saparov, Wang, and He]{Joshi2024Fallacies}
 Nitish Joshi, Abulhair Saparov, Yixin Wang, and He~He.
 \newblock {LLMs} are prone to fallacies in causal inference.
-\newblock In {\em EMNLP}, 2024.
+\newblock In \emph{EMNLP}, 2024.
 
-\bibitem{Cheng2026MNO}
+\bibitem[Cheng et~al.(2026)Cheng, Huang, Zhang, Yang, Sch{\"o}nlieb, and
+  Aviles{-}Rivero]{Cheng2026MNO}
 Chun{-}Wun Cheng, Jiahao Huang, Yi~Zhang, Guang Yang, Carola{-}Bibiane
   Sch{\"o}nlieb, and Angelica~I. Aviles{-}Rivero.
 \newblock Mamba neural operator: Who wins? transformers vs.\ state-space models
   for {PDEs}.
-\newblock {\em Journal of Computational Physics}, 2026.
+\newblock \emph{Journal of Computational Physics}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2410.02113}.
 
-\bibitem{Jiang2026AFDONet}
+\bibitem[Jiang(2026)]{Jiang2026AFDONet}
 Zheyu Jiang.
 \newblock Adaptive fourier decomposition-guided neural operator design for
   inverse {PDE} problems.
-\newblock In {\em Proceedings of the 42nd Conference on Uncertainty in
+\newblock In \emph{Proceedings of the 42nd Conference on Uncertainty in
   Artificial Intelligence}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=k5Z1tSidYY}.
 
-\bibitem{AMO2026ICLR}
+\bibitem[Song and Jiang(2026)]{AMO2026ICLR}
 Zeyuan Song and Zheyu Jiang.
 \newblock Adaptive mamba neural operators.
-\newblock In {\em Proceedings of the Fourteenth International Conference on
+\newblock In \emph{Proceedings of the Fourteenth International Conference on
   Learning Representations}, 2026.
+\newblock URL \url{https://iclr.cc/virtual/2026/poster/10009760}.
 
-\bibitem{Han2025GeoMaNO}
+\bibitem[Han et~al.(2025)Han, Zhang, Samaras, Hou, and Qin]{Han2025GeoMaNO}
 Xi~Han, Jingwei Zhang, Dimitris Samaras, Fei Hou, and Hong Qin.
 \newblock {GeoMaNO}: Geometric mamba neural operator for partial differential
   equations.
-\newblock {\em arXiv preprint arXiv:2505.12020}, 2025.
+\newblock \emph{arXiv preprint arXiv:2505.12020}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.12020}.
 
-\bibitem{Zanardi2023PhysicsInformed}
+\bibitem[Zanardi et~al.(2023)Zanardi, Venturi, and
+  Panesi]{Zanardi2023PhysicsInformed}
 Ivan Zanardi, Simone Venturi, and Marco Panesi.
 \newblock Adaptive physics-informed neural operator for coarse-grained
   non-equilibrium flows.
-\newblock {\em Scientific Reports}, 13, 2023.
+\newblock \emph{Scientific Reports}, 13, 2023.
+\newblock \doi{10.1038/s41598-023-41039-y}.
 
-\bibitem{Sewell2026Operators}
+\bibitem[Sewell et~al.(2026)Sewell, Li, Tretiakov, Kumar, and
+  Fridovich-Keil]{Sewell2026Operators}
 David Sewell, Xingjian Li, Stepan Tretiakov, Krishna Kumar, and David
   Fridovich-Keil.
 \newblock Neural operators for multi-task control and adaptation.
-\newblock {\em arXiv preprint arXiv:2604.03449}, 2026.
+\newblock \emph{arXiv preprint arXiv:2604.03449}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2604.03449}.
 
-\bibitem{Gao2024PCMCI}
+\bibitem[Gao et~al.(2023{\natexlab{a}})Gao, Addanki, Yu, Rossi, and
+  Kocaoglu]{Gao2024PCMCI}
 Shanyun Gao, Raghavendra Addanki, Tong Yu, Ryan Rossi, and Murat Kocaoglu.
 \newblock Causal discovery in semi-stationary time series.
-\newblock {\em Advances in Neural Information Processing Systems},
-  36:46624--46657, 2023.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  36:\penalty0 46624--46657, 2023{\natexlab{a}}.
 
-\bibitem{Miao2024Proxy}
+\bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Sun, Qiao, and Wang]{Miao2024Proxy}
 Mingzhou Liu, Xinwei Sun, Yu~Qiao, and Yizhou Wang.
 \newblock Causal discovery via conditional independence testing with proxy
   variables.
-\newblock In {\em ICML}, 2024.
+\newblock In \emph{ICML}, 2024{\natexlab{b}}.
 
-\bibitem{Assaad2024Semi}
+\bibitem[Gao et~al.(2023{\natexlab{b}})Gao, Addanki, Yu, Rossi, and
+  Kocaoglu]{Assaad2024Semi}
 Shanyun Gao, Raghavendra Addanki, Tong Yu, Ryan Rossi, and Murat Kocaoglu.
 \newblock Causal discovery in semi-stationary time series.
-\newblock In {\em Advances in Neural Information Processing Systems},
-  volume~36, pages 46624--46657, 2023.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36, pages 46624--46657, 2023{\natexlab{b}}.
 
-\bibitem{Mogensen2024Compat}
+\bibitem[Mogensen and Hansen(2024)]{Mogensen2024Compat}
 S{\o}ren~Wengel Mogensen and Niels~Richard Hansen.
 \newblock Self-compatibility: Evaluating causal discovery without ground truth.
-\newblock In {\em Proceedings of the 27th International Conference on
-  Artificial Intelligence and Statistics}, volume 238 of {\em Proceedings of
+\newblock In \emph{Proceedings of the 27th International Conference on
+  Artificial Intelligence and Statistics}, volume 238 of \emph{Proceedings of
   Machine Learning Research}, pages 4132--4140, 2024.
+\newblock URL \url{https://arxiv.org/abs/2307.09552}.
 
-\bibitem{Chen2024CtrlNS}
+\bibitem[Song et~al.(2024)Song, Li, Chen, Zheng, Fan, Dong, and
+  Zhang]{Chen2024CtrlNS}
 Xiangchen Song, Zijian Li, Guangyi Chen, Yujia Zheng, Yewen Fan, Xinshuai Dong,
   and Kun Zhang.
 \newblock Causal temporal representation learning with nonstationary sparse
   transition.
-\newblock In {\em Advances in Neural Information Processing Systems},
+\newblock In \emph{Advances in Neural Information Processing Systems},
   volume~37, pages 77098--77131, 2024.
 
-\bibitem{CausalFoundation2025}
+\bibitem[Thumm and Chen(2026)]{CausalFoundation2025}
 Dennis Thumm and Ying Chen.
 \newblock Interventional time series priors for causal foundation models.
-\newblock {\em arXiv preprint arXiv:2603.11090}, 2026.
+\newblock \emph{arXiv preprint arXiv:2603.11090}, 2026.
 
-\bibitem{Bellot2022NeurODE}
+\bibitem[Bellot et~al.(2022)Bellot, Branson, and van~der
+  Schaar]{Bellot2022NeurODE}
 Alexis Bellot, Kim Branson, and Mihaela van~der Schaar.
 \newblock Neural graphical modelling in continuous-time: Consistency guarantees
   and algorithms.
-\newblock {\em https://arxiv.org/abs/2105.02522}, 2022.
+\newblock \emph{https://arxiv.org/abs/2105.02522}, 2022.
 
-\bibitem{Chevalley2024CD}
+\bibitem[Chevalley et~al.(2022)Chevalley, Bunne, Krause, and
+  Bauer]{Chevalley2024CD}
 Mathieu Chevalley, Charlotte Bunne, Andreas Krause, and Stefan Bauer.
 \newblock Deriving causal order from single-variable interventions.
-\newblock {\em https://arxiv.org/abs/2211.00746}, 2022.
+\newblock \emph{https://arxiv.org/abs/2211.00746}, 2022.
 
-\bibitem{Zhang2024GraphCausal}
+\bibitem[Huang et~al.(2025)Huang, Yao, and Divakaran]{Zhang2024GraphCausal}
 Jihua Huang, Yi~Yao, and Ajay Divakaran.
 \newblock Transforming causality: Transformer-based temporal causal discovery
   with prior knowledge integration.
-\newblock {\em arXiv preprint arXiv:2508.15928}, 2025.
+\newblock \emph{arXiv preprint arXiv:2508.15928}, 2025.
 
-\bibitem{Billio2024Spillover}
+\bibitem[Zheng and Liu(2025)]{Billio2024Spillover}
 Wenxia Zheng and Wenhe Liu.
 \newblock Symmetry-aware transformers for asymmetric causal discovery in
   financial time series.
-\newblock {\em Symmetry}, 17(10):1591, 2025.
+\newblock \emph{Symmetry}, 17\penalty0 (10):\penalty0 1591, 2025.
 
-\bibitem{Rudd2023Churn}
+\bibitem[Rudd et~al.(2023)Rudd, Huo, and Xu]{Rudd2023Churn}
 David~Hason Rudd, Huan Huo, and Guandong Xu.
 \newblock Causal analysis of customer churn using deep learning.
-\newblock {\em arXiv preprint arXiv:2304.10604}, 2023.
+\newblock \emph{arXiv preprint arXiv:2304.10604}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2304.10604}.
 
-\bibitem{BalsellsRodas2026MSM}
+\bibitem[Hulsman et~al.(2026)Hulsman, Balsells-Rodas, and
+  Magliacane]{BalsellsRodas2026MSM}
 Roel Hulsman, Carles Balsells-Rodas, and Sara Magliacane.
 \newblock Identifiable markov switching models with instantaneous effects and
   exponential families.
-\newblock {\em arXiv preprint arXiv:2606.02231}, 2026.
+\newblock \emph{arXiv preprint arXiv:2606.02231}, 2026.
 
-\bibitem{Spirtes2000}
+\bibitem[Spirtes et~al.(2000)Spirtes, Glymour, and Scheines]{Spirtes2000}
 Peter Spirtes, Clark~N Glymour, and Richard Scheines.
-\newblock {\em Causation, prediction, and search}.
+\newblock \emph{Causation, prediction, and search}.
 \newblock MIT press, 2000.
 
 \end{thebibliography}

@@ -9,7 +9,7 @@ We organise our evaluation into three tiers of increasing real-world fidelity: c
 
 \subsubsection{Tier 1 — Synthetic Benchmarks (Ground-Truth Known)}
 
-\begin{table}[htbp]
+\begin{table*}[htbp]
 \centering
 \caption{Tier 1: Synthetic Benchmark Datasets}
 \label{tab:tier1}
@@ -25,7 +25,7 @@ Lorenz-96               & 10,20 & 2000      & Chaotic nonlinear       & Standard
 VAR-Regime (ours)       & 15    & 3000      & 4 regimes, known edges  & Generated \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
 The TimeGraph benchmark \cite{Ferdous2025} provides standardised synthetic time-series datasets spanning linear, nonlinear, nonstationary, and irregular-sampling conditions. The Lorenz-96 atmospheric model generates chaotic nonlinear dependencies that are highly challenging for linear Granger methods. Our custom VAR-Regime dataset (detailed below) serves as the primary controlled benchmark for regime-aware evaluation.
 
