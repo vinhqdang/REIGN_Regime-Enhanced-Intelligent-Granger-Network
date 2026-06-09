@@ -28,11 +28,12 @@ Chen Liu, Matthew Amodio, Liangbo~L Shen, Feng Gao, Arman Avesta, Sanjay Aneja,
 \newblock In {\em International Conference on Medical Image Computing and
   Computer-Assisted Intervention}, pages 155--165. Springer, 2024.
 
-\bibitem{zheng2018dags}
-Xun Zheng, Bryon Aragam, Pradeep~K Ravikumar, and Eric~P Xing.
-\newblock Dags with no tears: Continuous optimization for structure learning.
+\bibitem{Zheng2018}
+Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
+\newblock {DAGs} with {NO TEARS}: Continuous optimization for structure
+  learning.
 \newblock In {\em Advances in Neural Information Processing Systems},
-  volume~31, 2018.
+  volume~31. Curran Associates, Inc., 2018.
 
 \bibitem{huang2020causal}
 Biwei Huang, Kun Zhang, Jiji Zhang, Joseph Ramsey, Ruben Sanchez-Romero, Clark
@@ -46,13 +47,6 @@ Elena Saggioro et~al.
   time series.
 \newblock {\em Chaos: An Interdisciplinary Journal of Nonlinear Science},
   30(11):113115, 2020.
-
-\bibitem{Zheng2018}
-Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
-\newblock {DAGs} with {NO TEARS}: Continuous optimization for structure
-  learning.
-\newblock In {\em Advances in Neural Information Processing Systems},
-  volume~31. Curran Associates, Inc., 2018.
 
 \bibitem{Mameche2025}
 Sarah Mameche, L{\'e}na{\"i}g Cornanguer, Urmi Ninad, and Jilles Vreeken.

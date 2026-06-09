@@ -5,45 +5,45 @@ The style file: unsrt.bst
 Database file #1: ref.bib
 Warning--can't use both volume and number fields in Mameche2025
 Warning--can't use both volume and number fields in Cheng2024
-You've used 68 entries,
+You've used 67 entries,
             1791 wiz_defined-function locations,
-            834 strings with 18425 characters,
-and the built_in function-call counts, 16943 in all, are:
-= -- 1282
-> -- 1102
-< -- 23
-+ -- 391
-- -- 323
-* -- 1131
-:= -- 2737
-add.period$ -- 214
-call.type$ -- 68
-change.case$ -- 67
+            831 strings with 18276 characters,
+and the built_in function-call counts, 16727 in all, are:
+= -- 1269
+> -- 1088
+< -- 22
++ -- 386
+- -- 319
+* -- 1117
+:= -- 2703
+add.period$ -- 211
+call.type$ -- 67
+change.case$ -- 66
 chr.to.int$ -- 0
-cite$ -- 70
-duplicate$ -- 815
-empty$ -- 1592
-format.name$ -- 323
-if$ -- 3784
+cite$ -- 69
+duplicate$ -- 803
+empty$ -- 1567
+format.name$ -- 319
+if$ -- 3735
 int.to.chr$ -- 0
-int.to.str$ -- 68
-missing$ -- 69
-newline$ -- 343
-num.names$ -- 68
-pop$ -- 290
+int.to.str$ -- 67
+missing$ -- 68
+newline$ -- 338
+num.names$ -- 67
+pop$ -- 284
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 379
+skip$ -- 375
 stack$ -- 0
 substring$ -- 627
-swap$ -- 240
-text.length$ -- 23
+swap$ -- 237
+text.length$ -- 22
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 115
-width$ -- 70
-write$ -- 726
+while$ -- 114
+width$ -- 69
+write$ -- 715
 (There were 2 warnings)
