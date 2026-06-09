@@ -1,4 +1,4 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{65}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -18,6 +18,7 @@ Jakob Runge, Peer Nowack, Marlene Kretschmer, Seth Flaxman, and Dino
 \newblock Detecting and quantifying causal associations in large nonlinear time
   series datasets.
 \newblock \emph{Science advances}, 5\penalty0 (11), 2019.
+\newblock URL \url{https://www.science.org/doi/10.1126/sciadv.aau499}.
 
 \bibitem[Pamfil et~al.(2020)Pamfil, Sriwattanaworachai, Desai, Pilgerstorfer,
   Georgatzis, Beaumont, and Aragam]{pamfil2020dynotears}
@@ -26,6 +27,7 @@ Roxana Pamfil, Nisara Sriwattanaworachai, Shaan Desai, Paul Pilgerstorfer,
 \newblock Dynotears: Structure learning from time-series data.
 \newblock In \emph{International Conference on Artificial Intelligence and
   Statistics}, pages 1595--1605. PMLR, 2020.
+\newblock URL \url{https://arxiv.org/abs/2002.00498}.
 
 \bibitem[Cheng et~al.(2023)Cheng, Yang, Xiao, Li, Suo, He, and Dai]{Cheng2023}
 Yue Cheng, Ryuichi Yang, Tian Xiao, Zhuomin Li, Jinwei Suo, Kun He, and
@@ -39,8 +41,7 @@ Yue Cheng, Ryuichi Yang, Tian Xiao, Zhuomin Li, Jinwei Suo, Kun He, and
 Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
 \newblock {DAGs} with {NO TEARS}: Continuous optimization for structure
   learning.
-\newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~31. Curran Associates, Inc., 2018.
+\newblock In \emph{NIPS}, volume~31. Curran Associates, Inc., 2018.
 \newblock \doi{https://dl.acm.org/doi/abs/10.5555/3327546.3327618}.
 
 \bibitem[Huang et~al.(2020)Huang, Zhang, Zhang, Ramsey, Sanchez-Romero,
@@ -58,6 +59,7 @@ Elena Saggioro et~al.
   time series.
 \newblock \emph{Chaos: An Interdisciplinary Journal of Nonlinear Science},
   30\penalty0 (11):\penalty0 113115, 2020.
+\newblock URL \url{https://arxiv.org/abs/2007.00267}.
 
 \bibitem[Mameche et~al.(2025)Mameche, Cornanguer, Ninad, and
   Vreeken]{Mameche2025}
@@ -117,6 +119,7 @@ Jakob Runge.
 \newblock In \emph{Proceedings of the 36th Conference on Uncertainty in
   Artificial Intelligence}, volume 124 of \emph{Proceedings of Machine Learning
   Research}, pages 1388--1397. PMLR, 2020.
+\newblock \doi{10.48550/arXiv.2003.03685}.
 
 \bibitem[G{\"u}nther et~al.(2023)G{\"u}nther, Ninad, and Runge]{Guenther2023}
 Wiebke G{\"u}nther, Urmi Ninad, and Jakob Runge.
@@ -125,6 +128,7 @@ Wiebke G{\"u}nther, Urmi Ninad, and Jakob Runge.
 \newblock In \emph{Proceedings of the 39th Conference on Uncertainty in
   Artificial Intelligence}, volume 216 of \emph{Proceedings of Machine Learning
   Research}, pages 766--776. PMLR, 2023.
+\newblock \doi{10.48550/arXiv.2306.12896}.
 
 \bibitem[Darvariu et~al.(2024)Darvariu, Hailes, and Musolesi]{Darvariu2024}
 Victor{-}Alexandru Darvariu, Stephen Hailes, and Mirco Musolesi.
@@ -300,6 +304,7 @@ Chekroud~Karim Assaad, Emilie Devijver, and Eric Gaussier.
   series data.
 \newblock \emph{Journal of Artificial Intelligence Research}, 73:\penalty0
   767--819, 2022.
+\newblock \doi{https://doi.org/10.1613/jair.1.13428}.
 
 \bibitem[Cheng et~al.(2024{\natexlab{b}})Cheng, Wang, Xiao, Zhong, Suo, and
   He]{Cheng2024CausalTime}
@@ -387,6 +392,7 @@ Tejas Kasetty, Divyat Mahajan, Gintare~Karolina Dziugaite, Alexandre Drouin,
 Nitish Joshi, Abulhair Saparov, Yixin Wang, and He~He.
 \newblock {LLMs} are prone to fallacies in causal inference.
 \newblock In \emph{EMNLP}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.12158}.
 
 \bibitem[Cheng et~al.(2026)Cheng, Huang, Zhang, Yang, Sch{\"o}nlieb, and
   Aviles{-}Rivero]{Cheng2026MNO}
@@ -435,25 +441,18 @@ David Sewell, Xingjian Li, Stepan Tretiakov, Krishna Kumar, and David
 \newblock \emph{arXiv preprint arXiv:2604.03449}, 2026.
 \newblock URL \url{https://arxiv.org/abs/2604.03449}.
 
-\bibitem[Gao et~al.(2023{\natexlab{a}})Gao, Addanki, Yu, Rossi, and
-  Kocaoglu]{Gao2024PCMCI}
+\bibitem[Gao et~al.(2023)Gao, Addanki, Yu, Rossi, and Kocaoglu]{Gao2024PCMCI}
 Shanyun Gao, Raghavendra Addanki, Tong Yu, Ryan Rossi, and Murat Kocaoglu.
 \newblock Causal discovery in semi-stationary time series.
 \newblock \emph{Advances in Neural Information Processing Systems},
-  36:\penalty0 46624--46657, 2023{\natexlab{a}}.
+  36:\penalty0 46624--46657, 2023.
+\newblock \doi{https://dl.acm.org/doi/10.5555/3666122.3668143}.
 
 \bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Sun, Qiao, and Wang]{Miao2024Proxy}
 Mingzhou Liu, Xinwei Sun, Yu~Qiao, and Yizhou Wang.
 \newblock Causal discovery via conditional independence testing with proxy
   variables.
 \newblock In \emph{ICML}, 2024{\natexlab{b}}.
-
-\bibitem[Gao et~al.(2023{\natexlab{b}})Gao, Addanki, Yu, Rossi, and
-  Kocaoglu]{Assaad2024Semi}
-Shanyun Gao, Raghavendra Addanki, Tong Yu, Ryan Rossi, and Murat Kocaoglu.
-\newblock Causal discovery in semi-stationary time series.
-\newblock In \emph{Advances in Neural Information Processing Systems},
-  volume~36, pages 46624--46657, 2023{\natexlab{b}}.
 
 \bibitem[Mogensen and Hansen(2024)]{Mogensen2024Compat}
 S{\o}ren~Wengel Mogensen and Niels~Richard Hansen.
@@ -471,6 +470,8 @@ Xiangchen Song, Zijian Li, Guangyi Chen, Yujia Zheng, Yewen Fan, Xinshuai Dong,
   transition.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~37, pages 77098--77131, 2024.
+\newblock \doi{10.48550/arXiv.2409.03142}.
+\newblock URL \url{https://arxiv.org/abs/2409.03142}.
 
 \bibitem[Thumm and Chen(2026)]{CausalFoundation2025}
 Dennis Thumm and Ying Chen.
@@ -484,11 +485,11 @@ Alexis Bellot, Kim Branson, and Mihaela van~der Schaar.
   and algorithms.
 \newblock \emph{https://arxiv.org/abs/2105.02522}, 2022.
 
-\bibitem[Chevalley et~al.(2022)Chevalley, Bunne, Krause, and
+\bibitem[Chevalley et~al.(2024)Chevalley, Bunne, Krause, and
   Bauer]{Chevalley2024CD}
 Mathieu Chevalley, Charlotte Bunne, Andreas Krause, and Stefan Bauer.
 \newblock Deriving causal order from single-variable interventions.
-\newblock \emph{https://arxiv.org/abs/2211.00746}, 2022.
+\newblock \emph{https://arxiv.org/abs/2405.18314}, 2024.
 
 \bibitem[Huang et~al.(2025)Huang, Yao, and Divakaran]{Zhang2024GraphCausal}
 Jihua Huang, Yi~Yao, and Ajay Divakaran.
@@ -501,6 +502,8 @@ Wenxia Zheng and Wenhe Liu.
 \newblock Symmetry-aware transformers for asymmetric causal discovery in
   financial time series.
 \newblock \emph{Symmetry}, 17\penalty0 (10):\penalty0 1591, 2025.
+\newblock \doi{10.3390/sym17101591}.
+\newblock URL \url{https://www.mdpi.com/2073-8994/17/10/1591}.
 
 \bibitem[Rudd et~al.(2023)Rudd, Huo, and Xu]{Rudd2023Churn}
 David~Hason Rudd, Huan Huo, and Guandong Xu.
@@ -515,9 +518,11 @@ Roel Hulsman, Carles Balsells-Rodas, and Sara Magliacane.
   exponential families.
 \newblock \emph{arXiv preprint arXiv:2606.02231}, 2026.
 
-\bibitem[Spirtes et~al.(2000)Spirtes, Glymour, and Scheines]{Spirtes2000}
+\bibitem[Spirtes et~al.(2001)Spirtes, Glymour, and Scheines]{Spirtes2000}
 Peter Spirtes, Clark~N Glymour, and Richard Scheines.
 \newblock \emph{Causation, prediction, and search}.
-\newblock MIT press, 2000.
+\newblock MIT press, 2001.
+\newblock URL
+  \url{https://direct.mit.edu/books/monograph/2057/Causation-Prediction-and-Search}.
 
 \end{thebibliography}
