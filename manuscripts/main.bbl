@@ -20,13 +20,12 @@ Roxana Pamfil, Nisara Sriwattanaworachai, Shaan Desai, Paul Pilgerstorfer,
 \newblock In {\em International Conference on Artificial Intelligence and
   Statistics}, pages 1595--1605. PMLR, 2020.
 
-\bibitem{cheng2023cuts}
-Chen Liu, Matthew Amodio, Liangbo~L Shen, Feng Gao, Arman Avesta, Sanjay Aneja,
-  Jay~C Wang, Lucian~V Del~Priore, and Smita Krishnaswamy.
-\newblock Cuts: A deep learning and topological framework for multigranular
-  unsupervised medical image segmentation.
-\newblock In {\em International Conference on Medical Image Computing and
-  Computer-Assisted Intervention}, pages 155--165. Springer, 2024.
+\bibitem{Cheng2023}
+Yue Cheng, Ryuichi Yang, Tian Xiao, Zhuomin Li, Jinwei Suo, Kun He, and
+  Qionghai Dai.
+\newblock {CUTS}: Neural causal discovery from irregular time-series data.
+\newblock In {\em Proceedings of the Eleventh International Conference on
+  Learning Representations}, 2023.
 
 \bibitem{Zheng2018}
 Xun Zheng, Bryon Aragam, Pradeep Ravikumar, and Eric~P. Xing.
@@ -73,13 +72,6 @@ Ri{\v{c}}ards Marcinkevi{\v{c}}s and Julia~E. Vogt.
   neural networks.
 \newblock In {\em Proceedings of the Ninth International Conference on Learning
   Representations}, 2021.
-
-\bibitem{Cheng2023}
-Yue Cheng, Ryuichi Yang, Tian Xiao, Zhuomin Li, Jinwei Suo, Kun He, and
-  Qionghai Dai.
-\newblock {CUTS}: Neural causal discovery from irregular time-series data.
-\newblock In {\em Proceedings of the Eleventh International Conference on
-  Learning Representations}, 2023.
 
 \bibitem{Cheng2024}
 Yue Cheng, Linrui Li, Tian Xiao, Xuexin Li, Haoxun Lin, Zhifeng Hao, Kun He,
