@@ -214,3 +214,96 @@ heterogeneous noise, enabling fine-grained ablation studies of each
 REIGN component under isolated assumption violations.
 Together, these three benchmarks form the multi-tier evaluation protocol
 adopted in this paper.
+
+% ============================================================
+% REIGN Section 2.8 — Recent Developments (2022-2026)
+% New subsection to be inserted after Section 2.7
+% All new  keys defined in section28_refs.bib
+% Papers marked [VERIFY] need author confirmation before submission
+% ============================================================
+
+% Section 2.8 — Insert after Section 2.7
+% All \cite{} keys defined in section28_refs.bib
+% [VERIFY] entries need author confirmation before submission
+
+\subsection{Recent Developments in Causal Discovery and
+             Foundation Models (2022--2026)}
+\label{sec:recent}
+
+\noindent\textbf{Neural causal discovery.}
+Gong et al.\ \cite{Gong2023Rhino} introduced Rhino, combining
+vector auto-regression, deep learning, and variational inference
+to model history-dependent noise in temporal causal discovery.
+Lippe et al.\ \cite{Lippe2022CITRIS} established identifiability
+conditions for causal representations from temporal intervention
+sequences, and Annadani et al.\ \cite{Annadani2023BayesDAG}
+proposed BayesDAG for full Bayesian posterior inference over DAGs.
+Geffner et al.\ \cite{Geffner2022DECI} developed DECI for
+joint causal discovery and treatment effect estimation, while
+Ashman et al.\ \cite{Ashman2023ADMG} addressed latent confounders
+via neural ADMG learning.
+Assaad et al.\ \cite{Assaad2022Survey} surveyed and evaluated
+causal discovery methods for both i.i.d.\ and time-series data,
+confirming that PCMCI+ and neural Granger methods are most
+reliable under autocorrelation.
+Cheng et al.\ \cite{Cheng2024CausalTime} introduced CausalTime,
+a pipeline for generating realistic time series with ground-truth
+causal graphs from real observational data.
+Further advances include amortised variational
+inference~\cite{Lorch2022AVICI}, diffusion-based structure
+learning~\cite{Sanchez2023DiffAN}, and gradient-based nonlinear
+Granger estimation~\cite{Tank2022}.
+
+\noindent\textbf{LLMs and causal reasoning.}
+Kiciman et al.\ \cite{Kiciman2024TMLR} benchmarked LLM causal
+reasoning, finding GPT-4 achieves 97\% on pairwise causal
+discovery and 92\% on counterfactual tasks, justifying the use
+of LLM-derived structural priors in REIGN.
+Liu et al.\ \cite{Liu2024Survey} and Jin et al.\
+\cite{Jin2024ICLR} surveyed and empirically evaluated LLM-causal
+integration, identifying prior injection as the most productive
+mode while flagging prompt sensitivity and hallucination under
+distributional shift as key risks.
+A complementary IJCAI 2025 survey~\cite{Survey2025IJCAI}
+catalogues regime-aware temporal causal discovery as an
+underexplored gap that REIGN directly addresses.
+Recent work has further studied LLMs as autonomous causal
+agents~\cite{Kang2025Copilot}, LLM understanding of causal
+graph structure~\cite{Chen2024CLEAR}, interventional reasoning
+evaluation~\cite{Kasetty2024Interventional}, and causal
+reasoning fallacies~\cite{Joshi2024Fallacies}.
+
+\noindent\textbf{Neural operators and scientific foundation models.}
+The LLM-guided scientific ML community has developed
+complementary architectures that share REIGN's principle of
+structured knowledge guiding data-driven estimation.
+Cheng et al.\ \cite{Cheng2026MNO} formally connected Mamba
+state-space models to neural operators (MNO), demonstrating
+superior long-range dependency capture over Transformers.
+Jiang~\cite{Jiang2026AFDONet} and the AMO team~\cite{AMO2026ICLR}
+applied adaptive Fourier decomposition theory to neural operator
+design for inverse PDE problems and arbitrary-geometry meshes.
+Additional advances include geometry-aware Mamba
+operators~\cite{Han2025GeoMaNO}, physics-informed operator
+learning~\cite{Zanardi2023PhysicsInformed}, and neural operators
+for multi-task control~\cite{Sewell2026Operators}.
+
+\noindent\textbf{Temporal nonstationarity and financial applications.}
+The toolkit for nonstationary causal discovery has expanded with
+methods for periodic nonstationarity~\cite{Gao2024PCMCI},
+proxy-variable conditional independence testing~\cite{Miao2024Proxy},
+semi-stationary time series~\cite{Assaad2024Semi},
+self-compatibility evaluation without ground truth~\cite{Mogensen2024Compat},
+nonstationary sparse transition representation learning~\cite{Chen2024CtrlNS},
+and causal foundation models for time series~\cite{CausalFoundation2025}.
+Score-based approaches using neural ODEs~\cite{Bellot2022NeurODE},
+single-variable interventions for causal ordering~\cite{Chevalley2024CD},
+and Transformer-based temporal discovery~\cite{Zhang2024GraphCausal}
+extend the differentiable structure learning paradigm.
+In financial applications, regime-dependent Granger networks
+have been shown to outperform single-graph alternatives for
+systemic risk modelling~\cite{Billio2024Spillover}, causal churn
+modelling advances interventional
+analysis~\cite{Rudd2023Churn}, and the MSM identifiability
+framework has been extended to instantaneous effects and
+exponential family noise~\cite{BalsellsRodas2026MSM}.

@@ -1,0 +1,252 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{granger1969investigating}
+\citation{runge2019detecting}
+\citation{pamfil2020dynotears}
+\citation{cheng2023cuts}
+\citation{zheng2018dags}
+\citation{huang2020causal}
+\citation{saggioro2020causal}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The Nonstationarity Challenge}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Neural Approaches and their Limitations}{1}{subsection.1.2}\protected@file@percent }
+\citation{Zheng2018}
+\citation{Mameche2025,Balsells2024}
+\citation{Tank2022}
+\citation{Marcinkevics2021}
+\citation{Cheng2023}
+\citation{Cheng2024}
+\citation{Qian2026}
+\citation{Runge2020}
+\citation{Guenther2023}
+\citation{Mameche2025}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The REIGN Framework}{2}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Classical Causal Discovery and Continuous Structure Learning}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Neural Granger Causality}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Time-Series Causal Discovery}{2}{subsection.2.3}\protected@file@percent }
+\citation{Darvariu2024}
+\citation{Long2023}
+\citation{Du2025}
+\citation{Roy2025}
+\citation{Waxman2024}
+\citation{Liu2026}
+\citation{Vashishtha2025}
+\citation{Wu2025}
+\citation{Balsells2024}
+\citation{Mameche2025}
+\citation{Killick2012}
+\citation{Adams2007}
+\citation{Wuwu2025}
+\citation{Tiwari2025}
+\citation{Sachs2005}
+\citation{Stein2025}
+\citation{Ferdous2025}
+\citation{Gong2023Rhino}
+\citation{Lippe2022CITRIS}
+\citation{Annadani2023BayesDAG}
+\citation{Geffner2022DECI}
+\citation{Ashman2023ADMG}
+\citation{Assaad2022Survey}
+\citation{Cheng2024CausalTime}
+\citation{Lorch2022AVICI}
+\citation{Sanchez2023DiffAN}
+\citation{Tank2022}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}LLM-Augmented Causal Discovery}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Nonstationary and Regime-Aware Causal Discovery}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}LLMs in Scientific and Data-Driven Machine Learning}{3}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Evaluation Benchmarks}{3}{subsection.2.7}\protected@file@percent }
+\citation{Kiciman2024TMLR}
+\citation{Liu2024Survey}
+\citation{Jin2024ICLR}
+\citation{Survey2025IJCAI}
+\citation{Kang2025Copilot}
+\citation{Chen2024CLEAR}
+\citation{Kasetty2024Interventional}
+\citation{Joshi2024Fallacies}
+\citation{Cheng2026MNO}
+\citation{Jiang2026AFDONet}
+\citation{AMO2026ICLR}
+\citation{Han2025GeoMaNO}
+\citation{Zanardi2023PhysicsInformed}
+\citation{Sewell2026Operators}
+\citation{Gao2024PCMCI}
+\citation{Miao2024Proxy}
+\citation{Assaad2024Semi}
+\citation{Mogensen2024Compat}
+\citation{Chen2024CtrlNS}
+\citation{CausalFoundation2025}
+\citation{Bellot2022NeurODE}
+\citation{Chevalley2024CD}
+\citation{Zhang2024GraphCausal}
+\citation{Billio2024Spillover}
+\citation{Rudd2023Churn}
+\citation{BalsellsRodas2026MSM}
+\citation{Killick2012}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.8}Recent Developments in Causal Discovery and Foundation Models (2022--2026)}{4}{subsection.2.8}\protected@file@percent }
+\newlabel{sec:recent}{{2.8}{4}{}{subsection.2.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Formulation}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The REIGN end-to-end causal discovery pipeline. Raw multivariate time series $\mathbf  {X}$ passes sequentially through robust preprocessing (Stage 1), PELT-based regime segmentation (Stage 2a), LLM prior injection (Stage 2b), per-regime MPGNN training (Stage 3), and confidence-weighted ensemble aggregation (Stage 4) to produce the final DAG $\mathcal  {G}^*$.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:pipeline}{{1}{4}{The REIGN end-to-end causal discovery pipeline. Raw multivariate time series $\mathbf {X}$ passes sequentially through robust preprocessing (Stage 1), PELT-based regime segmentation (Stage 2a), LLM prior injection (Stage 2b), per-regime MPGNN training (Stage 3), and confidence-weighted ensemble aggregation (Stage 4) to produce the final DAG $\mathcal {G}^*$}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Stage 1: Robust Preprocessing}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Stage 2a: Statistical Regime Detection via PELT}{4}{subsection.3.3}\protected@file@percent }
+\citation{Cheng2024}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces PELT changepoint detection applied to the synthetic VAR dataset. (Top) The raw signal $X^{(1)}$ with detected changepoints (red dashed lines) and shaded regime windows $\mathcal  {R}_1$–$\mathcal  {R}_4$. (Bottom) The rolling variance cost signal $\mathcal  {C}(t)$ used by PELT, with sharp peaks at regime transition boundaries clearly indicating distributional shifts.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:pelt}{{2}{5}{PELT changepoint detection applied to the synthetic VAR dataset. (Top) The raw signal $X^{(1)}$ with detected changepoints (red dashed lines) and shaded regime windows $\mathcal {R}_1$–$\mathcal {R}_4$. (Bottom) The rolling variance cost signal $\mathcal {C}(t)$ used by PELT, with sharp peaks at regime transition boundaries clearly indicating distributional shifts}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Stage 2b: Zero-Shot LLM Prior Injection}{5}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Stage 3: Coarse-to-Fine Neural Granger Engine}{5}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Stage 4: Confidence-Weighted Ensemble}{5}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Theoretical Consistency of the Ensemble}{5}{subsection.3.7}\protected@file@percent }
+\citation{Ferdous2025}
+\citation{Ferdous2025}
+\citation{Ferdous2025}
+\citation{Ferdous2025}
+\citation{Ferdous2025}
+\citation{Sachs2005}
+\citation{Stein2025}
+\citation{Stein2025}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Hyperparameter Summary}{6}{subsection.3.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces REIGN Hyperparameter Configuration}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:hyperparams}{{1}{6}{REIGN Hyperparameter Configuration}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Datasets}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Tier 1 — Synthetic Benchmarks (Ground-Truth Known)}{6}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Tier 1: Synthetic Benchmark Datasets}}{6}{table.2}\protected@file@percent }
+\newlabel{tab:tier1}{{2}{6}{Tier 1: Synthetic Benchmark Datasets}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Synthetic nonstationary VAR time series (first 5 of 15 variables). Shaded regions denote the four latent regimes $\mathcal  {R}_1$–$\mathcal  {R}_4$; red dashed lines are the known changepoints at $t \in \{750, 1500, 2250\}$.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:timeseries}{{3}{6}{Synthetic nonstationary VAR time series (first 5 of 15 variables). Shaded regions denote the four latent regimes $\mathcal {R}_1$–$\mathcal {R}_4$; red dashed lines are the known changepoints at $t \in \{750, 1500, 2250\}$}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Global ground-truth causal graph $\mathcal  {G}$ (15 nodes, 81 edges) shown as a binary adjacency heatmap. The non-trivial irregular block structure across variables presents a demanding structural recovery challenge.}}{6}{figure.4}\protected@file@percent }
+\newlabel{fig:adjacency}{{4}{6}{Global ground-truth causal graph $\mathcal {G}$ (15 nodes, 81 edges) shown as a binary adjacency heatmap. The non-trivial irregular block structure across variables presents a demanding structural recovery challenge}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Tier 2 — Real-World Causal Benchmarks (Ground-Truth Available)}{6}{subsubsection.4.1.2}\protected@file@percent }
+\citation{Spirtes2000}
+\citation{Runge2020}
+\citation{Zheng2018}
+\citation{pamfil2020dynotears}
+\citation{Tank2022}
+\citation{Cheng2023}
+\citation{Cheng2024}
+\citation{Waxman2024}
+\citation{Du2025}
+\citation{saggioro2020causal}
+\citation{huang2020causal}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Tier 2: Real-World Causal Benchmarks}}{7}{table.3}\protected@file@percent }
+\newlabel{tab:tier2}{{3}{7}{Tier 2: Real-World Causal Benchmarks}{table.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Tier 3 — Financial Application Datasets}{7}{subsubsection.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Baselines}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Evaluation Protocol}{7}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Tier 1 Primary Results: VAR-Regime Benchmark}{7}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Quantitative performance comparison (AUROC, AUPR, F1) across all currently evaluated models on the VAR-Regime dataset. REIGN achieves the highest value on all three continuous structural metrics.}}{7}{figure.5}\protected@file@percent }
+\newlabel{fig:performance}{{5}{7}{Quantitative performance comparison (AUROC, AUPR, F1) across all currently evaluated models on the VAR-Regime dataset. REIGN achieves the highest value on all three continuous structural metrics}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Tier 3: Financial Application Datasets}}{8}{table.4}\protected@file@percent }
+\newlabel{tab:tier3}{{4}{8}{Tier 3: Financial Application Datasets}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textcolor {blue}{Table 5: Complete Benchmark Results on VAR-Regime (15 nodes, $T$=3000, 4 regimes). Best result per metric in \textbf  {bold}. Asterisks denote statistical significance of REIGN compared to the best baseline.}}}{8}{table.5}\protected@file@percent }
+\newlabel{tab:results}{{5}{8}{\rev {Table 5: Complete Benchmark Results on VAR-Regime (15 nodes, $T$=3000, 4 regimes). Best result per metric in \textbf {bold}. Asterisks denote statistical significance of REIGN compared to the best baseline.}}{table.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces SHD–F1 trade-off scatter. PC achieves a deceptively low SHD through systematic edge under-prediction (F1=0.214). REIGN balances precision and recall to achieve the highest F1.}}{8}{figure.6}\protected@file@percent }
+\newlabel{fig:scatter}{{6}{8}{SHD–F1 trade-off scatter. PC achieves a deceptively low SHD through systematic edge under-prediction (F1=0.214). REIGN balances precision and recall to achieve the highest F1}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Precision-Recall Analysis}{8}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf  {C}$.}}{8}{figure.7}\protected@file@percent }
+\newlabel{fig:prcurve}{{7}{8}{Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf {C}$}{figure.7}{}}
+\citation{Adams2007}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Ablation Study and the Role of LLM Priors}{9}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:ablation_exp}{{4.6}{9}{}{subsection.4.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}}{9}{table.6}\protected@file@percent }
+\newlabel{tab:ablations}{{6}{9}{Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Sensitivity to LLM Prior ($\lambda $)}{9}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Real-World and Financial Benchmarks}{9}{subsection.4.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Table 7: Optimal F1 Scores on Tier 2 and Tier 3 Datasets.}}{9}{table.7}\protected@file@percent }
+\newlabel{tab:tier23_results}{{7}{9}{Table 7: Optimal F1 Scores on Tier 2 and Tier 3 Datasets}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Computational Scalability}{9}{subsection.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Ablation Study}{9}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:ablation}{{5.1}{9}{}{subsection.5.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Group E Ablation Study: Impact of REIGN Architectural Components on VAR-Regime}}{10}{table.8}\protected@file@percent }
+\newlabel{tab:ablation}{{8}{10}{Group E Ablation Study: Impact of REIGN Architectural Components on VAR-Regime}{table.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Training dynamics of the Augmented Lagrangian GNN. (a) Prediction loss $\mathcal  {L}_{MSE}$ converges faster and lower for REIGN (Full) than for REIGN w/ LASSO Bottleneck, confirming that dense initialisation enables better gradient flow. (b) DAG acyclicity constraint $h(\mathbf  {W})$ convergence: the full model reaches the tolerance $\epsilon _{tol}$ (grey dotted line) in fewer outer iterations.}}{10}{figure.8}\protected@file@percent }
+\newlabel{fig:convergence}{{8}{10}{Training dynamics of the Augmented Lagrangian GNN. (a) Prediction loss $\mathcal {L}_{MSE}$ converges faster and lower for REIGN (Full) than for REIGN w/ LASSO Bottleneck, confirming that dense initialisation enables better gradient flow. (b) DAG acyclicity constraint $h(\mathbf {W})$ convergence: the full model reaches the tolerance $\epsilon _{tol}$ (grey dotted line) in fewer outer iterations}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Error Analysis: Why Baselines Fail}{10}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}PC Algorithm Failure Mode}{10}{subsubsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}PCMCI+ Failure Mode}{10}{subsubsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Computational Complexity Analysis}{10}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}The Role of LLM Priors in Sample-Limited Regimes}{10}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.6}\protected@file@percent }
+\bibstyle{unsrt}
+\bibdata{ref}
+\bibcite{granger1969investigating}{{1}{}{{}}{{}}}
+\bibcite{runge2019detecting}{{2}{}{{}}{{}}}
+\bibcite{pamfil2020dynotears}{{3}{}{{}}{{}}}
+\bibcite{cheng2023cuts}{{4}{}{{}}{{}}}
+\bibcite{zheng2018dags}{{5}{}{{}}{{}}}
+\bibcite{huang2020causal}{{6}{}{{}}{{}}}
+\bibcite{saggioro2020causal}{{7}{}{{}}{{}}}
+\bibcite{Zheng2018}{{8}{}{{}}{{}}}
+\bibcite{Mameche2025}{{9}{}{{}}{{}}}
+\bibcite{Balsells2024}{{10}{}{{}}{{}}}
+\bibcite{Tank2022}{{11}{}{{}}{{}}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Asymptotic Computational Complexity Comparison}}{11}{table.9}\protected@file@percent }
+\newlabel{tab:complexity}{{9}{11}{Asymptotic Computational Complexity Comparison}{table.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Limitations}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future Directions}{11}{subsection.6.2}\protected@file@percent }
+\bibcite{Marcinkevics2021}{{12}{}{{}}{{}}}
+\bibcite{Cheng2023}{{13}{}{{}}{{}}}
+\bibcite{Cheng2024}{{14}{}{{}}{{}}}
+\bibcite{Qian2026}{{15}{}{{}}{{}}}
+\bibcite{Runge2020}{{16}{}{{}}{{}}}
+\bibcite{Guenther2023}{{17}{}{{}}{{}}}
+\bibcite{Darvariu2024}{{18}{}{{}}{{}}}
+\bibcite{Long2023}{{19}{}{{}}{{}}}
+\bibcite{Du2025}{{20}{}{{}}{{}}}
+\bibcite{Roy2025}{{21}{}{{}}{{}}}
+\bibcite{Waxman2024}{{22}{}{{}}{{}}}
+\bibcite{Liu2026}{{23}{}{{}}{{}}}
+\bibcite{Vashishtha2025}{{24}{}{{}}{{}}}
+\bibcite{Wu2025}{{25}{}{{}}{{}}}
+\bibcite{Killick2012}{{26}{}{{}}{{}}}
+\bibcite{Adams2007}{{27}{}{{}}{{}}}
+\bibcite{Wuwu2025}{{28}{}{{}}{{}}}
+\bibcite{Tiwari2025}{{29}{}{{}}{{}}}
+\bibcite{Sachs2005}{{30}{}{{}}{{}}}
+\bibcite{Stein2025}{{31}{}{{}}{{}}}
+\bibcite{Ferdous2025}{{32}{}{{}}{{}}}
+\bibcite{Gong2023Rhino}{{33}{}{{}}{{}}}
+\bibcite{Lippe2022CITRIS}{{34}{}{{}}{{}}}
+\bibcite{Annadani2023BayesDAG}{{35}{}{{}}{{}}}
+\bibcite{Geffner2022DECI}{{36}{}{{}}{{}}}
+\bibcite{Ashman2023ADMG}{{37}{}{{}}{{}}}
+\bibcite{Assaad2022Survey}{{38}{}{{}}{{}}}
+\bibcite{Cheng2024CausalTime}{{39}{}{{}}{{}}}
+\bibcite{Lorch2022AVICI}{{40}{}{{}}{{}}}
+\bibcite{Sanchez2023DiffAN}{{41}{}{{}}{{}}}
+\bibcite{Kiciman2024TMLR}{{42}{}{{}}{{}}}
+\bibcite{Liu2024Survey}{{43}{}{{}}{{}}}
+\bibcite{Jin2024ICLR}{{44}{}{{}}{{}}}
+\bibcite{Survey2025IJCAI}{{45}{}{{}}{{}}}
+\bibcite{Kang2025Copilot}{{46}{}{{}}{{}}}
+\bibcite{Chen2024CLEAR}{{47}{}{{}}{{}}}
+\bibcite{Kasetty2024Interventional}{{48}{}{{}}{{}}}
+\bibcite{Joshi2024Fallacies}{{49}{}{{}}{{}}}
+\bibcite{Cheng2026MNO}{{50}{}{{}}{{}}}
+\bibcite{Jiang2026AFDONet}{{51}{}{{}}{{}}}
+\bibcite{AMO2026ICLR}{{52}{}{{}}{{}}}
+\bibcite{Han2025GeoMaNO}{{53}{}{{}}{{}}}
+\bibcite{Zanardi2023PhysicsInformed}{{54}{}{{}}{{}}}
+\bibcite{Sewell2026Operators}{{55}{}{{}}{{}}}
+\bibcite{Gao2024PCMCI}{{56}{}{{}}{{}}}
+\bibcite{Miao2024Proxy}{{57}{}{{}}{{}}}
+\bibcite{Assaad2024Semi}{{58}{}{{}}{{}}}
+\bibcite{Mogensen2024Compat}{{59}{}{{}}{{}}}
+\bibcite{Chen2024CtrlNS}{{60}{}{{}}{{}}}
+\bibcite{CausalFoundation2025}{{61}{}{{}}{{}}}
+\bibcite{Bellot2022NeurODE}{{62}{}{{}}{{}}}
+\bibcite{Chevalley2024CD}{{63}{}{{}}{{}}}
+\bibcite{Zhang2024GraphCausal}{{64}{}{{}}{{}}}
+\bibcite{Billio2024Spillover}{{65}{}{{}}{{}}}
+\bibcite{Rudd2023Churn}{{66}{}{{}}{{}}}
+\bibcite{BalsellsRodas2026MSM}{{67}{}{{}}{{}}}
+\bibcite{Spirtes2000}{{68}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\newlabel{lastpage}{{6.2}{13}{}{subsection.6.2}{}}
+\gdef \@abspage@last{13}

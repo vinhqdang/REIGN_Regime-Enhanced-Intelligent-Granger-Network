@@ -20,7 +20,7 @@
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
-% \usepackage{xcolor} % BVP_JDSIS likely already loads color/xcolor
+\usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{natbib}
@@ -58,11 +58,19 @@
 
 \title{REIGN: Regime-Enhanced Intelligent Granger Network for Nonstationary Causal Discovery}
 
-\author{Author A$^{1}$, Author B$^{2}$, Author C$^{3,}$\thanks{\textbf{Corresponding author:} Author C, Department, Name of Organization, Country. Email: \email{xxxxxx@institution.email}}}
+% \author{Author A$^{1}$, Author B$^{2}$, Author C$^{3,}$\thanks{\textbf{Corresponding author:} Author C, Department, Name of Organization, Country. Email: \email{xxxxxx@institution.email} \textcolor{green}{(the email address should correspond to the institution where the research was conducted. If there are two corresponding authors, two email addresses should be provided.)}} \textcolor{green}{\ (full name, separated by commas, the last author should be linked to the preceding author using ``and'' without a comma)}}
 
-\affil{Department, Name of Organization, Country, Email address}
-\affil{Department, Name of Organization, Country, Email address}
-\affil{Department, Name of Organization, Country, Email address}
+% \affil{Department, Name of Organization, Country, Email address}
+% \affil{Department, Name of Organization, Country, Email address}
+% \affil{Department, Name of Organization, Country, Email address\newline \textup{\textcolor{green}{(The affiliations of the authors should be numbered according to the order in which they appear and indicated using superscript numbers placed above the author names. If multiple authors share the same affiliation, the same superscript number should be used and the affiliation should not be repeated.)}}}
+
+\author{Quang-Vinh Dang$^{1,}$\thanks{\textbf{Corresponding author:} Quang-Vinh Dang, British University Vietnam, Hung Yen, Vietnam. Email: \email{vinh.dq4@buv.edu.vn}}, Minh Ngoc Dinh$^{2}$, Dat Le$^{3}$ and Dinh-Minh Nguyen$^{1}$}
+
+\affil{British University Vietnam, Hung Yen, 160000, Vietnam, \email{vinh.dq4@buv.edu.vn}, \email{30065296@st.buv.edu.vn}}
+
+\affil{Millennia University, Ho Chi Minh City, Vietnam, \email{minh.dinh@maeducation.com}}
+
+\affil{University of Economics and Finance, Ho Chi Minh City, Vietnam, \email{datla@uef.edu.vn}}
 
 \begin{abstract}
 Causal discovery in nonstationary multivariate financial time series is a fundamental open problem in machine learning and econometrics. Classical causal discovery algorithms — from constraint-based methods such as the PC algorithm to time-series extensions such as PCMCI+ — critically assume stationarity in the underlying data-generating process. In real-world financial environments, this assumption is systematically violated through structural breaks induced by market regime shifts, regulatory changes, and macroeconomic shocks. Naïvely applying stationary methods to nonstationary data yields spurious edges, suppressed recall, and structurally inconsistent causal graphs. We propose the \textbf{Regime-Enhanced Intelligent Granger Network (REIGN)}, a novel four-stage causal discovery framework specifically engineered for nonstationary time series. REIGN uniquely integrates three synergistic capabilities: (i) data-driven regime segmentation via the Pruned Exact Linear Time (PELT) changepoint detection algorithm, which partitions the time series into locally stationary windows; (ii) zero-shot Large Language Model (LLM) prior injection, which constrains the neural search space using domain-specific topological knowledge; and (iii) a coarse-to-fine Message-Passing Graph Neural Network (MPGNN) that optimizes a continuous DAG-constrained adjacency matrix via an Augmented Lagrangian objective. Regime-specific models are subsequently aggregated through a confidence-weighted ensemble mechanism to yield a globally consistent summary causal graph. Empirical evaluation on a synthetically generated nonstationary Vector Autoregressive (VAR) benchmark dataset demonstrates that REIGN achieves an Optimal F1 score of 0.529, outperforming PCMCI+ (F1=0.415) by 11.4 percentage points and PC (F1=0.214) by a factor of 2.5$\times$ in structural edge recovery. REIGN additionally dominates across AUROC (0.513 vs.\ 0.406) and AUPR (0.400 vs.\ 0.338) metrics, establishing a new performance benchmark for neural time-series causal discovery in nonstationary environments.
@@ -79,6 +87,7 @@ Causal Discovery, Time Series, Granger Causality, Large Language Models, Nonstat
 \input{4_experiment}
 \input{5_discussion}
 \input{6_conclusion}
+
 
 \section*{Data Availability Statement}
 The data that support the findings of this study are openly available in GitHub at \url{https://github.com/vinhqdang/REIGN_Regime-Enhanced-Intelligent-Granger-Network}.

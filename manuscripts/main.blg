@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: unsrt.bst
+Database file #1: ref.bib
+Warning--can't use both volume and number fields in Mameche2025
+Warning--can't use both volume and number fields in Cheng2024
+You've used 68 entries,
+            1791 wiz_defined-function locations,
+            834 strings with 18425 characters,
+and the built_in function-call counts, 16943 in all, are:
+= -- 1282
+> -- 1102
+< -- 23
++ -- 391
+- -- 323
+* -- 1131
+:= -- 2737
+add.period$ -- 214
+call.type$ -- 68
+change.case$ -- 67
+chr.to.int$ -- 0
+cite$ -- 70
+duplicate$ -- 815
+empty$ -- 1592
+format.name$ -- 323
+if$ -- 3784
+int.to.chr$ -- 0
+int.to.str$ -- 68
+missing$ -- 69
+newline$ -- 343
+num.names$ -- 68
+pop$ -- 290
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 379
+stack$ -- 0
+substring$ -- 627
+swap$ -- 240
+text.length$ -- 23
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 115
+width$ -- 70
+write$ -- 726
+(There were 2 warnings)
