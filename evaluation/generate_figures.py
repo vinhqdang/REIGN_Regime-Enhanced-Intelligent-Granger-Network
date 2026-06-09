@@ -24,7 +24,7 @@ plt.rcParams.update({
     'xtick.labelsize': 10,
     'ytick.labelsize': 10,
     'figure.dpi': 150,
-    'savefig.dpi': 300,
+    'savefig.dpi': 600,
     'savefig.bbox': 'tight',
 })
 PALETTE = ['#4c72b0', '#dd8452', '#55a868', '#c44e52', '#8172b2']
@@ -39,7 +39,7 @@ def fig_timeseries():
         ax.plot(X[:, i], alpha=0.75, lw=1.2, label=f'$X^{{({i+1})}}$', color=PALETTE[i])
     for cp in [750, 1500, 2250]:
         ax.axvline(cp, color='red', ls='--', lw=1.5, alpha=0.8)
-    ax.set_title('Synthetic Nonstationary VAR Time Series (First 5 Variables)')
+    # ax.set_title('Synthetic Nonstationary VAR Time Series (First 5 Variables)')
     ax.set_xlabel('Time Step $t$')
     ax.set_ylabel('Standardised Value')
     ax.legend(loc='upper right', ncol=5, fontsize=9)
@@ -69,7 +69,7 @@ def fig_adjacency():
                 linecolor='#cccccc', ax=ax, vmin=0, vmax=1,
                 xticklabels=[f'$X^{{({i+1})}}$' for i in range(15)],
                 yticklabels=[f'$X^{{({i+1})}}$' for i in range(15)])
-    ax.set_title('Global Ground-Truth Causal Graph $\\mathcal{G}$\n(Union across all regimes)')
+    # ax.set_title('Global Ground-Truth Causal Graph $\\mathcal{G}$\n(Union across all regimes)')
     ax.set_xlabel('Effect Node $j$')
     ax.set_ylabel('Cause Node $i$')
     ax.tick_params(labelsize=8)
@@ -101,7 +101,7 @@ def fig_performance():
                     ha='center', va='bottom', fontsize=8.5)
     ax.set_ylim(0, 0.68)
     ax.set_ylabel('Score')
-    ax.set_title('Quantitative Performance Comparison on Synthetic Nonstationary VAR')
+    # ax.set_title('Quantitative Performance Comparison on Synthetic Nonstationary VAR')
     ax.set_xticks(x); ax.set_xticklabels(models)
     ax.legend(loc='upper left')
     ax.grid(axis='y', ls='--', alpha=0.5)
@@ -130,7 +130,7 @@ def fig_scatter():
     ax.text(78, 0.535, 'Better\nregion', fontsize=9, color='gray', ha='center')
     ax.set_xlabel(r'Structural Hamming Distance (SHD) $\downarrow$')
     ax.set_ylabel(r'F1 Score (Optimal) $\uparrow$')
-    ax.set_title('SHD–F1 Trade-off: REIGN vs Baselines')
+    # ax.set_title('SHD–F1 Trade-off: REIGN vs Baselines')
     ax.grid(ls='--', alpha=0.5)
     ax.legend(loc='lower right')
     plt.tight_layout()
@@ -189,7 +189,7 @@ def fig_pipeline():
                 ha='center', va='top', fontsize=8.2, color='#374151',
                 multialignment='center')
 
-    ax.set_title('REIGN End-to-End Causal Discovery Pipeline', fontsize=13, pad=6)
+    # ax.set_title('REIGN End-to-End Causal Discovery Pipeline', fontsize=13, pad=6)
     plt.tight_layout()
     plt.savefig('manuscripts/figures/5_reign_pipeline.png')
     plt.close()
@@ -212,7 +212,7 @@ def fig_pelt():
     for cp in changepoints:
         axes[0].axvline(cp, color='red', ls='--', lw=1.8, alpha=0.9)
     axes[0].set_ylabel('Signal Value')
-    axes[0].set_title('PELT Changepoint Detection on Nonstationary Time Series')
+    # axes[0].set_title('PELT Changepoint Detection on Nonstationary Time Series')
     axes[0].legend(loc='upper right')
     regions = [(0, 750), (750, 1500), (1500, 2250), (2250, T)]
     colours = ['#e6f0ff', '#fff3e6', '#e6ffe6', '#ffe6e6']
@@ -256,7 +256,7 @@ def fig_convergence():
     ax1.plot(epochs, loss_lasso, color=PALETTE[3], lw=1.8, ls='--', label='REIGN w/ LASSO Bottleneck')
     ax1.set_xlabel('Training Epoch')
     ax1.set_ylabel('Prediction Loss $\\mathcal{L}_{MSE}$')
-    ax1.set_title('(a) Prediction Loss Convergence')
+    # ax1.set_title('(a) Prediction Loss Convergence')
     ax1.legend(); ax1.grid(ls='--', alpha=0.5)
     ax1.set_yscale('log')
 
@@ -265,11 +265,11 @@ def fig_convergence():
     ax2.axhline(1e-2, color='grey', ls=':', lw=1.3, label='Tolerance $\\epsilon_{tol}$')
     ax2.set_xlabel('Training Epoch')
     ax2.set_ylabel('DAG Constraint $h(\\mathbf{W})$')
-    ax2.set_title('(b) Acyclicity Constraint Convergence')
+    # ax2.set_title('(b) Acyclicity Constraint Convergence')
     ax2.legend(); ax2.grid(ls='--', alpha=0.5)
     ax2.set_yscale('log')
 
-    plt.suptitle('Training Dynamics of the Augmented Lagrangian GNN', fontsize=13)
+    # plt.suptitle('Training Dynamics of the Augmented Lagrangian GNN', fontsize=13)
     plt.tight_layout()
     plt.savefig('manuscripts/figures/7_training_convergence.png')
     plt.close()
@@ -319,7 +319,7 @@ def fig_pr_curves():
 
     ax.set_xlabel('Recall')
     ax.set_ylabel('Precision')
-    ax.set_title('Precision–Recall Curves on Synthetic Nonstationary VAR')
+    # ax.set_title('Precision–Recall Curves on Synthetic Nonstationary VAR')
     ax.legend(loc='upper right')
     ax.grid(ls='--', alpha=0.5)
     ax.set_xlim(0, 1); ax.set_ylim(0, 1)
