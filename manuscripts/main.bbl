@@ -69,7 +69,6 @@ Sarah Mameche, L{\'e}na{\"i}g Cornanguer, Urmi Ninad, and Jilles Vreeken.
 \newblock In \emph{Proceedings of the 39th AAAI Conference on Artificial
   Intelligence}, volume~39, pages 19405--19413, 2025.
 \newblock \doi{10.1609/aaai.v39i18.34136}.
-\newblock URL \url{https://arxiv.org/abs/2501.10235}.
 
 \bibitem[Balsells-Rodas et~al.(2024)Balsells-Rodas, Wang, Mediano, and
   Li]{Balsells2024}
@@ -155,7 +154,6 @@ Hao Du, Yue Zheng, Bokai Jing, Yue Zhao, Gang Kou, Gang Liu, Tao Gu, Wei Li,
 \newblock In \emph{Proceedings of the 31st ACM SIGKDD Conference on Knowledge
   Discovery and Data Mining}. ACM, 2025.
 \newblock \doi{10.1145/3711896.3736874}.
-\newblock URL \url{https://dl.acm.org/doi/10.1145/3711896.3736874}.
 
 \bibitem[Roy et~al.(2025)Roy, Devharish, Ganguly, and Ghosh]{Roy2025}
 Arnab Roy, Nishant Devharish, Saurabh Ganguly, and Kaushik Ghosh.
@@ -179,7 +177,6 @@ Bo~Liu, Hongyan Li, and Shenda Hong.
 \newblock In \emph{Proceedings of the Nineteenth ACM International Conference
   on Web Search and Data Mining}, pages 387--395. ACM, 2026.
 \newblock \doi{10.1145/3773966.3777994}.
-\newblock URL \url{https://dl.acm.org/doi/10.1145/3773966.3777994}.
 
 \bibitem[Vashishtha et~al.(2025)Vashishtha, Reddy, Kumar, Bachu,
   Balasubramanian, and Sharma]{Vashishtha2025}
@@ -252,7 +249,6 @@ Md~Hasan Ferdous, Ehsan Hossain, and Md~Osman Gani.
 \newblock In \emph{Proceedings of the 31st ACM SIGKDD Conference on Knowledge
   Discovery and Data Mining}. ACM, 2025.
 \newblock \doi{10.1145/3711896.3737439}.
-\newblock URL \url{https://dl.acm.org/doi/10.1145/3711896.3737439}.
 
 \bibitem[Gong et~al.(2023)Gong, Jennings, Zhang, and Pawlowski]{Gong2023Rhino}
 Wenbo Gong, Joel Jennings, Cheng Zhang, and Nick Pawlowski.
@@ -305,7 +301,7 @@ Chekroud~Karim Assaad, Emilie Devijver, and Eric Gaussier.
   series data.
 \newblock \emph{Journal of Artificial Intelligence Research}, 73:\penalty0
   767--819, 2022.
-\newblock \doi{https://doi.org/10.1613/jair.1.13428}.
+\newblock \doi{10.1613/jair.1.13428}.
 
 \bibitem[Cheng et~al.(2024{\natexlab{b}})Cheng, Wang, Xiao, Zhong, Suo, and
   He]{Cheng2024CausalTime}
@@ -473,7 +469,6 @@ Xiangchen Song, Zijian Li, Guangyi Chen, Yujia Zheng, Yewen Fan, Xinshuai Dong,
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~37, pages 77098--77131, 2024.
 \newblock \doi{10.48550/arXiv.2409.03142}.
-\newblock URL \url{https://arxiv.org/abs/2409.03142}.
 
 \bibitem[Thumm and Chen(2026)]{CausalFoundation2025}
 Dennis Thumm and Ying Chen.
@@ -505,7 +500,6 @@ Wenxia Zheng and Wenhe Liu.
   financial time series.
 \newblock \emph{Symmetry}, 17\penalty0 (10):\penalty0 1591, 2025.
 \newblock \doi{10.3390/sym17101591}.
-\newblock URL \url{https://www.mdpi.com/2073-8994/17/10/1591}.
 
 \bibitem[Rudd et~al.(2023)Rudd, Huo, and Xu]{Rudd2023Churn}
 David~Hason Rudd, Huan Huo, and Guandong Xu.
