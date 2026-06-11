@@ -413,6 +413,7 @@ Albert Gu and Tri Dao.
 \newblock Mamba: Linear-time sequence modeling with selective state spaces.
 \newblock In \emph{Proceedings of the 41st International Conference on Machine
   Learning (ICML)}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2312.00752}.
 
 \bibitem[Zanardi et~al.(2023)Zanardi, Venturi, and
   Panesi]{Zanardi2023PhysicsInformed}
@@ -422,10 +423,14 @@ Ivan Zanardi, Simone Venturi, and Marco Panesi.
 \newblock \emph{Scientific Reports}, 13, 2023.
 \newblock \doi{10.1038/s41598-023-41039-y}.
 
-\bibitem[Kovachki et~al.(2023)]{Kovachki2023}
-Nikola Kovachki et~al.
-\newblock Neural operator: Learning maps between function spaces.
+\bibitem[Kovachki et~al.(2023)Kovachki, Li, Liu, Azizzadenesheli, Bhattacharya,
+  Stuart, and Anandkumar]{Kovachki2023}
+Nikola Kovachki, Zongyi Li, Burigede Liu, Kamyar Azizzadenesheli, Kaushik
+  Bhattacharya, Andrew Stuart, and Anima Anandkumar.
+\newblock Neural operator: Learning maps between function spaces with
+  applications to pdes.
 \newblock \emph{Journal of Machine Learning Research (JMLR)}, 2023.
+\newblock URL \url{https://jmlr.org/papers/v24/21-1524.html}.
 
 \bibitem[Gao et~al.(2023)Gao, Addanki, Yu, Rossi, and Kocaoglu]{Gao2024PCMCI}
 Shanyun Gao, Raghavendra Addanki, Tong Yu, Ryan Rossi, and Murat Kocaoglu.
@@ -459,11 +464,14 @@ Xiangchen Song, Zijian Li, Guangyi Chen, Yujia Zheng, Yewen Fan, Xinshuai Dong,
   volume~37, pages 77098--77131, 2024.
 \newblock \doi{10.48550/arXiv.2409.03142}.
 
-\bibitem[Wen et~al.(2023)]{Wen2023Foundation}
-Qingsong Wen et~al.
-\newblock Transformers are causal foundation models for time series.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}, 2023.
+\bibitem[Liang et~al.(2024)Liang, Wen, Nie, Jiang, Jin, Song, Pan, and
+  Wen]{Wen2023Foundation}
+Yuxuan Liang, Haomin Wen, Yuqi Nie, Yushan Jiang, Ming Jin, Dongjin Song,
+  Shirui Pan, and Qingsong Wen.
+\newblock Foundation models for time series analysis: A tutorial and survey.
+\newblock In \emph{Proceedings of the 30th ACM SIGKDD conference on knowledge
+  discovery and data mining}, pages 6555--6565, 2024.
+\newblock URL \url{https://arxiv.org/pdf/2504.04011}.
 
 \bibitem[Bellot et~al.(2022)Bellot, Branson, and van~der
   Schaar]{Bellot2022NeurODE}
@@ -478,11 +486,14 @@ Mathieu Chevalley, Charlotte Bunne, Andreas Krause, and Stefan Bauer.
 \newblock Deriving causal order from single-variable interventions.
 \newblock \emph{https://arxiv.org/abs/2405.18314}, 2024.
 
-\bibitem[Chen et~al.(2023)]{Chen2023Transformer}
-Ying Chen et~al.
-\newblock Transformer-based temporal causal discovery.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}, 2023.
+\bibitem[Kong et~al.(2024)Kong, Li, Yang, Zhang, Guan, and
+  Zhou]{Chen2023Transformer}
+Lingbai Kong, Wengen Li, Hanchen Yang, Yichao Zhang, Jihong Guan, and Shuigeng
+  Zhou.
+\newblock Causalformer: An interpretable transformer for temporal causal
+  discovery.
+\newblock volume~37, pages 102--115. IEEE, 2024.
+\newblock \doi{https://doi.org/10.1109/TKDE.2024.3484461}.
 
 \bibitem[Zheng and Liu(2025)]{Billio2024Spillover}
 Wenxia Zheng and Wenhe Liu.
@@ -491,17 +502,18 @@ Wenxia Zheng and Wenhe Liu.
 \newblock \emph{Symmetry}, 17\penalty0 (10):\penalty0 1591, 2025.
 \newblock \doi{10.3390/sym17101591}.
 
-\bibitem[Ouyang et~al.(2024)]{Ouyang2024Churn}
-Yi~Ouyang et~al.
-\newblock Deep causal analysis for customer churn prediction.
-\newblock In \emph{Proceedings of the ACM SIGKDD International Conference on
-  Knowledge Discovery and Data Mining}, 2024.
+\bibitem[Rudd et~al.(2021)Rudd, Huo, and Xu]{Ouyang2024Churn}
+David~Hason Rudd, Huan Huo, and Guandong Xu.
+\newblock Causal analysis of customer churn using deep learning.
+\newblock In \emph{2021 International Conference on Digital Society and
+  Intelligent Systems (DSInS)}, pages 319--324. IEEE, 2021.
+\newblock URL \url{https://ieeexplore.ieee.org/abstract/document/9670561/}.
 
-\bibitem[Dong et~al.(2023)]{Dong2023MSM}
-Hao Dong et~al.
-\newblock Latent markov switching models for sequential data.
-\newblock In \emph{Advances in Neural Information Processing Systems
-  (NeurIPS)}, 2023.
+\bibitem[Tan and Wu(2025)]{Dong2023MSM}
+Zhenni Tan and Yuehua Wu.
+\newblock On regime switching models.
+\newblock volume~13, page 1128. MDPI, 2025.
+\newblock \doi{10.3390/math13071128}.
 
 \bibitem[Spirtes et~al.(2001)Spirtes, Glymour, and Scheines]{Spirtes2000}
 Peter Spirtes, Clark~N Glymour, and Richard Scheines.

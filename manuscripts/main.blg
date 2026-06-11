@@ -9,45 +9,49 @@ Warning--empty journal in Long2023
 Warning--empty journal in Waxman2024
 Warning--empty journal in Lorch2022AVICI
 Warning--empty journal in Sanchez2023DiffAN
+Warning--empty booktitle in Chen2023Transformer
+Warning--can't use both volume and number fields in Chen2023Transformer
+Warning--empty booktitle in Dong2023MSM
+Warning--can't use both volume and number fields in Dong2023MSM
 You've used 65 entries,
             2481 wiz_defined-function locations,
-            968 strings with 19807 characters,
-and the built_in function-call counts, 27567 in all, are:
-= -- 2116
-> -- 1815
-< -- 38
-+ -- 675
-- -- 542
-* -- 2161
-:= -- 4470
-add.period$ -- 253
+            983 strings with 20573 characters,
+and the built_in function-call counts, 28796 in all, are:
+= -- 2235
+> -- 1911
+< -- 40
++ -- 707
+- -- 574
+* -- 2311
+:= -- 4651
+add.period$ -- 262
 call.type$ -- 65
 change.case$ -- 129
 chr.to.int$ -- 62
-cite$ -- 71
-duplicate$ -- 1438
-empty$ -- 2441
-format.name$ -- 628
-if$ -- 5889
+cite$ -- 75
+duplicate$ -- 1474
+empty$ -- 2484
+format.name$ -- 657
+if$ -- 6157
 int.to.chr$ -- 4
 int.to.str$ -- 66
 missing$ -- 66
-newline$ -- 381
+newline$ -- 387
 num.names$ -- 195
-pop$ -- 653
+pop$ -- 640
 preamble$ -- 1
 purify$ -- 65
 quote$ -- 0
-skip$ -- 815
+skip$ -- 859
 stack$ -- 0
-substring$ -- 677
-swap$ -- 284
-text.length$ -- 19
+substring$ -- 789
+swap$ -- 324
+text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 452
-warning$ -- 6
-while$ -- 171
+warning$ -- 10
+while$ -- 181
 width$ -- 0
-write$ -- 919
-(There were 6 warnings)
+write$ -- 938
+(There were 10 warnings)
