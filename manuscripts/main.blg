@@ -5,45 +5,49 @@ The style file: unsrtnat.bst
 Database file #1: ref.bib
 Warning--can't use both volume and number fields in Mameche2025
 Warning--can't use both volume and number fields in Cheng2024
+Warning--empty journal in Long2023
+Warning--empty journal in Waxman2024
+Warning--empty journal in Lorch2022AVICI
+Warning--empty journal in Sanchez2023DiffAN
 You've used 65 entries,
             2481 wiz_defined-function locations,
-            984 strings with 20750 characters,
-and the built_in function-call counts, 28283 in all, are:
-= -- 2127
-> -- 2019
-< -- 29
-+ -- 742
-- -- 610
-* -- 2348
-:= -- 4697
-add.period$ -- 259
+            968 strings with 19807 characters,
+and the built_in function-call counts, 27567 in all, are:
+= -- 2116
+> -- 1815
+< -- 38
++ -- 675
+- -- 542
+* -- 2161
+:= -- 4470
+add.period$ -- 253
 call.type$ -- 65
 change.case$ -- 129
-chr.to.int$ -- 63
-cite$ -- 67
-duplicate$ -- 1406
-empty$ -- 2361
-format.name$ -- 688
-if$ -- 5947
-int.to.chr$ -- 3
+chr.to.int$ -- 62
+cite$ -- 71
+duplicate$ -- 1438
+empty$ -- 2441
+format.name$ -- 628
+if$ -- 5889
+int.to.chr$ -- 4
 int.to.str$ -- 66
 missing$ -- 66
-newline$ -- 388
+newline$ -- 381
 num.names$ -- 195
-pop$ -- 607
+pop$ -- 653
 preamble$ -- 1
 purify$ -- 65
 quote$ -- 0
-skip$ -- 799
+skip$ -- 815
 stack$ -- 0
 substring$ -- 677
-swap$ -- 279
+swap$ -- 284
 text.length$ -- 19
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 452
-warning$ -- 2
+warning$ -- 6
 while$ -- 171
 width$ -- 0
-write$ -- 936
-(There were 2 warnings)
+write$ -- 919
+(There were 6 warnings)

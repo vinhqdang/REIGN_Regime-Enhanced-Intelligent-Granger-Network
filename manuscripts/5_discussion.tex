@@ -12,7 +12,7 @@ To isolate the contribution of individual architectural components, we evaluate 
     \item \textbf{REIGN-noRegime}: PELT changepoint detection removed; a single MPGNN trained over the full non-partitioned time series — equivalent to a stationary neural Granger baseline.
     \item \textbf{REIGN-hardPrior}: $\mathbf{A}^{prior}$ applied as a hard structural constraint rather than a soft Frobenius regulariser, forcing the GNN to respect the LLM-predicted topology exactly.
     \item \textbf{REIGN-PELT}: Uses PELT segmentation only (the default configuration).
-    \item \textbf{REIGN-BOCPD}: Replaces PELT with Bayesian Online Changepoint Detection \cite{Adams2007}.
+    \item \textbf{REIGN-BOCPD}: Replaces PELT with Bayesian Online Changepoint Detection \cite{Deasy2023}.
     \item \textbf{REIGN-LASSO}: Dense GNN initialisation replaced with a classical LASSO coarse-discovery prefilter.
 \end{enumerate}
 

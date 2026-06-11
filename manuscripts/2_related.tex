@@ -96,7 +96,7 @@ Integrating large language models into causal discovery pipelines has
 emerged as a rapidly developing research direction, motivated by the
 observation that LLMs encode rich, text-derived domain knowledge about
 cause-effect relationships.
-Darvariu et al.~\cite{Darvariu2024} established the foundational result
+Jin et al.~\cite{Jin2024} established the foundational result
 that LLMs can serve as effective probabilistic priors for causal graphs
 by querying pairwise edge existence and direction to produce soft
 adjacency probabilities compatible with score-based discovery pipelines.
@@ -132,7 +132,7 @@ yields more reliable priors by suppressing cyclic responses inherent in
 independent pair-wise prompting; REIGN adopts this causal-order correction
 step to post-process $\mathbf{A}_{\mathrm{LLM}}$ before fusing it into
 the CUTS+ training objective.
-\rev{Wu et al.~\cite{Wu2025} critically re-evaluated the role of LLMs in
+\rev{Ze\v{c}evi\'{c} et al.~\cite{Zecevic2023} critically re-evaluated the role of LLMs in
 causal discovery, arguing that their autoregressive, correlation-driven
 modelling inherently lacks the theoretical grounding for causal reasoning,
 and demonstrated through empirical studies that deliberate prompt
@@ -163,7 +163,7 @@ regime-aware methods consistently outperform single-graph alternatives
 under real-world temporal distribution shift.}               %[NEW sentence]
 To identify regime boundaries, REIGN supports both the PELT
 algorithm~\cite{Killick2012} for offline retrospective discovery and
-Bayesian Online Changepoint Detection (BOCPD)~\cite{Adams2007} for
+Bayesian Online Changepoint Detection (BOCPD)~\cite{Deasy2023} for
 prospective deployment.
 PELT provides exact dynamic-programming detection with linear expected
 runtime, while BOCPD yields a principled probabilistic run-length
@@ -259,7 +259,7 @@ Kiciman et al.\ \cite{Kiciman2024TMLR} benchmarked LLM causal
 reasoning, finding GPT-4 achieves 97\% on pairwise causal
 discovery and 92\% on counterfactual tasks, justifying the use
 of LLM-derived structural priors in REIGN.
-Liu et al.\ \cite{Liu2024Survey} and Jin et al.\
+Zhang et al.\ \cite{Zhang2024Survey} and Jin et al.\
 \cite{Jin2024ICLR} surveyed and empirically evaluated LLM-causal
 integration, identifying prior injection as the most productive
 mode while flagging prompt sensitivity and hallucination under
@@ -268,7 +268,7 @@ A complementary IJCAI 2025 survey~\cite{Survey2025IJCAI}
 catalogues regime-aware temporal causal discovery as an
 underexplored gap that REIGN directly addresses.
 Recent work has further studied LLMs as autonomous causal
-agents~\cite{Kang2025Copilot}, LLM understanding of causal
+agents~\cite{Jin2024EconAgent}, LLM understanding of causal
 graph structure~\cite{Chen2024CLEAR}, interventional reasoning
 evaluation~\cite{Kasetty2024Interventional}, and causal
 reasoning fallacies~\cite{Joshi2024Fallacies}.
@@ -284,9 +284,9 @@ Jiang~\cite{Jiang2026AFDONet} and the AMO team~\cite{AMO2026ICLR}
 applied adaptive Fourier decomposition theory to neural operator
 design for inverse PDE problems and arbitrary-geometry meshes.
 Additional advances include geometry-aware Mamba
-operators~\cite{Han2025GeoMaNO}, physics-informed operator
+operators~\cite{Gu2024Mamba}, physics-informed operator
 learning~\cite{Zanardi2023PhysicsInformed}, and neural operators
-for multi-task control~\cite{Sewell2026Operators}.
+for PDE learning~\cite{Kovachki2023}.
 
 \noindent\textbf{Temporal nonstationarity and financial applications.}
 The toolkit for nonstationary causal discovery has expanded with
@@ -294,15 +294,15 @@ methods for periodic nonstationarity~\cite{Gao2024PCMCI},
 proxy-variable conditional independence testing~\cite{Miao2024Proxy},
 self-compatibility evaluation without ground truth~\cite{Mogensen2024Compat},
 nonstationary sparse transition representation learning~\cite{Chen2024CtrlNS},
-and causal foundation models for time series~\cite{CausalFoundation2025}.
+and causal foundation models for time series~\cite{Wen2023Foundation}.
 Score-based approaches using neural ODEs~\cite{Bellot2022NeurODE},
 single-variable interventions for causal ordering~\cite{Chevalley2024CD},
-and Transformer-based temporal discovery~\cite{Zhang2024GraphCausal}
+and Transformer-based temporal discovery~\cite{Chen2023Transformer}
 extend the differentiable structure learning paradigm.
 In financial applications, regime-dependent Granger networks
 have been shown to outperform single-graph alternatives for
 systemic risk modelling~\cite{Billio2024Spillover}, causal churn
 modelling advances interventional
-analysis~\cite{Rudd2023Churn}, and the MSM identifiability
+analysis~\cite{Ouyang2024Churn}, and the MSM identifiability
 framework has been extended to instantaneous effects and
-exponential family noise~\cite{BalsellsRodas2026MSM}.
+exponential family noise~\cite{Dong2023MSM}.
