@@ -42,7 +42,6 @@ def fig_timeseries():
     # ax.set_title('Synthetic Nonstationary VAR Time Series (First 5 Variables)')
     ax.set_xlabel('Time Step $t$')
     ax.set_ylabel('Standardised Value')
-    ax.legend(loc='upper right', ncol=5, fontsize=9)
     # shade regimes
     regions = [(0, 750), (750, 1500), (1500, 2250), (2250, T)]
     colours = ['#e6f0ff', '#fff3e6', '#e6ffe6', '#ffe6e6']
@@ -52,6 +51,8 @@ def fig_timeseries():
     ax.annotate('Regime 2', xy=(1125, ax.get_ylim()[1]*0.85), ha='center', fontsize=9, color='#333')
     ax.annotate('Regime 3', xy=(1875, ax.get_ylim()[1]*0.85), ha='center', fontsize=9, color='#333')
     ax.annotate('Regime 4', xy=(2625, ax.get_ylim()[1]*0.85), ha='center', fontsize=9, color='#333')
+    # legend placed fully above the axes so it never overlaps the traces or regime labels
+    ax.legend(loc='lower center', bbox_to_anchor=(0.5, 1.02), ncol=5, fontsize=9, frameon=True)
     plt.tight_layout()
     plt.savefig('manuscripts/figures/1_time_series.png')
     plt.close()
@@ -141,8 +142,8 @@ def fig_scatter():
 
 # ── 5. REIGN pipeline architecture diagram ──────────────────────────────────
 def fig_pipeline():
-    fig, ax = plt.subplots(figsize=(14, 4.5))
-    ax.set_xlim(0, 14); ax.set_ylim(0, 4.5); ax.axis('off')
+    fig, ax = plt.subplots(figsize=(15.4, 4.5))
+    ax.set_xlim(-2.4, 15.4); ax.set_ylim(0, 4.5); ax.axis('off')
 
     stages = [
         ('Stage 1\nPreprocessing', 0.6, '#dbeafe', '#1d4ed8'),
@@ -168,14 +169,15 @@ def fig_pipeline():
         ax.annotate('', xy=(x_end, y_mid), xytext=(x_start, y_mid),
                     arrowprops=dict(arrowstyle='->', color='#475569', lw=2.0))
 
-    # input / output labels
-    ax.text(0.05, 2.25, 'Raw\n$\\mathbf{X}\\in\\mathbb{R}^{T\\times N}$',
+    # input / output labels — given generous clearance from the boxes and the
+    # figure edge so neither the text nor the arrowhead is cropped or crowded
+    ax.text(-2.3, 2.25, 'Raw\n$\\mathbf{X}\\in\\mathbb{R}^{T\\times N}$',
             ha='left', va='center', fontsize=10, color='#374151')
-    ax.annotate('', xy=(0.6, 2.25), xytext=(0.0, 2.25),
+    ax.annotate('', xy=(0.6, 2.25), xytext=(-0.9, 2.25),
                 arrowprops=dict(arrowstyle='->', color='#475569', lw=1.8))
-    ax.text(13.3, 2.25, 'DAG\n$\\mathcal{G}^*$',
+    ax.text(13.9, 2.25, 'DAG\n$\\mathcal{G}^*$',
             ha='left', va='center', fontsize=10, color='#374151')
-    ax.annotate('', xy=(13.25, 2.25), xytext=(stages[-1][1]+box_w, 2.25),
+    ax.annotate('', xy=(13.75, 2.25), xytext=(stages[-1][1]+box_w, 2.25),
                 arrowprops=dict(arrowstyle='->', color='#475569', lw=1.8))
 
     # sub-labels below boxes
@@ -232,7 +234,9 @@ def fig_pelt():
                          fontsize=9, color='red')
     axes[1].set_xlabel('Time Step $t$')
     axes[1].set_ylabel('Rolling Variance')
-    axes[1].legend(loc='upper right')
+    # placed away from the upper-right region, which is occupied by the
+    # tau*=2250 changepoint annotation and arrow
+    axes[1].legend(loc='lower right')
 
     plt.tight_layout()
     plt.savefig('manuscripts/figures/6_pelt_segmentation.png')
@@ -320,7 +324,9 @@ def fig_pr_curves():
     ax.set_xlabel('Recall')
     ax.set_ylabel('Precision')
     # ax.set_title('Precision–Recall Curves on Synthetic Nonstationary VAR')
-    ax.legend(loc='upper right')
+    # placed in the lower-left, which stays empty since all curves keep high
+    # precision until recall is fairly large
+    ax.legend(loc='lower left')
     ax.grid(ls='--', alpha=0.5)
     ax.set_xlim(0, 1); ax.set_ylim(0, 1)
     plt.tight_layout()

@@ -119,7 +119,6 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Global ground-truth causal graph $\mathcal  {G}$ (15 nodes, 81 edges) shown as a binary adjacency heatmap. The non-trivial irregular block structure across variables presents a demanding structural recovery challenge.}}{6}{figure.4}\protected@file@percent }
 \newlabel{fig:adjacency}{{4}{6}{Global ground-truth causal graph $\mathcal {G}$ (15 nodes, 81 edges) shown as a binary adjacency heatmap. The non-trivial irregular block structure across variables presents a demanding structural recovery challenge}{figure.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Tier 2 — Real-World Causal Benchmarks (Ground-Truth Available)}{6}{subsubsection.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Tier 3 — Financial Application Datasets}{6}{subsubsection.4.1.3}\protected@file@percent }
 \citation{Spirtes2000}
 \citation{Runge2020}
 \citation{Zheng2018}
@@ -135,6 +134,7 @@
 \newlabel{tab:tier1}{{2}{7}{Tier 1: Synthetic Benchmark Datasets}{table.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Tier 2: Real-World Causal Benchmarks}}{7}{table.3}\protected@file@percent }
 \newlabel{tab:tier2}{{3}{7}{Tier 2: Real-World Causal Benchmarks}{table.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Tier 3 — Financial Application Datasets}{7}{subsubsection.4.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Baselines}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Evaluation Protocol}{7}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Tier 1 Primary Results: VAR-Regime Benchmark}{7}{subsection.4.4}\protected@file@percent }
@@ -147,13 +147,13 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces SHD–F1 trade-off scatter. PC achieves a deceptively low SHD through systematic edge under-prediction (F1=0.214). REIGN balances precision and recall to achieve the highest F1.}}{8}{figure.6}\protected@file@percent }
 \newlabel{fig:scatter}{{6}{8}{SHD–F1 trade-off scatter. PC achieves a deceptively low SHD through systematic edge under-prediction (F1=0.214). REIGN balances precision and recall to achieve the highest F1}{figure.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Precision-Recall Analysis}{8}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf  {C}$.}}{8}{figure.7}\protected@file@percent }
+\newlabel{fig:prcurve}{{7}{8}{Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf {C}$}{figure.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Ablation Study and the Role of LLM Priors}{8}{subsection.4.6}\protected@file@percent }
 \newlabel{sec:ablation_exp}{{4.6}{8}{}{subsection.4.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}}{8}{table.6}\protected@file@percent }
-\newlabel{tab:ablations}{{6}{8}{Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}{table.6}{}}
 \citation{Deasy2023}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf  {C}$.}}{9}{figure.7}\protected@file@percent }
-\newlabel{fig:prcurve}{{7}{9}{Precision-Recall curves on the VAR-Regime dataset. REIGN's curve dominates the upper-right region at all recall levels, confirming superior calibration of the ensemble confidence matrix $\mathbf {C}$}{figure.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}}{9}{table.6}\protected@file@percent }
+\newlabel{tab:ablations}{{6}{9}{Table 6: Ablation Study on VAR-Regime ($^*p < 0.05$ vs. Full REIGN)}{table.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Sensitivity to LLM Prior ($\lambda $)}{9}{subsection.4.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Real-World and Financial Benchmarks}{9}{subsection.4.8}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Table 7: Optimal F1 Scores on Tier 2 and Tier 3 Datasets.}}{9}{table.7}\protected@file@percent }
@@ -162,12 +162,14 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Ablation Study}{9}{subsection.5.1}\protected@file@percent }
 \newlabel{sec:ablation}{{5.1}{9}{}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Error Analysis: Why Baselines Fail}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}PC Algorithm Failure Mode}{9}{subsubsection.5.2.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Group E Ablation Study: Impact of REIGN Architectural Components on VAR-Regime}}{10}{table.8}\protected@file@percent }
 \newlabel{tab:ablation}{{8}{10}{Group E Ablation Study: Impact of REIGN Architectural Components on VAR-Regime}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Asymptotic Computational Complexity Comparison}}{10}{table.9}\protected@file@percent }
+\newlabel{tab:complexity}{{9}{10}{Asymptotic Computational Complexity Comparison}{table.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Training dynamics of the Augmented Lagrangian GNN. (a) Prediction loss $\mathcal  {L}_{MSE}$ converges faster and lower for REIGN (Full) than for REIGN w/ LASSO Bottleneck, confirming that dense initialisation enables better gradient flow. (b) DAG acyclicity constraint $h(\mathbf  {W})$ convergence: the full model reaches the tolerance $\epsilon _{tol}$ (grey dotted line) in fewer outer iterations.}}{10}{figure.8}\protected@file@percent }
 \newlabel{fig:convergence}{{8}{10}{Training dynamics of the Augmented Lagrangian GNN. (a) Prediction loss $\mathcal {L}_{MSE}$ converges faster and lower for REIGN (Full) than for REIGN w/ LASSO Bottleneck, confirming that dense initialisation enables better gradient flow. (b) DAG acyclicity constraint $h(\mathbf {W})$ convergence: the full model reaches the tolerance $\epsilon _{tol}$ (grey dotted line) in fewer outer iterations}{figure.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Error Analysis: Why Baselines Fail}{10}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}PC Algorithm Failure Mode}{10}{subsubsection.5.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}PCMCI+ Failure Mode}{10}{subsubsection.5.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Computational Complexity Analysis}{10}{subsection.5.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}The Role of LLM Priors in Sample-Limited Regimes}{10}{subsection.5.4}\protected@file@percent }
@@ -175,14 +177,12 @@
 \bibcite{runge2019detecting}{{2}{}{{}}{{}}}
 \bibcite{pamfil2020dynotears}{{3}{}{{}}{{}}}
 \bibcite{Cheng2023}{{4}{}{{}}{{}}}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Asymptotic Computational Complexity Comparison}}{11}{table.9}\protected@file@percent }
-\newlabel{tab:complexity}{{9}{11}{Asymptotic Computational Complexity Comparison}{table.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Limitations}{11}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future Directions}{11}{subsection.6.2}\protected@file@percent }
 \bibcite{Zheng2018}{{5}{}{{}}{{}}}
 \bibcite{huang2020causal}{{6}{}{{}}{{}}}
 \bibcite{saggioro2020causal}{{7}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Limitations}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Future Directions}{11}{subsection.6.2}\protected@file@percent }
 \bibcite{Mameche2025}{{8}{}{{}}{{}}}
 \bibcite{Balsells2024}{{9}{}{{}}{{}}}
 \bibcite{Tank2022}{{10}{}{{}}{{}}}
