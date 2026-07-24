@@ -153,9 +153,11 @@ assumption, and no stationarity.
 \item \textbf{Theory of power.} We prove that under any fixed super-additive
 alternative the capital grows exponentially, so the test rejects with probability
 one (Theorem~\ref{thm:consistency}), and we give an explicit high-probability
-bound on the detection time (Proposition~\ref{prop:latency}). This is the
-guarantee a fixed-sample estimator cannot offer and the property a Q1 audience
-rightly demands.
+bound on the detection time (Proposition~\ref{prop:latency}). Validity without
+power is vacuous---a test that never rejects controls Type-I error trivially---so
+the two guarantees must be proved together; the detection-time bound further
+quantifies the price of monitoring, scaling only logarithmically in the level
+$\alpha$.
 
 \item \textbf{Groups and time series.} We extend the score to $k$-way groups by
 contrasting a joint predictor carrying all higher-order interaction terms against
@@ -184,98 +186,194 @@ pairwise; their irreducible higher-order structure is negligible---a quantified
 caution to in-sample synergy-in-finance claims \citep{scagliarini2020}.
 \end{enumerate}
 
-The paper is organised as follows. Section~\ref{sec:related} positions ANTE
-against the three synergy literatures and the betting backbone.
+The paper is organised as follows. Section~\ref{sec:related} surveys, in depth,
+the four literatures ANTE draws together---sufficient-cause interaction,
+joint-effect estimation, information-theoretic decomposition, and game-theoretic
+sequential inference---and states precisely the gap it fills.
 Section~\ref{sec:setup} fixes the model and defines the synergy null on two
-scales. Section~\ref{sec:test} is the theoretical core: score, e-process,
-validity, power, groups, and the isolation guarantee. Section~\ref{sec:algo}
-gives the algorithms. Section~\ref{sec:experiments} reports synthetic validation,
-a head-to-head benchmark against 2024--2026 methods, and the real-data study
-culminating in the evidence-of-absence finding. Sections~\ref{sec:discussion}
-and~\ref{sec:conclusion} discuss and conclude; proofs are collected in the
-appendix.
+scales. Section~\ref{sec:test} is the theoretical core: the interaction score,
+the betting e-process, validity, power, the $k$-way extension, the isolation
+guarantee, and the algorithms that realise them. Section~\ref{sec:experiments}
+reports synthetic validation, a head-to-head benchmark against 2024--2026
+methods, and the real-data study culminating in the evidence-of-absence finding.
+Section~\ref{sec:discussion} discusses implications, limitations, and future work,
+and concludes; proofs are collected in the appendix.
 
 %%==========================================================%%
 \section{Related work and positioning}\label{sec:related}
 
-We survey the three traditions that formalise group causality and the sequential
-machinery we bring to bear, then state precisely the gap ANTE fills.
+Group causality---the notion that a set of causes acts on an effect jointly,
+beyond the sum of its members---has been studied, largely independently, in four
+research traditions. Three formalise \emph{what synergy is} (epidemiological
+sufficient-cause interaction, statistical joint-effect estimation, and
+information-theoretic decomposition); the fourth supplies the inferential
+machinery we import (game-theoretic sequential testing). We review each in turn,
+emphasising what each offers and the single feature none of the first three
+provides---a valid sequential test---before stating the gap precisely
+in~\S\ref{subsec:gap}.
 
 \subsection{Sufficient-cause and additive-scale interaction}\label{subsec:suff}
 
-Rothman's causal-pie model \citep{rothman1976} is the oldest formalisation of
-``$A$ and $B$ together cause $C$''. For two binary causes with cell means
-$\mu_{ab}=\E[C\mid \mathrm{do}(A{=}a,B{=}b)]$, synergy on the additive
-(risk-difference) scale is the interaction contrast
-$\theta=\mu_{11}-\mu_{10}-\mu_{01}+\mu_{00}$, whose sampling theory is the RERI
-literature \citep{hosmer1992,vanderweele2014}. \citet{vanderweele2012} give the
-definitive counterfactual theory of sufficient-cause interaction for arbitrarily
-many dichotomous exposures; \citet{latorre2026} extend Rothman's two-factor
-synergy index to many factors. These are exactly the batch nulls ANTE
-generalises---but every one is a point estimate and confidence interval at fixed
-$n$, and the authors themselves note instability of multi-way interaction at
-small $n$, precisely the regime where a sequential test that spends evidence
-adaptively helps most.
+The oldest and most developed formalisation of ``$A$ and $B$ together cause $C$''
+comes from epidemiology. Rothman's \emph{sufficient-component-cause} (``causal
+pie'') model \citep{rothman1976} defines synergy as two factors being component
+causes of a common sufficient cause, so that their joint presence produces an
+effect exceeding the sum of their separate contributions. For two binary causes
+with counterfactual cell means $\mu_{ab}=\E[C(a,b)]$, this is captured on the
+additive (risk-difference) scale by the interaction contrast
+$\theta=\mu_{11}-\mu_{10}-\mu_{01}+\mu_{00}$; the corresponding estimand and its
+sampling theory---the \emph{relative excess risk due to interaction} (RERI)---were
+placed on a firm inferential footing by \citet{hosmer1992} and systematised in the
+widely used tutorial of \citet{vanderweele2014}. The definitive modern treatment
+is the counterfactual axiomatisation of \citet{vanderweele2012}, which gives
+empirical and counterfactual conditions for both sufficient-cause interaction and
+the stronger \emph{singular} interaction among an arbitrary number of dichotomous
+exposures; this is the batch null our sequential test most directly generalises.
 
-\subsection{Joint effects and causal aggregation}\label{subsec:joint}
+On the estimation side, mechanistic (as opposed to merely statistical)
+interaction has its own measures: the peril-ratio index of synergy PRISM of
+\citet{lee2013}, and its extension to gene--gene interaction under independence
+and Hardy--Weinberg assumptions \citep{lin2018}, which supply case-control tests
+for sufficient-cause interaction in the non-rare-disease regime. Most recently,
+\citet{latorre2026} generalise Rothman's two-factor synergy index~$S$ to an
+arbitrary number of dichotomous factors, reflecting active current interest in
+\emph{multi-way} synergy. The common thread---and the common limitation---is that
+every method in this tradition is \textbf{fixed-sample}: a point estimate and
+confidence interval computed at a pre-specified $n$. The primary sources
+themselves observe that multi-way interaction estimates become unstable at small
+$n$; this is precisely the regime in which a sequential procedure that spends
+evidence adaptively, and stops as soon as it is decisive, would help most.
 
-A second tradition estimates the effect of a joint intervention rather than
-testing for interaction. \citet{roquero2023} fuse experiments that each
-manipulate a few variables to recover joint-intervention effects; \citet{wu2025}
-identify the joint distribution of potential outcomes from multiple experiments.
-These target the joint \emph{effect}, again one-shot, with no time-uniform
-coverage---even though the single-treatment anytime-valid literature is mature
-\citep{waudbysmith2024ope}.
+\subsection{Joint effects, causal aggregation, and multi-cause identification}\label{subsec:joint}
 
-\subsection{Information-theoretic synergy}\label{subsec:info}
+A second, more recent, statistical tradition asks not \emph{whether} causes
+interact but \emph{what the effect of intervening on several at once is}.
+\citet{roquero2023} develop \emph{causal aggregation}: estimation and inference for
+the effect of a joint intervention $\mathrm{do}(\{A,B,\dots\})$ by constraint-based
+fusion of experiments that each manipulate only a few variables---directly a
+``sum-of-parts versus joint'' question, but posed as effect estimation rather than
+a synergy test. \citet{wu2025} pursue nonparametric identification of the
+\emph{joint distribution} of potential outcomes from multiple experiments, the
+closest existing analogue of a ``probability of joint causation''; and deep
+structural-equation approaches such as the causal-graph normalising-flow models of
+\citet{balgi2024} estimate interventional and counterfactual distributions from
+which joint effects could in principle be read off. These methods are powerful and
+general, but they share the fixed-design, one-shot character of
+\S\ref{subsec:suff}: none provides a sequentially valid procedure with
+time-uniform coverage for a joint effect, even though---as \S\ref{subsec:betting}
+notes---the corresponding \emph{single}-treatment anytime-valid theory is by now
+well developed \citep{waudbysmith2024ope}.
 
-PID \citep{williams2010} decomposes the information two sources carry about a
-target into redundant, unique and synergistic atoms. SURD \citep{surd2024}
-recasts this for causal, dynamical systems, robust to nonlinearity and
-colliders; PEID \citep{peid2026} gives an interventional analogue whose
-maximum-entropy-intervention identity makes source-side redundancy vanish, so
-synergy reads off as $EI(A,B\!\to\!C)-\sum_i EI(T^{(i)}\!\to\!C)$, and whose
-\emph{hierarchical additivity} supplies the increment structure our
-subset-refinement search exploits. A cautionary result---the PID lattice becomes
-inconsistent for four or more variables \citep{lyu2026}---motivates a
-\emph{test}-based rather than lattice-based treatment. Critically, all three are
-\emph{estimators}: they return a synergy value with no null distribution,
-$p$-value, or stopping rule.
+\subsection{Information-theoretic synergy and higher-order interactions}\label{subsec:info}
+
+The third tradition measures synergy as an \emph{information} quantity. Interaction
+information (equivalently co-information; \citealp{mcgill1954}) was the first
+attempt to isolate the information three or more variables share beyond their
+pairwise relations, but it can be negative and conflates synergy with redundancy.
+\emph{Partial Information Decomposition} (PID; \citealp{williams2010}) resolved
+this by decomposing the total information two sources carry about a target into
+non-negative redundant, unique, and \emph{synergistic} atoms---the canonical
+modern definition of information-theoretic synergy. Because the PID lattice grows
+combinatorially and, as \citet{lyu2026} show, becomes internally inconsistent for
+four or more variables, subsequent work has sought tractable, well-behaved
+surrogates. The O-information of \citet{rosas2019} gives a single scalar that
+sign-indicates whether a system is net-synergistic or net-redundant and scales to
+many variables; it is a natural higher-order baseline. For \emph{dynamical, causal}
+systems, two 2024--2026 methods are the direct state of the art. SURD
+\citep{surd2024} decomposes transfer-entropy-style causality into synergistic,
+unique, and redundant components, robust to nonlinearity, colliders, and exogenous
+influence, and validated on canonical fluid-dynamics benchmarks. PEID
+\citep{peid2026} provides an \emph{interventional} analogue of PID: under an
+independent maximum-entropy intervention that renders the sources independent,
+source-side redundancy vanishes and synergy is read off directly as
+$EI(A,B\!\to\!C)-\sum_i EI(T^{(i)}\!\to\!C)$; its \emph{hierarchical additivity}
+property---synergy accumulates additively across partition refinements---is exactly
+the increment structure our subset-refinement e-process exploits
+(\S\ref{subsec:kway}). These are the strongest existing synergy quantifiers and we
+benchmark against them directly (\S\ref{subsec:exp-benchmark}). Yet all of them are
+\emph{estimators}, not tests: each returns a point synergy value with no null
+distribution, $p$-value, calibrated error rate, or stopping rule, so there is no
+principled way to declare ``the evidence for synergy is now sufficient''---still
+less to do so under continuous monitoring.
+
+\subsection{Synergy and causality in time series and finance}\label{subsec:tsfin}
+
+Because our flagship application is financial, we separately review the
+time-series thread. Directed predictability is classically formalised by Granger
+causality \citep{granger1969} and its multivariate/conditional extension
+\citep{geweke1982}, and, in the information-theoretic idiom, by transfer entropy
+\citep{schreiber2000}; the two coincide for Gaussian variables \citep{barnett2009},
+which is what lets us read our predictive synergy contrast as an interaction of
+conditional transfer entropies. Crucially, \citet{stramaglia2014} show that
+pairwise Granger analysis \emph{misses} synergy and that conditioning is required
+to reveal it---direct motivation for a genuinely joint test. In finance
+specifically, \citet{scagliarini2020} compute PID synergy over triplets of global
+market indices and report synergistic information transfer, while the
+econometric-standard connectedness framework of \citet{diebold2014} measures
+system-wide spillovers through variance decompositions. These works establish that
+synergy has been \emph{measured} in markets, but always in-sample, at fixed sample
+size, and without an out-of-sample or error-controlled test---exactly the claims
+our evidence-of-absence analysis (\S\ref{subsec:exp-eoa}) revisits under a
+stricter criterion.
 
 \subsection{Testing by betting and anytime-valid inference}\label{subsec:betting}
 
-Our backbone is game-theoretic statistics \citep{ramdas2023}: Ville's inequality
-\citep{ville1939}, the betting reframing of testing \citep{shafer2021}, safe
-testing \citep{grunwald2024}, the hedged-capital / GRAPA betting strategies of
-\citet{waudbysmith2024}, and e-value multiplicity control
-\citep{vovk2021,wang2022}. The closest causal application is anytime-valid
-off-policy and ATE inference \citep{waudbysmith2024ope}; like all prior work it
-targets a \emph{single} effect, not an interaction.
+The inferential machinery we import is game-theoretic statistics
+\citep{ramdas2023}. Its foundation is Ville's inequality for nonnegative
+(super)martingales \citep{ville1939}; its modern reframing is testing by betting
+\citep{shafer2021} and safe testing \citep{grunwald2024}, in which a sceptic wagers
+against the null and large accumulated capital is evidence against it. The
+practical construction we build on is the hedged-capital / GRAPA betting strategy
+for bounded means of \citet{waudbysmith2024}, complemented by time-uniform
+confidence sequences \citep{howard2021} and the universal-inference likelihood
+ratio of \citet{wasserman2020}. Continuous-monitoring validity is what
+distinguishes these from classical tests, whose guarantees collapse under repeated
+looking---a failure quantified in the industrial A/B-testing setting by
+\citet{johari2022}. When many hypotheses are monitored at once, e-values (unlike
+$p$-values) can be merged by averaging under arbitrary dependence and by
+multiplication under independence \citep{vovk2021}, and support false-discovery-rate
+control via e-BH \citep{wang2022}---the tools we use for family-wise/FDR control in
+the group scan. The closest causal application of this machinery is anytime-valid
+off-policy and average-treatment-effect inference \citep{waudbysmith2024ope}; like
+all prior work in this line it targets a \emph{single} effect, never an interaction
+or synergy contrast.
 
-\subsection{The gap, in one table}\label{subsec:gap}
+\subsection{The gap, and our position}\label{subsec:gap}
 
 \begin{table}[h]
-\caption{The two literatures do not intersect. No prior method is both a synergy
-test and anytime-valid.}\label{tab:gap}
+\caption{The synergy literatures and the anytime-valid literature do not
+intersect. Every prior method either quantifies synergy but is fixed-sample, or is
+anytime-valid but targets only single effects. ANTE occupies the empty
+cell.}\label{tab:gap}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{6.6cm}p{2.7cm}p{2.7cm}}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{7.0cm}p{2.5cm}p{2.5cm}}
 \toprule
 Literature & Handles synergy? & Anytime-valid / sequential? \\
 \midrule
 Sufficient-cause / RERI / synergy index (\S\ref{subsec:suff}) & yes & no (fixed $n$) \\
-Joint effects / causal aggregation (\S\ref{subsec:joint}) & yes (joint effect) & no (one-shot) \\
-PID / SURD / PEID (\S\ref{subsec:info}) & yes (info scale) & no (point estimate) \\
+Joint effects / causal aggregation / joint PO (\S\ref{subsec:joint}) & yes (joint effect) & no (one-shot) \\
+PID / SURD / PEID / O-information (\S\ref{subsec:info}) & yes (info scale) & no (point estimate) \\
+Time-series / finance synergy (\S\ref{subsec:tsfin}) & yes (in-sample) & no (batch) \\
 Betting / e-processes / anytime-valid ATE (\S\ref{subsec:betting}) & no (single effects) & yes \\
 \textbf{ANTE (this paper)} & \textbf{yes} & \textbf{yes} \\
 \botrule
 \end{tabular*}
 \end{table}
 
-A focused prior-art search (terms: \emph{anytime-valid interaction test},
-\emph{e-process causal interaction}, \emph{sequential test synergy},
-\emph{confidence sequence interaction effect}) found no sequential, anytime-valid
-test whose null is ``the joint causal effect of a set of causes equals the sum of
-its parts.'' ANTE is, to our knowledge, the first.
+The pattern in Table~\ref{tab:gap} is stark: the literatures that formalise
+synergy (\S\S\ref{subsec:suff}--\ref{subsec:tsfin}) are uniformly fixed-sample,
+while the sequential/anytime-valid literature (\S\ref{subsec:betting}) has been
+developed only for single effects. A focused prior-art search (terms:
+\emph{anytime-valid interaction test}, \emph{e-process causal interaction},
+\emph{sequential test synergy}, \emph{confidence sequence interaction effect},
+\emph{test martingale synergistic}) returned no sequential, anytime-valid test
+whose null is ``the joint causal effect of a set of causes equals the sum of its
+parts.'' Related betting tests exist for other structured nulls---stochastic
+dominance, independence, off-policy means---but not for an additive or
+multiplicative interaction contrast. ANTE is, to our knowledge, the first test to
+place synergy detection on an anytime-valid footing, and it does so on both the
+additive causal-pie scale and the information-theoretic scale, reducing them to a
+single testable null.
 
 %%==========================================================%%
 \section{Problem setup and the synergy null}\label{sec:setup}
@@ -583,8 +681,7 @@ This is the discrimination guarantee ANTE offers that no competitor does, and
 \S\ref{subsec:exp-benchmark} shows the practical consequence: ANTE returns $\approx0$
 on $Y=A+B$ and on $Y=A^2$ while PID/SURD/PEID report spurious positive synergy.
 
-%%==========================================================%%
-\section{Algorithms}\label{sec:algo}
+\subsection{Algorithms}\label{subsec:algo}
 
 Algorithm~\ref{algo:ante} is the interventional test; Algorithm~\ref{algo:antesg}
 the time-series (Granger) instantiation with forgetting recursive-least-squares
@@ -635,14 +732,28 @@ the four predictors by the additive and all-interaction pair.
 %%==========================================================%%
 \section{Experiments}\label{sec:experiments}
 
-We validate ANTE in four stages: (i) anytime-valid error control and power on
-controlled DGPs; (ii) a head-to-head benchmark against 2024--2026 synergy
-methods; (iii) real financial data, where ANTE recovers a genuine
-contemporaneous synergy; and (iv) the headline study, where---used as a
-demonstrably powered instrument---ANTE establishes the \emph{absence} of
-super-additive group causality in daily markets while detecting it in turbulence.
-Table~\ref{tab:datasets} lists the datasets; all code and data are released
-(\S\ref{sec:decl}).
+Our experimental programme is designed to answer four questions in sequence, each
+building on the last. \emph{Does the theory hold?} We verify anytime-valid error
+control and the power/latency predictions on controlled data-generating processes
+(DGPs) with known ground truth (\S\ref{subsec:exp-validity}). \emph{Is ANTE
+competitive?} We benchmark it head-to-head against the strongest 2024--2026 synergy
+methods (\S\ref{subsec:exp-benchmark}). \emph{Does it work on real data?} We show
+it recovers a genuine, economically interpretable synergy in real markets
+(\S\ref{subsec:exp-pv}). \emph{What does it tell us about the world?} Used as a
+demonstrably powered instrument, ANTE establishes the \emph{absence} of
+super-additive group causality in daily markets while detecting it in physics
+(\S\ref{subsec:exp-eoa}).
+
+Throughout, we fix the level $\alpha=0.05$ and the rejection rule ``stop the first
+time $E_t\ge 1/\alpha=20$''. For the time-series instantiation (Algorithm~\ref{algo:antesg})
+we use lag order $p=1$ unless stated, a forgetting factor $\rho$ giving an
+effective window of a few hundred steps, betting cap $\gamma=0.5$, score clip
+$b=5$, and a warm-up of $t_0=50$; the marginal predictors receive each source's
+linear and squared lags and the joint predictor additionally receives the
+cross-products, as required by Proposition~\ref{prop:isolation}. All reported
+rates are over independent replications ($n_{\mathrm{rep}}$ stated per experiment).
+Table~\ref{tab:datasets} lists the datasets; all code, data, and figure-generating
+scripts are released (\S\ref{sec:decl}) so that every number below is reproducible.
 
 \begin{table}[h]
 \caption{Datasets. Synthetic DGPs provide ground truth; real panels are used for
@@ -666,13 +777,22 @@ Turbulence energy cascade & 4 scale-resolved signals & 21{,}760 samples & \textb
 
 \subsection{Anytime-validity, discrimination, and power}\label{subsec:exp-validity}
 
-\paragraph{Type-I error under continuous monitoring.} On $2000$ null streams of
-length $4000$ at $\alpha=0.05$, ANTE's monitored false-positive rate is
-$\mathbf{0.031}$, uniformly below $\alpha$ across the whole horizon, whereas a
-fixed-$n$ Wald test evaluated continuously (the natural ``peek every day''
-procedure of Remark~\ref{rem:peeking}) inflates to $\mathbf{0.505}$---a tenfold
-violation (Fig.~\ref{fig:type1}). This is the empirical face of
-Corollary~\ref{cor:anytime}.
+\paragraph{Type-I error under continuous monitoring.} The central claim of
+Corollary~\ref{cor:anytime} is that ANTE may be monitored after every observation
+without inflating its error rate. We test this directly. On $2000$ independent null
+streams of length $4000$ (a balanced $2\times2$ interventional design with
+$\theta=0$), we record, at every step $t$, whether the running e-process has ever
+crossed $1/\alpha$. ANTE's monitored false-positive rate is $\mathbf{0.031}$ and
+stays uniformly below the nominal $\alpha=0.05$ across the \emph{entire} horizon,
+consistent with the slight conservativeness Ville's inequality induces. The
+comparison procedure is the one a practitioner is most likely to use by default: a
+fixed-$n$ Wald $z$-test for $\theta=0$, recomputed and re-consulted after each new
+observation (Remark~\ref{rem:peeking}). Its cumulative false-positive rate climbs
+monotonically with the number of looks---past $0.17$ by $t=50$, past $0.40$ by
+$t=600$, and reaching $\mathbf{0.505}$ by the end of the stream, a tenfold
+violation of the nominal level (Fig.~\ref{fig:type1}). This is the empirical face
+of the theory: optional-stopping validity is not a technicality but the difference
+between a $5\%$ and a $50\%$ error rate.
 
 \begin{figure}[h]
 \centering
@@ -684,17 +804,35 @@ inflates past $0.5$. Validity holds at every stopping time, not merely at a
 pre-committed horizon}\label{fig:type1}
 \end{figure}
 
-\paragraph{Discrimination.} On the common-factor VAR (Table~\ref{tab:datasets}),
-ANTE-SG rejects the additive DGP $Y=A+B$ at rate $0.00$ and the single-source
-nonlinear DGP $Y=A^2$ at $0.01$, but fires on genuine cross-interaction
-$Y=A\cdot B$ at $0.71$---the practical content of
-Proposition~\ref{prop:isolation}.
+\paragraph{Discrimination: interaction versus joint dependence.} Validity is
+worthless if the test cannot tell real synergy from its two impostors. We generate
+three common-factor VAR DGPs ($T\approx2500$, $n_{\mathrm{rep}}=300$), each with a
+shared market factor so that both sources are individually predictive of the
+target: (a) \emph{additive}, $Y_t$ depends on lagged $A$ and lagged $B$
+separately; (b) \emph{own-nonlinear}, $Y_t$ depends on $A_{t-1}^2$---a curved but
+single-source mechanism; and (c) \emph{synergistic}, $Y_t$ depends on the
+cross-product $A_{t-1}B_{t-1}$. ANTE-SG rejects the additive DGP at rate
+$\mathbf{0.00}$ and the own-nonlinear DGP at $\mathbf{0.01}$---both at or below
+$\alpha$---while firing on genuine cross-interaction at $\mathbf{0.71}$. This is
+the practical content of Proposition~\ref{prop:isolation}: the additive and
+single-source curved mechanisms are absorbed by the marginal predictors and are
+not mistaken for synergy, and only irreducible $A\times B$ structure moves the
+capital. As \S\ref{subsec:exp-benchmark} shows, the information-theoretic
+estimators fail exactly this test, reporting spurious positive synergy on the
+additive DGP.
 
-\paragraph{Power and latency.} Power rises monotonically with synergy strength
-($0\to0.20\to0.47\to0.68\to0.74\to0.79$ as the interaction coefficient grows),
-and median detection latency \emph{falls} as synergy strengthens
-(Fig.~\ref{fig:power}), exactly the $\delta^{-2}$ behaviour predicted by
-Proposition~\ref{prop:latency}.
+\paragraph{Power and latency.} We then sweep the interaction coefficient from $0$
+to $0.9$ ($n_{\mathrm{rep}}=250$, $T=2500$) and record both the rejection rate and,
+among rejections, the median detection time. Power rises monotonically with synergy
+strength ($0\to0.20\to0.47\to0.68\to0.74\to0.79$), and---the sequential signature
+that no fixed-sample test exhibits---median detection latency \emph{falls} as the
+signal grows: strong synergy is not merely detected more often but detected
+\emph{sooner} (Fig.~\ref{fig:power}). This is exactly the
+$\tau_\alpha\lesssim\log(1/\alpha)/\delta^2$ behaviour of
+Proposition~\ref{prop:latency}: the stronger the effect $\delta$, the fewer
+observations the sceptic needs to bankrupt the null. The plateau near
+$0.8$ at the largest coefficients reflects the finite horizon $T=2500$ combined
+with the conservative warm-up, not a ceiling of the method.
 
 \begin{figure}[h]
 \centering
@@ -707,11 +845,27 @@ Proposition~\ref{prop:latency}}\label{fig:power}
 
 \subsection{Benchmark against 2024--2026 methods}\label{subsec:exp-benchmark}
 
-We compare ANTE with SURD \citep{surd2024}, PEID \citep{peid2026}, Williams--Beer
-PID \citep{williams2010}, Gaussian interaction information, and O-information.
-Baselines were validated against their own papers (PEID: XOR $=1.00$, AND $=0.19$
-versus the paper's $0.189$; SURD via the authors' released code). Results are
-summarised in Fig.~\ref{fig:bench} and Table~\ref{tab:bench}.
+A method's value is relative, so we compare ANTE directly against the strongest
+available synergy quantifiers: SURD \citep{surd2024} and PEID \citep{peid2026}, the
+2024--2026 state of the art; Williams--Beer PID \citep{williams2010}; Gaussian
+interaction information \citep{mcgill1954}; and O-information \citep{rosas2019}. To
+guard against implementation error, each baseline was first validated against its
+own source. On the canonical logic gates our PEID implementation returns
+$\mathrm{Syn}=1.00$ for XOR (pure synergy) and $0.19$ for AND, matching the paper's
+reported $0.189$; PID and SURD agree on XOR ($1.00$) and give $0.50$ on AND; and
+all methods return $\approx0$ on a redundant copy and on independent noise. SURD
+itself was run through the authors' released code. This calibration lets us
+attribute any downstream difference to the methods, not to our re-implementations.
+
+We evaluate along the axes that matter for the task, not a single number. First,
+\emph{detection}: on $100$ replications of the synergistic-versus-non-synergistic
+VAR ($T=3000$) we measure the area under the ROC curve (AUC) for separating
+synergistic DGPs from additive and own-nonlinear ones. Second,
+\emph{error control under monitoring}: the false-positive rate when each method is
+consulted at $15$ evenly spaced looks along a null stream. Third, \emph{interaction
+isolation}: the value each method reports on the additive impostor $Y=A+B$, where
+the correct answer is zero. Results are summarised in Fig.~\ref{fig:bench} and
+Table~\ref{tab:bench}.
 
 \begin{table}[h]
 \caption{Benchmark. ANTE matches the best batch estimators on detection while
@@ -742,25 +896,47 @@ peeking batch tests inflate to $0.14$. ANTE trades a little fixed-$N$ power for
 anytime-validity and interaction isolation}\label{fig:bench}
 \end{figure}
 
-The verdict is complementarity, not blanket superiority. SURD/PEID are marginally
-better point estimators at a pre-committed sample size; ANTE is the only method
-that (a) monitors continuously with valid error control, (b) operates on
-\emph{groups} sequentially, and (c) isolates genuine interaction from joint
-dependence---returning $\approx0$ on $Y=A+B$ where the decompositions report
-spurious synergy.
+Three conclusions follow. On raw \emph{detection} ANTE is competitive but not
+dominant: its AUC of $0.98$ trails the batch estimators' $1.00$, and a calibrated
+batch SURD test is more powerful at a small pre-committed sample size---the honest
+and expected price of anytime-validity, since spending error budget continuously
+must cost something at any single horizon. On \emph{error control under
+monitoring}, however, the ranking reverses decisively: ANTE holds its level at
+$0.016$ while the batch methods, consulted repeatedly, inflate to $0.14$. And on
+\emph{interaction isolation}, ANTE alone returns $\approx0$ on the additive DGP
+$Y=A+B$, whereas PID, SURD, and PEID all report a positive ``synergy'' there,
+because they measure whether \emph{both} sources are needed rather than whether the
+sources \emph{interact}---a distinction Proposition~\ref{prop:isolation} makes
+precise and this experiment makes visible. The verdict is therefore
+complementarity, not blanket superiority: for a one-shot point estimate at a fixed
+sample size the batch decompositions are excellent, but for the task this paper
+addresses---sequential, error-controlled detection of genuine group interaction---
+ANTE is the only method that qualifies.
 
 \subsection{Real finance: a genuine contemporaneous synergy}\label{subsec:exp-pv}
 
-Before the negative result we confirm ANTE fires on a real positive. On the
-16-asset daily panel, the contemporaneous variant applied to \emph{portfolio
-realised variance} recovers the covariance/diversification synergy: of $14$
-curated cross-asset pairs, $8$ are family-wise significant---all economically
-distinct cross-asset-class pairs (tech$\times$gold $\log_{10}E=10.6$,
-bonds$\times$dollar $8.4$, equity$\times$gold $7.4$, gold$\times$oil $7.3$,
-\dots)---while redundant within-equity pairs are correctly not flagged
-(Fig.~\ref{fig:pv}). Real synergy, detected anytime-valid, with sensible
-discrimination. Crucially, the \emph{lagged} (Granger-directional) counterpart of
-every one of these pairs is not significant, foreshadowing the next result.
+A negative result is only credible if the same instrument produces positives where
+they should appear, so before turning to the headline finding we confirm ANTE
+fires on a genuine real-market synergy. Portfolio theory supplies a clean one: the
+realised variance of a two-asset portfolio is
+$w_A^2\sigma_A^2+w_B^2\sigma_B^2+2w_Aw_B\sigma_{AB}$, whose covariance term
+$2w_Aw_B\sigma_{AB}$ is exactly a super-additive interaction---the joint variance
+is not the sum of the parts whenever the assets co-move. This is the
+diversification effect, and it should be strongest across, not within, asset
+classes. On the 16-asset daily panel we run the \emph{contemporaneous} variant of
+ANTE on the realised-variance target for $14$ curated pairs, with the family-wise
+e-value threshold of \S\ref{subsec:kway}. Eight pairs are family-wise significant,
+and every one is an economically distinct cross-asset-class pair---tech$\times$gold
+($\log_{10}E=10.6$), bonds$\times$dollar ($8.4$), equity$\times$gold ($7.4$),
+gold$\times$oil ($7.3$), credit$\times$bonds, financials$\times$bonds,
+equity$\times$bonds---while redundant within-equity pairs, whose returns are nearly
+collinear, are correctly not flagged (Fig.~\ref{fig:pv}). The test thus recovers a
+textbook effect and discriminates it sensibly by economic structure. One detail
+foreshadows the headline result: the \emph{lagged} (Granger-directional)
+counterpart of every one of these pairs is \emph{not} significant. The synergy in
+markets is contemporaneous and mechanical (co-movement of variances); there is no
+super-additive \emph{predictive} structure running from a pair's past to a target's
+future.
 
 \begin{figure}[h]
 \centering
@@ -779,13 +955,20 @@ demonstrably powered where synergy is real, and financial evidence that positive
 favours the no-synergy hypothesis rather than merely failing to reject it. ANTE
 supplies both.
 
-\paragraph{The instrument is powered---including in physics.} On the SURD
-turbulence energy-cascade data, the three coarser scales jointly cascade into the
-finest scale: ANTE detects the 3-way group synergy at $t^\star=734$ with
-$\log_{10}E=\mathbf{4.0}$ (Fig.~\ref{fig:multi}), agreeing with SURD's own
-decomposition. On synthetic ground truth (including a pure 3-way $Y=A\cdot B\cdot
-C$) power is $74$--$100\%$. A negative result in finance therefore cannot be blamed
-on a blunt instrument.
+\paragraph{The instrument is powered---including in physics.} The first leg is that
+ANTE detects group synergy wherever it genuinely exists, on data outside our own
+simulations. The turbulent energy cascade is a canonical physical example of
+genuine multi-scale synergy: energy injected at large scales flows to the smallest
+dissipative scales through the joint action of intermediate scales. On the SURD
+turbulence dataset (four scale-resolved energy signals, $\sim$21{,}760 samples), we
+run the $k$-way test of Proposition~\ref{prop:kway} with the three coarser scales
+as the group and the finest scale as the target. ANTE detects the 3-way group
+synergy decisively, crossing $1/\alpha$ at $t^\star=734$ and reaching
+$\log_{10}E=\mathbf{4.0}$ (Fig.~\ref{fig:multi})---in agreement with SURD's own
+decomposition of the same data. On synthetic ground truth, including a
+\emph{pure} 3-way mechanism $Y=A\cdot B\cdot C$ with no lower-order structure,
+power is $74$--$100\%$. A null result in finance therefore cannot be attributed to
+a blunt instrument: the same test, unchanged, lights up on real physical synergy.
 
 \begin{figure}[h]
 \centering
@@ -797,12 +980,23 @@ establishing genuine group causality. In finance, systemic-risk groups
 loses money}\label{fig:multi}
 \end{figure}
 
-\paragraph{Finance matches a true null.} Across $1320$ real financial group
-triples (a pair acting on a \emph{distinct} third asset; volatility and
-tail-stress; market-conditioned), the median evidence is
-$\log_{10}E=\mathbf{-0.93}$: the median e-value is $\approx0.12<1$, so a bettor
-wagering on group synergy \emph{systematically loses money}. Compared against
-calibrated references on identical sample sizes:
+\paragraph{Finance matches a true null.} The second leg is that the financial
+evidence does not merely fail to reach significance---it \emph{positively favours}
+the no-synergy hypothesis. Across $1320$ real financial group triples (a candidate
+pair acting on a \emph{distinct} third asset, so that we test genuine group
+causality rather than a pair's internal dependence; on volatility and tail-stress
+targets; conditioned on the market factor), the median accumulated evidence is
+$\log_{10}E=\mathbf{-0.93}$. Because $E_t$ is the sceptic's capital, a value below
+one means the bet on synergy \emph{lost} money: the median e-value of $\approx0.12$
+says a wager on group synergy would, on the typical financial triple, be reduced to
+an eighth of its stake. This is the operational meaning of evidence \emph{for} the
+null. To calibrate it we simulate two references at the identical sample sizes and
+conditioning---a true-null DGP (additive, common-factor, no interaction) and a
+synergy-present DGP---and compare the three distributions
+(Table~\ref{tab:eoa}). The financial distribution sits essentially on top of the
+true-null (median $\log_{10}E\approx-0.93$ versus $0.00$; detection rate $0.00$
+versus the nominal $\approx0.007$) and nowhere near the synergy-present
+distribution (median $+2.79$, detection rate $0.74$).
 
 \begin{table}[h]
 \caption{Evidence of absence. The financial evidence distribution sits on top of
@@ -818,15 +1012,23 @@ Detection rate & $\mathbf{0.00}$ & $0.007$ & $0.74$ \\
 \end{tabular*}
 \end{table}
 
-\paragraph{The absence is broad and robust.} Group causality---a group jointly
-driving a distinct target beyond the sum of parts---was searched for, and found
-absent, in every regime tried: returns, volatility, and tail/stress; daily and
-hourly; equities, sector ETFs, macro assets, and crypto; pairs and $3$-/$4$-way
-groups; and constructed systemic-risk targets. Across more than $3700$ triples,
-there were \emph{zero} family-wise detections (Fig.~\ref{fig:eoa}). Markets are
-dominated by a common factor and pairwise links; once those are accounted for,
-essentially no irreducible higher-order structure remains that survives an
-out-of-sample, anytime-valid criterion.
+\paragraph{The absence is broad and robust.} A single scan could be an artefact of
+one target, frequency, or asset universe, so we searched exhaustively. Group
+causality---a group jointly driving a \emph{distinct} target beyond the sum of
+parts---was looked for, and found absent, in every regime we could construct:
+returns, realised volatility, and tail/stress targets; daily and hourly sampling;
+US sector ETFs, macro and commodity assets, world equity indices, and intraday
+crypto; pairs and $3$- and $4$-way groups; and purpose-built systemic-risk targets
+(banks$+$credit$+$rates, financials$+$tech$+$energy, credit$+$rates$+$dollar). The
+totals include a $660$-triple daily volatility scan, a $660$-triple tail-contagion
+scan, a $495$-triple intraday volatility scan and its tail counterpart, and the
+$1320$-triple calibrated study above. Across more than $3700$ triples in all, there
+were \emph{zero} family-wise detections (Fig.~\ref{fig:eoa}); even the single most
+extreme daily-volatility triple fell short of the family-wise threshold. The
+interpretation is structural: daily markets are dominated by a common factor and
+pairwise co-movement, and once those are accounted for, essentially no irreducible
+higher-order structure remains that survives an out-of-sample, anytime-valid
+criterion.
 
 \begin{figure}[h]
 \centering
@@ -845,7 +1047,7 @@ hold. Synergistic group causality is real---turbulence proves it---but it is a
 physics/biology phenomenon, not a daily-markets one.
 
 %%==========================================================%%
-\section{Discussion}\label{sec:discussion}
+\section{Discussion and conclusions}\label{sec:discussion}
 
 ANTE reframes synergy detection from estimation to \emph{testing}, and from
 fixed-sample to \emph{anytime-valid}. The methodological payoff is a guarantee no
@@ -882,10 +1084,7 @@ betting scaffold; the doubly-robust and graph/GNN instantiations sketched in
 permutation-recentred PEID increment is bet on to give the first \emph{sequential}
 synergy monitor on the information scale.
 
-%%==========================================================%%
-\section{Conclusion}\label{sec:conclusion}
-
-We introduced ANTE, the first anytime-valid, nonparametric, sequential test of
+\paragraph{Conclusion.} We introduced ANTE, the first anytime-valid, nonparametric, sequential test of
 synergistic (group) causality. Built on testing-by-betting, it controls Type-I
 error uniformly over all stopping times (Theorem~\ref{thm:validity},
 Corollary~\ref{cor:anytime}), rejects with probability one under any persistent

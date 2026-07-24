@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{25}
+\begin{thebibliography}{36}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -60,6 +60,20 @@
 \endbibitem
 
 %%% 2
+\bibitem[\protect\citeauthoryear{Balgi et~al.}{2024}]{balgi2024}
+\begin{botherref}
+\oauthor{\bsnm{Balgi}, \binits{S.}},
+\oauthor{\bsnm{Daoud}, \binits{A.}},
+\oauthor{\bsnm{Pe{\~n}a}, \binits{J.M.}},
+\oauthor{\bsnm{Wodtke}, \binits{G.T.}},
+\oauthor{\bsnm{Zhou}, \binits{J.}}:
+Deep learning with dags.
+arXiv preprint arXiv:2401.06864
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 3
 \bibitem[\protect\citeauthoryear{Dawid}{1984}]{dawid1984}
 \begin{barticle}
 \bauthor{\bsnm{Dawid}, \binits{A.P.}}:
@@ -73,7 +87,22 @@
 \end{barticle}
 \endbibitem
 
-%%% 3
+%%% 4
+\bibitem[\protect\citeauthoryear{Diebold and Y{\i}lmaz}{2014}]{diebold2014}
+\begin{barticle}
+\bauthor{\bsnm{Diebold}, \binits{F.X.}},
+\bauthor{\bsnm{Y{\i}lmaz}, \binits{K.}}:
+\batitle{On the network topology of variance decompositions: measuring the
+  connectedness of financial firms}.
+\bjtitle{Journal of Econometrics}
+\bvolume{182}(\bissue{1}),
+\bfpage{119}--\blpage{134}
+(\byear{2014})
+\doiurl{10.1016/j.jeconom.2014.04.012}
+\end{barticle}
+\endbibitem
+
+%%% 5
 \bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024}
 \begin{barticle}
 \bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
@@ -88,7 +117,21 @@
 \end{barticle}
 \endbibitem
 
-%%% 4
+%%% 6
+\bibitem[\protect\citeauthoryear{Geweke}{1982}]{geweke1982}
+\begin{barticle}
+\bauthor{\bsnm{Geweke}, \binits{J.}}:
+\batitle{Measurement of linear dependence and feedback between multiple time
+  series}.
+\bjtitle{Journal of the American Statistical Association}
+\bvolume{77}(\bissue{378}),
+\bfpage{304}--\blpage{313}
+(\byear{1982})
+\doiurl{10.1080/01621459.1982.10477803}
+\end{barticle}
+\endbibitem
+
+%%% 7
 \bibitem[\protect\citeauthoryear{Granger}{1969}]{granger1969}
 \begin{barticle}
 \bauthor{\bsnm{Granger}, \binits{C.W.J.}}:
@@ -102,7 +145,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 5
+%%% 8
 \bibitem[\protect\citeauthoryear{Hosmer and Lemeshow}{1992}]{hosmer1992}
 \begin{barticle}
 \bauthor{\bsnm{Hosmer}, \binits{D.W.}},
@@ -116,7 +159,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 6
+%%% 9
 \bibitem[\protect\citeauthoryear{Howard et~al.}{2021}]{howard2021}
 \begin{barticle}
 \bauthor{\bsnm{Howard}, \binits{S.R.}},
@@ -132,7 +175,23 @@
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 10
+\bibitem[\protect\citeauthoryear{Johari et~al.}{2022}]{johari2022}
+\begin{barticle}
+\bauthor{\bsnm{Johari}, \binits{R.}},
+\bauthor{\bsnm{Koomen}, \binits{P.}},
+\bauthor{\bsnm{Pekelis}, \binits{L.}},
+\bauthor{\bsnm{Walsh}, \binits{D.}}:
+\batitle{Always valid inference: continuous monitoring of {A/B} tests}.
+\bjtitle{Operations Research}
+\bvolume{70}(\bissue{3}),
+\bfpage{1806}--\blpage{1821}
+(\byear{2022})
+\doiurl{10.1287/opre.2021.2135}
+\end{barticle}
+\endbibitem
+
+%%% 11
 \bibitem[\protect\citeauthoryear{Lyu et~al.}{2026}]{lyu2026}
 \begin{barticle}
 \bauthor{\bsnm{Lyu}, \binits{A.}},
@@ -148,7 +207,21 @@
 \end{barticle}
 \endbibitem
 
-%%% 8
+%%% 12
+\bibitem[\protect\citeauthoryear{Lee}{2013}]{lee2013}
+\begin{barticle}
+\bauthor{\bsnm{Lee}, \binits{W.-C.}}:
+\batitle{Assessing causal mechanistic interactions: a peril ratio index of
+  synergy based on multiplicativity}.
+\bjtitle{PLoS ONE}
+\bvolume{8}(\bissue{6}),
+\bfpage{67424}
+(\byear{2013})
+\doiurl{10.1371/journal.pone.0067424}
+\end{barticle}
+\endbibitem
+
+%%% 13
 \bibitem[\protect\citeauthoryear{Ljung}{1999}]{ljung1999}
 \begin{bbook}
 \bauthor{\bsnm{Ljung}, \binits{L.}}:
@@ -160,7 +233,22 @@
 \end{bbook}
 \endbibitem
 
-%%% 9
+%%% 14
+\bibitem[\protect\citeauthoryear{Lin and Lee}{2018}]{lin2018}
+\begin{barticle}
+\bauthor{\bsnm{Lin}, \binits{J.-H.}},
+\bauthor{\bsnm{Lee}, \binits{W.-C.}}:
+\batitle{Testing for sufficient-cause gene--gene interactions under the
+  assumptions of independence and hardy--weinberg equilibrium}.
+\bjtitle{Scientific Reports}
+\bvolume{8},
+\bfpage{9223}
+(\byear{2018})
+\doiurl{10.1038/s41598-018-27660-2}
+\end{barticle}
+\endbibitem
+
+%%% 15
 \bibitem[\protect\citeauthoryear{La~Torre and D'Urso}{2026}]{latorre2026}
 \begin{barticle}
 \bauthor{\bsnm{La~Torre}, \binits{G.}},
@@ -173,7 +261,20 @@
 \end{barticle}
 \endbibitem
 
-%%% 10
+%%% 16
+\bibitem[\protect\citeauthoryear{McGill}{1954}]{mcgill1954}
+\begin{barticle}
+\bauthor{\bsnm{McGill}, \binits{W.J.}}:
+\batitle{Multivariate information transmission}.
+\bjtitle{Psychometrika}
+\bvolume{19}(\bissue{2}),
+\bfpage{97}--\blpage{116}
+(\byear{1954})
+\doiurl{10.1007/BF02289159}
+\end{barticle}
+\endbibitem
+
+%%% 17
 \bibitem[\protect\citeauthoryear{Mart{\'i}nez-S{\'a}nchez
   et~al.}{2024}]{surd2024}
 \begin{barticle}
@@ -190,7 +291,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 11
+%%% 18
 \bibitem[\protect\citeauthoryear{Roquero~Gimenez and
   Rothenh{\"a}usler}{2023}]{roquero2023}
 \begin{barticle}
@@ -205,7 +306,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 12
+%%% 19
 \bibitem[\protect\citeauthoryear{Ramdas et~al.}{2023}]{ramdas2023}
 \begin{barticle}
 \bauthor{\bsnm{Ramdas}, \binits{A.}},
@@ -221,7 +322,24 @@
 \end{barticle}
 \endbibitem
 
-%%% 13
+%%% 20
+\bibitem[\protect\citeauthoryear{Rosas et~al.}{2019}]{rosas2019}
+\begin{barticle}
+\bauthor{\bsnm{Rosas}, \binits{F.E.}},
+\bauthor{\bsnm{Mediano}, \binits{P.A.M.}},
+\bauthor{\bsnm{Gastpar}, \binits{M.}},
+\bauthor{\bsnm{Jensen}, \binits{H.J.}}:
+\batitle{Quantifying high-order interdependencies via multivariate extensions
+  of the mutual information}.
+\bjtitle{Physical Review E}
+\bvolume{100}(\bissue{3}),
+\bfpage{032305}
+(\byear{2019})
+\doiurl{10.1103/PhysRevE.100.032305}
+\end{barticle}
+\endbibitem
+
+%%% 21
 \bibitem[\protect\citeauthoryear{Rothman}{1976}]{rothman1976}
 \begin{barticle}
 \bauthor{\bsnm{Rothman}, \binits{K.J.}}:
@@ -234,7 +352,36 @@
 \end{barticle}
 \endbibitem
 
-%%% 14
+%%% 22
+\bibitem[\protect\citeauthoryear{Schreiber}{2000}]{schreiber2000}
+\begin{barticle}
+\bauthor{\bsnm{Schreiber}, \binits{T.}}:
+\batitle{Measuring information transfer}.
+\bjtitle{Physical Review Letters}
+\bvolume{85}(\bissue{2}),
+\bfpage{461}--\blpage{464}
+(\byear{2000})
+\doiurl{10.1103/PhysRevLett.85.461}
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{Stramaglia et~al.}{2014}]{stramaglia2014}
+\begin{barticle}
+\bauthor{\bsnm{Stramaglia}, \binits{S.}},
+\bauthor{\bsnm{Cortes}, \binits{J.M.}},
+\bauthor{\bsnm{Marinazzo}, \binits{D.}}:
+\batitle{Synergy and redundancy in the granger causal analysis of dynamical
+  networks}.
+\bjtitle{New Journal of Physics}
+\bvolume{16},
+\bfpage{105003}
+(\byear{2014})
+\doiurl{10.1088/1367-2630/16/10/105003}
+\end{barticle}
+\endbibitem
+
+%%% 24
 \bibitem[\protect\citeauthoryear{Scagliarini et~al.}{2020}]{scagliarini2020}
 \begin{barticle}
 \bauthor{\bsnm{Scagliarini}, \binits{T.}},
@@ -252,7 +399,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 15
+%%% 25
 \bibitem[\protect\citeauthoryear{Shafer}{2021}]{shafer2021}
 \begin{barticle}
 \bauthor{\bsnm{Shafer}, \binits{G.}}:
@@ -266,7 +413,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 16
+%%% 26
 \bibitem[\protect\citeauthoryear{Ville}{1939}]{ville1939}
 \begin{bbook}
 \bauthor{\bsnm{Ville}, \binits{J.}}:
@@ -277,7 +424,7 @@
 \end{bbook}
 \endbibitem
 
-%%% 17
+%%% 27
 \bibitem[\protect\citeauthoryear{VanderWeele and Knol}{2014}]{vanderweele2014}
 \begin{barticle}
 \bauthor{\bsnm{VanderWeele}, \binits{T.J.}},
@@ -291,7 +438,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 18
+%%% 28
 \bibitem[\protect\citeauthoryear{VanderWeele and
   Richardson}{2012}]{vanderweele2012}
 \begin{barticle}
@@ -307,7 +454,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 19
+%%% 29
 \bibitem[\protect\citeauthoryear{Vovk and Wang}{2021}]{vovk2021}
 \begin{barticle}
 \bauthor{\bsnm{Vovk}, \binits{V.}},
@@ -321,7 +468,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 20
+%%% 30
 \bibitem[\protect\citeauthoryear{Williams and Beer}{2010}]{williams2010}
 \begin{botherref}
 \oauthor{\bsnm{Williams}, \binits{P.L.}},
@@ -332,7 +479,7 @@ arXiv preprint arXiv:1004.2515
 \end{botherref}
 \endbibitem
 
-%%% 21
+%%% 31
 \bibitem[\protect\citeauthoryear{Wu and Mao}{2025}]{wu2025}
 \begin{botherref}
 \oauthor{\bsnm{Wu}, \binits{P.}},
@@ -344,7 +491,7 @@ arXiv preprint arXiv:2504.20470
 \end{botherref}
 \endbibitem
 
-%%% 22
+%%% 32
 \bibitem[\protect\citeauthoryear{Wang and Ramdas}{2022}]{wang2022}
 \begin{barticle}
 \bauthor{\bsnm{Wang}, \binits{R.}},
@@ -358,7 +505,22 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 23
+%%% 33
+\bibitem[\protect\citeauthoryear{Wasserman et~al.}{2020}]{wasserman2020}
+\begin{barticle}
+\bauthor{\bsnm{Wasserman}, \binits{L.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}},
+\bauthor{\bsnm{Balakrishnan}, \binits{S.}}:
+\batitle{Universal inference}.
+\bjtitle{Proceedings of the National Academy of Sciences}
+\bvolume{117}(\bissue{29}),
+\bfpage{16880}--\blpage{16890}
+(\byear{2020})
+\doiurl{10.1073/pnas.1922664117}
+\end{barticle}
+\endbibitem
+
+%%% 34
 \bibitem[\protect\citeauthoryear{Waudby-Smith and
   Ramdas}{2024}]{waudbysmith2024}
 \begin{barticle}
@@ -373,7 +535,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 24
+%%% 35
 \bibitem[\protect\citeauthoryear{Waudby-Smith
   et~al.}{2024}]{waudbysmith2024ope}
 \begin{barticle}
@@ -391,7 +553,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 25
+%%% 36
 \bibitem[\protect\citeauthoryear{Yang et~al.}{2026}]{peid2026}
 \begin{botherref}
 \oauthor{\bsnm{Yang}, \binits{M.}},
