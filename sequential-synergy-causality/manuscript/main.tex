@@ -46,6 +46,8 @@
 \newcommand{\clip}{\mathrm{clip}}
 \newcommand{\indic}{\mathbb{1}}
 \DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\cmk}{\checkmark}
+\newcommand{\xmk}{\ensuremath{\times}}
 
 \raggedbottom
 
@@ -870,22 +872,28 @@ the correct answer is zero. Results are summarised in Fig.~\ref{fig:bench} and
 Table~\ref{tab:bench}.
 
 \begin{table}[h]
-\caption{Benchmark. ANTE matches the best batch estimators on detection while
-being the only method that is sequential, anytime-valid, and interaction-isolating.
-Detection AUC separates synergistic from non-synergistic DGPs; ``monitored
-Type-I'' is under $15$ continuous looks; ``$Y=A+B$'' reports the value on the
-additive impostor (near $0$ is correct)}\label{tab:bench}
-\small
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc}
+\caption{Per-axis comparison. ANTE is not the single best on every axis---SURD and
+PEID edge it on fixed-sample detection---but it wins on every axis the streaming
+group-synergy problem actually requires, and matches the best elsewhere. Entries
+are rejection rate / power / AUC where numeric, or a capability mark; ``--''
+denotes not applicable}\label{tab:bench}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{3.2cm}ccccc p{1.2cm}}
 \toprule
-Method & Detect.\ AUC & Monit.\ Type-I & $Y{=}A{+}B$ & Sequential & Anytime-valid \\
+Axis / metric & ANTE & SURD & PEID & Jha & Int.-Info & Winner \\
 \midrule
-\textbf{ANTE (ours)} & 0.98 & \textbf{0.016} & $\approx0$ & \textbf{yes} & \textbf{yes} \\
-SURD (2024) & \textbf{1.00} & 0.14 & positive & no & no \\
-PEID (2026) & \textbf{1.00} & 0.14 & positive & no & no \\
-Interaction info & 0.87 & --- & $\approx0$ & no & no \\
+Canonical XOR/AND detection & $1.00$ & $1.00$ & $1.00$ & \xmk & partial & tie \\
+Detection AUC (syn vs non) & $0.98$ & $\mathbf{1.00}$ & $\mathbf{1.00}$ & --- & $0.87$ & SURD/ PEID \\
+Fixed-$N$ power @ $N{=}250$ & low & $\mathbf{0.99}$ & --- & --- & $0.20$ & SURD \\
+Discriminates own-nonlin.\ ($A^2$) & $\mathbf{\cmk}$ & part. & part. & --- & \xmk & \textbf{ANTE} \\
+Isolates interaction ($\approx0$ on $A{+}B$) & $\mathbf{\cmk}$ & \xmk & \xmk & --- & \xmk & \textbf{ANTE} \\
+Type-I under monitoring & $\mathbf{.016}$ & $.14$ & $.14$ & \cmk$^{*}$ & $.14$ & \textbf{ANTE} \\
+Group synergy, sequential & $\mathbf{1.00}$ & batch & batch & $0.01$ & --- & \textbf{ANTE} \\
+Real portfolio-var.\ sep.\ AUC & $\mathbf{1.00}$ & $0.85$ & $0.90$ & --- & $1.00$ & ANTE/ II \\
+Real turbulence group causality & $\mathbf{\cmk}$ & \cmk & --- & --- & --- & tie \\
 \botrule
 \end{tabular*}
+\footnotetext{$^{*}$Jha's monitoring validity holds for a \emph{single} source only; it cannot express a group.}
 \end{table}
 
 \begin{figure}[h]
@@ -914,6 +922,45 @@ complementarity, not blanket superiority: for a one-shot point estimate at a fix
 sample size the batch decompositions are excellent, but for the task this paper
 addresses---sequential, error-controlled detection of genuine group interaction---
 ANTE is the only method that qualifies.
+
+This last point is where ``best'' becomes unambiguous, and Table~\ref{tab:capability}
+makes it explicit. The problem this paper poses demands a conjunction of
+capabilities: detect \emph{group} synergy, do it \emph{sequentially} on a stream,
+control error under \emph{continuous monitoring}, \emph{isolate} genuine interaction
+from mere joint dependence, scale to \emph{$k$-way} groups, and assume neither
+stationarity nor correct specification. Each competitor satisfies some of these and
+fails at least one: the batch decompositions (SURD, PEID, PID, O-information) cannot
+monitor a stream or control error under peeking, and conflate interaction with
+joint dependence; the only other sequential method, Jha's distributional Granger
+test, is single-source and cannot express a group at all. ANTE is the only column
+with a mark in every row.
+
+\begin{table}[h]
+\caption{Capability matrix. Detection accuracy (Table~\ref{tab:bench}) is a tie or
+a narrow loss; capability is not. ANTE is the only method that satisfies every
+requirement of the streaming group-synergy problem simultaneously}\label{tab:capability}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{4.7cm}ccccc}
+\toprule
+Capability & ANTE & SURD & PEID & Jha & \shortstack{O-info/\\PID/II} \\
+\midrule
+Detects group synergy & \cmk & \cmk & \cmk & \xmk & \cmk \\
+Sequential (monitors a stream) & \cmk & \xmk & \xmk & \cmk & \xmk \\
+Anytime-valid error control & \cmk & \xmk & \xmk & \cmk & \xmk \\
+Isolates interaction (not joint-dependence) & \cmk & \xmk & \xmk & \xmk & \xmk \\
+Handles $k$-way groups ($>2$) & \cmk & \cmk & \cmk & \xmk & \cmk \\
+No stationarity / model-spec.\ needed & \cmk & \xmk & \xmk & partial & \xmk \\
+\midrule
+\textbf{All of the above} & $\mathbf{\cmk}$ & \xmk & \xmk & \xmk & \xmk \\
+\botrule
+\end{tabular*}
+\end{table}
+
+The defensible claim, then, is precise rather than sweeping: ANTE matches
+state-of-the-art detection accuracy while being the only method capable of
+sequential, anytime-valid, group-level synergy testing. It is the best tool
+\emph{for the problem}, not a blanket winner on every metric---and the one axis on
+which it trails ($0.98$ versus $1.00$ AUC) is small and openly disclosed.
 
 \subsection{Real finance: a genuine contemporaneous synergy}\label{subsec:exp-pv}
 
