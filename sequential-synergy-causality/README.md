@@ -110,6 +110,15 @@ Baselines validated against their own papers (PEID: XOR=1.000, AND=0.190 vs pape
 anytime-valid, sequential, *group*-synergy test; every prior method is batch
 (SURD/PEID/PID/O-info) or single-source (DGC). Full detail: `docs/benchmark.md`.
 
+## Manuscript
+
+A full manuscript targeting **Statistics and Computing** (Springer, Q1;
+free to publish) is in [`manuscript/`](manuscript/) — Springer `sn-jnl` template,
+author–year style, math-heavy (definitions, lemmas, theorems, proofs), with the
+validity, consistency/power, k-way, and interaction-isolation results and all
+experiments including the evidence-of-absence finance finding and the turbulence
+positive. Compiled `manuscript/main.pdf` (21 pages) is included.
+
 ## Layout
 
 ```

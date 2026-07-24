@@ -1,0 +1,406 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{25}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Barnett et~al.}{2009}]{barnett2009}
+\begin{barticle}
+\bauthor{\bsnm{Barnett}, \binits{L.}},
+\bauthor{\bsnm{Barrett}, \binits{A.B.}},
+\bauthor{\bsnm{Seth}, \binits{A.K.}}:
+\batitle{Granger causality and transfer entropy are equivalent for gaussian
+  variables}.
+\bjtitle{Physical Review Letters}
+\bvolume{103}(\bissue{23}),
+\bfpage{238701}
+(\byear{2009})
+\doiurl{10.1103/PhysRevLett.103.238701}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Dawid}{1984}]{dawid1984}
+\begin{barticle}
+\bauthor{\bsnm{Dawid}, \binits{A.P.}}:
+\batitle{Present position and potential developments: some personal views.
+  statistical theory: the prequential approach}.
+\bjtitle{Journal of the Royal Statistical Society: Series A}
+\bvolume{147}(\bissue{2}),
+\bfpage{278}--\blpage{292}
+(\byear{1984})
+\doiurl{10.2307/2981683}
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024}
+\begin{barticle}
+\bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
+\bauthor{\bsnm{Heide}, \binits{R.}},
+\bauthor{\bsnm{Koolen}, \binits{W.M.}}:
+\batitle{Safe testing}.
+\bjtitle{Journal of the Royal Statistical Society: Series B}
+\bvolume{86}(\bissue{5}),
+\bfpage{1091}--\blpage{1128}
+(\byear{2024})
+\doiurl{10.1093/jrsssb/qkae011}
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Granger}{1969}]{granger1969}
+\begin{barticle}
+\bauthor{\bsnm{Granger}, \binits{C.W.J.}}:
+\batitle{Investigating causal relations by econometric models and
+  cross-spectral methods}.
+\bjtitle{Econometrica}
+\bvolume{37}(\bissue{3}),
+\bfpage{424}--\blpage{438}
+(\byear{1969})
+\doiurl{10.2307/1912791}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Hosmer and Lemeshow}{1992}]{hosmer1992}
+\begin{barticle}
+\bauthor{\bsnm{Hosmer}, \binits{D.W.}},
+\bauthor{\bsnm{Lemeshow}, \binits{S.}}:
+\batitle{Confidence interval estimation of interaction}.
+\bjtitle{Epidemiology}
+\bvolume{3}(\bissue{5}),
+\bfpage{452}--\blpage{456}
+(\byear{1992})
+\doiurl{10.1097/00001648-199209000-00012}
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Howard et~al.}{2021}]{howard2021}
+\begin{barticle}
+\bauthor{\bsnm{Howard}, \binits{S.R.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}},
+\bauthor{\bsnm{McAuliffe}, \binits{J.}},
+\bauthor{\bsnm{Sekhon}, \binits{J.}}:
+\batitle{Time-uniform, nonparametric, nonasymptotic confidence sequences}.
+\bjtitle{The Annals of Statistics}
+\bvolume{49}(\bissue{2}),
+\bfpage{1055}--\blpage{1080}
+(\byear{2021})
+\doiurl{10.1214/20-AOS1991}
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Lyu et~al.}{2026}]{lyu2026}
+\begin{barticle}
+\bauthor{\bsnm{Lyu}, \binits{A.}},
+\bauthor{\bsnm{Clark}, \binits{A.}},
+\bauthor{\bsnm{Raviv}, \binits{N.}}:
+\batitle{Multivariate partial information decomposition: constructions,
+  inconsistencies, and alternative measures}.
+\bjtitle{Physical Review E}
+\bvolume{113},
+\bfpage{034102}
+(\byear{2026})
+\doiurl{10.1103/8rzp-w5z1}
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Ljung}{1999}]{ljung1999}
+\begin{bbook}
+\bauthor{\bsnm{Ljung}, \binits{L.}}:
+\bbtitle{System Identification: Theory for the User},
+\bedition{2}nd edn.
+\bpublisher{Prentice Hall},
+\blocation{Upper Saddle River, NJ}
+(\byear{1999})
+\end{bbook}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{La~Torre and D'Urso}{2026}]{latorre2026}
+\begin{barticle}
+\bauthor{\bsnm{La~Torre}, \binits{G.}},
+\bauthor{\bsnm{D'Urso}, \binits{P.}}:
+\batitle{Evaluating synergistic effects among multiple factors in disease
+  causation: a new approach using a generalized synergy index}.
+\bjtitle{European Journal of Epidemiology}
+(\byear{2026})
+\doiurl{10.1007/s10654-026-01405-2}
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Mart{\'i}nez-S{\'a}nchez
+  et~al.}{2024}]{surd2024}
+\begin{barticle}
+\bauthor{\bsnm{Mart{\'i}nez-S{\'a}nchez}, \binits{{\'A}.}},
+\bauthor{\bsnm{Arranz}, \binits{G.}},
+\bauthor{\bsnm{Lozano-Dur{\'a}n}, \binits{A.}}:
+\batitle{Decomposing causality into its synergistic, unique, and redundant
+  components}.
+\bjtitle{Nature Communications}
+\bvolume{15},
+\bfpage{9296}
+(\byear{2024})
+\doiurl{10.1038/s41467-024-53373-4}
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Roquero~Gimenez and
+  Rothenh{\"a}usler}{2023}]{roquero2023}
+\begin{barticle}
+\bauthor{\bsnm{Roquero~Gimenez}, \binits{J.}},
+\bauthor{\bsnm{Rothenh{\"a}usler}, \binits{D.}}:
+\batitle{Causal aggregation: estimation and inference of causal effects by
+  constraint-based data fusion}.
+\bjtitle{Journal of Machine Learning Research}
+\bvolume{24},
+\bfpage{1}--\blpage{60}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Ramdas et~al.}{2023}]{ramdas2023}
+\begin{barticle}
+\bauthor{\bsnm{Ramdas}, \binits{A.}},
+\bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
+\bauthor{\bsnm{Vovk}, \binits{V.}},
+\bauthor{\bsnm{Shafer}, \binits{G.}}:
+\batitle{Game-theoretic statistics and safe anytime-valid inference}.
+\bjtitle{Statistical Science}
+\bvolume{38}(\bissue{4}),
+\bfpage{576}--\blpage{601}
+(\byear{2023})
+\doiurl{10.1214/23-STS894}
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Rothman}{1976}]{rothman1976}
+\begin{barticle}
+\bauthor{\bsnm{Rothman}, \binits{K.J.}}:
+\batitle{Causes}.
+\bjtitle{American Journal of Epidemiology}
+\bvolume{104}(\bissue{6}),
+\bfpage{587}--\blpage{592}
+(\byear{1976})
+\doiurl{10.1093/oxfordjournals.aje.a112335}
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Scagliarini et~al.}{2020}]{scagliarini2020}
+\begin{barticle}
+\bauthor{\bsnm{Scagliarini}, \binits{T.}},
+\bauthor{\bsnm{Faes}, \binits{L.}},
+\bauthor{\bsnm{Marinazzo}, \binits{D.}},
+\bauthor{\bsnm{Stramaglia}, \binits{S.}},
+\bauthor{\bsnm{Mantegna}, \binits{R.N.}}:
+\batitle{Synergistic information transfer in the global system of financial
+  markets}.
+\bjtitle{Entropy}
+\bvolume{22}(\bissue{9}),
+\bfpage{1000}
+(\byear{2020})
+\doiurl{10.3390/e22091000}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Shafer}{2021}]{shafer2021}
+\begin{barticle}
+\bauthor{\bsnm{Shafer}, \binits{G.}}:
+\batitle{Testing by betting: a strategy for statistical and scientific
+  communication}.
+\bjtitle{Journal of the Royal Statistical Society: Series A}
+\bvolume{184}(\bissue{2}),
+\bfpage{407}--\blpage{431}
+(\byear{2021})
+\doiurl{10.1111/rssa.12647}
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Ville}{1939}]{ville1939}
+\begin{bbook}
+\bauthor{\bsnm{Ville}, \binits{J.}}:
+\bbtitle{{\'E}tude Critique de la Notion de Collectif}.
+\bpublisher{Gauthier-Villars},
+\blocation{Paris}
+(\byear{1939})
+\end{bbook}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{VanderWeele and Knol}{2014}]{vanderweele2014}
+\begin{barticle}
+\bauthor{\bsnm{VanderWeele}, \binits{T.J.}},
+\bauthor{\bsnm{Knol}, \binits{M.J.}}:
+\batitle{A tutorial on interaction}.
+\bjtitle{Epidemiologic Methods}
+\bvolume{3}(\bissue{1}),
+\bfpage{33}--\blpage{72}
+(\byear{2014})
+\doiurl{10.1515/em-2013-0005}
+\end{barticle}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{VanderWeele and
+  Richardson}{2012}]{vanderweele2012}
+\begin{barticle}
+\bauthor{\bsnm{VanderWeele}, \binits{T.J.}},
+\bauthor{\bsnm{Richardson}, \binits{T.S.}}:
+\batitle{General theory for interactions in sufficient cause models with
+  dichotomous exposures}.
+\bjtitle{The Annals of Statistics}
+\bvolume{40}(\bissue{4}),
+\bfpage{2128}--\blpage{2161}
+(\byear{2012})
+\doiurl{10.1214/12-AOS1019}
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Vovk and Wang}{2021}]{vovk2021}
+\begin{barticle}
+\bauthor{\bsnm{Vovk}, \binits{V.}},
+\bauthor{\bsnm{Wang}, \binits{R.}}:
+\batitle{E-values: calibration, combination and applications}.
+\bjtitle{The Annals of Statistics}
+\bvolume{49}(\bissue{3}),
+\bfpage{1736}--\blpage{1754}
+(\byear{2021})
+\doiurl{10.1214/20-AOS2020}
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Williams and Beer}{2010}]{williams2010}
+\begin{botherref}
+\oauthor{\bsnm{Williams}, \binits{P.L.}},
+\oauthor{\bsnm{Beer}, \binits{R.D.}}:
+Nonnegative decomposition of multivariate information.
+arXiv preprint arXiv:1004.2515
+(2010)
+\end{botherref}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{Wu and Mao}{2025}]{wu2025}
+\begin{botherref}
+\oauthor{\bsnm{Wu}, \binits{P.}},
+\oauthor{\bsnm{Mao}, \binits{X.}}:
+The promises of multiple experiments: identifying joint distribution of
+  potential outcomes.
+arXiv preprint arXiv:2504.20470
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 22
+\bibitem[\protect\citeauthoryear{Wang and Ramdas}{2022}]{wang2022}
+\begin{barticle}
+\bauthor{\bsnm{Wang}, \binits{R.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}}:
+\batitle{False discovery rate control with e-values}.
+\bjtitle{Journal of the Royal Statistical Society: Series B}
+\bvolume{84}(\bissue{3}),
+\bfpage{822}--\blpage{852}
+(\byear{2022})
+\doiurl{10.1111/rssb.12489}
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{Waudby-Smith and
+  Ramdas}{2024}]{waudbysmith2024}
+\begin{barticle}
+\bauthor{\bsnm{Waudby-Smith}, \binits{I.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}}:
+\batitle{Estimating means of bounded random variables by betting}.
+\bjtitle{Journal of the Royal Statistical Society: Series B}
+\bvolume{86}(\bissue{1}),
+\bfpage{1}--\blpage{27}
+(\byear{2024})
+\doiurl{10.1093/jrsssb/qkad009}
+\end{barticle}
+\endbibitem
+
+%%% 24
+\bibitem[\protect\citeauthoryear{Waudby-Smith
+  et~al.}{2024}]{waudbysmith2024ope}
+\begin{barticle}
+\bauthor{\bsnm{Waudby-Smith}, \binits{I.}},
+\bauthor{\bsnm{Wu}, \binits{L.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}},
+\bauthor{\bsnm{Karampatziakis}, \binits{N.}},
+\bauthor{\bsnm{Mineiro}, \binits{P.}}:
+\batitle{Anytime-valid off-policy inference for contextual bandits}.
+\bjtitle{ACM/IMS Journal of Data Science}
+\bvolume{1}(\bissue{3}),
+\bfpage{1}--\blpage{42}
+(\byear{2024})
+\doiurl{10.1145/3643693}
+\end{barticle}
+\endbibitem
+
+%%% 25
+\bibitem[\protect\citeauthoryear{Yang et~al.}{2026}]{peid2026}
+\begin{botherref}
+\oauthor{\bsnm{Yang}, \binits{M.}},
+\oauthor{\bsnm{Wang}, \binits{S.}},
+\oauthor{\bsnm{Zhang}, \binits{J.}}:
+Partial effective information decomposition for synergistic causality.
+arXiv preprint arXiv:2605.03267
+(2026)
+\end{botherref}
+\endbibitem
+
+\end{thebibliography}

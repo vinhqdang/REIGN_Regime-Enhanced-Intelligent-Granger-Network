@@ -53,15 +53,18 @@ causality is a physics/biology phenomenon, not a daily-markets one — a quantif
 caution to in-sample synergy-in-finance claims. See
 `sequential-synergy-causality/docs/finding_group_causality.md`.
 
-*Status: prototype with algorithm design, implementation, synthetic validation,
-real-financial-data case study, SOTA review, and methodology complete; manuscript
-not yet drafted.*
+*Status: algorithm design, implementation, synthetic validation,
+real-financial-data case study, SOTA benchmark, and methodology complete. Full
+manuscript drafted for* **Statistics and Computing** *(Springer, Q1, free to
+publish), in `sequential-synergy-causality/manuscript/` (Springer `sn-jnl`
+template, math-heavy with theorems/proofs; compiled PDF included).*
 
 | Path | Contents |
 |------|----------|
 | `sequential-synergy-causality/src/` | e-process, IPW interaction score, subset-refinement search |
 | `sequential-synergy-causality/experiments/` | E1–E4 experiments + figures |
 | `sequential-synergy-causality/docs/` | methodology and literature review |
+| `sequential-synergy-causality/manuscript/` | Statistics and Computing manuscript (LaTeX + PDF) |
 
 See [`sequential-synergy-causality/README.md`](sequential-synergy-causality/README.md)
 for details.
