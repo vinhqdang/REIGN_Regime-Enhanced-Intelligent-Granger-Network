@@ -753,7 +753,9 @@ linear and squared lags and the joint predictor additionally receives the
 cross-products, as required by Proposition~\ref{prop:isolation}. All reported
 rates are over independent replications ($n_{\mathrm{rep}}$ stated per experiment).
 Table~\ref{tab:datasets} lists the datasets; all code, data, and figure-generating
-scripts are released (\S\ref{sec:decl}) so that every number below is reproducible.
+scripts are released\footnote{\url{https://github.com/vinhqdang/REIGN_Regime-Enhanced-Intelligent-Granger-Network}
+(ANTE lives in the \texttt{sequential-synergy-causality/} subdirectory).}
+(\S\ref{sec:decl}) so that every number below is reproducible.
 
 \begin{table}[h]
 \caption{Datasets. Synthetic DGPs provide ground truth; real panels are used for
@@ -1148,11 +1150,15 @@ involves no human participants or animals.
 obtained from the Yahoo Finance chart API, climate teleconnection indices from
 NOAA PSL, and the turbulence energy-cascade signals from the released SURD
 repository \citep{surd2024}. Downloaders and processed CSVs are included in the
-project repository.
+project repository at \url{https://github.com/vinhqdang/REIGN_Regime-Enhanced-Intelligent-Granger-Network}
+(the ANTE code and data reside in the \texttt{sequential-synergy-causality/}
+subdirectory).
 
 \paragraph{Code availability.} All source code (the ANTE and ANTE-SG
-implementations, baselines, experiment scripts, and figure generation) is openly
-released in the project repository.
+implementations, the re-implemented baselines, the experiment scripts, and the
+figure-generation code) is openly released in the same repository,
+\url{https://github.com/vinhqdang/REIGN_Regime-Enhanced-Intelligent-Granger-Network},
+under \texttt{sequential-synergy-causality/}.
 
 \paragraph{Author contributions.} Q.-V.~Dang is the sole author and conceived the
 method, developed the theory, implemented the algorithms and experiments, and
