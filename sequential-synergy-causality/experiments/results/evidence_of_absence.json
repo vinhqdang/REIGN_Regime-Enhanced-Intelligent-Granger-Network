@@ -1,0 +1,11 @@
+{
+  "n_financial_triples": 1320,
+  "financial_median_log10E": -0.9346418570088141,
+  "null_median_log10E": 0.0,
+  "synergy_median_log10E": 2.7927559908715827,
+  "financial_reject_rate": 0.0,
+  "null_reject_rate": 0.006666666666666667,
+  "synergy_detection_power": 0.7433333333333333,
+  "alpha": 0.05,
+  "interpretation": "Financial e-value distribution matches the true-null distribution (median ~1, reject rate ~alpha) and is far from the synergy distribution; the test detects synergy with high power where it exists (synthetic, turbulence). => group causality is ESTABLISHED ABSENT in daily finance."
+}

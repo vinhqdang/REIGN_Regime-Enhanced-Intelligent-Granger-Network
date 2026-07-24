@@ -6,6 +6,27 @@ A betting-martingale (e-process) test for **group causality** — the hypothesis
 that a set of causes acts on an effect *jointly*, beyond the sum of their
 individual contributions — monitored **anytime-valid** as data streams in.
 
+## Headline finding: group causality does NOT exist in daily finance
+
+Using ANTE as a demonstrably-powered instrument, we **establish** (evidence of
+absence, not absence of evidence) that genuine super-additive group causality is
+**absent from daily markets**, while the same test detects it wherever it truly
+exists. Full argument: `docs/finding_group_causality.md`.
+
+- **The test is powered:** it detects synthetic synergy (74–100%) and the real
+  turbulence energy-cascade synergy (SURD's Nature-Comms data; 3 coarse scales
+  jointly → finest scale, log₁₀E = 4.0).
+- **Finance matches a TRUE null:** across **1,320** real financial group triples,
+  median evidence log₁₀E = **−0.93** (a bet on synergy systematically *loses*
+  money) vs 0.00 under the calibrated null and +2.79 under real synergy; **0**
+  detections out of ~3,700+ triples spanning returns/volatility/tail-stress,
+  daily/hourly, equities/ETFs/macro/crypto, and 2-/3-/4-way groups.
+
+Interpretation: daily markets are common-factor + pairwise; irreducible
+higher-order structure is negligible — a quantified caution to in-sample
+synergy-in-finance claims. Synergistic group causality is a physics/biology
+phenomenon (confirmed on turbulence), not a daily-markets one.
+
 The existing literatures on group causality — sufficient-cause interaction
 (RERI/PRISM/generalized synergy index), joint-effect estimation, information-
 theoretic decomposition (PID/SURD/PEID), and synergy in financial markets

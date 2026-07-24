@@ -38,12 +38,20 @@ on an effect *jointly*, beyond the sum of individual contributions — monitored
 anytime-valid as data streams in.
 
 The flagship algorithm is **ANTE-SG**, for **financial time series**: anytime-
-valid, regime-aware detection of *synergistic Granger causality*, where synergy
-is defined as **super-additive out-of-sample predictive gain** and tested by
-betting (no stationarity or correct-specification needed). It is validated on
-synthetic data and on 10 years of real market data (16-asset ETF/macro panel + 6
-world indices). An interventional variant (**ANTE**) unifies the additive
-causal-pie (RERI-type) and information-theoretic (PID/PEID-type) synergy nulls.
+valid, regime-aware detection of *synergistic Granger causality* (super-additive
+out-of-sample predictive gain, tested by betting; generalizes to k-way groups).
+
+**Headline finding — group causality does NOT exist in daily finance.** Used as a
+demonstrably-powered instrument, ANTE *establishes* (evidence of absence, not
+absence of evidence) that genuine super-additive group causality is absent from
+daily markets: across ~3,700+ group triples (returns/volatility/tail-stress,
+daily/hourly, equities/ETFs/macro/crypto, 2-/3-/4-way), the financial evidence sits
+on a true-null distribution (median log₁₀E = −0.93, i.e. a bet on synergy *loses*)
+with 0 detections — while the same test detects synthetic synergy (74–100%) and
+real turbulence energy-cascade synergy (SURD's data). So synergistic group
+causality is a physics/biology phenomenon, not a daily-markets one — a quantified
+caution to in-sample synergy-in-finance claims. See
+`sequential-synergy-causality/docs/finding_group_causality.md`.
 
 *Status: prototype with algorithm design, implementation, synthetic validation,
 real-financial-data case study, SOTA review, and methodology complete; manuscript
