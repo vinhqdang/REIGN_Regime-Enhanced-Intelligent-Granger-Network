@@ -178,6 +178,75 @@ def ante_sg(Y, A, B, cond=None, p=1, alpha=0.05, forget=0.995, ridge=1e-2,
 
 
 # ---------------------------------------------------------------------------
+# Multi-source (group) synergy: does a GROUP {X1..Xk} jointly cause Y beyond the
+# sum of parts?  Synergy = out-of-sample gain of the JOINT model (own terms + all
+# pairwise cross-products) over the ADDITIVE model (own terms only).
+# ---------------------------------------------------------------------------
+def ante_group(Y, sources, cond=None, p=1, alpha=0.05, forget=0.995, ridge=1e-2,
+               warmup=60, clip_b=10.0, cap_frac=0.9, ceil=1e15, contemp=False):
+    """Sequential anytime-valid test for GROUP synergy of {X1..Xk} on Y.
+
+    ADDITIVE model: base(Y,Z lags) + each source's own linear+squared terms.
+    JOINT model:    additive + all pairwise same-lag cross-products X_i*X_j.
+    Per-step score s_t = loss_additive_t - loss_joint_t (>0 => the group predicts
+    Y super-additively).  Under H0 (no group synergy) E[s_t|F_{t-1}] <= 0, so the
+    betting process is an e-process (Ville anytime-valid).
+    """
+    Y = np.asarray(Y, float)
+    srcs = [np.asarray(s, float) for s in sources]
+    cond = [np.asarray(z, float) for z in (cond or [])]
+    k = len(srcs); T = len(Y)
+
+    def feats(t):
+        base = [1.0] + _lagblock(Y, t, p)
+        for z in cond:
+            base += _lagblock(z, t, p)
+        own = []
+        lags = []
+        for s in srcs:
+            ls = _lagblock(s, t, p)
+            if contemp:
+                ls = [s[t]] + ls
+            lags.append(ls)
+            own += ls + [v * v for v in ls]
+        cross = []
+        from itertools import combinations as _cmb
+        for order in range(2, k + 1):                # all interactions order 2..k
+            for combo in _cmb(range(k), order):
+                prod = [1.0] * p
+                for idx in combo:
+                    prod = [pp * v for pp, v in zip(prod, lags[idx])]
+                cross += prod
+        add = np.array(base + own)
+        joint = np.array(base + own + cross)
+        return add, joint
+
+    d_add = len(feats(p)[0]); d_joint = len(feats(p)[1])
+    rls_add = ForgettingRLS(d_add, forget, ridge)
+    rls_joint = ForgettingRLS(d_joint, forget, ridge)
+    lam_max = cap_frac / clip_b
+    E = 1.0; E_traj = np.ones(T); scores = np.full(T, np.nan)
+    s1 = s2 = 0.0; cnt = 0; ew = 1e-8; reject_time = None
+    for t in range(p, T):
+        fa, fj = feats(t)
+        la = (Y[t] - rls_add.predict(fa)) ** 2
+        lj = (Y[t] - rls_joint.predict(fj)) ** 2
+        s = la - lj                                  # >0: joint (group) beats additive
+        scores[t] = s
+        scale = np.sqrt(ew)
+        u = np.clip(s / scale, -clip_b, clip_b)
+        lam = (max(s1 / cnt, 0.0) / (s2 / cnt + 1e-12) / scale) if cnt >= max(warmup, 1) else 0.0
+        lam = min(lam, lam_max)
+        E = min(E * (1.0 + lam * u), ceil); E_traj[t] = E
+        if reject_time is None and E >= 1.0 / alpha:
+            reject_time = t
+        rls_add.update(fa, Y[t]); rls_joint.update(fj, Y[t])
+        s1 += s; s2 += s * s; cnt += 1; ew = 0.98 * ew + 0.02 * s * s
+    return dict(E=E_traj, reject_time=reject_time, rejected=reject_time is not None,
+                final_E=float(E_traj[-1]), k=k, mean_score=float(np.nanmean(scores[p:])))
+
+
+# ---------------------------------------------------------------------------
 # Baselines
 # ---------------------------------------------------------------------------
 def batch_synergy_estimate(Y, A, B, cond=None, p=1, ridge=1e-2, contemp=False):

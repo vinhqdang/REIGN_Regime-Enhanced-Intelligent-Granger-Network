@@ -1,0 +1,45 @@
+{
+  "turbulence_3way": {
+    "reject": true,
+    "reject_time": 734,
+    "log10E": 4.011585550404987
+  },
+  "systemic_groups": [
+    {
+      "group": "banks + credit",
+      "k": 2,
+      "reject": false,
+      "log10E": -3.7377803381818997
+    },
+    {
+      "group": "banks + credit + rates",
+      "k": 3,
+      "reject": false,
+      "log10E": -1.0024957482655992
+    },
+    {
+      "group": "banks + credit + oil",
+      "k": 3,
+      "reject": false,
+      "log10E": -0.6545766358389948
+    },
+    {
+      "group": "banks + credit + rates + oil",
+      "k": 4,
+      "reject": false,
+      "log10E": 0.0
+    },
+    {
+      "group": "financials + tech + energy",
+      "k": 3,
+      "reject": false,
+      "log10E": -1.008058419252938
+    },
+    {
+      "group": "credit + rates + dollar",
+      "k": 3,
+      "reject": false,
+      "log10E": -0.946518010513365
+    }
+  ]
+}
