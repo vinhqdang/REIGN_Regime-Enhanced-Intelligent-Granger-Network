@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,top=0.9in,bottom=0.8in,left=1in,right=1in]{geometry}
+\usepackage{parskip}
+\usepackage{times}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parskip}{0.55\baselineskip}
+\setlist[enumerate]{topsep=2pt,itemsep=3pt,parsep=0pt}
+
+\begin{document}
+
+\noindent
+Quang-Vinh Dang\\
+British University Vietnam\\
+Hung Yen 160000, Vietnam\\
+\href{mailto:vinh.dq4@buv.edu.vn}{vinh.dq4@buv.edu.vn}
+
+\medskip
+\noindent
+To the Editor-in-Chief\\
+\textit{Statistics and Computing}
+
+\medskip
+\noindent Dear Editor,
+
+Please find enclosed our manuscript, ``Anytime-Valid Nonparametric Testing of
+Synergistic (Group) Causality, with an Application Establishing Its Absence in
+Daily Financial Markets,'' which we submit for consideration as an original
+research article in \textit{Statistics and Computing}.
+
+The paper addresses a question that recurs across the sciences but has lacked a
+principled sequential test: does a group of causes act on an effect jointly,
+beyond the sum of its members' individual contributions, and can that be decided
+as data arrive under continuous monitoring? Every existing method for detecting
+such synergy---sufficient-cause interaction indices in epidemiology, joint-effect
+estimators in statistics, and information-theoretic decompositions such as PID,
+SURD, and PEID---is fixed-sample, returning a point value at a pre-committed
+sample size with no valid way to monitor evidence continuously. We close this gap
+by bringing the machinery of testing-by-betting and e-processes to bear on a
+super-additive synergy null.
+
+Our main contributions are:
+
+\begin{enumerate}
+\item \textbf{ANTE}, an anytime-valid nonparametric test of synergy. A bounded,
+mean-centred interaction score is accumulated into a nonnegative capital process
+(e-process); Ville's inequality delivers time-uniform Type-I error control under
+optional stopping and continuous monitoring, with no stationarity or
+correct-specification assumptions.
+
+\item A theory of both validity and \emph{power}: we prove the martingale
+(validity) property and its Ville corollary, and a growth/consistency theorem
+giving power one with an explicit detection-time bound under the alternative.
+
+\item Extensions to $k$-way groups and to an out-of-sample predictive (Granger)
+synergy for nonstationary time series, together with a guarantee that ANTE
+isolates genuine interaction from mere joint dependence and within-variable
+nonlinearity---a discrimination competing estimators do not provide.
+
+\item A substantive empirical finding: used as a demonstrably powered instrument,
+ANTE establishes (as evidence of absence, not absence of evidence) that
+super-additive group causality is absent from daily financial markets across
+thousands of asset triples, while the same test detects the turbulent energy
+cascade in physics and synthetic synergy at high power.
+\end{enumerate}
+
+The work fits the scope of \textit{Statistics and Computing}: a computational,
+sequential inference method with proven statistical guarantees, an efficient
+online algorithm, a head-to-head benchmark against 2024--2026 methods, and a fully
+reproducible real-data study with publicly available code and data (the repository
+link is included in the manuscript).
+
+This manuscript is original, has not been published previously, and is not under
+consideration elsewhere. There are no competing interests, and no funding was
+received. The single author has approved the submission. We look forward to the
+reviewers' feedback.
+
+\medskip
+\noindent
+Sincerely,\\[1.2\baselineskip]
+Quang-Vinh Dang\\
+British University Vietnam
+
+\end{document}
