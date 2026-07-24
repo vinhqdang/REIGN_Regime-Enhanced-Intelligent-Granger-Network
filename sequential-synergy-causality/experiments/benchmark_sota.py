@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "src"))
 from synergistic_granger import ante_sg
 import synergy_eprocess as sep_int          # interventional ANTE (binary)
 from baselines import (interaction_information, surd_synergy, oinfo,
-                       peid_synergy, pid_wb_synergy, permutation_pvalue)
+                       peid_synergy, peid_synergy_continuous, pid_wb_synergy, permutation_pvalue)
 OUT = os.path.join(HERE, "results"); DATA = os.path.join(HERE, "..", "data")
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10,
                      "savefig.dpi": 300, "savefig.bbox": "tight"})
@@ -112,7 +112,7 @@ def partA_auc(n_rep=100, T=3000, seed=1):
             sc["ANTE_logE"][k].append(np.log10(max(r["final_E"], 1e-9)))
             a, b, y = A[:-1], B[:-1], Y[1:]
             sc["SURD"][k].append(surd_synergy(a, b, y, nbins=6))
-            sc["PEID_2026"][k].append(peid_cont(a, b, y, nbins=4))
+            sc["PEID_2026"][k].append(peid_synergy_continuous(a, b, y))
             sc["InteractionInfo"][k].append(interaction_information(a, b, y))
     aucs = {m: auc(sc[m]["synergistic"], sc[m]["additive"] + sc[m]["ownnonlin"]) for m in methods}
     # discrimination: does own-nonlinearity get mistaken for synergy? (syn vs ownnonlin only)
@@ -166,7 +166,7 @@ def partD_real():
         rows.append(dict(pair=f"{a}/{b}", cross_asset=cross,
                          ANTE_logE=float(np.log10(max(r["final_E"], 1e-9))),
                          SURD=surd_synergy(z(Ra), z(Rb), z(RV), nbins=6),
-                         PEID_2026=peid_cont(z(Ra), z(Rb), z(RV), nbins=4),
+                         PEID_2026=peid_synergy_continuous(z(Ra), z(Rb), z(RV)),
                          InteractionInfo=interaction_information(z(Ra), z(Rb), z(RV))))
     df = pd.DataFrame(rows)
     sep = {}

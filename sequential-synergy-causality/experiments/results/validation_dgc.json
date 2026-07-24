@@ -1,0 +1,22 @@
+{
+  "peid_validation": {
+    "discrete_XOR": 0.9999982618756067,
+    "discrete_AND": 0.19004048774429383,
+    "paper_AND_target": 0.189,
+    "continuous_trend": {
+      "alpha=0.0": -0.0002245108321901057,
+      "alpha=0.5": 1.1770183343644387,
+      "alpha=1.0": 1.818514864978404
+    }
+  },
+  "dgc_validation": {
+    "size_s0": 0.035,
+    "power_s0.3": 1.0
+  },
+  "dgc_vs_ante_group_synergy": {
+    "dgc_A": 0.006666666666666667,
+    "dgc_B": 0.013333333333333334,
+    "ante_group": 1.0,
+    "R": 150
+  }
+}

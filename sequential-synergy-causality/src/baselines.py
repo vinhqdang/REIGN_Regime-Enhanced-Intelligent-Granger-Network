@@ -41,6 +41,32 @@ def interaction_information(a, b, y):
     return float(I_AB_Y - I_A_Y - I_B_Y)
 
 
+# ------------------------------------------------------------------ kNN (KSG) MI
+def ksg_mi(X, Y, k=5):
+    """Kraskov-Stogbauer-Grassberger (estimator 1) mutual information I(X;Y), nats.
+
+    X, Y are (n,) or (n,d) arrays. Nonparametric; captures arbitrary (incl.
+    non-monotonic, e.g. product) dependence -- unlike Gaussian/copula MI.
+    """
+    from scipy.spatial import cKDTree
+    from scipy.special import digamma
+    X = np.asarray(X, float); Y = np.asarray(Y, float)
+    if X.ndim == 1: X = X[:, None]
+    if Y.ndim == 1: Y = Y[:, None]
+    n = len(X)
+    # small jitter to break ties / degeneracies
+    rng = np.random.default_rng(0)
+    X = X + 1e-10 * rng.standard_normal(X.shape)
+    Y = Y + 1e-10 * rng.standard_normal(Y.shape)
+    Z = np.hstack([X, Y])
+    dz = cKDTree(Z).query(Z, k=k + 1, p=np.inf)[0][:, k]   # dist to k-th neighbour (max-norm)
+    tx = cKDTree(X); ty = cKDTree(Y)
+    nx = np.array([len(tx.query_ball_point(X[i], dz[i] - 1e-12, p=np.inf)) - 1 for i in range(n)])
+    ny = np.array([len(ty.query_ball_point(Y[i], dz[i] - 1e-12, p=np.inf)) - 1 for i in range(n)])
+    mi = digamma(k) + digamma(n) - np.mean(digamma(nx + 1) + digamma(ny + 1))
+    return float(max(mi, 0.0))
+
+
 # ------------------------------------------------------------------ SURD
 _SURD_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "vendor", "SURD")
 
@@ -173,6 +199,49 @@ def peid_synergy(a, b, y, states=2):
     ei_a = _EI_discrete(a, y, states)
     ei_b = _EI_discrete(b, y, states)
     return float(ei_joint - ei_a - ei_b)
+
+
+# ------------------------------------------------------------------ faithful continuous PEID
+def _gauss_mi_blocks(U, V):
+    """Affine-Gaussian mutual information I(U;V) from the joint sample covariance
+    (this is PEID's affine transport-map MI: a Gaussian density on the features)."""
+    U = np.atleast_2d(U); V = np.atleast_2d(V)
+    if U.shape[0] < U.shape[1]: pass
+    UV = np.hstack([U, V])
+    du = U.shape[1]
+    C = np.cov(UV, rowvar=False) + 1e-8 * np.eye(UV.shape[1])
+    def ld(M): s, v = np.linalg.slogdet(M); return v
+    return 0.5 * (ld(C[:du, :du]) + ld(C[du:, du:]) - ld(C))
+
+
+def peid_synergy_continuous(a, b, y, n_mc=None, seed=0, intervene=True):
+    """Faithful continuous PEID Syn^EID (Yang, Wang & Zhang 2026, Appendix F).
+
+    Uses the paper's *affine-Gaussian transport map* MI on POLYNOMIAL-LIFTED
+    features -- one source lifted to (x,x^2,x^3), the pair to (x,y,xy,x^2,y^2) --
+    the cross term xy being what makes joint nonlinear (product) mechanisms
+    detectable.  Synergy (Eq. 94):
+        Syn = I(phi12(A,B);Y) - I(phi1(A);Y) - I(phi2(B);Y).
+    With intervene=True the sources are first replaced by an independent
+    max-entropy (uniform) sample pushed through a fitted polynomial mechanism
+    (PEID's do(X~U) intervention that zeroes source-side redundancy).
+    """
+    a = np.asarray(a, float); b = np.asarray(b, float); y = np.asarray(y, float)
+    n = len(y); n_mc = n_mc or n; rng = np.random.default_rng(seed)
+    if intervene:
+        # fit polynomial mechanism E[Y|A,B] and resample under uniform sources
+        Phi = np.column_stack([np.ones(n), a, b, a*b, a*a, b*b])
+        w, *_ = np.linalg.lstsq(Phi, y, rcond=None)
+        resid = y - Phi @ w
+        Ap = rng.uniform(a.min(), a.max(), n_mc); Bp = rng.uniform(b.min(), b.max(), n_mc)
+        Yp = (np.column_stack([np.ones(n_mc), Ap, Bp, Ap*Bp, Ap*Ap, Bp*Bp]) @ w
+              + rng.choice(resid, size=n_mc, replace=True))
+        a, b, y = Ap, Bp, Yp
+    phi1 = np.column_stack([a, a*a, a*a*a])
+    phi2 = np.column_stack([b, b*b, b*b*b])
+    phi12 = np.column_stack([a, b, a*b, a*a, b*b])
+    Y = y[:, None]
+    return float(_gauss_mi_blocks(phi12, Y) - _gauss_mi_blocks(phi1, Y) - _gauss_mi_blocks(phi2, Y))
 
 
 # ------------------------------------------------------------------ batch tests
