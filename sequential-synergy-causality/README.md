@@ -1,4 +1,6 @@
-# Sequential, Anytime-Valid Testing for Group (Synergistic) Causality
+# ANTE: Anytime-valid Nonparametric Test of synErgy
+
+*Sequential, anytime-valid testing for group (synergistic) causality.*
 
 A betting-martingale (e-process) test for **group causality** — the hypothesis
 that a set of causes acts on an effect *jointly*, beyond the sum of their

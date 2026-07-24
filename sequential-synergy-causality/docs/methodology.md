@@ -1,6 +1,6 @@
-# Sequential, Anytime-Valid Testing for Group (Synergistic) Causality
+# ANTE: Anytime-valid Nonparametric Test of synErgy
 
-**Working title:** *SYNERGE — Sequential e-processes for group causal effects.*
+*Sequential e-processes for group (synergistic) causal effects.*
 
 This note sketches the test statistic and the martingale/e-process construction
 for a sequential test of *synergistic* (group) causality: the hypothesis that a

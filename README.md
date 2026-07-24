@@ -29,9 +29,10 @@ Intelligent Systems).*
 
 ---
 
-## Paper 2 — Sequential Group-Causality Test (in progress)
+## Paper 2 — ANTE (in progress)
 
-**Sequential, Anytime-Valid Testing for Group (Synergistic) Causality.** A
+**ANTE: Anytime-valid Nonparametric Test of synErgy — Sequential Testing for
+Group (Synergistic) Causality.** A
 betting-martingale (e-process) test for the hypothesis that a set of causes acts
 on an effect *jointly*, beyond the sum of individual contributions — monitored
 anytime-valid as data streams in. Unifies the additive causal-pie (RERI-type) and
