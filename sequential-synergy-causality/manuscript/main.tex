@@ -915,6 +915,28 @@ ANTE is the only method that qualifies.
 
 \subsection{Real finance: a genuine contemporaneous synergy}\label{subsec:exp-pv}
 
+\paragraph{The real panel.} The workhorse dataset for this and the following
+subsection is a 16-asset daily panel spanning ten years, from 26 July 2016 to 23
+July 2026 ($T=2512$ trading days), retrieved from the public Yahoo Finance chart
+API (no API key; the downloader is released with the code). For each asset we take
+the dividend- and split-adjusted close and form daily log returns
+$r_{t}=\log P_{t}-\log P_{t-1}$, aligned on common trading days and standardised
+per asset before analysis. The universe is chosen deliberately to span asset
+classes, so that genuine cross-asset synergy has room to appear: it comprises the
+broad-market S\&P~500 ETF (SPY); the nine SPDR sector ETFs---financials (XLF),
+technology (XLK), energy (XLE), health care (XLV), industrials (XLI), consumer
+discretionary (XLY), consumer staples (XLP), utilities (XLU), and materials
+(XLB); long-dated Treasuries (TLT) for the rates factor; gold (GLD) and crude oil
+(USO) for commodities; high-yield credit (HYG); the US~dollar index (UUP); and the
+equity-volatility index (VIX). The window deliberately includes several distinct
+regimes---the 2018 volatility episodes, the 2020 COVID crash, and the 2022 rate-hike
+drawdown---so that any regime-localised synergy has a chance to surface and the
+forgetting-RLS predictors (Algorithm~\ref{algo:antesg}) are genuinely exercised.
+Except where noted, source pairs are conditioned on SPY, so that a detection
+reflects synergy \emph{beyond} the common market factor rather than shared beta.
+A complete inventory, including the auxiliary world-index, intraday, crypto, and
+climate panels, is given in Table~\ref{tab:datasets}.
+
 A negative result is only credible if the same instrument produces positives where
 they should appear, so before turning to the headline finding we confirm ANTE
 fires on a genuine real-market synergy. Portfolio theory supplies a clean one: the
