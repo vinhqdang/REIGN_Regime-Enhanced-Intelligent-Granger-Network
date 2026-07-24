@@ -29,7 +29,7 @@ Intelligent Systems).*
 
 ---
 
-## Paper 2 — ANTE (in progress)
+## Paper 2 — ANTE (manuscript ready; targeting Statistics and Computing)
 
 **ANTE: Anytime-valid Nonparametric Test of synErgy — Sequential Testing for
 Group (Synergistic) Causality.** A
