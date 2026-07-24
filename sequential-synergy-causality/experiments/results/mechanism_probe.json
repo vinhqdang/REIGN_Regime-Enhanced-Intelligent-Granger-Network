@@ -1,0 +1,61 @@
+{
+  "alpha": 0.05,
+  "probes": [
+    {
+      "mechanism": "oil x dollar -> energy (ret)",
+      "batch_synergy": 0.003346808052559269,
+      "log10_evalue": -1.6684052468230868,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "rates x dollar -> gold (ret)",
+      "batch_synergy": 0.002497138499683249,
+      "log10_evalue": -1.6446809299515517,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "oil x dollar -> materials (ret)",
+      "batch_synergy": 0.002331032197502081,
+      "log10_evalue": -0.0016427031490032964,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "vol x credit -> financials (vol)",
+      "batch_synergy": 0.0047887368514435424,
+      "log10_evalue": -0.0869048920013007,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "oilvol x vix -> energy (vol)",
+      "batch_synergy": 0.0018539055668248539,
+      "log10_evalue": -0.3627952693233532,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "leverage: mkt-ret x vix -> XLK vol",
+      "batch_synergy": 0.009840263937770377,
+      "log10_evalue": 0.0,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "leverage: mkt-ret x vix -> XLF vol",
+      "batch_synergy": 0.004158241576602606,
+      "log10_evalue": 0.0,
+      "reject_time": null,
+      "rejected": false
+    },
+    {
+      "mechanism": "leverage: mkt-ret x vix -> XLE vol",
+      "batch_synergy": 0.014174874728794196,
+      "log10_evalue": 0.0,
+      "reject_time": null,
+      "rejected": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "tickers": {
+    "SPY": {
+      "name": "S&P 500 ETF",
+      "role": "broad_market"
+    },
+    "XLF": {
+      "name": "Financials sector",
+      "role": "sector"
+    },
+    "XLK": {
+      "name": "Technology sector",
+      "role": "sector"
+    },
+    "XLE": {
+      "name": "Energy sector",
+      "role": "sector"
+    },
+    "XLV": {
+      "name": "Health-care sector",
+      "role": "sector"
+    },
+    "XLI": {
+      "name": "Industrials sector",
+      "role": "sector"
+    },
+    "XLY": {
+      "name": "Consumer-discretionary sector",
+      "role": "sector"
+    },
+    "XLP": {
+      "name": "Consumer-staples sector",
+      "role": "sector"
+    },
+    "XLU": {
+      "name": "Utilities sector",
+      "role": "sector"
+    },
+    "XLB": {
+      "name": "Materials sector",
+      "role": "sector"
+    },
+    "TLT": {
+      "name": "20y+ Treasury bonds",
+      "role": "rates"
+    },
+    "GLD": {
+      "name": "Gold",
+      "role": "commodity"
+    },
+    "USO": {
+      "name": "Crude oil",
+      "role": "commodity"
+    },
+    "HYG": {
+      "name": "High-yield credit",
+      "role": "credit"
+    },
+    "UUP": {
+      "name": "US dollar index",
+      "role": "fx"
+    },
+    "^VIX": {
+      "name": "CBOE volatility index",
+      "role": "volatility"
+    }
+  },
+  "n_assets": 16,
+  "n_days": 2512,
+  "start": "2016-07-26",
+  "end": "2026-07-23",
+  "range": "10y"
+}

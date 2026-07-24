@@ -1,0 +1,50 @@
+{
+  "S1_discrimination": {
+    "rejection_rate": {
+      "additive": 0.0,
+      "ownnonlin": 0.01,
+      "synergistic": 0.7133333333333334
+    },
+    "n_rep": 300,
+    "T": 2500,
+    "alpha": 0.05
+  },
+  "S2_anytime_vs_peeking": {
+    "eprocess_type1": 0.01,
+    "peeking_type1": 0.0175,
+    "n_rep": 400,
+    "T": 2500,
+    "alpha": 0.05
+  },
+  "S3_power_latency": {
+    "strength": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "power": [
+      0.0,
+      0.204,
+      0.472,
+      0.676,
+      0.74,
+      0.792,
+      0.772
+    ],
+    "median_detection": [
+      null,
+      1801.0,
+      1226.5,
+      937.0,
+      901.0,
+      940.5,
+      1227.0
+    ],
+    "n_rep": 250,
+    "T": 2500
+  }
+}

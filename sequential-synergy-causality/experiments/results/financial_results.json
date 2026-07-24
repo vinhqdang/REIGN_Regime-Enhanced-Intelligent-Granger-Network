@@ -1,0 +1,233 @@
+{
+  "panel": {
+    "mode": "volatility",
+    "variable": "|return| volatility proxy",
+    "n_days": 2512,
+    "n_assets": 16,
+    "start": "2016-07-26",
+    "end": "2026-07-23",
+    "market": "SPY"
+  },
+  "n_tests": 1365,
+  "n_reject_raw": 2,
+  "n_reject_familywise": 0,
+  "top_triples": [
+    {
+      "triple": "XLV+USO\u2192UUP",
+      "target": "UUP",
+      "a": "XLV",
+      "b": "USO",
+      "final_E": 6.390478044173188,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLF+XLE\u2192UUP",
+      "target": "UUP",
+      "a": "XLF",
+      "b": "XLE",
+      "final_E": 4.819273763962352,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLK+UUP\u2192TLT",
+      "target": "TLT",
+      "a": "XLK",
+      "b": "UUP",
+      "final_E": 4.375974090356463,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLF+UUP\u2192USO",
+      "target": "USO",
+      "a": "XLF",
+      "b": "UUP",
+      "final_E": 2.700271932471135,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLE+UUP\u2192USO",
+      "target": "USO",
+      "a": "XLE",
+      "b": "UUP",
+      "final_E": 2.583517909693086,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLE+^VIX\u2192XLV",
+      "target": "XLV",
+      "a": "XLE",
+      "b": "^VIX",
+      "final_E": 2.4445571186671455,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLV+USO\u2192XLB",
+      "target": "XLB",
+      "a": "XLV",
+      "b": "USO",
+      "final_E": 2.157984885829567,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLI+USO\u2192XLB",
+      "target": "XLB",
+      "a": "XLI",
+      "b": "USO",
+      "final_E": 2.081423049148298,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLI+USO\u2192HYG",
+      "target": "HYG",
+      "a": "XLI",
+      "b": "USO",
+      "final_E": 2.0219957256996883,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLE+XLP\u2192GLD",
+      "target": "GLD",
+      "a": "XLE",
+      "b": "XLP",
+      "final_E": 1.950045484444259,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLV+USO\u2192XLI",
+      "target": "XLI",
+      "a": "XLV",
+      "b": "USO",
+      "final_E": 1.8761406877564337,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLK+^VIX\u2192XLB",
+      "target": "XLB",
+      "a": "XLK",
+      "b": "^VIX",
+      "final_E": 1.86859315924523,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLP+USO\u2192XLB",
+      "target": "XLB",
+      "a": "XLP",
+      "b": "USO",
+      "final_E": 1.8378753218557375,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "XLV+USO\u2192XLU",
+      "target": "XLU",
+      "a": "XLV",
+      "b": "USO",
+      "final_E": 1.8321275732013156,
+      "reject_time": null,
+      "fw_significant": false
+    },
+    {
+      "triple": "TLT+USO\u2192^VIX",
+      "target": "^VIX",
+      "a": "TLT",
+      "b": "USO",
+      "final_E": 1.549504167650778,
+      "reject_time": null,
+      "fw_significant": false
+    }
+  ],
+  "oos_validation": [
+    {
+      "triple": "XLV+USO\u2192UUP",
+      "pairwise_p_a": 0.0,
+      "pairwise_p_b": 5.2211857537454165e-06,
+      "L_base": 0.8516628062693473,
+      "L_A": 0.8456018676377881,
+      "L_B": 0.8508966508048014,
+      "L_AB": 0.8452126899893624,
+      "syn_oos": -0.00037697781612033854
+    },
+    {
+      "triple": "XLF+XLE\u2192UUP",
+      "pairwise_p_a": 0.0,
+      "pairwise_p_b": 0.0,
+      "L_base": 0.8516628062693473,
+      "L_A": 0.8302210334107287,
+      "L_B": 0.8411815936271864,
+      "L_AB": 0.8301003758183011,
+      "syn_oos": -0.010360555049733433
+    },
+    {
+      "triple": "XLK+UUP\u2192TLT",
+      "pairwise_p_a": 0.0,
+      "pairwise_p_b": 0.0,
+      "L_base": 0.7663168562734785,
+      "L_A": 0.76639855766412,
+      "L_B": 0.7742505819624688,
+      "L_AB": 0.7823063908245546,
+      "syn_oos": -0.007974107471444336
+    },
+    {
+      "triple": "XLF+UUP\u2192USO",
+      "pairwise_p_a": 4.440892098500626e-15,
+      "pairwise_p_b": 2.316073339359015e-05,
+      "L_base": 0.6883706882431714,
+      "L_A": 0.6863779015181439,
+      "L_B": 0.686919689364782,
+      "L_AB": 0.6919433012207294,
+      "syn_oos": -0.007016398580974914
+    },
+    {
+      "triple": "XLE+UUP\u2192USO",
+      "pairwise_p_a": 2.362868296579279e-07,
+      "pairwise_p_b": 2.316073339359015e-05,
+      "L_base": 0.6883706882431714,
+      "L_A": 0.6863440461729258,
+      "L_B": 0.686919689364782,
+      "L_AB": 0.6881071202481784,
+      "syn_oos": -0.0032140729536420665
+    },
+    {
+      "triple": "XLE+^VIX\u2192XLV",
+      "pairwise_p_a": 0.0,
+      "pairwise_p_b": 0.1187679646580706,
+      "L_base": 0.6447319605622344,
+      "L_A": 0.6276113320304799,
+      "L_B": 0.6449525913189519,
+      "L_AB": 0.6320631237675483,
+      "syn_oos": -0.004231160980350701
+    },
+    {
+      "triple": "XLV+USO\u2192XLB",
+      "pairwise_p_a": 4.655856145063808e-09,
+      "pairwise_p_b": 9.327150163329634e-11,
+      "L_base": 0.6012130988507647,
+      "L_A": 0.5964991671708804,
+      "L_B": 0.5971025387478873,
+      "L_AB": 0.5974139513882294,
+      "syn_oos": -0.005025344320226499
+    },
+    {
+      "triple": "XLI+USO\u2192XLB",
+      "pairwise_p_a": 2.0634168151900667e-08,
+      "pairwise_p_b": 9.327150163329634e-11,
+      "L_base": 0.6012130988507647,
+      "L_A": 0.5947159571001722,
+      "L_B": 0.5971025387478873,
+      "L_AB": 0.5940690834908818,
+      "syn_oos": -0.0034636864935869704
+    }
+  ]
+}

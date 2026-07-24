@@ -35,12 +35,19 @@ Intelligent Systems).*
 Group (Synergistic) Causality.** A
 betting-martingale (e-process) test for the hypothesis that a set of causes acts
 on an effect *jointly*, beyond the sum of individual contributions — monitored
-anytime-valid as data streams in. Unifies the additive causal-pie (RERI-type) and
-information-theoretic (PID/PEID-type) synergy nulls under one test, with an
-anytime-valid subset-refinement search.
+anytime-valid as data streams in.
 
-*Status: early-stage prototype (code, experiments, methodology, and literature
-review complete; manuscript not yet drafted).*
+The flagship algorithm is **ANTE-SG**, for **financial time series**: anytime-
+valid, regime-aware detection of *synergistic Granger causality*, where synergy
+is defined as **super-additive out-of-sample predictive gain** and tested by
+betting (no stationarity or correct-specification needed). It is validated on
+synthetic data and on 10 years of real market data (16-asset ETF/macro panel + 6
+world indices). An interventional variant (**ANTE**) unifies the additive
+causal-pie (RERI-type) and information-theoretic (PID/PEID-type) synergy nulls.
+
+*Status: prototype with algorithm design, implementation, synthetic validation,
+real-financial-data case study, SOTA review, and methodology complete; manuscript
+not yet drafted.*
 
 | Path | Contents |
 |------|----------|
