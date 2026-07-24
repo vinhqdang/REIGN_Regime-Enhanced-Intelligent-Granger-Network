@@ -1,0 +1,210 @@
+{
+  "volatility": {
+    "n": 495,
+    "fw_thr": 3.99563519459755,
+    "n_fw": 0,
+    "n_reject": 0,
+    "top": [
+      {
+        "A": "Meta",
+        "B": "JPMorgan",
+        "C": "Microsoft",
+        "logE": 0.018506017776652773,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Tesla",
+        "B": "Amazon",
+        "C": "JPMorgan",
+        "logE": 0.013218509740289892,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Amazon",
+        "B": "Treasuries",
+        "C": "Microsoft",
+        "logE": 0.0016115311043295747,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Tesla",
+        "B": "Nvidia",
+        "C": "ExxonMobil",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Oil",
+        "B": "Treasuries",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Apple",
+        "B": "Amazon",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "Treasuries",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "Oil",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "ExxonMobil",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Microsoft",
+        "B": "Meta",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Microsoft",
+        "B": "Amazon",
+        "C": "JPMorgan",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Tesla",
+        "B": "Apple",
+        "C": "ExxonMobil",
+        "logE": 0.0,
+        "t": null,
+        "fw": false
+      }
+    ]
+  },
+  "tail": {
+    "n": 495,
+    "fw_thr": 3.99563519459755,
+    "n_fw": 0,
+    "n_reject": 2,
+    "top": [
+      {
+        "A": "Nvidia",
+        "B": "Treasuries",
+        "C": "Gold",
+        "logE": 0.9396680337833143,
+        "t": 258,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "Apple",
+        "C": "Treasuries",
+        "logE": 0.8699729455121877,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "Apple",
+        "C": "Amazon",
+        "logE": 0.6650537270612069,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "ExxonMobil",
+        "B": "Treasuries",
+        "C": "Apple",
+        "logE": 0.6161494245563011,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "ExxonMobil",
+        "B": "Treasuries",
+        "C": "Gold",
+        "logE": 0.5906849442315136,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Apple",
+        "B": "Gold",
+        "C": "Treasuries",
+        "logE": 0.5169097685337215,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "ExxonMobil",
+        "B": "Gold",
+        "C": "Treasuries",
+        "logE": 0.4068493880745489,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Nvidia",
+        "B": "Amazon",
+        "C": "Gold",
+        "logE": 0.38861873228198435,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Apple",
+        "B": "Microsoft",
+        "C": "Treasuries",
+        "logE": 0.38070465828676264,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Amazon",
+        "B": "ExxonMobil",
+        "C": "Gold",
+        "logE": 0.38068696251299217,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Apple",
+        "B": "ExxonMobil",
+        "C": "Tesla",
+        "logE": 0.370259318606951,
+        "t": null,
+        "fw": false
+      },
+      {
+        "A": "Apple",
+        "B": "JPMorgan",
+        "C": "Treasuries",
+        "logE": 0.33611617255125553,
+        "t": null,
+        "fw": false
+      }
+    ]
+  }
+}

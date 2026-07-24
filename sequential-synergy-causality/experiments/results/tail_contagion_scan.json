@@ -1,0 +1,188 @@
+{
+  "n": 660,
+  "fw_thr": 4.12057393120585,
+  "n_fw_sig": 0,
+  "n_reject": 14,
+  "top": [
+    {
+      "A": "Tesla",
+      "B": "Gold",
+      "C": "Oil",
+      "logE": 0.8355928111676852,
+      "t": 258,
+      "fw_sig": false,
+      "reject": true
+    },
+    {
+      "A": "Nvidia",
+      "B": "Microsoft",
+      "C": "Apple",
+      "logE": 0.43317655540222616,
+      "t": 204,
+      "fw_sig": false,
+      "reject": true
+    },
+    {
+      "A": "Tesla",
+      "B": "ExxonMobil",
+      "C": "VIX",
+      "logE": 0.2503287831639476,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "ExxonMobil",
+      "B": "Oil",
+      "C": "Nvidia",
+      "logE": 0.22963952338937416,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Apple",
+      "B": "JPMorgan",
+      "C": "ExxonMobil",
+      "logE": 0.20017018924071198,
+      "t": 197,
+      "fw_sig": false,
+      "reject": true
+    },
+    {
+      "A": "Apple",
+      "B": "ExxonMobil",
+      "C": "Microsoft",
+      "logE": 0.055832597785810206,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Apple",
+      "B": "Treasuries",
+      "C": "ExxonMobil",
+      "logE": 0.026381126579106514,
+      "t": 192,
+      "fw_sig": false,
+      "reject": true
+    },
+    {
+      "A": "Nvidia",
+      "B": "Apple",
+      "C": "Gold",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Amazon",
+      "B": "Meta",
+      "C": "Apple",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Meta",
+      "B": "Treasuries",
+      "C": "Apple",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Oil",
+      "B": "Treasuries",
+      "C": "ExxonMobil",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Tesla",
+      "B": "Treasuries",
+      "C": "JPMorgan",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Nvidia",
+      "B": "Apple",
+      "C": "ExxonMobil",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "JPMorgan",
+      "B": "Gold",
+      "C": "VIX",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Nvidia",
+      "B": "Apple",
+      "C": "Tesla",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Nvidia",
+      "B": "Gold",
+      "C": "Apple",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Meta",
+      "B": "Gold",
+      "C": "Apple",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Nvidia",
+      "B": "ExxonMobil",
+      "C": "Apple",
+      "logE": 0.0,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "Nvidia",
+      "B": "Treasuries",
+      "C": "Oil",
+      "logE": -0.012582259633968902,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    },
+    {
+      "A": "ExxonMobil",
+      "B": "Treasuries",
+      "C": "Meta",
+      "logE": -0.03534335910611659,
+      "t": null,
+      "fw_sig": false,
+      "reject": false
+    }
+  ]
+}
