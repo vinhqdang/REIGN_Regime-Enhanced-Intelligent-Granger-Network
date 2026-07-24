@@ -1,0 +1,199 @@
+{
+  "part0_canonical": [
+    {
+      "case": "XOR (pure synergy)",
+      "PEID_2026": 0.9999959598468237,
+      "PID_WB": 0.9999875338911309,
+      "SURD": 0.999987533891131,
+      "ANTE_rejrate": 1.0
+    },
+    {
+      "case": "AND",
+      "PEID_2026": 0.19158823095531163,
+      "PID_WB": 0.49922362640808754,
+      "SURD": 0.4992236264080875,
+      "ANTE_rejrate": 1.0
+    },
+    {
+      "case": "redundant (copy A)",
+      "PEID_2026": -1.0128974388263524e-05,
+      "PID_WB": 2.5524321425971636e-16,
+      "SURD": 1.1119438703133255e-16,
+      "ANTE_rejrate": 0.035
+    },
+    {
+      "case": "independent (null)",
+      "PEID_2026": 3.5420923596838396e-05,
+      "PID_WB": 3.538927802848616e-05,
+      "SURD": 3.538927802854815e-05,
+      "ANTE_rejrate": 0.025
+    }
+  ],
+  "partA_detection_auc": {
+    "auc_syn_vs_non": {
+      "ANTE_logE": 0.98075,
+      "SURD": 1.0,
+      "PEID_2026": 1.0,
+      "InteractionInfo": 0.87345
+    },
+    "auc_syn_vs_ownnl": {
+      "ANTE_logE": 0.9814,
+      "SURD": 1.0,
+      "PEID_2026": 1.0,
+      "InteractionInfo": 0.7469
+    },
+    "means": {
+      "ANTE_logE": {
+        "additive": -0.118710016394334,
+        "ownnonlin": -0.06436433234263092,
+        "synergistic": 2.8570637492677515
+      },
+      "SURD": {
+        "additive": 0.15116357131789476,
+        "ownnonlin": 0.08239938135706015,
+        "synergistic": 0.2530331298285973
+      },
+      "PEID_2026": {
+        "additive": -0.05025632942572296,
+        "ownnonlin": 0.01603423382594861,
+        "synergistic": 0.2409822433626324
+      },
+      "InteractionInfo": {
+        "additive": -0.01664089804192001,
+        "ownnonlin": -0.0019991934213282204,
+        "synergistic": -0.0005418272086085641
+      }
+    },
+    "n_rep": 100,
+    "T": 3000
+  },
+  "partC_monitoring": {
+    "ante_type1": 0.016,
+    "peeking_batch_type1": 0.14,
+    "n_rep": 250,
+    "checks": 15,
+    "alpha": 0.05
+  },
+  "partD_real": {
+    "separation_auc": {
+      "ANTE_logE": 1.0,
+      "SURD": 0.85,
+      "PEID_2026": 1.0,
+      "InteractionInfo": 1.0
+    },
+    "table": [
+      {
+        "pair": "GLD/USO",
+        "cross_asset": true,
+        "ANTE_logE": 7.3389047765431945,
+        "SURD": 0.004509901732593048,
+        "PEID_2026": 0.3624983492255379,
+        "InteractionInfo": -0.0007919243222632572
+      },
+      {
+        "pair": "XLF/TLT",
+        "cross_asset": true,
+        "ANTE_logE": 5.846768248680412,
+        "SURD": 0.012312229163309612,
+        "PEID_2026": 0.5506770404465846,
+        "InteractionInfo": 0.0032699697903860415
+      },
+      {
+        "pair": "SPY/TLT",
+        "cross_asset": true,
+        "ANTE_logE": 3.965418841073719,
+        "SURD": 0.019121530636115477,
+        "PEID_2026": 0.48857326136801565,
+        "InteractionInfo": 0.0008578504260779237
+      },
+      {
+        "pair": "GLD/TLT",
+        "cross_asset": true,
+        "ANTE_logE": 1.2705681907369815,
+        "SURD": 0.03713914214303709,
+        "PEID_2026": 0.35381057052461184,
+        "InteractionInfo": 0.0008322863729547627
+      },
+      {
+        "pair": "USO/UUP",
+        "cross_asset": true,
+        "ANTE_logE": 3.016934408830854,
+        "SURD": 0.0038324542676869953,
+        "PEID_2026": 0.21262430377186187,
+        "InteractionInfo": -7.333552199279735e-05
+      },
+      {
+        "pair": "TLT/UUP",
+        "cross_asset": true,
+        "ANTE_logE": 8.421781751414773,
+        "SURD": 0.018154968313795265,
+        "PEID_2026": 0.4829974999324078,
+        "InteractionInfo": 0.00018869896811178383
+      },
+      {
+        "pair": "SPY/GLD",
+        "cross_asset": true,
+        "ANTE_logE": 7.401796876276292,
+        "SURD": 0.022614314862434565,
+        "PEID_2026": 0.4591046658113663,
+        "InteractionInfo": -0.00042545534737538793
+      },
+      {
+        "pair": "XLE/TLT",
+        "cross_asset": true,
+        "ANTE_logE": 1.8750280825984216,
+        "SURD": 0.009528651083982072,
+        "PEID_2026": 0.4723447598659851,
+        "InteractionInfo": 0.003594768076706753
+      },
+      {
+        "pair": "HYG/TLT",
+        "cross_asset": true,
+        "ANTE_logE": 5.865976996851834,
+        "SURD": 0.014988754231724445,
+        "PEID_2026": 0.28784992698861134,
+        "InteractionInfo": -0.0008178428983025487
+      },
+      {
+        "pair": "XLK/GLD",
+        "cross_asset": true,
+        "ANTE_logE": 10.640202763577943,
+        "SURD": 0.013068097629735206,
+        "PEID_2026": 0.42679171080041667,
+        "InteractionInfo": -0.00022852788519492524
+      },
+      {
+        "pair": "XLE/XLF",
+        "cross_asset": false,
+        "ANTE_logE": -2.5455341529722406,
+        "SURD": 0.0030601920066099923,
+        "PEID_2026": 0.18686658063607609,
+        "InteractionInfo": -0.013061352316663019
+      },
+      {
+        "pair": "XLK/XLI",
+        "cross_asset": false,
+        "ANTE_logE": 0.0,
+        "SURD": 0.0063324221978127695,
+        "PEID_2026": 0.045273286396866896,
+        "InteractionInfo": -0.00361275327601431
+      },
+      {
+        "pair": "XLF/XLI",
+        "cross_asset": false,
+        "ANTE_logE": -1.0290590093526564,
+        "SURD": 0.007910905850647692,
+        "PEID_2026": -0.04003500658204834,
+        "InteractionInfo": -0.00778024198861676
+      },
+      {
+        "pair": "XLE/XLB",
+        "cross_asset": false,
+        "ANTE_logE": -2.244588143279014,
+        "SURD": 0.00929946870523212,
+        "PEID_2026": 0.1917694595721058,
+        "InteractionInfo": -0.013678468926470408
+      }
+    ]
+  }
+}

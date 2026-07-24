@@ -63,6 +63,24 @@ needed (prequential/game-theoretic null).
   anytime-valid control. ANTE-SG acts as a rigorous filter against false synergy.
   See `docs/RESULTS.md`.
 
+## Benchmark vs SOTA (`docs/benchmark.md`)
+
+Head-to-head against 2024–2026 synergy methods — **PEID** (2026, re-implemented),
+**SURD** (2024, cloned code), **Williams–Beer PID**, **interaction information**,
+and **O-information** (`hoi`):
+
+- **Detection accuracy** — ANTE **matches** the best batch estimators (synthetic
+  AUC: SURD/PEID 1.00, ANTE 0.98, Gaussian interaction-info 0.87; real-data
+  cross-asset-vs-redundant AUC: ANTE 1.00, PEID 1.00, SURD 0.85). It does not
+  claim to beat them as a point estimator.
+- **Anytime-valid error control (decisive)** — under continuous monitoring ANTE
+  holds type-I at **0.016 ≤ α**, while a peeking batch permutation test inflates
+  to **0.14**. None of the batch SOTA methods have any sequential guarantee.
+
+**Verdict: complementarity, not blanket superiority** — ANTE matches SOTA
+detection while adding the sequential, anytime-valid monitoring guarantee they
+lack (the gap identified in `docs/literature_review_finance.md`).
+
 ## Layout
 
 ```
