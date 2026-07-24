@@ -972,12 +972,49 @@ threshold; redundant within-equity pairs do not. The synergy is the covariance
 variance}\label{fig:pv}
 \end{figure}
 
-\subsection{The headline finding: group causality is absent from daily markets}\label{subsec:exp-eoa}
+\subsection{Where group synergy is present---and where it is not}\label{subsec:exp-eoa}
 
-We now make an \emph{evidence-of-absence} claim, which requires two things: a test
-demonstrably powered where synergy is real, and financial evidence that positively
-favours the no-synergy hypothesis rather than merely failing to reject it. ANTE
-supplies both.
+The headline result is a contrast, and the contrast is only meaningful because ANTE
+detects group synergy decisively \emph{wherever it genuinely exists}. Before drawing
+the finance conclusion we therefore collect, in Table~\ref{tab:detections}, every
+setting in which we ran the identical test. It fires on canonical logic gates, on
+synthetic bilinear and pure three-way mechanisms, on a calibrated synergy-present
+DGP, on the real turbulent energy cascade from fluid dynamics, and on real
+contemporaneous portfolio-variance co-movement---and it returns a true null in
+exactly one place, lagged group structure in daily and hourly markets. The
+positives are not incidental checks; they are the evidence that the instrument
+works, and they are what make the single negative a \emph{finding} rather than a
+failure to detect.
+
+\begin{table}[h]
+\caption{Where group synergy is present and where it is absent. The same
+anytime-valid test, applied unchanged across domains. It detects synergy wherever
+it genuinely exists---synthetic ground truth, real physics, and real
+contemporaneous market co-movement---and returns a true null only for lagged group
+structure in daily/hourly finance. Evidence is the rejection rate or power (over
+replications) or the accumulated $\log_{10}E$ (single real series; reject when it
+crosses $\log_{10}(1/\alpha)\approx1.3$)}\label{tab:detections}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{4.9cm}p{2.0cm}p{1.0cm}p{3.0cm}}
+\toprule
+Dataset / setting & Group & Det.? & Evidence \\
+\midrule
+Synthetic --- XOR (pure synergy) & $A,B\!\to\!C$ & \textbf{yes} & rej.\ rate $1.00$ \\
+Synthetic --- AND & $A,B\!\to\!C$ & \textbf{yes} & rej.\ rate $1.00$ \\
+Synthetic --- bilinear $Y{=}A{\cdot}B$ (+ factor) & $A,B\!\to\!Y$ & \textbf{yes} & power $0.71$ \\
+Synthetic --- pure 3-way $Y{=}A{\cdot}B{\cdot}C$ & $A,B,C\!\to\!Y$ & \textbf{yes} & power $0.74$--$1.00$ \\
+Synthetic --- calibrated synergy arm & 3-way & \textbf{yes} & median $\log_{10}E=+2.79$ \\
+\textbf{Real physics} --- turbulent energy cascade & 3 scales $\to$ finest & \textbf{yes} & $\log_{10}E=4.0$ ($t^\star{=}734$) \\
+\textbf{Real finance} --- portfolio realised variance (contemp.) & cross-asset pairs & \textbf{yes} & $8/14$ family-wise; up to $\log_{10}E=10.6$ \\
+\textbf{Real finance} --- lagged group ($>3700$ triples) & 2-/3-/4-way & \textbf{no} & $0$ detections; median $\log_{10}E=-0.93$ \\
+\botrule
+\end{tabular*}
+\end{table}
+
+The remainder of this subsection substantiates the two claims the contrast rests
+on: that the instrument is powered (including on real, non-simulated data), and
+that the financial evidence positively favours the no-synergy hypothesis rather
+than merely failing to reject it.
 
 \paragraph{The instrument is powered---including in physics.} The first leg is that
 ANTE detects group synergy wherever it genuinely exists, on data outside our own
