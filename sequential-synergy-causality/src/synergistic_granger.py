@@ -76,14 +76,22 @@ def _lagblock(series, t, p):
     return [series[t - 1 - j] for j in range(p)]
 
 
-def build_feature_fn(Y, sources, cond, p):
+def build_feature_fn(Y, sources, cond, p, contemp=False):
     """Return a function t -> {model_name: feature_vector} for base/+A/+B/+AB.
 
     To measure *synergy* (irreducible joint structure) rather than within-variable
     nonlinearity, each marginal model gets its source's own linear AND squared
-    lags, while ONLY the joint model additionally gets the cross-products
-    A_{t-i}*B_{t-i}.  Thus a DGP like Y=A^2 is absorbed by the A-model (no false
-    synergy), whereas Y=A*B is captured only by the joint model (true synergy).
+    terms, while ONLY the joint model additionally gets the cross-products.  Thus
+    a DGP like Y=A^2 is absorbed by the A-model (no false synergy), whereas Y=A*B
+    is captured only by the joint model (true synergy).
+
+    contemp=False -> lagged (Granger) synergy: features are A_{t-i},B_{t-i}, i=1..p
+                     (does the joint PAST predict Y_t beyond parts).
+    contemp=True  -> contemporaneous synergy: additionally include the time-t
+                     source values A_t,B_t and the joint model's cross A_t*B_t
+                     (does the joint CONTEMPORANEOUS state explain Y_t beyond
+                     parts).  Predictors are still fit only on the past, so the
+                     betting martingale stays valid.
     """
     A = sources["A"]; B = sources["B"]
 
@@ -94,6 +102,11 @@ def build_feature_fn(Y, sources, cond, p):
         la = _lagblock(A, t, p); la2 = [v * v for v in la]
         lb = _lagblock(B, t, p); lb2 = [v * v for v in lb]
         cross = [a * b for a, b in zip(la, lb)]          # same-lag interaction
+        if contemp:
+            a0, b0 = A[t], B[t]
+            la = [a0] + la; la2 = [a0 * a0] + la2
+            lb = [b0] + lb; lb2 = [b0 * b0] + lb2
+            cross = [a0 * b0] + cross
         return {
             "base": np.array(base),
             "A":    np.array(base + la + la2),
@@ -107,15 +120,17 @@ def build_feature_fn(Y, sources, cond, p):
 # ANTE-SG detector
 # ---------------------------------------------------------------------------
 def ante_sg(Y, A, B, cond=None, p=1, alpha=0.05, forget=0.995, ridge=1e-2,
-            warmup=60, clip_b=10.0, cap_frac=0.9, ceil=1e15):
+            warmup=60, clip_b=10.0, cap_frac=0.9, ceil=1e15, contemp=False):
     """Sequential anytime-valid test for positive synergy of {A,B} on Y.
 
-    Returns dict with the e-value trajectory, rejection decision/time, the
-    running synergy-score mean, and the per-step scores.
+    contemp=False tests lagged (Granger) synergy; contemp=True tests
+    contemporaneous synergy (time-t joint state). Returns dict with the e-value
+    trajectory, rejection decision/time, running synergy-score mean, per-step scores.
     """
     Y = np.asarray(Y, float)
     cond = [np.asarray(z, float) for z in (cond or [])]
-    feats = build_feature_fn(Y, {"A": np.asarray(A, float), "B": np.asarray(B, float)}, cond, p)
+    feats = build_feature_fn(Y, {"A": np.asarray(A, float), "B": np.asarray(B, float)},
+                             cond, p, contemp=contemp)
     T = len(Y)
 
     dims = {k: len(feats(p)[k]) for k in ("base", "A", "B", "AB")}
@@ -165,11 +180,12 @@ def ante_sg(Y, A, B, cond=None, p=1, alpha=0.05, forget=0.995, ridge=1e-2,
 # ---------------------------------------------------------------------------
 # Baselines
 # ---------------------------------------------------------------------------
-def batch_synergy_estimate(Y, A, B, cond=None, p=1, ridge=1e-2):
+def batch_synergy_estimate(Y, A, B, cond=None, p=1, ridge=1e-2, contemp=False):
     """In-sample OLS/ridge estimate of the synergy Syn(A,B->Y) (fixed-sample)."""
     Y = np.asarray(Y, float)
     cond = [np.asarray(z, float) for z in (cond or [])]
-    feats = build_feature_fn(Y, {"A": np.asarray(A, float), "B": np.asarray(B, float)}, cond, p)
+    feats = build_feature_fn(Y, {"A": np.asarray(A, float), "B": np.asarray(B, float)},
+                             cond, p, contemp=contemp)
     T = len(Y)
     rows = {k: [] for k in ("base", "A", "B", "AB")}
     ys = []

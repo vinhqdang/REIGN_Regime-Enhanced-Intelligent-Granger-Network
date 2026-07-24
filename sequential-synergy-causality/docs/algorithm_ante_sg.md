@@ -144,11 +144,17 @@ power rising to ~0.8 and detection latency falling as synergy strengthens. The
 own-nonlinearity discriminator confirms it isolates irreducible $A\times B$
 structure rather than within-variable nonlinearity.
 
-**Real financial data (10y, 16-asset panel + 6 world indices).** Across an
-exhaustive 1,365-triple volatility scan, cross-region index lead-lag, and curated
-economic mechanisms (oil×dollar, rates×dollar, vol×credit, leverage), daily
-cross-asset dependence is **additive and redundant, not synergistic**: apparent
-in-sample synergies do not replicate out-of-sample and none survive anytime-valid
-family-wise control. ANTE-SG thus acts as a rigorous filter that avoids the false
-synergy discoveries a batch PID ranking can make — a specificity result on real
-data and a substantive empirical claim about daily markets. See `RESULTS.md`.
+**Real financial data — positive detection.** The contemporaneous variant
+recovers genuine synergy in **portfolio realized variance** (the covariance /
+diversification term): 8/14 curated pairs are family-wise significant, all of them
+economically-distinct cross-asset-class pairs (XLK/GLD log₁₀E=10.6, TLT/UUP 8.4,
+SPY/GLD 7.4, GLD/USO 7.3, …), while redundant within-equity pairs are correctly
+not flagged. **Real synergy, detected anytime-valid, with sensible discrimination.**
+
+**Real financial data — lagged (Granger) direction.** Across an exhaustive daily
+volatility scan (1,365 triples), hourly crypto (360 triples × 2, 16.8k hours),
+cross-region indices, and curated mechanisms, lagged super-additive synergy is
+**absent** — apparent in-sample synergies fail out-of-sample and none survive
+anytime-valid control. So ANTE-SG fires on real synergy where it exists and
+refuses to over-report where dependence is additive + common-factor redundancy.
+See `RESULTS.md`.

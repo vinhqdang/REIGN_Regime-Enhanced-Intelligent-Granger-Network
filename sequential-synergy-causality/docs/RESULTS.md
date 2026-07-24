@@ -19,7 +19,28 @@ The **S1 own-nonlinearity discriminator** is the key correctness property: a
 mechanism $Y=g(A)$, however nonlinear, is absorbed by the marginal model and is
 *not* mistaken for synergy. Only irreducible $A\times B$ structure is flagged.
 
-## Real financial data (`financial_case_study.py`, `mechanism_probe.py`)
+## Real financial data — the positive result (`portfolio_variance_synergy.py`)
+
+**Contemporaneous synergy in portfolio realized variance.** A portfolio's variance
+is not the sum of its constituents' variances — the covariance (interaction) term
+is first-order. For a 50/50 portfolio, $\mathrm{RV}=\big(\tfrac{R_A+R_B}{2}\big)^2
+=\tfrac14R_A^2+\tfrac14R_B^2+\tfrac12R_AR_B$; the $R_AR_B$ term is genuine synergy
+no single asset's (even squared) return captures. ANTE's contemporaneous variant
+recovers it from **real** daily returns, and — crucially — **discriminates**:
+
+| | pairs | result |
+|---|---|---|
+| **Cross-asset-class** (distinct covariance) | XLK/GLD, TLT/UUP, SPY/GLD, GLD/USO, HYG/TLT, XLF/TLT, SPY/TLT, USO/UUP | **family-wise significant** (log₁₀E up to **10.6**; detected as early as t\*≈230–360 days) |
+| **Redundant within-equity** (both cyclical) | XLE/XLF, XLE/XLB, XLF/XLI, XLK/XLI | **not flagged** (synergy ≤ 0 — cross-term redundant with individual variances) |
+
+Overall **8/14** pairs family-wise significant, **10/14** raw — and every one is an
+economically-distinct cross-asset-class pair, exactly where the covariance term is
+a real, separate component of risk (the diversification / Markowitz effect). This
+is a genuine positive detection of synergy in real market data, with anytime-valid
+error control. Figures: `pv_synergy_bars.png`, `pv_event_trajectories.png`; data
+`portfolio_variance_results.json`.
+
+## Real financial data — the lagged (Granger) direction is additive+redundant
 
 **Data.** 16-asset daily panel, 2016-07-26 … 2026-07-23 (2,512 days): SPY, 9
 sector ETFs, TLT, GLD, USO, HYG, UUP, ^VIX (`data/download_financial.py`), plus 6
@@ -44,16 +65,23 @@ synergistic.**
   vol×credit→financials, leverage: signed market-return×VIX→sector volatility):
   all batch-synergy estimates tiny (≤ 0.014 standardized-loss units), **none**
   rejected. The largest hint is the leverage effect on energy-sector volatility.
+- **Hourly crypto** (`crypto_case_study.py`; 16,761 hours × 10 assets, BTC-
+  conditioned): 360 triples in each of returns and volatility, **0** family-wise
+  significant in either (top log₁₀E 0.21 returns / 0.34 volatility). Even in the
+  inefficient, high-sample crypto regime, lagged super-additive synergy is absent.
 
-**Interpretation.** ANTE-SG, by requiring *out-of-sample super-additivity* and
-*anytime-valid* evidence, correctly declines to declare synergy where the
-apparent higher-order structure is explained by a common market factor plus
-pairwise spillovers. This is a specificity result on real data and a cautionary
-counterpoint to in-sample batch synergy rankings (e.g. PID synergy over triplets,
-Scagliarini et al. 2020), which can surface "top synergistic" circuits that need
-not survive out-of-sample testing. It is also a substantive empirical claim:
-**at daily frequency, cross-asset financial dependence is dominated by additive
-and redundant effects; irreducible super-additive synergy is negligible.**
+**Interpretation.** The two real-data findings together tell a coherent story.
+*Contemporaneously*, genuine synergy exists and ANTE detects it strongly and
+selectively — portfolio variance is irreducibly joint through the covariance term
+(diversification). *In the lagged/predictive (Granger) direction*, synergy is
+absent across daily equities and hourly crypto: apparent in-sample synergies do
+not replicate out-of-sample and none survive anytime-valid control. So ANTE both
+(i) fires on real synergy that is present and (ii) refuses to over-report where the
+structure is really additive + common-factor redundancy — a cautionary counterpoint
+to in-sample batch synergy rankings (e.g. PID over triplets, Scagliarini et al.
+2020). Substantive empirical claim: **cross-asset dependence is synergistic
+*contemporaneously* (through covariance) but additive + redundant in the
+*predictive* direction at daily/hourly frequency.**
 
 **Figures.** `sg_s3_power_latency.png`, `sg_s4_paths.png` (synthetic);
 `fin_synergy_network.png`, `fin_oos_validation.png`, `fin_event_trajectory.png`,

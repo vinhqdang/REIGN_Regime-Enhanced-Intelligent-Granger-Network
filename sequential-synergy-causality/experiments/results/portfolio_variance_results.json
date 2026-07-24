@@ -1,0 +1,164 @@
+{
+  "alpha": 0.05,
+  "n_pairs": 14,
+  "familywise_threshold_log10": 2.4471580313422194,
+  "n_contemp_reject_raw": 10,
+  "n_contemp_familywise": 8,
+  "n_lagged_reject_raw": 0,
+  "pairs": [
+    {
+      "pair": "XLK/GLD",
+      "desc": "tech x gold",
+      "contemp_log10E": 10.640202763577943,
+      "contemp_reject_time": 278.0,
+      "contemp_batchSyn": 0.03497108203735333,
+      "contemp_oos_syn": 0.6584038184691337,
+      "contemp_fw": true,
+      "lagged_log10E": -3.7982612461837375,
+      "lagged_batchSyn": 0.036845727206717194
+    },
+    {
+      "pair": "TLT/UUP",
+      "desc": "bonds x dollar",
+      "contemp_log10E": 8.421781751414773,
+      "contemp_reject_time": 232.0,
+      "contemp_batchSyn": 0.22233816796480743,
+      "contemp_oos_syn": 0.24186283314270274,
+      "contemp_fw": true,
+      "lagged_log10E": -1.4695470445830767,
+      "lagged_batchSyn": -0.013014788341866423
+    },
+    {
+      "pair": "SPY/GLD",
+      "desc": "equity x gold",
+      "contemp_log10E": 7.401796876276292,
+      "contemp_reject_time": 362.0,
+      "contemp_batchSyn": 0.03051051201530175,
+      "contemp_oos_syn": 0.9141811205913537,
+      "contemp_fw": true,
+      "lagged_log10E": -5.266035255575241,
+      "lagged_batchSyn": 0.0494229633082357
+    },
+    {
+      "pair": "GLD/USO",
+      "desc": "gold x oil",
+      "contemp_log10E": 7.3389047765431945,
+      "contemp_reject_time": 289.0,
+      "contemp_batchSyn": 0.03265715258615165,
+      "contemp_oos_syn": 0.11092289254320722,
+      "contemp_fw": true,
+      "lagged_log10E": -2.649184909432102,
+      "lagged_batchSyn": 0.006065426841602162
+    },
+    {
+      "pair": "HYG/TLT",
+      "desc": "credit x bonds",
+      "contemp_log10E": 5.865976996851834,
+      "contemp_reject_time": 563.0,
+      "contemp_batchSyn": 0.24710324801706918,
+      "contemp_oos_syn": 0.101044616168041,
+      "contemp_fw": true,
+      "lagged_log10E": 0.30164955542576327,
+      "lagged_batchSyn": 0.013658980780629104
+    },
+    {
+      "pair": "XLF/TLT",
+      "desc": "financials x bonds",
+      "contemp_log10E": 5.846768248680412,
+      "contemp_reject_time": 463.0,
+      "contemp_batchSyn": 0.23339240923260163,
+      "contemp_oos_syn": 0.1613595695389669,
+      "contemp_fw": true,
+      "lagged_log10E": -2.997142418713316,
+      "lagged_batchSyn": -0.008791909427228295
+    },
+    {
+      "pair": "SPY/TLT",
+      "desc": "equity x bonds",
+      "contemp_log10E": 3.965418841073719,
+      "contemp_reject_time": 615.0,
+      "contemp_batchSyn": 0.3642175148150226,
+      "contemp_oos_syn": 0.33767182636892434,
+      "contemp_fw": true,
+      "lagged_log10E": 0.3683435833671929,
+      "lagged_batchSyn": -0.0041245455511201845
+    },
+    {
+      "pair": "USO/UUP",
+      "desc": "oil x dollar",
+      "contemp_log10E": 3.016934408830854,
+      "contemp_reject_time": 296.0,
+      "contemp_batchSyn": -0.02637138410355022,
+      "contemp_oos_syn": 0.008120559217085432,
+      "contemp_fw": true,
+      "lagged_log10E": 0.0,
+      "lagged_batchSyn": 0.005157116676016482
+    },
+    {
+      "pair": "XLE/TLT",
+      "desc": "energy x bonds",
+      "contemp_log10E": 1.8750280825984216,
+      "contemp_reject_time": 1994.0,
+      "contemp_batchSyn": -0.05000307544068738,
+      "contemp_oos_syn": 0.12351906401382137,
+      "contemp_fw": false,
+      "lagged_log10E": 0.008888063042289944,
+      "lagged_batchSyn": -0.0009308230198089573
+    },
+    {
+      "pair": "GLD/TLT",
+      "desc": "gold x bonds",
+      "contemp_log10E": 1.2705681907369815,
+      "contemp_reject_time": 552.0,
+      "contemp_batchSyn": 0.1308575757081607,
+      "contemp_oos_syn": 0.5430025269682122,
+      "contemp_fw": false,
+      "lagged_log10E": -0.012759159217105789,
+      "lagged_batchSyn": 0.017941236368558378
+    },
+    {
+      "pair": "XLK/XLI",
+      "desc": "tech x industrials (both equity)",
+      "contemp_log10E": 0.0,
+      "contemp_reject_time": NaN,
+      "contemp_batchSyn": -0.6608506515552732,
+      "contemp_oos_syn": -0.3894558625890224,
+      "contemp_fw": false,
+      "lagged_log10E": -3.722351956208008,
+      "lagged_batchSyn": 0.010784350919038066
+    },
+    {
+      "pair": "XLF/XLI",
+      "desc": "financials x industrials (both equity)",
+      "contemp_log10E": -1.0290590093526564,
+      "contemp_reject_time": NaN,
+      "contemp_batchSyn": -0.7247821390264746,
+      "contemp_oos_syn": -0.1870855451881774,
+      "contemp_fw": false,
+      "lagged_log10E": -1.6268782689676826,
+      "lagged_batchSyn": -0.017294218547932005
+    },
+    {
+      "pair": "XLE/XLB",
+      "desc": "energy x materials (both cyclical)",
+      "contemp_log10E": -2.244588143279014,
+      "contemp_reject_time": NaN,
+      "contemp_batchSyn": -0.6627684065321435,
+      "contemp_oos_syn": -0.07551280589134707,
+      "contemp_fw": false,
+      "lagged_log10E": -2.321995611574505,
+      "lagged_batchSyn": -0.00906116006932245
+    },
+    {
+      "pair": "XLE/XLF",
+      "desc": "energy x financials (both cyclical)",
+      "contemp_log10E": -2.5455341529722406,
+      "contemp_reject_time": NaN,
+      "contemp_batchSyn": -0.6793597742421174,
+      "contemp_oos_syn": -0.0823838142746098,
+      "contemp_fw": false,
+      "lagged_log10E": -2.4175977061608585,
+      "lagged_batchSyn": -0.038279140590341654
+    }
+  ]
+}

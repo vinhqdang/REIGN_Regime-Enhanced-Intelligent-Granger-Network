@@ -1,0 +1,189 @@
+{
+  "mode": "volatility",
+  "n_obs": 16761,
+  "n_assets": 10,
+  "start": "2024-08-23 05:00:00",
+  "end": "2026-07-24 04:00:00",
+  "n_tests": 360,
+  "n_reject_raw": 2,
+  "n_reject_familywise": 0,
+  "top": [
+    {
+      "triple": "DOGE+AVAX\u2192LINK",
+      "target": "LINK-USD",
+      "a": "DOGE-USD",
+      "b": "AVAX-USD",
+      "final_E": 2.1809960699207034,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ETH+BNB\u2192DOGE",
+      "target": "DOGE-USD",
+      "a": "ETH-USD",
+      "b": "BNB-USD",
+      "final_E": 1.342051094174521,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "LTC+AVAX\u2192BNB",
+      "target": "BNB-USD",
+      "a": "LTC-USD",
+      "b": "AVAX-USD",
+      "final_E": 1.2953358564641098,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ADA+AVAX\u2192BTC",
+      "target": "BTC-USD",
+      "a": "ADA-USD",
+      "b": "AVAX-USD",
+      "final_E": 1.2789596245518322,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "SOL+ADA\u2192XRP",
+      "target": "XRP-USD",
+      "a": "SOL-USD",
+      "b": "ADA-USD",
+      "final_E": 1.2186506984877101,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ETH+BNB\u2192XRP",
+      "target": "XRP-USD",
+      "a": "ETH-USD",
+      "b": "BNB-USD",
+      "final_E": 1.1207526454293926,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ETH+BNB\u2192ADA",
+      "target": "ADA-USD",
+      "a": "ETH-USD",
+      "b": "BNB-USD",
+      "final_E": 1.1024376240273255,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "SOL+DOGE\u2192ADA",
+      "target": "ADA-USD",
+      "a": "SOL-USD",
+      "b": "DOGE-USD",
+      "final_E": 1.0975381655384016,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "BTC+XRP\u2192LTC",
+      "target": "LTC-USD",
+      "a": "BTC-USD",
+      "b": "XRP-USD",
+      "final_E": 1.0739166260542403,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "BNB+ADA\u2192BTC",
+      "target": "BTC-USD",
+      "a": "BNB-USD",
+      "b": "ADA-USD",
+      "final_E": 1.070537202573039,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "DOGE+LTC\u2192BNB",
+      "target": "BNB-USD",
+      "a": "DOGE-USD",
+      "b": "LTC-USD",
+      "final_E": 1.0664286028206762,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ETH+SOL\u2192DOGE",
+      "target": "DOGE-USD",
+      "a": "ETH-USD",
+      "b": "SOL-USD",
+      "final_E": 1.0654749904764118,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "BTC+SOL\u2192ETH",
+      "target": "ETH-USD",
+      "a": "BTC-USD",
+      "b": "SOL-USD",
+      "final_E": 1.0537694274332214,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "ETH+XRP\u2192BTC",
+      "target": "BTC-USD",
+      "a": "ETH-USD",
+      "b": "XRP-USD",
+      "final_E": 1.0520935260345303,
+      "reject_time": null,
+      "fw": false
+    },
+    {
+      "triple": "XRP+LINK\u2192ETH",
+      "target": "ETH-USD",
+      "a": "XRP-USD",
+      "b": "LINK-USD",
+      "final_E": 1.0366058164850154,
+      "reject_time": null,
+      "fw": false
+    }
+  ],
+  "oos": [
+    {
+      "triple": "DOGE+AVAX\u2192LINK",
+      "syn_oos": -0.0018993094825600076,
+      "reject_time": null
+    },
+    {
+      "triple": "ETH+BNB\u2192DOGE",
+      "syn_oos": -0.002839735417298983,
+      "reject_time": null
+    },
+    {
+      "triple": "LTC+AVAX\u2192BNB",
+      "syn_oos": -0.0007675446036080613,
+      "reject_time": null
+    },
+    {
+      "triple": "ADA+AVAX\u2192BTC",
+      "syn_oos": 0.00010533778730004162,
+      "reject_time": null
+    },
+    {
+      "triple": "SOL+ADA\u2192XRP",
+      "syn_oos": 0.0009692328898367464,
+      "reject_time": null
+    },
+    {
+      "triple": "ETH+BNB\u2192XRP",
+      "syn_oos": -0.0011604999469796429,
+      "reject_time": null
+    },
+    {
+      "triple": "ETH+BNB\u2192ADA",
+      "syn_oos": -0.00181350854065232,
+      "reject_time": null
+    },
+    {
+      "triple": "SOL+DOGE\u2192ADA",
+      "syn_oos": 0.0017125240931428198,
+      "reject_time": null
+    }
+  ]
+}
