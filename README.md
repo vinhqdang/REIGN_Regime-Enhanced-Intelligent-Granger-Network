@@ -6,7 +6,7 @@ projects with separate manuscripts, code, and experiments.
 
 ---
 
-## Paper 1 — REIGN (accepted)
+## Paper 1 — REIGN (published)
 
 **REIGN: Regime-Enhanced Intelligent Granger Network for Nonstationary Causal
 Discovery.** A causal-discovery framework for nonstationary multivariate time
@@ -14,8 +14,21 @@ series that combines PELT regime segmentation, zero-shot LLM prior injection, an
 a coarse-to-fine message-passing GNN with a DAG-constrained Augmented Lagrangian
 objective, aggregated by a confidence-weighted ensemble.
 
-*Status: accepted, in production for publication (Journal of Data Science and
-Intelligent Systems).*
+*Status: **published** (Online First, 18 September 2026) in the* **Journal of Data
+Science and Intelligent Systems** *(Bon View Publishing, open access, CC BY 4.0).
+Received 18 May 2026, revised 29 June 2026, accepted 20 July 2026.*
+
+- **Authors:** Quang-Vinh Dang, Minh Ngoc Dinh, Dat Le, Dinh-Minh Nguyen
+- **DOI:** [10.47852/bonviewJDSIS620210441](https://doi.org/10.47852/bonviewJDSIS620210441)
+- **Article page:** <https://ojs.bonviewpress.com/index.php/jdsis/article/view/10441>
+- **Headline result:** on a nonstationary VAR benchmark REIGN reaches Optimal F1 = 0.529
+  (PCMCI+ 0.415, PC 0.214), AUROC 0.513 vs 0.406 and AUPR 0.400 vs 0.338.
+
+**How to cite**
+
+> Dang, Q.-V., Dinh, M. N., Le, D., & Nguyen, D.-M. (2026). REIGN: Regime-Enhanced
+> Intelligent Granger Network for Nonstationary Causal Discovery. *Journal of Data
+> Science and Intelligent Systems*. https://doi.org/10.47852/bonviewJDSIS620210441
 
 | Path | Contents |
 |------|----------|
