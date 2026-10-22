@@ -1,0 +1,300 @@
+{
+  "script": "r10_power_sweep.py",
+  "n_rep": 500,
+  "T": 2500,
+  "rho": 0.2,
+  "alpha": 0.05,
+  "seed": 10007,
+  "c_grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.45,
+    0.6,
+    0.75,
+    0.9
+  ],
+  "dgp": "gen_var('syn', T, rng, rho=0.2, strength=c)  (0.9 ->c*A_{t-1}B_{t-1}+0.2A_{t-1}+0.3Z+e)",
+  "settings": {
+    "legacy": "ante_sg(p=1, alpha=.05, forget=.995, ridge=1e-2, cond=[Z]); reject if E>=20 (first time)",
+    "v2": "ante_v2 addjoint, cap=3, gamma=.9, warmup=50, forget=.995, ridge=1e-2, cond=[Z]; reject if max E>=20",
+    "detection_time": "time index of first rejection (0-based), median among rejections; bootstrap CI 1000 resamples; latency monotonicity excludes c=0",
+    "power_ci": "Wilson 95%",
+    "seeds": "default_rng([10007, c_index, rep])"
+  },
+  "rows": [
+    {
+      "c": 0.0,
+      "legacy": {
+        "power": 0.0,
+        "k": 0,
+        "n": 500,
+        "lo": 0.0,
+        "hi": 0.007624618530903363,
+        "detect_time": {
+          "median": NaN,
+          "lo": NaN,
+          "hi": NaN,
+          "n": 0
+        },
+        "detect_time_samples": 0
+      },
+      "v2": {
+        "power": 0.0,
+        "k": 0,
+        "n": 500,
+        "lo": 0.0,
+        "hi": 0.007624618530903363,
+        "detect_time": {
+          "median": NaN,
+          "lo": NaN,
+          "hi": NaN,
+          "n": 0
+        },
+        "detect_time_samples": 0
+      }
+    },
+    {
+      "c": 0.1,
+      "legacy": {
+        "power": 0.04,
+        "k": 20,
+        "n": 500,
+        "lo": 0.026040593951356387,
+        "hi": 0.06097405509707471,
+        "detect_time": {
+          "median": 1645.5,
+          "lo": 1234.25,
+          "hi": 1925.0,
+          "n": 20
+        },
+        "detect_time_samples": 20
+      },
+      "v2": {
+        "power": 0.068,
+        "k": 34,
+        "n": 500,
+        "lo": 0.04906621332682857,
+        "hi": 0.09352145708387197,
+        "detect_time": {
+          "median": 1197.0,
+          "lo": 899.0,
+          "hi": 1795.0,
+          "n": 34
+        },
+        "detect_time_samples": 34
+      }
+    },
+    {
+      "c": 0.2,
+      "legacy": {
+        "power": 0.344,
+        "k": 172,
+        "n": 500,
+        "lo": 0.3036922516120669,
+        "hi": 0.3866866293695749,
+        "detect_time": {
+          "median": 1554.0,
+          "lo": 1459.5,
+          "hi": 1696.0749999999998,
+          "n": 172
+        },
+        "detect_time_samples": 172
+      },
+      "v2": {
+        "power": 0.778,
+        "k": 389,
+        "n": 500,
+        "lo": 0.7395294756647782,
+        "hi": 0.8122312364320395,
+        "detect_time": {
+          "median": 1346.0,
+          "lo": 1256.0,
+          "hi": 1438.0,
+          "n": 389
+        },
+        "detect_time_samples": 389
+      }
+    },
+    {
+      "c": 0.3,
+      "legacy": {
+        "power": 0.596,
+        "k": 298,
+        "n": 500,
+        "lo": 0.5524145429626023,
+        "hi": 0.6381215302794642,
+        "detect_time": {
+          "median": 1210.5,
+          "lo": 1105.0,
+          "hi": 1300.5,
+          "n": 298
+        },
+        "detect_time_samples": 298
+      },
+      "v2": {
+        "power": 0.998,
+        "k": 499,
+        "n": 500,
+        "lo": 0.9887590072528046,
+        "hi": 0.9996468726904154,
+        "detect_time": {
+          "median": 750.0,
+          "lo": 707.0,
+          "hi": 812.0,
+          "n": 499
+        },
+        "detect_time_samples": 499
+      }
+    },
+    {
+      "c": 0.45,
+      "legacy": {
+        "power": 0.61,
+        "k": 305,
+        "n": 500,
+        "lo": 0.566563167828306,
+        "hi": 0.6517594160948953,
+        "detect_time": {
+          "median": 1095.0,
+          "lo": 1000.0,
+          "hi": 1197.05,
+          "n": 305
+        },
+        "detect_time_samples": 305
+      },
+      "v2": {
+        "power": 1.0,
+        "k": 500,
+        "n": 500,
+        "lo": 0.9923753814690964,
+        "hi": 0.9999999999999999,
+        "detect_time": {
+          "median": 363.5,
+          "lo": 344.0,
+          "hi": 392.5,
+          "n": 500
+        },
+        "detect_time_samples": 500
+      }
+    },
+    {
+      "c": 0.6,
+      "legacy": {
+        "power": 0.664,
+        "k": 332,
+        "n": 500,
+        "lo": 0.6214864254224679,
+        "hi": 0.7040126996993958,
+        "detect_time": {
+          "median": 1136.0,
+          "lo": 1071.5,
+          "hi": 1225.0125,
+          "n": 332
+        },
+        "detect_time_samples": 332
+      },
+      "v2": {
+        "power": 1.0,
+        "k": 500,
+        "n": 500,
+        "lo": 0.9923753814690964,
+        "hi": 0.9999999999999999,
+        "detect_time": {
+          "median": 230.0,
+          "lo": 214.5,
+          "hi": 249.0,
+          "n": 500
+        },
+        "detect_time_samples": 500
+      }
+    },
+    {
+      "c": 0.75,
+      "legacy": {
+        "power": 0.692,
+        "k": 346,
+        "n": 500,
+        "lo": 0.6501972113746908,
+        "hi": 0.7308749351094421,
+        "detect_time": {
+          "median": 1240.0,
+          "lo": 1170.5,
+          "hi": 1331.025,
+          "n": 346
+        },
+        "detect_time_samples": 346
+      },
+      "v2": {
+        "power": 1.0,
+        "k": 500,
+        "n": 500,
+        "lo": 0.9923753814690964,
+        "hi": 0.9999999999999999,
+        "detect_time": {
+          "median": 172.0,
+          "lo": 163.0,
+          "hi": 181.0125,
+          "n": 500
+        },
+        "detect_time_samples": 500
+      }
+    },
+    {
+      "c": 0.9,
+      "legacy": {
+        "power": 0.628,
+        "k": 314,
+        "n": 500,
+        "lo": 0.5848081115127891,
+        "hi": 0.6692399861432997,
+        "detect_time": {
+          "median": 1473.0,
+          "lo": 1420.0,
+          "hi": 1568.05,
+          "n": 314
+        },
+        "detect_time_samples": 314
+      },
+      "v2": {
+        "power": 1.0,
+        "k": 500,
+        "n": 500,
+        "lo": 0.9923753814690964,
+        "hi": 0.9999999999999999,
+        "detect_time": {
+          "median": 140.5,
+          "lo": 132.0,
+          "hi": 147.0125,
+          "n": 500
+        },
+        "detect_time_samples": 500
+      }
+    }
+  ],
+  "monotonicity": {
+    "legacy": {
+      "power_monotone_raw": false,
+      "power_monotone_within_CI": true,
+      "power_significant_violations": [],
+      "latency_monotone_raw": false,
+      "latency_monotone_within_CI": false,
+      "latency_significant_violations": [
+        [
+          0.75,
+          0.9
+        ]
+      ]
+    },
+    "v2": {
+      "power_monotone_raw": true,
+      "power_monotone_within_CI": true,
+      "power_significant_violations": [],
+      "latency_monotone_raw": false,
+      "latency_monotone_within_CI": true,
+      "latency_significant_violations": []
+    }
+  },
+  "runtime_s": 1297.8282535076141
+}

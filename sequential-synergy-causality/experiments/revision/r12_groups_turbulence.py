@@ -21,14 +21,29 @@ r = ante_group_v2(Zt[3], [Zt[0], Zt[1], Zt[2]], p=1, feat_clip=5.0)
 out["turbulence_3way_lag1"] = dict(T=int(X.shape[1]), rejected=r["rejected"], reject_time=r["reject_time"],
                                    log10E_final=float(np.log10(max(r["final_E"], 1e-9))),
                                    log10E_max=float(np.log10(max(r["max_E"], 1e-9))), mean_s=r["mean_s"])
-# placebo: finest scale replaced by a circularly shifted copy (breaks the dependence)
+# placebo: phase-randomised surrogate of the finest scale (same spectrum/autocorrelation,
+# independent of the three coarse scales => every null holds)
+from synergistic_granger import ante_group
+Zr = (X - X.mean(axis=1, keepdims=True)) / X.std(axis=1, keepdims=True)
+rr_legacy = ante_group(Zr[3], [Zr[0], Zr[1], Zr[2]], p=1, alpha=0.05)
+out["turbulence_legacy_real"] = dict(rejected=rr_legacy["rejected"], reject_time=rr_legacy["reject_time"],
+                                     log10E_final=float(np.log10(max(rr_legacy["final_E"], 1e-9))))
 rng = np.random.default_rng(0)
-plac = []
+def phase_surr(x):
+    F = np.fft.rfft(x); ph = rng.uniform(0, 2 * np.pi, len(F)); ph[0] = 0
+    if len(x) % 2 == 0: ph[-1] = 0
+    return np.fft.irfft(np.abs(F) * np.exp(1j * ph), n=len(x))
+v2f, lgf, v2m, lgm = [], [], [], []
 for i in range(20):
-    sh = int(rng.integers(500, X.shape[1] - 500))
-    rr = ante_group_v2(np.roll(Zt[3], sh), [Zt[0], Zt[1], Zt[2]], p=1, feat_clip=5.0)
-    plac.append(rr["max_E"] >= 20)
-out["turbulence_circular_shift_placebo"] = rate_ci(plac)
+    y = phase_surr(Zr[3])
+    r2 = ante_group_v2(ps(y), [Zt[0], Zt[1], Zt[2]], p=1, feat_clip=5.0)
+    r1 = ante_group(y / y.std(), [Zr[0], Zr[1], Zr[2]], p=1, alpha=0.05)
+    v2f.append(r2["max_E"] >= 20); lgf.append(r1["rejected"])
+    v2m.append(float(np.log10(max(r2["max_E"], 1e-9)))); lgm.append(float(np.log10(max(r1["final_E"], 1e-9))))
+out["turbulence_phase_surrogate_placebo"] = dict(
+    v2_reject=rate_ci(v2f), legacy_reject=rate_ci(lgf),
+    v2_median_log10max=float(np.median(v2m)), legacy_median_log10final=float(np.median(lgm)),
+    note="surrogate target independent of sources; any rejection is a false positive")
 
 # (b) systemic groups (same groups as the original study)
 rets, _ = load_panel("etf16")
