@@ -223,13 +223,16 @@ def exclusion_bounds(s, b, deltas, thr, gamma=0.9, warmup=50, start=0):
     """Reverse-hypothesis e-processes.  For each delta, K_t(delta) is the capital
     of a bettor against H_delta: E[s_t | F_{t-1}] >= delta for all t, betting on
     w_t = (delta - s_t)/(b_t + delta) in [-1,1] (E[w_t|F]<=0 under H_delta).
+    The bet lambda_t is computed separately for each delta, so error control over a
+    finite grid G needs the Bonferroni level alpha/|G| (pass thr = |G|/alpha).
     Returns, per delta, max_t K_t(delta) and the smallest delta whose running
     maximum crossed ``thr`` (np.nan if none)."""
     deltas = np.asarray(deltas, float)
     T = len(s)
     out_max = np.ones(len(deltas))
     for i, d in enumerate(deltas):
-        w = (d - s) / (b + d)
+        den = b + d
+        w = np.where(den > 1e-12, (d - s) / np.where(den > 1e-12, den, 1.0), 0.0)
         w = np.clip(w, -1.0, 1.0)
         K = 1.0
         s1 = s2 = 0.0
@@ -267,3 +270,65 @@ def ante_sg_v2(Y, A, B, cond=None, p=1, contemp=False, forget=0.995, ridge=1e-2,
     return dict(E=E, lam=lam, s=s, b=b, u=u, final_E=float(E[-1]), max_E=float(E.max()),
                 reject_time=int(rej[0]) if len(rej) else None,
                 rejected=bool(len(rej)), mean_s=float(np.mean(s[p:])), pred=pred)
+
+
+# ---------------------------------------------------------------------------
+# k-source group test (add vs joint with all same-lag interaction orders 2..k)
+# ---------------------------------------------------------------------------
+def ante_group_v2(Y, sources, cond=None, p=1, contemp=False, forget=0.995, ridge=1e-2,
+                  cap=3.0, gamma=0.9, warmup=50, alpha=0.05, feat_clip=None):
+    """Exactly valid group-synergy test for k sources acting on Y.
+    additive model : base + each source's own linear+squared lags
+    joint model    : additive + all same-lag products of order 2..k
+    Score = truncated-loss gap, normalised by the predictable bound b_t."""
+    from itertools import combinations
+    Y = np.asarray(Y, float)
+    srcs = [np.asarray(s, float) for s in sources]
+    cond = [np.asarray(z, float) for z in (cond or [])]
+    k = len(srcs)
+    T = len(Y)
+
+    def feats(t):
+        base = [1.0] + _lags(Y, t, p)
+        for z in cond:
+            base += _lags(z, t, p)
+        lags = []
+        own = []
+        for s in srcs:
+            ls = _lags(s, t, p)
+            if contemp:
+                ls = [s[t]] + ls
+            if feat_clip is not None:
+                ls = [float(np.clip(v, -feat_clip, feat_clip)) for v in ls]
+            lags.append(ls)
+            own += ls + [v * v for v in ls]
+        cross = []
+        for order in range(2, k + 1):
+            for combo in combinations(range(k), order):
+                prod = [1.0] * len(lags[0])
+                for idx in combo:
+                    prod = [a * b for a, b in zip(prod, lags[idx])]
+                cross += prod
+        return np.array(base + own), np.array(base + own + cross)
+
+    fa, fj = feats(p)
+    r_add = ForgettingRLS(len(fa), forget, ridge)
+    r_joint = ForgettingRLS(len(fj), forget, ridge)
+    pred = np.zeros((T, 2))
+    for t in range(p, T):
+        fa, fj = feats(t)
+        pred[t, 0] = r_add.predict(fa)
+        pred[t, 1] = r_joint.predict(fj)
+        r_add.update(fa, Y[t])
+        r_joint.update(fj, Y[t])
+    L = np.minimum((Y[:, None] - pred) ** 2, cap ** 2)
+    s = L[:, 0] - L[:, 1]
+    b = 2 * cap * np.abs(pred[:, 0] - pred[:, 1])
+    s[:p] = 0.0
+    b[:p] = 0.0
+    u = normalise(s, b)
+    E, lam = bet_process(u, gamma, warmup, start=p)
+    rej = np.where(E >= 1.0 / alpha)[0]
+    return dict(E=E, lam=lam, s=s, b=b, u=u, k=k, final_E=float(E[-1]), max_E=float(E.max()),
+                reject_time=int(rej[0]) if len(rej) else None, rejected=bool(len(rej)),
+                mean_s=float(np.mean(s[p:])))

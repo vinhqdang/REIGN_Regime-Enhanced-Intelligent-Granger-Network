@@ -241,8 +241,8 @@ def main():
         w = 0.38
         for j, key in enumerate(["poly", "polyrff"]):
             pw = np.array([e[key]["power"] for e in group])
-            lo = pw - np.array([e[key]["ci_lo"] for e in group])
-            hi = np.array([e[key]["ci_hi"] for e in group]) - pw
+            lo = np.maximum(pw - np.array([e[key]["ci_lo"] for e in group]), 0.0)
+            hi = np.maximum(np.array([e[key]["ci_hi"] for e in group]) - pw, 0.0)
             ax.bar(x + (j - 0.5) * w, pw, w, yerr=[lo, hi], capsize=3,
                    color=cols[key], edgecolor="black", lw=0.5,
                    label="poly" if key == "poly" else "poly + RFF")

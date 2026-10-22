@@ -1,0 +1,259 @@
+{
+  "settings": {
+    "n_rep": 100,
+    "rho": 0.2,
+    "forget": 0.995,
+    "ridge": 0.01,
+    "cap": 3.0,
+    "gamma": 0.9,
+    "warmup": 50,
+    "alpha": 0.05,
+    "threshold_max_E": 20.0,
+    "kind": "addjoint",
+    "p": 1,
+    "cond": "[Z]",
+    "feat_clip": null,
+    "rff_q": 15,
+    "rff_construction": "add: cos(w_a*A_{t-1}+b_a), cos(w_b*B_{t-1}+b_b); joint: cos(W_ab @ (A_{t-1},B_{t-1})+b_ab); w ~ N(0,1), b ~ U(0,2pi), fresh per replication",
+    "strengths_mapping": "syn 0.9, a2b 0.9, tanh 1.5, sinab 1.5 (null has no strength)",
+    "seeds": "config seed, replication r uses default_rng([seed, r]) for data and RFF",
+    "paired_design": "poly and poly+RFF share the same simulated data and the same replication",
+    "interpretation_note": "Type-I check uses null rows; reject = max_E >= 20"
+  },
+  "hook_selftest": {
+    "add_dim_plain": 7,
+    "add_dim_rff": 37,
+    "joint_dim_expected_extra": 45,
+    "joint_dim_plain": 8,
+    "joint_dim_rff": 53,
+    "status": "ok"
+  },
+  "table": [
+    {
+      "dgp": "null",
+      "strength": 0.0,
+      "T": 2500,
+      "seed": 301,
+      "n_rep": 100,
+      "signal_share_of_var": 0.0,
+      "poly": {
+        "power": 0.0,
+        "k": 0,
+        "n": 100,
+        "ci_lo": 0.0,
+        "ci_hi": 0.03699480747600191,
+        "median_final_log10E": -0.1563470998241831,
+        "median_max_log10E": 0.021813980399986298,
+        "mean_s": -0.0063710353530076
+      },
+      "polyrff": {
+        "power": 0.0,
+        "k": 0,
+        "n": 100,
+        "ci_lo": 0.0,
+        "ci_hi": 0.03699480747600191,
+        "median_final_log10E": 0.0,
+        "median_max_log10E": 0.0,
+        "mean_s": -0.07197131759936405
+      }
+    },
+    {
+      "dgp": "syn",
+      "strength": 0.9,
+      "T": 2500,
+      "seed": 302,
+      "n_rep": 100,
+      "signal_share_of_var": 0.5920062900364136,
+      "poly": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.776015153713201,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.7170598830275803
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.770821978281505,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.6528059904906592
+      }
+    },
+    {
+      "dgp": "a2b",
+      "strength": 0.9,
+      "T": 2500,
+      "seed": 303,
+      "n_rep": 100,
+      "signal_share_of_var": 0.8247912377563261,
+      "poly": {
+        "power": 0.03,
+        "k": 3,
+        "n": 100,
+        "ci_lo": 0.010254338223414816,
+        "ci_hi": 0.08452078080402699,
+        "median_final_log10E": -0.5668464758833813,
+        "median_max_log10E": 0.11567296297607843,
+        "mean_s": -0.00914625637880513
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.89056280286832,
+        "median_max_log10E": 15.0,
+        "mean_s": 1.0791247887686486
+      }
+    },
+    {
+      "dgp": "tanh",
+      "strength": 1.5,
+      "T": 2500,
+      "seed": 304,
+      "n_rep": 100,
+      "signal_share_of_var": 0.4550829757810505,
+      "poly": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.859334411079292,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.45939346580761714
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.863916495710765,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.649047606829567
+      }
+    },
+    {
+      "dgp": "sinab",
+      "strength": 1.5,
+      "T": 2500,
+      "seed": 305,
+      "n_rep": 100,
+      "signal_share_of_var": 0.3794046362645497,
+      "poly": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.775082138285782,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.15368829211715154
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.82777282934641,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.44764081659789967
+      }
+    },
+    {
+      "dgp": "a2b",
+      "strength": 0.9,
+      "T": 5000,
+      "seed": 306,
+      "n_rep": 100,
+      "signal_share_of_var": 0.8247912377563261,
+      "poly": {
+        "power": 0.03,
+        "k": 3,
+        "n": 100,
+        "ci_lo": 0.010254338223414816,
+        "ci_hi": 0.08452078080402699,
+        "median_final_log10E": -0.435257666985736,
+        "median_max_log10E": 0.1820940311192716,
+        "mean_s": -0.008267552603424506
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.781504073387046,
+        "median_max_log10E": 15.0,
+        "mean_s": 1.0861881650920697
+      }
+    },
+    {
+      "dgp": "tanh",
+      "strength": 1.5,
+      "T": 5000,
+      "seed": 307,
+      "n_rep": 100,
+      "signal_share_of_var": 0.4550829757810505,
+      "poly": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.82664935309379,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.4615483369985942
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.745032424334138,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.66913593465392
+      }
+    },
+    {
+      "dgp": "sinab",
+      "strength": 1.5,
+      "T": 5000,
+      "seed": 308,
+      "n_rep": 100,
+      "signal_share_of_var": 0.3794046362645497,
+      "poly": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.754709637602524,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.15664080643957137
+      },
+      "polyrff": {
+        "power": 1.0,
+        "k": 100,
+        "n": 100,
+        "ci_lo": 0.9630051925239981,
+        "ci_hi": 0.9999999999999999,
+        "median_final_log10E": 14.754872031848144,
+        "median_max_log10E": 15.0,
+        "mean_s": 0.46132028996934943
+      }
+    }
+  ],
+  "null_polyrff_typeI_ok": true,
+  "runtime_s": 511.7471807003021
+}

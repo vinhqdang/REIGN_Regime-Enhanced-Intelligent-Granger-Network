@@ -1,0 +1,138 @@
+{
+  "turbulence_3way_lag1": {
+    "T": 21760,
+    "rejected": false,
+    "reject_time": null,
+    "log10E_final": -0.043758561568772295,
+    "log10E_max": 0.950308921473991,
+    "mean_s": -0.03837135494677686
+  },
+  "turbulence_circular_shift_placebo": {
+    "rate": 0.95,
+    "k": 19,
+    "n": 20,
+    "lo": 0.7638641064874331,
+    "hi": 0.9911187805671268
+  },
+  "systemic_groups": [
+    {
+      "group": "banks + credit",
+      "k": 2,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": -0.017303871872224267,
+      "log10E_max": 0.0
+    },
+    {
+      "group": "banks + credit",
+      "k": 2,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": -0.8839635242602221,
+      "log10E_max": 0.20164395126588225
+    },
+    {
+      "group": "banks + credit + rates",
+      "k": 3,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": -0.8487168885365522,
+      "log10E_max": 1.1456745084343831
+    },
+    {
+      "group": "banks + credit + rates",
+      "k": 3,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": -0.29263628676115977,
+      "log10E_max": 0.01314329224433597
+    },
+    {
+      "group": "banks + credit + oil",
+      "k": 3,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": 0.0,
+      "log10E_max": 0.0
+    },
+    {
+      "group": "banks + credit + oil",
+      "k": 3,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": -0.810279102889212,
+      "log10E_max": 0.03107025265591628
+    },
+    {
+      "group": "banks + credit + rates + oil",
+      "k": 4,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": -0.06877396810332016,
+      "log10E_max": 0.0
+    },
+    {
+      "group": "banks + credit + rates + oil",
+      "k": 4,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": -0.7169916632570638,
+      "log10E_max": 0.14972815679085438
+    },
+    {
+      "group": "financials + tech + energy",
+      "k": 3,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": -0.7160151455276331,
+      "log10E_max": 0.7146119307068846
+    },
+    {
+      "group": "financials + tech + energy",
+      "k": 3,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": 0.0,
+      "log10E_max": 0.0
+    },
+    {
+      "group": "credit + rates + dollar",
+      "k": 3,
+      "mode": "lagged",
+      "rejected": false,
+      "log10E_final": -0.3704749727201406,
+      "log10E_max": 0.28328970680017046
+    },
+    {
+      "group": "credit + rates + dollar",
+      "k": 3,
+      "mode": "contemporaneous",
+      "rejected": false,
+      "log10E_final": -1.536021576946545,
+      "log10E_max": 0.274546931564849
+    }
+  ],
+  "synthetic_3way": {
+    "null3_0": {
+      "rate": 0.0,
+      "k": 0,
+      "n": 100,
+      "lo": 0.0,
+      "hi": 0.03699480747600191
+    },
+    "pure3_0.9": {
+      "rate": 1.0,
+      "k": 100,
+      "n": 100,
+      "lo": 0.9630051925239981,
+      "hi": 0.9999999999999999
+    },
+    "pure3_0.5": {
+      "rate": 1.0,
+      "k": 100,
+      "n": 100,
+      "lo": 0.9630051925239981,
+      "hi": 0.9999999999999999
+    }
+  }
+}
