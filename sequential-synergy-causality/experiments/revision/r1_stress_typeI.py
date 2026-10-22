@@ -77,8 +77,11 @@ def clean(o):
 
 
 # ---------------------------------------------------------------- part (a)
-def toy_counterexample(n_rep=TOY_REP, T_toy=TOY_T, seed=12345):
-    """Vectorised over replications; identical to the scalar loop by construction."""
+def toy_counterexample(n_rep=TOY_REP, T_toy=TOY_T, seed=12345, sigma_mode="adaptive"):
+    """Vectorised over replications.  sigma_mode='adaptive': sigma_hat_t = expanding rms
+    of past s (sigma_hat_0 = 1).  sigma_mode='fixed': sigma_hat = 1 for all t (reviewer's
+    example): u = clip(s, -5, 5) has E[u] = 0.1*(-5) + 0.9*1.5 = +0.85 > 0 although E[s] < 0."""
+    assert sigma_mode in ("adaptive", "fixed")
     rng = np.random.default_rng(seed)
     s = np.where(rng.random((n_rep, T_toy)) < 0.1, -20.0, 1.5)
     E = np.ones(n_rep)
@@ -89,7 +92,10 @@ def toy_counterexample(n_rep=TOY_REP, T_toy=TOY_T, seed=12345):
     lam_pos = np.zeros(n_rep)
     cnt = 0
     for t in range(T_toy):
-        sigma = np.sqrt(sumsq / t) if t > 0 else np.ones(n_rep)   # sigma_hat_0 = 1
+        if sigma_mode == "fixed" or t == 0:
+            sigma = np.ones(n_rep)                                 # sigma_hat = 1 (fixed)
+        else:
+            sigma = np.sqrt(sumsq / t)                             # expanding rms of past s
         u = np.clip(s[:, t] / sigma, -5.0, 5.0)
         if cnt >= WARM:
             mu = s1 / cnt
@@ -110,7 +116,8 @@ def toy_counterexample(n_rep=TOY_REP, T_toy=TOY_T, seed=12345):
              median_log10_max=float(np.median(np.log10(Emax))),
              mean_lambda_pos_frac=float(np.mean(lam_pos / T_toy)),
              mean_raw_s=float(np.mean(s)), population_E_s=float(-20 * 0.1 + 1.5 * 0.9),
-             n_rep=n_rep, T=T_toy, seed=seed)
+             population_E_u=(0.85 if sigma_mode == "fixed" else None),
+             sigma_mode=sigma_mode, n_rep=n_rep, T=T_toy, seed=seed)
     return d
 
 
@@ -154,9 +161,11 @@ def aggregate(rows):
 def main():
     t0 = time.time()
     print("R1 part (a): toy counterexample", flush=True)
-    toy = toy_counterexample()
-    print(f"  toy P(max E>=20)={toy['rate']:.4f} CI=[{toy['lo']:.4f},{toy['hi']:.4f}] "
-          f"median log10 final E={toy['median_log10_final']:.3f}", flush=True)
+    toy = toy_counterexample(sigma_mode="adaptive")
+    toy_fixed = toy_counterexample(sigma_mode="fixed")
+    for name, tv in (("adaptive", toy), ("fixed", toy_fixed)):
+        print(f"  toy[{name}] P(max E>=20)={tv['rate']:.4f} CI=[{tv['lo']:.4f},{tv['hi']:.4f}] "
+              f"median log10 final E={tv['median_log10_final']:.3f}", flush=True)
 
     print(f"R1 part (b): {len(NULLS)} VAR nulls x {N_REP} reps, 2 workers", flush=True)
     tasks = []
@@ -188,7 +197,8 @@ def main():
                              legacy="synergistic_granger.ante_sg defaults (warmup=60, clip_b=10, cap_frac=0.9)",
                              notes="N2, N3 use default rho=.2 (not specified in spec). "
                                    "mean_lambda_pos_frac is not exposed by ante_sg for legacy (None)."),
-               toy_counterexample=toy, nulls=null_tables, runtime_sec=runtime)
+               toy_counterexample={"adaptive_sigma": toy, "fixed_sigma_1": toy_fixed},
+               nulls=null_tables, runtime_sec=runtime)
     with open(os.path.join(RES, f"{SCRIPT}.json"), "w") as fh:
         json.dump(clean(out), fh, indent=2)
 
@@ -196,11 +206,16 @@ def main():
     L = [f"# R1 Type-I stress tests (auto-generated)", "",
          f"n_rep = {N_REP} per null (T={T}), alpha = {ALPHA}, rejection = max E >= 20.", "",
          "## (a) Toy counterexample (legacy-style clipped bettor)", "",
-         "| n_rep | T | P(max E>=20) | 95% Wilson CI | median log10 final E | median log10 max E | E[s] |",
-         "|---|---|---|---|---|---|---|",
-         f"| {toy['n']} | {TOY_T} | {toy['rate']:.4f} | [{toy['lo']:.4f}, {toy['hi']:.4f}] | "
-         f"{toy['median_log10_final']:.3f} | {toy['median_log10_max']:.3f} | {toy['population_E_s']:.2f} |",
-         "", "The unclipped bounded alternative is not applicable to this toy score.", "",
+         "| sigma_hat | n_rep | T | P(max E>=20) | 95% Wilson CI | median log10 final E | median log10 max E | E[s] | E[u] |",
+         "|---|---|---|---|---|---|---|---|---|"]
+    for name, tv in (("adaptive (expanding rms)", toy), ("fixed = 1 (reviewer example)", toy_fixed)):
+        eu = "n/a" if tv["population_E_u"] is None else f"{tv['population_E_u']:.2f}"
+        L.append(f"| {name} | {tv['n']} | {TOY_T} | {tv['rate']:.4f} | [{tv['lo']:.4f}, {tv['hi']:.4f}] | "
+                 f"{tv['median_log10_final']:.3f} | {tv['median_log10_max']:.3f} | "
+                 f"{tv['population_E_s']:.2f} | {eu} |")
+    L += ["", "Clipping at -5 with sigma=1 makes E[u] > 0 although E[s] < 0, so the fixed-sigma bettor is a genuine "
+          "Type-I failure of the clipped score; the adaptive version normalises the -20 outliers and does not grow. "
+          "The unclipped bounded alternative is not applicable to this toy score.", "",
          "## (b) VAR nulls", "",
          "| id | DGP | test | rejection | 95% Wilson CI | median log10 final E | median log10 max E | mean lambda>0 | mean raw s |",
          "|---|---|---|---|---|---|---|---|---|"]

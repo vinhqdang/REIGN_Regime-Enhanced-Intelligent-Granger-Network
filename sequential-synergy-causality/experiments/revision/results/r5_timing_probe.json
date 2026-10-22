@@ -1,0 +1,353 @@
+{
+  "procs": 3,
+  "settings": [
+    {
+      "panel": "etf16",
+      "target": "ret",
+      "mode": "lag1",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.2531590461730957
+    },
+    {
+      "panel": "etf16",
+      "target": "vol",
+      "mode": "lag1",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.2335524559020996
+    },
+    {
+      "panel": "etf16",
+      "target": "tail",
+      "mode": "lag1",
+      "T": 2412,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.20859742164611816
+    },
+    {
+      "panel": "stocks13",
+      "target": "ret",
+      "mode": "lag1",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.2198619842529297
+    },
+    {
+      "panel": "stocks13",
+      "target": "vol",
+      "mode": "lag1",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.18109512329101562
+    },
+    {
+      "panel": "stocks13",
+      "target": "tail",
+      "mode": "lag1",
+      "T": 2412,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.2559826374053955
+    },
+    {
+      "panel": "world6",
+      "target": "ret",
+      "mode": "lag1",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.2593557834625244
+    },
+    {
+      "panel": "world6",
+      "target": "vol",
+      "mode": "lag1",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.2322835922241211
+    },
+    {
+      "panel": "world6",
+      "target": "tail",
+      "mode": "lag1",
+      "T": 2038,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.23898577690124512
+    },
+    {
+      "panel": "hourly12",
+      "target": "ret",
+      "mode": "lag1",
+      "T": 3328,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.41560840606689453
+    },
+    {
+      "panel": "hourly12",
+      "target": "vol",
+      "mode": "lag1",
+      "T": 3328,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.36737918853759766
+    },
+    {
+      "panel": "hourly12",
+      "target": "tail",
+      "mode": "lag1",
+      "T": 3228,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.45531702041625977
+    },
+    {
+      "panel": "crypto10",
+      "target": "ret",
+      "mode": "lag1",
+      "T": 16761,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 1.518333911895752
+    },
+    {
+      "panel": "crypto10",
+      "target": "vol",
+      "mode": "lag1",
+      "T": 16761,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 1.5859911441802979
+    },
+    {
+      "panel": "crypto10",
+      "target": "tail",
+      "mode": "lag1",
+      "T": 16661,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 1.9750924110412598
+    },
+    {
+      "panel": "etf16",
+      "target": "ret",
+      "mode": "lag5",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.6295242309570312
+    },
+    {
+      "panel": "etf16",
+      "target": "vol",
+      "mode": "lag5",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.4360518455505371
+    },
+    {
+      "panel": "etf16",
+      "target": "tail",
+      "mode": "lag5",
+      "T": 2412,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.40298008918762207
+    },
+    {
+      "panel": "stocks13",
+      "target": "ret",
+      "mode": "lag5",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.30075860023498535
+    },
+    {
+      "panel": "stocks13",
+      "target": "vol",
+      "mode": "lag5",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.35651183128356934
+    },
+    {
+      "panel": "stocks13",
+      "target": "tail",
+      "mode": "lag5",
+      "T": 2412,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.43457460403442383
+    },
+    {
+      "panel": "world6",
+      "target": "ret",
+      "mode": "lag5",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.329986572265625
+    },
+    {
+      "panel": "world6",
+      "target": "vol",
+      "mode": "lag5",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.3047909736633301
+    },
+    {
+      "panel": "world6",
+      "target": "tail",
+      "mode": "lag5",
+      "T": 2038,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.2828822135925293
+    },
+    {
+      "panel": "etf16",
+      "target": "ret",
+      "mode": "contemp",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.43250131607055664
+    },
+    {
+      "panel": "etf16",
+      "target": "vol",
+      "mode": "contemp",
+      "T": 2512,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.2938883304595947
+    },
+    {
+      "panel": "etf16",
+      "target": "tail",
+      "mode": "contemp",
+      "T": 2412,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.48849916458129883
+    },
+    {
+      "panel": "stocks13",
+      "target": "ret",
+      "mode": "contemp",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.5352346897125244
+    },
+    {
+      "panel": "stocks13",
+      "target": "vol",
+      "mode": "contemp",
+      "T": 2512,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.6572127342224121
+    },
+    {
+      "panel": "stocks13",
+      "target": "tail",
+      "mode": "contemp",
+      "T": 2412,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.36498498916625977
+    },
+    {
+      "panel": "world6",
+      "target": "ret",
+      "mode": "contemp",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.24683713912963867
+    },
+    {
+      "panel": "world6",
+      "target": "vol",
+      "mode": "contemp",
+      "T": 2138,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.23155641555786133
+    },
+    {
+      "panel": "world6",
+      "target": "tail",
+      "mode": "contemp",
+      "T": 2038,
+      "n_hypotheses": 30,
+      "sec_per_hypothesis": 0.2219409942626953
+    },
+    {
+      "panel": "hourly12",
+      "target": "ret",
+      "mode": "contemp",
+      "T": 3328,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.42480945587158203
+    },
+    {
+      "panel": "hourly12",
+      "target": "vol",
+      "mode": "contemp",
+      "T": 3328,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.4688551425933838
+    },
+    {
+      "panel": "hourly12",
+      "target": "tail",
+      "mode": "contemp",
+      "T": 3228,
+      "n_hypotheses": 495,
+      "sec_per_hypothesis": 0.38413166999816895
+    },
+    {
+      "panel": "crypto10",
+      "target": "ret",
+      "mode": "contemp",
+      "T": 16761,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 2.304478406906128
+    },
+    {
+      "panel": "crypto10",
+      "target": "vol",
+      "mode": "contemp",
+      "T": 16761,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 2.1109392642974854
+    },
+    {
+      "panel": "crypto10",
+      "target": "tail",
+      "mode": "contemp",
+      "T": 16661,
+      "n_hypotheses": 252,
+      "sec_per_hypothesis": 2.2726056575775146
+    },
+    {
+      "panel": "etf16",
+      "target": "ret",
+      "mode": "weekly",
+      "T": 502,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.06912565231323242
+    },
+    {
+      "panel": "etf16",
+      "target": "vol",
+      "mode": "weekly",
+      "T": 502,
+      "n_hypotheses": 1365,
+      "sec_per_hypothesis": 0.05507016181945801
+    },
+    {
+      "panel": "stocks13",
+      "target": "ret",
+      "mode": "weekly",
+      "T": 502,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.07886099815368652
+    },
+    {
+      "panel": "stocks13",
+      "target": "vol",
+      "mode": "weekly",
+      "T": 502,
+      "n_hypotheses": 660,
+      "sec_per_hypothesis": 0.07152533531188965
+    }
+  ],
+  "serial_estimate_min": 189.07013816833495,
+  "parallel_estimate_min": 69.3257173283895,
+  "budget_min": 90,
+  "subsample_required": false
+}
