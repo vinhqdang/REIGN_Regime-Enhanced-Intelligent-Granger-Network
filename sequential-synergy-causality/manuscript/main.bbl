@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{36}
+\begin{thebibliography}{48}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -44,6 +44,18 @@
 \csname PreBibitemsHook\endcsname
 
 %%% 1
+\bibitem[\protect\citeauthoryear{Azuma}{1967}]{azuma1967}
+\begin{barticle}
+\bauthor{\bsnm{Azuma}, \binits{K.}}:
+\batitle{Weighted sums of certain dependent random variables}.
+\bjtitle{Tohoku Mathematical Journal}
+\bvolume{19}(\bissue{3}),
+\bfpage{357}--\blpage{367}
+(\byear{1967})
+\end{barticle}
+\endbibitem
+
+%%% 2
 \bibitem[\protect\citeauthoryear{Barnett et~al.}{2009}]{barnett2009}
 \begin{barticle}
 \bauthor{\bsnm{Barnett}, \binits{L.}},
@@ -59,7 +71,7 @@
 \end{barticle}
 \endbibitem
 
-%%% 2
+%%% 3
 \bibitem[\protect\citeauthoryear{Balgi et~al.}{2024}]{balgi2024}
 \begin{botherref}
 \oauthor{\bsnm{Balgi}, \binits{S.}},
@@ -73,7 +85,53 @@ arXiv preprint arXiv:2401.06864
 \end{botherref}
 \endbibitem
 
-%%% 3
+%%% 4
+\bibitem[\protect\citeauthoryear{Billio et~al.}{2012}]{billio2012}
+\begin{barticle}
+\bauthor{\bsnm{Billio}, \binits{M.}},
+\bauthor{\bsnm{Getmansky}, \binits{M.}},
+\bauthor{\bsnm{Lo}, \binits{A.W.}},
+\bauthor{\bsnm{Pelizzon}, \binits{L.}}:
+\batitle{Econometric measures of connectedness and systemic risk in the finance
+  and insurance sectors}.
+\bjtitle{Journal of Financial Economics}
+\bvolume{104}(\bissue{3}),
+\bfpage{535}--\blpage{559}
+(\byear{2012})
+\doiurl{10.1016/j.jfineco.2011.12.010}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Choe and Ramdas}{2024}]{choe2024}
+\begin{barticle}
+\bauthor{\bsnm{Choe}, \binits{Y.J.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}}:
+\batitle{Comparing sequential forecasters}.
+\bjtitle{Operations Research}
+\bvolume{72}(\bissue{4}),
+\bfpage{1368}--\blpage{1387}
+(\byear{2024})
+\doiurl{10.1287/opre.2021.0792}
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Clark and West}{2007}]{clarkwest2007}
+\begin{barticle}
+\bauthor{\bsnm{Clark}, \binits{T.E.}},
+\bauthor{\bsnm{West}, \binits{K.D.}}:
+\batitle{Approximately normal tests for equal predictive accuracy in nested
+  models}.
+\bjtitle{Journal of Econometrics}
+\bvolume{138}(\bissue{1}),
+\bfpage{291}--\blpage{311}
+(\byear{2007})
+\doiurl{10.1016/j.jeconom.2006.05.023}
+\end{barticle}
+\endbibitem
+
+%%% 7
 \bibitem[\protect\citeauthoryear{Dawid}{1984}]{dawid1984}
 \begin{barticle}
 \bauthor{\bsnm{Dawid}, \binits{A.P.}}:
@@ -87,7 +145,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 4
+%%% 8
 \bibitem[\protect\citeauthoryear{Diebold and Y{\i}lmaz}{2014}]{diebold2014}
 \begin{barticle}
 \bauthor{\bsnm{Diebold}, \binits{F.X.}},
@@ -102,7 +160,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 5
+%%% 9
 \bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024}
 \begin{barticle}
 \bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
@@ -117,7 +175,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 6
+%%% 10
 \bibitem[\protect\citeauthoryear{Geweke}{1982}]{geweke1982}
 \begin{barticle}
 \bauthor{\bsnm{Geweke}, \binits{J.}}:
@@ -131,7 +189,22 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 11
+\bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024ci}
+\begin{barticle}
+\bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
+\bauthor{\bsnm{Henzi}, \binits{A.}},
+\bauthor{\bsnm{Lardy}, \binits{T.}}:
+\batitle{Anytime-valid tests of conditional independence under model-{X}}.
+\bjtitle{Journal of the American Statistical Association}
+\bvolume{119}(\bissue{546}),
+\bfpage{1554}--\blpage{1565}
+(\byear{2024})
+\doiurl{10.1080/01621459.2023.2205607}
+\end{barticle}
+\endbibitem
+
+%%% 12
 \bibitem[\protect\citeauthoryear{Granger}{1969}]{granger1969}
 \begin{barticle}
 \bauthor{\bsnm{Granger}, \binits{C.W.J.}}:
@@ -145,7 +218,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 8
+%%% 13
 \bibitem[\protect\citeauthoryear{Hosmer and Lemeshow}{1992}]{hosmer1992}
 \begin{barticle}
 \bauthor{\bsnm{Hosmer}, \binits{D.W.}},
@@ -159,7 +232,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 9
+%%% 14
 \bibitem[\protect\citeauthoryear{Howard et~al.}{2021}]{howard2021}
 \begin{barticle}
 \bauthor{\bsnm{Howard}, \binits{S.R.}},
@@ -175,7 +248,18 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 10
+%%% 15
+\bibitem[\protect\citeauthoryear{Jha}{2026}]{jha2026}
+\begin{botherref}
+\oauthor{\bsnm{Jha}, \binits{A.}}:
+Distributional {G}ranger Causality: Identification, Sequential Inference, and
+  Adaptive Testing.
+arXiv preprint arXiv:2606.22230
+(2026)
+\end{botherref}
+\endbibitem
+
+%%% 16
 \bibitem[\protect\citeauthoryear{Johari et~al.}{2022}]{johari2022}
 \begin{barticle}
 \bauthor{\bsnm{Johari}, \binits{R.}},
@@ -191,7 +275,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 11
+%%% 17
 \bibitem[\protect\citeauthoryear{Lyu et~al.}{2026}]{lyu2026}
 \begin{barticle}
 \bauthor{\bsnm{Lyu}, \binits{A.}},
@@ -207,7 +291,21 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 12
+%%% 18
+\bibitem[\protect\citeauthoryear{Lan and DeMets}{1983}]{landemets1983}
+\begin{barticle}
+\bauthor{\bsnm{Lan}, \binits{K.K.G.}},
+\bauthor{\bsnm{DeMets}, \binits{D.L.}}:
+\batitle{Discrete sequential boundaries for clinical trials}.
+\bjtitle{Biometrika}
+\bvolume{70}(\bissue{3}),
+\bfpage{659}--\blpage{663}
+(\byear{1983})
+\doiurl{10.1093/biomet/70.3.659}
+\end{barticle}
+\endbibitem
+
+%%% 19
 \bibitem[\protect\citeauthoryear{Lee}{2013}]{lee2013}
 \begin{barticle}
 \bauthor{\bsnm{Lee}, \binits{W.-C.}}:
@@ -221,7 +319,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 13
+%%% 20
 \bibitem[\protect\citeauthoryear{Ljung}{1999}]{ljung1999}
 \begin{bbook}
 \bauthor{\bsnm{Ljung}, \binits{L.}}:
@@ -233,7 +331,7 @@ arXiv preprint arXiv:2401.06864
 \end{bbook}
 \endbibitem
 
-%%% 14
+%%% 21
 \bibitem[\protect\citeauthoryear{Lin and Lee}{2018}]{lin2018}
 \begin{barticle}
 \bauthor{\bsnm{Lin}, \binits{J.-H.}},
@@ -248,7 +346,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 15
+%%% 22
 \bibitem[\protect\citeauthoryear{La~Torre and D'Urso}{2026}]{latorre2026}
 \begin{barticle}
 \bauthor{\bsnm{La~Torre}, \binits{G.}},
@@ -261,7 +359,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 16
+%%% 23
 \bibitem[\protect\citeauthoryear{McGill}{1954}]{mcgill1954}
 \begin{barticle}
 \bauthor{\bsnm{McGill}, \binits{W.J.}}:
@@ -274,7 +372,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 17
+%%% 24
 \bibitem[\protect\citeauthoryear{Mart{\'i}nez-S{\'a}nchez
   et~al.}{2024}]{surd2024}
 \begin{barticle}
@@ -291,7 +389,53 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 18
+%%% 25
+\bibitem[\protect\citeauthoryear{O'Brien and Fleming}{1979}]{obrienfleming1979}
+\begin{barticle}
+\bauthor{\bsnm{O'Brien}, \binits{P.C.}},
+\bauthor{\bsnm{Fleming}, \binits{T.R.}}:
+\batitle{A multiple testing procedure for clinical trials}.
+\bjtitle{Biometrics}
+\bvolume{35}(\bissue{3}),
+\bfpage{549}--\blpage{556}
+(\byear{1979})
+\doiurl{10.2307/2530245}
+\end{barticle}
+\endbibitem
+
+%%% 26
+\bibitem[\protect\citeauthoryear{Podkopaev et~al.}{2023}]{podkopaev2023}
+\begin{bchapter}
+\bauthor{\bsnm{Podkopaev}, \binits{A.}},
+\bauthor{\bsnm{Bl{\"o}baum}, \binits{P.}},
+\bauthor{\bsnm{Kasiviswanathan}, \binits{S.P.}},
+\bauthor{\bsnm{Ramdas}, \binits{A.}}:
+\bctitle{Sequential kernelized independence testing}.
+In: \bbtitle{Proceedings of the 40th International Conference on Machine
+  Learning}.
+\bsertitle{Proceedings of Machine Learning Research},
+vol. \bseriesno{202},
+pp. \bfpage{27957}--\blpage{27993}.
+\bpublisher{PMLR}, \blocation{???}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 27
+\bibitem[\protect\citeauthoryear{Pocock}{1977}]{pocock1977}
+\begin{barticle}
+\bauthor{\bsnm{Pocock}, \binits{S.J.}}:
+\batitle{Group sequential methods in the design and analysis of clinical
+  trials}.
+\bjtitle{Biometrika}
+\bvolume{64}(\bissue{2}),
+\bfpage{191}--\blpage{199}
+(\byear{1977})
+\doiurl{10.1093/biomet/64.2.191}
+\end{barticle}
+\endbibitem
+
+%%% 28
 \bibitem[\protect\citeauthoryear{Roquero~Gimenez and
   Rothenh{\"a}usler}{2023}]{roquero2023}
 \begin{barticle}
@@ -306,7 +450,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 19
+%%% 29
 \bibitem[\protect\citeauthoryear{Ramdas et~al.}{2023}]{ramdas2023}
 \begin{barticle}
 \bauthor{\bsnm{Ramdas}, \binits{A.}},
@@ -322,7 +466,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 20
+%%% 30
 \bibitem[\protect\citeauthoryear{Rosas et~al.}{2019}]{rosas2019}
 \begin{barticle}
 \bauthor{\bsnm{Rosas}, \binits{F.E.}},
@@ -339,7 +483,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 21
+%%% 31
 \bibitem[\protect\citeauthoryear{Rothman}{1976}]{rothman1976}
 \begin{barticle}
 \bauthor{\bsnm{Rothman}, \binits{K.J.}}:
@@ -352,7 +496,20 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 22
+%%% 32
+\bibitem[\protect\citeauthoryear{Rahimi and Recht}{2007}]{rahimirecht2007}
+\begin{bchapter}
+\bauthor{\bsnm{Rahimi}, \binits{A.}},
+\bauthor{\bsnm{Recht}, \binits{B.}}:
+\bctitle{Random features for large-scale kernel machines}.
+In: \bbtitle{Advances in Neural Information Processing Systems},
+vol. \bseriesno{20},
+pp. \bfpage{1177}--\blpage{1184}
+(\byear{2007})
+\end{bchapter}
+\endbibitem
+
+%%% 33
 \bibitem[\protect\citeauthoryear{Schreiber}{2000}]{schreiber2000}
 \begin{barticle}
 \bauthor{\bsnm{Schreiber}, \binits{T.}}:
@@ -365,7 +522,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 23
+%%% 34
 \bibitem[\protect\citeauthoryear{Stramaglia et~al.}{2014}]{stramaglia2014}
 \begin{barticle}
 \bauthor{\bsnm{Stramaglia}, \binits{S.}},
@@ -381,7 +538,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 24
+%%% 35
 \bibitem[\protect\citeauthoryear{Scagliarini et~al.}{2020}]{scagliarini2020}
 \begin{barticle}
 \bauthor{\bsnm{Scagliarini}, \binits{T.}},
@@ -399,7 +556,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 25
+%%% 36
 \bibitem[\protect\citeauthoryear{Shafer}{2021}]{shafer2021}
 \begin{barticle}
 \bauthor{\bsnm{Shafer}, \binits{G.}}:
@@ -413,7 +570,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 26
+%%% 37
 \bibitem[\protect\citeauthoryear{Ville}{1939}]{ville1939}
 \begin{bbook}
 \bauthor{\bsnm{Ville}, \binits{J.}}:
@@ -424,7 +581,7 @@ arXiv preprint arXiv:2401.06864
 \end{bbook}
 \endbibitem
 
-%%% 27
+%%% 38
 \bibitem[\protect\citeauthoryear{VanderWeele and Knol}{2014}]{vanderweele2014}
 \begin{barticle}
 \bauthor{\bsnm{VanderWeele}, \binits{T.J.}},
@@ -438,7 +595,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 28
+%%% 39
 \bibitem[\protect\citeauthoryear{VanderWeele and
   Richardson}{2012}]{vanderweele2012}
 \begin{barticle}
@@ -454,7 +611,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 29
+%%% 40
 \bibitem[\protect\citeauthoryear{Vovk and Wang}{2021}]{vovk2021}
 \begin{barticle}
 \bauthor{\bsnm{Vovk}, \binits{V.}},
@@ -468,7 +625,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 30
+%%% 41
 \bibitem[\protect\citeauthoryear{Williams and Beer}{2010}]{williams2010}
 \begin{botherref}
 \oauthor{\bsnm{Williams}, \binits{P.L.}},
@@ -479,7 +636,19 @@ arXiv preprint arXiv:1004.2515
 \end{botherref}
 \endbibitem
 
-%%% 31
+%%% 42
+\bibitem[\protect\citeauthoryear{Wilson}{1927}]{wilson1927}
+\begin{barticle}
+\bauthor{\bsnm{Wilson}, \binits{E.B.}}:
+\batitle{Probable inference, the law of succession, and statistical inference}.
+\bjtitle{Journal of the American Statistical Association}
+\bvolume{22}(\bissue{158}),
+\bfpage{209}--\blpage{212}
+(\byear{1927})
+\end{barticle}
+\endbibitem
+
+%%% 43
 \bibitem[\protect\citeauthoryear{Wu and Mao}{2025}]{wu2025}
 \begin{botherref}
 \oauthor{\bsnm{Wu}, \binits{P.}},
@@ -491,7 +660,7 @@ arXiv preprint arXiv:2504.20470
 \end{botherref}
 \endbibitem
 
-%%% 32
+%%% 44
 \bibitem[\protect\citeauthoryear{Wang and Ramdas}{2022}]{wang2022}
 \begin{barticle}
 \bauthor{\bsnm{Wang}, \binits{R.}},
@@ -505,7 +674,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 33
+%%% 45
 \bibitem[\protect\citeauthoryear{Wasserman et~al.}{2020}]{wasserman2020}
 \begin{barticle}
 \bauthor{\bsnm{Wasserman}, \binits{L.}},
@@ -520,7 +689,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 34
+%%% 46
 \bibitem[\protect\citeauthoryear{Waudby-Smith and
   Ramdas}{2024}]{waudbysmith2024}
 \begin{barticle}
@@ -535,7 +704,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 35
+%%% 47
 \bibitem[\protect\citeauthoryear{Waudby-Smith
   et~al.}{2024}]{waudbysmith2024ope}
 \begin{barticle}
@@ -553,7 +722,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 36
+%%% 48
 \bibitem[\protect\citeauthoryear{Yang et~al.}{2026}]{peid2026}
 \begin{botherref}
 \oauthor{\bsnm{Yang}, \binits{M.}},
