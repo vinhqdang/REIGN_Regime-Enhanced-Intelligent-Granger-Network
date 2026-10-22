@@ -1,0 +1,771 @@
+{
+  "settings": {
+    "forgets": [
+      0.98,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "n_rep_null": 100,
+    "n_rep_garch": 100,
+    "n_triples": 150,
+    "triple_sampling": "default_rng(0).choice(660 hypotheses, 150, replace=False); hypotheses = C in 12 non-SPY stocks13 assets x unordered pair from the other 11 non-SPY assets",
+    "panel": "stocks13",
+    "target": "vol (|r|, predictable standardisation warm-up 30), sources transformed the same way, conditioning SPY (|r|, standardised)",
+    "p": 1,
+    "kind": "addjoint",
+    "cap": 3.0,
+    "gamma": 0.9,
+    "warmup": 50,
+    "alpha": 0.05,
+    "ridge": 0.01,
+    "feat_clip_finance": 5.0,
+    "feat_clip_sim": null,
+    "sim_dgp": "gen_var('null', T=2500, rho=0.5); garch = heavy=True, garch=True",
+    "seeds": {
+      "null": 401,
+      "garch": 402,
+      "finance": "deterministic (seed 0 sampling)"
+    },
+    "bettor": "bet_process(u, gamma=0.9, warmup=50, start=1); reject if max E >= 20",
+    "cw_adjustment": "mean of s_t + (p_add - p_joint)^2 with s_t the truncated (addjoint) score",
+    "episode_definition": "contiguous runs of steps with lambda_t > 0; log10 product of (1 + lambda u) over the run",
+    "reversal_definition": "running-max log10 E > 0.3 and final log10 E < -0.3; reversal_pos_then_neg additionally requires mean s before the peak > 0 and mean s after the peak < 0"
+  },
+  "part_a_b": {
+    "0.98": {
+      "null": {
+        "n": 100,
+        "median_final_log10E": -0.07127931855927506,
+        "median_max_log10E": 0.01740187671356876,
+        "mean_final_log10E": -0.19806710213451179,
+        "q10_final": -0.756247507564901,
+        "q90_final": 0.0,
+        "reject_rate": 0.01,
+        "reject_ci": [
+          0.0017673865655472645,
+          0.0544875247609346
+        ],
+        "reject_k": 1,
+        "mean_frac_lam_pos": 0.1787154861944778,
+        "mean_s": -0.14827260357604122,
+        "mean_cw_adj": 20058138.004758175,
+        "mean_s2": 8.803301679867715,
+        "median_log10_per_active_episode": -0.001412818994074246,
+        "n_episodes_total": 990,
+        "frac_episodes_negative": 0.9888888888888889,
+        "median_thirds": [
+          -0.06831690319875738,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.20427164755976457,
+          -0.008645272928924376,
+          0.014849818354177181
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.07,
+        "frac_final_negative": 0.75,
+        "frac_of_final_negative_with_reversal": 0.09333333333333334,
+        "frac_reversal_pos_then_neg": 0.02,
+        "max_sum_check_abs": 1.3322676295501878e-15
+      },
+      "garch": {
+        "n": 100,
+        "median_final_log10E": -0.04189960249568332,
+        "median_max_log10E": 0.011857266014644288,
+        "mean_final_log10E": -0.16650000804275286,
+        "q10_final": -0.6322756771424741,
+        "q90_final": 0.013763802802325639,
+        "reject_rate": 0.01,
+        "reject_ci": [
+          0.0017673865655472645,
+          0.0544875247609346
+        ],
+        "reject_k": 1,
+        "mean_frac_lam_pos": 0.1787114845938375,
+        "mean_s": -0.10807518866217222,
+        "mean_cw_adj": 12564496695.23568,
+        "mean_s2": 9.206426595529933,
+        "median_log10_per_active_episode": -0.001566758474286952,
+        "n_episodes_total": 817,
+        "frac_episodes_negative": 0.9767441860465116,
+        "median_thirds": [
+          -0.06444602698933807,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.20863485960142858,
+          -0.007861164170259166,
+          0.04999601572893479
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.07,
+        "frac_final_negative": 0.66,
+        "frac_of_final_negative_with_reversal": 0.10606060606060606,
+        "frac_reversal_pos_then_neg": 0.02,
+        "max_sum_check_abs": 1.6323747908941755e-15
+      },
+      "finance": {
+        "n": 150,
+        "median_final_log10E": -0.10450992534378425,
+        "median_max_log10E": 0.05847564953949383,
+        "mean_final_log10E": -0.07870121761804989,
+        "q10_final": -0.7433133244714272,
+        "q90_final": 0.36200718714752206,
+        "reject_rate": 0.04666666666666667,
+        "reject_ci": [
+          0.02278625890187786,
+          0.09318757392357377
+        ],
+        "reject_k": 7,
+        "mean_frac_lam_pos": 0.22899243329350857,
+        "mean_s": -0.10670365176133563,
+        "mean_cw_adj": 16048970.939320596,
+        "mean_s2": 9.603934077072502,
+        "median_log10_per_active_episode": -0.0016168253258825008,
+        "n_episodes_total": 1405,
+        "frac_episodes_negative": 0.9722419928825623,
+        "median_thirds": [
+          -0.13347118741648664,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.26128775225957396,
+          0.0034071260520469973,
+          0.179179408589477
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.08666666666666667,
+        "frac_final_negative": 0.6733333333333333,
+        "frac_of_final_negative_with_reversal": 0.12871287128712872,
+        "frac_reversal_pos_then_neg": 0.03333333333333333,
+        "max_sum_check_abs": 1.887379141862766e-15
+      }
+    },
+    "0.99": {
+      "null": {
+        "n": 100,
+        "median_final_log10E": -0.19237597091774283,
+        "median_max_log10E": 0.018590446782073035,
+        "mean_final_log10E": -0.2807364845870742,
+        "q10_final": -0.702924388540936,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.03699480747600191
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.2116846738695478,
+        "mean_s": -0.008608847132227947,
+        "mean_cw_adj": 0.03335719146598637,
+        "mean_s2": 0.0752310835172128,
+        "median_log10_per_active_episode": -0.0012471782955330423,
+        "n_episodes_total": 1274,
+        "frac_episodes_negative": 0.9952904238618524,
+        "median_thirds": [
+          -0.1215271808556198,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.23019015786563937,
+          -0.03778177217602488,
+          -0.012764554545409939
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+        "frac_final_negative": 0.81,
+        "frac_of_final_negative_with_reversal": 0.12345679012345678,
+        "frac_reversal_pos_then_neg": 0.04,
+        "max_sum_check_abs": 1.9984014443252818e-15
+      },
+      "garch": {
+        "n": 100,
+        "median_final_log10E": -0.15869987053184903,
+        "median_max_log10E": 0.014528366529524665,
+        "mean_final_log10E": -0.2783928517615675,
+        "q10_final": -0.7011526046127197,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.03699480747600191
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.21596638655462186,
+        "mean_s": -0.008684574047581255,
+        "mean_cw_adj": 0.08621119212209985,
+        "mean_s2": 0.07550502505582697,
+        "median_log10_per_active_episode": -0.0012994880247551195,
+        "n_episodes_total": 1093,
+        "frac_episodes_negative": 0.9972552607502287,
+        "median_thirds": [
+          -0.11117340009550453,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.21212457636885726,
+          -0.04420467976823601,
+          -0.02206359562447416
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.05,
+        "frac_final_negative": 0.83,
+        "frac_of_final_negative_with_reversal": 0.060240963855421686,
+        "frac_reversal_pos_then_neg": 0.04,
+        "max_sum_check_abs": 1.6653345369377348e-15
+      },
+      "finance": {
+        "n": 150,
+        "median_final_log10E": -0.19522382788968487,
+        "median_max_log10E": 0.03677892406799202,
+        "mean_final_log10E": -0.3412065748501818,
+        "q10_final": -0.8936751344064117,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.02497113914571871
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.22615956458250366,
+        "mean_s": -0.009460215638219915,
+        "mean_cw_adj": 0.12669149838878144,
+        "mean_s2": 0.12688459280672887,
+        "median_log10_per_active_episode": -0.0014020845169268109,
+        "n_episodes_total": 1795,
+        "frac_episodes_negative": 0.9916434540389972,
+        "median_thirds": [
+          -0.13709421795754942,
+          -0.0009409751048070742,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.271238835205879,
+          -0.05806488490656623,
+          -0.011902854737736602
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.12,
+        "frac_final_negative": 0.8666666666666667,
+        "frac_of_final_negative_with_reversal": 0.13846153846153847,
+        "frac_reversal_pos_then_neg": 0.06,
+        "max_sum_check_abs": 1.3322676295501878e-15
+      }
+    },
+    "0.995": {
+      "null": {
+        "n": 100,
+        "median_final_log10E": -0.14753431182979834,
+        "median_max_log10E": 0.012346507181839515,
+        "mean_final_log10E": -0.2585689229115225,
+        "q10_final": -0.721334772671179,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.03699480747600191
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.20312925170068027,
+        "mean_s": -0.005979265829850318,
+        "mean_cw_adj": 0.03272627003808343,
+        "mean_s2": 0.06231979034323351,
+        "median_log10_per_active_episode": -0.0011241713709195093,
+        "n_episodes_total": 1230,
+        "frac_episodes_negative": 0.9967479674796748,
+        "median_thirds": [
+          -0.11376116852714671,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.21323605875390733,
+          -0.041431040386353896,
+          -0.003901823771261339
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.08,
+        "frac_final_negative": 0.82,
+        "frac_of_final_negative_with_reversal": 0.0975609756097561,
+        "frac_reversal_pos_then_neg": 0.04,
+        "max_sum_check_abs": 1.6653345369377348e-15
+      },
+      "garch": {
+        "n": 100,
+        "median_final_log10E": -0.18397683625119218,
+        "median_max_log10E": 0.023931397078950097,
+        "mean_final_log10E": -0.30026649967213703,
+        "q10_final": -0.6910269927809284,
+        "q90_final": 0.0,
+        "reject_rate": 0.01,
+        "reject_ci": [
+          0.0017673865655472645,
+          0.0544875247609346
+        ],
+        "reject_k": 1,
+        "mean_frac_lam_pos": 0.28723089235694277,
+        "mean_s": -0.0062914170348534445,
+        "mean_cw_adj": 0.07772150289622337,
+        "mean_s2": 0.0581356407175243,
+        "median_log10_per_active_episode": -0.0012952355380171385,
+        "n_episodes_total": 1115,
+        "frac_episodes_negative": 0.989237668161435,
+        "median_thirds": [
+          -0.08936381192364794,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.19873174364467316,
+          -0.07956754130654463,
+          -0.021967214720919278
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.11,
+        "frac_final_negative": 0.81,
+        "frac_of_final_negative_with_reversal": 0.13580246913580246,
+        "frac_reversal_pos_then_neg": 0.05,
+        "max_sum_check_abs": 1.5543122344752192e-15
+      },
+      "finance": {
+        "n": 150,
+        "median_final_log10E": -0.2744664834325919,
+        "median_max_log10E": 0.052987763611099206,
+        "mean_final_log10E": -0.369337971391087,
+        "q10_final": -0.9537586282592666,
+        "q90_final": 0.0,
+        "reject_rate": 0.013333333333333334,
+        "reject_ci": [
+          0.0036640523882232115,
+          0.047307856380276334
+        ],
+        "reject_k": 2,
+        "mean_frac_lam_pos": 0.28743130227001196,
+        "mean_s": -0.006832822366914965,
+        "mean_cw_adj": 0.11749819572138245,
+        "mean_s2": 0.09634163036700637,
+        "median_log10_per_active_episode": -0.001435001710492348,
+        "n_episodes_total": 2071,
+        "frac_episodes_negative": 0.9922742636407532,
+        "median_thirds": [
+          -0.16570489409527284,
+          -0.0016463163386444828,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.27552121502201304,
+          -0.07562772101941015,
+          -0.018189035349663804
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.12666666666666668,
+        "frac_final_negative": 0.8866666666666667,
+        "frac_of_final_negative_with_reversal": 0.14285714285714285,
+        "frac_reversal_pos_then_neg": 0.06,
+        "max_sum_check_abs": 2.275957200481571e-15
+      }
+    },
+    "0.999": {
+      "null": {
+        "n": 100,
+        "median_final_log10E": -0.18454110699450743,
+        "median_max_log10E": 0.029010575909470444,
+        "mean_final_log10E": -0.2761445565347367,
+        "q10_final": -0.6962079560152038,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.03699480747600191
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.27645058023209285,
+        "mean_s": -0.004358562724512508,
+        "mean_cw_adj": 0.032406946849008765,
+        "mean_s2": 0.05520174845059846,
+        "median_log10_per_active_episode": -0.001142397777814459,
+        "n_episodes_total": 1242,
+        "frac_episodes_negative": 0.9911433172302737,
+        "median_thirds": [
+          -0.09863537853614934,
+          0.0,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.1997106296541817,
+          -0.054787128487318607,
+          -0.02164679839323634
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+        "frac_final_negative": 0.86,
+        "frac_of_final_negative_with_reversal": 0.11627906976744186,
+        "frac_reversal_pos_then_neg": 0.02,
+        "max_sum_check_abs": 1.7763568394002505e-15
+      },
+      "garch": {
+        "n": 100,
+        "median_final_log10E": -0.1312437155575753,
+        "median_max_log10E": 0.033869159186019175,
+        "mean_final_log10E": -0.2747982017312317,
+        "q10_final": -0.7627367192803736,
+        "q90_final": 0.0,
+        "reject_rate": 0.0,
+        "reject_ci": [
+          0.0,
+          0.03699480747600191
+        ],
+        "reject_k": 0,
+        "mean_frac_lam_pos": 0.3189435774309724,
+        "mean_s": -0.005243783492550384,
+        "mean_cw_adj": 0.07320055336342754,
+        "mean_s2": 0.04960224136852163,
+        "median_log10_per_active_episode": -0.001101941447201127,
+        "n_episodes_total": 1111,
+        "frac_episodes_negative": 0.9828982898289829,
+        "median_thirds": [
+          -0.1199042834251473,
+          -0.0021502492734656506,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.2046532798487976,
+          -0.06524010174042078,
+          -0.004904820142013329
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+        "frac_final_negative": 0.8,
+        "frac_of_final_negative_with_reversal": 0.125,
+        "frac_reversal_pos_then_neg": 0.04,
+        "max_sum_check_abs": 1.9984014443252818e-15
+      },
+      "finance": {
+        "n": 150,
+        "median_final_log10E": -0.24292812374782757,
+        "median_max_log10E": 0.06254899721275849,
+        "mean_final_log10E": -0.3356293741890561,
+        "q10_final": -0.9334237459884385,
+        "q90_final": 0.0,
+        "reject_rate": 0.013333333333333334,
+        "reject_ci": [
+          0.0036640523882232115,
+          0.047307856380276334
+        ],
+        "reject_k": 2,
+        "mean_frac_lam_pos": 0.336251161555821,
+        "mean_s": -0.005311234892394007,
+        "mean_cw_adj": 0.11235037406841374,
+        "mean_s2": 0.07845807522259134,
+        "median_log10_per_active_episode": -0.0012544494736563246,
+        "n_episodes_total": 1840,
+        "frac_episodes_negative": 0.9815217391304348,
+        "median_thirds": [
+          -0.16392195921599842,
+          -2.0036285127415313e-05,
+          0.0
+        ],
+        "mean_thirds": [
+          -0.27166356206812936,
+          -0.05403876453625292,
+          -0.009927047584673866
+        ],
+        "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.12666666666666668,
+        "frac_final_negative": 0.8333333333333334,
+        "frac_of_final_negative_with_reversal": 0.152,
+        "frac_reversal_pos_then_neg": 0.06,
+        "max_sum_check_abs": 1.700029006457271e-15
+      }
+    }
+  },
+  "null_only_by_forget": {
+    "0.98": {
+      "n": 100,
+      "median_final_log10E": -0.07127931855927506,
+      "median_max_log10E": 0.01740187671356876,
+      "mean_final_log10E": -0.19806710213451179,
+      "q10_final": -0.756247507564901,
+      "q90_final": 0.0,
+      "reject_rate": 0.01,
+      "reject_ci": [
+        0.0017673865655472645,
+        0.0544875247609346
+      ],
+      "reject_k": 1,
+      "mean_frac_lam_pos": 0.1787154861944778,
+      "mean_s": -0.14827260357604122,
+      "mean_cw_adj": 20058138.004758175,
+      "mean_s2": 8.803301679867715,
+      "median_log10_per_active_episode": -0.001412818994074246,
+      "n_episodes_total": 990,
+      "frac_episodes_negative": 0.9888888888888889,
+      "median_thirds": [
+        -0.06831690319875738,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.20427164755976457,
+        -0.008645272928924376,
+        0.014849818354177181
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.07,
+      "frac_final_negative": 0.75,
+      "frac_of_final_negative_with_reversal": 0.09333333333333334,
+      "frac_reversal_pos_then_neg": 0.02,
+      "max_sum_check_abs": 1.3322676295501878e-15
+    },
+    "0.99": {
+      "n": 100,
+      "median_final_log10E": -0.19237597091774283,
+      "median_max_log10E": 0.018590446782073035,
+      "mean_final_log10E": -0.2807364845870742,
+      "q10_final": -0.702924388540936,
+      "q90_final": 0.0,
+      "reject_rate": 0.0,
+      "reject_ci": [
+        0.0,
+        0.03699480747600191
+      ],
+      "reject_k": 0,
+      "mean_frac_lam_pos": 0.2116846738695478,
+      "mean_s": -0.008608847132227947,
+      "mean_cw_adj": 0.03335719146598637,
+      "mean_s2": 0.0752310835172128,
+      "median_log10_per_active_episode": -0.0012471782955330423,
+      "n_episodes_total": 1274,
+      "frac_episodes_negative": 0.9952904238618524,
+      "median_thirds": [
+        -0.1215271808556198,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.23019015786563937,
+        -0.03778177217602488,
+        -0.012764554545409939
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+      "frac_final_negative": 0.81,
+      "frac_of_final_negative_with_reversal": 0.12345679012345678,
+      "frac_reversal_pos_then_neg": 0.04,
+      "max_sum_check_abs": 1.9984014443252818e-15
+    },
+    "0.995": {
+      "n": 100,
+      "median_final_log10E": -0.14753431182979834,
+      "median_max_log10E": 0.012346507181839515,
+      "mean_final_log10E": -0.2585689229115225,
+      "q10_final": -0.721334772671179,
+      "q90_final": 0.0,
+      "reject_rate": 0.0,
+      "reject_ci": [
+        0.0,
+        0.03699480747600191
+      ],
+      "reject_k": 0,
+      "mean_frac_lam_pos": 0.20312925170068027,
+      "mean_s": -0.005979265829850318,
+      "mean_cw_adj": 0.03272627003808343,
+      "mean_s2": 0.06231979034323351,
+      "median_log10_per_active_episode": -0.0011241713709195093,
+      "n_episodes_total": 1230,
+      "frac_episodes_negative": 0.9967479674796748,
+      "median_thirds": [
+        -0.11376116852714671,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.21323605875390733,
+        -0.041431040386353896,
+        -0.003901823771261339
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.08,
+      "frac_final_negative": 0.82,
+      "frac_of_final_negative_with_reversal": 0.0975609756097561,
+      "frac_reversal_pos_then_neg": 0.04,
+      "max_sum_check_abs": 1.6653345369377348e-15
+    },
+    "0.999": {
+      "n": 100,
+      "median_final_log10E": -0.18454110699450743,
+      "median_max_log10E": 0.029010575909470444,
+      "mean_final_log10E": -0.2761445565347367,
+      "q10_final": -0.6962079560152038,
+      "q90_final": 0.0,
+      "reject_rate": 0.0,
+      "reject_ci": [
+        0.0,
+        0.03699480747600191
+      ],
+      "reject_k": 0,
+      "mean_frac_lam_pos": 0.27645058023209285,
+      "mean_s": -0.004358562724512508,
+      "mean_cw_adj": 0.032406946849008765,
+      "mean_s2": 0.05520174845059846,
+      "median_log10_per_active_episode": -0.001142397777814459,
+      "n_episodes_total": 1242,
+      "frac_episodes_negative": 0.9911433172302737,
+      "median_thirds": [
+        -0.09863537853614934,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.1997106296541817,
+        -0.054787128487318607,
+        -0.02164679839323634
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+      "frac_final_negative": 0.86,
+      "frac_of_final_negative_with_reversal": 0.11627906976744186,
+      "frac_reversal_pos_then_neg": 0.02,
+      "max_sum_check_abs": 1.7763568394002505e-15
+    }
+  },
+  "garch_only_by_forget": {
+    "0.98": {
+      "n": 100,
+      "median_final_log10E": -0.04189960249568332,
+      "median_max_log10E": 0.011857266014644288,
+      "mean_final_log10E": -0.16650000804275286,
+      "q10_final": -0.6322756771424741,
+      "q90_final": 0.013763802802325639,
+      "reject_rate": 0.01,
+      "reject_ci": [
+        0.0017673865655472645,
+        0.0544875247609346
+      ],
+      "reject_k": 1,
+      "mean_frac_lam_pos": 0.1787114845938375,
+      "mean_s": -0.10807518866217222,
+      "mean_cw_adj": 12564496695.23568,
+      "mean_s2": 9.206426595529933,
+      "median_log10_per_active_episode": -0.001566758474286952,
+      "n_episodes_total": 817,
+      "frac_episodes_negative": 0.9767441860465116,
+      "median_thirds": [
+        -0.06444602698933807,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.20863485960142858,
+        -0.007861164170259166,
+        0.04999601572893479
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.07,
+      "frac_final_negative": 0.66,
+      "frac_of_final_negative_with_reversal": 0.10606060606060606,
+      "frac_reversal_pos_then_neg": 0.02,
+      "max_sum_check_abs": 1.6323747908941755e-15
+    },
+    "0.99": {
+      "n": 100,
+      "median_final_log10E": -0.15869987053184903,
+      "median_max_log10E": 0.014528366529524665,
+      "mean_final_log10E": -0.2783928517615675,
+      "q10_final": -0.7011526046127197,
+      "q90_final": 0.0,
+      "reject_rate": 0.0,
+      "reject_ci": [
+        0.0,
+        0.03699480747600191
+      ],
+      "reject_k": 0,
+      "mean_frac_lam_pos": 0.21596638655462186,
+      "mean_s": -0.008684574047581255,
+      "mean_cw_adj": 0.08621119212209985,
+      "mean_s2": 0.07550502505582697,
+      "median_log10_per_active_episode": -0.0012994880247551195,
+      "n_episodes_total": 1093,
+      "frac_episodes_negative": 0.9972552607502287,
+      "median_thirds": [
+        -0.11117340009550453,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.21212457636885726,
+        -0.04420467976823601,
+        -0.02206359562447416
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.05,
+      "frac_final_negative": 0.83,
+      "frac_of_final_negative_with_reversal": 0.060240963855421686,
+      "frac_reversal_pos_then_neg": 0.04,
+      "max_sum_check_abs": 1.6653345369377348e-15
+    },
+    "0.995": {
+      "n": 100,
+      "median_final_log10E": -0.18397683625119218,
+      "median_max_log10E": 0.023931397078950097,
+      "mean_final_log10E": -0.30026649967213703,
+      "q10_final": -0.6910269927809284,
+      "q90_final": 0.0,
+      "reject_rate": 0.01,
+      "reject_ci": [
+        0.0017673865655472645,
+        0.0544875247609346
+      ],
+      "reject_k": 1,
+      "mean_frac_lam_pos": 0.28723089235694277,
+      "mean_s": -0.0062914170348534445,
+      "mean_cw_adj": 0.07772150289622337,
+      "mean_s2": 0.0581356407175243,
+      "median_log10_per_active_episode": -0.0012952355380171385,
+      "n_episodes_total": 1115,
+      "frac_episodes_negative": 0.989237668161435,
+      "median_thirds": [
+        -0.08936381192364794,
+        0.0,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.19873174364467316,
+        -0.07956754130654463,
+        -0.021967214720919278
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.11,
+      "frac_final_negative": 0.81,
+      "frac_of_final_negative_with_reversal": 0.13580246913580246,
+      "frac_reversal_pos_then_neg": 0.05,
+      "max_sum_check_abs": 1.5543122344752192e-15
+    },
+    "0.999": {
+      "n": 100,
+      "median_final_log10E": -0.1312437155575753,
+      "median_max_log10E": 0.033869159186019175,
+      "mean_final_log10E": -0.2747982017312317,
+      "q10_final": -0.7627367192803736,
+      "q90_final": 0.0,
+      "reject_rate": 0.0,
+      "reject_ci": [
+        0.0,
+        0.03699480747600191
+      ],
+      "reject_k": 0,
+      "mean_frac_lam_pos": 0.3189435774309724,
+      "mean_s": -0.005243783492550384,
+      "mean_cw_adj": 0.07320055336342754,
+      "mean_s2": 0.04960224136852163,
+      "median_log10_per_active_episode": -0.001101941447201127,
+      "n_episodes_total": 1111,
+      "frac_episodes_negative": 0.9828982898289829,
+      "median_thirds": [
+        -0.1199042834251473,
+        -0.0021502492734656506,
+        0.0
+      ],
+      "mean_thirds": [
+        -0.2046532798487976,
+        -0.06524010174042078,
+        -0.004904820142013329
+      ],
+      "frac_runmax_gt_0p3_and_final_lt_m0p3": 0.1,
+      "frac_final_negative": 0.8,
+      "frac_of_final_negative_with_reversal": 0.125,
+      "frac_reversal_pos_then_neg": 0.04,
+      "max_sum_check_abs": 1.9984014443252818e-15
+    }
+  },
+  "finance_triples_csv": "results/r4_finance_triples.csv",
+  "runtime_s": 261.50117087364197
+}
