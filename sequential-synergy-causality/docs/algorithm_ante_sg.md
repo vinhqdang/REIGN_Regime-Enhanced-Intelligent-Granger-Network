@@ -1,3 +1,7 @@
+> **Superseded.** This document describes the first version of the study. Several of its claims
+> (group-test validity by clipping, isolation of interaction, turbulence detection, absence of group causality in daily finance)
+> were corrected or withdrawn in the revision; see `manuscript/main.tex` and `manuscript/response_to_reviewers.tex`.
+
 # ANTE-SG: Anytime-valid Detection of Synergistic Granger Causality in Financial Time Series
 
 This is the flagship algorithm of the ANTE paper — a new method for the financial

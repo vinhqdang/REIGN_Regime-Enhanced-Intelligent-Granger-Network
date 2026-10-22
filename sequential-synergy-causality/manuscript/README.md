@@ -1,19 +1,21 @@
-# ANTE manuscript — Statistics and Computing (Springer)
+# ANTE manuscript (revision) — Discover Applied Mathematics
 
-Full manuscript for Paper 2 (ANTE), prepared with the official Springer Nature
-`sn-jnl` LaTeX template (author–year `sn-mathphys-ay` reference style, as required
-by *Statistics and Computing*, which cites by name and year).
+Revised manuscript for Paper 2 (ANTE), prepared with the Springer Nature `sn-jnl`
+LaTeX template (author-year `sn-mathphys-ay` references), together with the
+point-by-point response to the editor and reviewers.
 
 ## Contents
 
 | File | Purpose |
 |------|---------|
-| `main.tex` | The manuscript (single self-contained source, per Springer policy) |
-| `main.pdf` | Compiled output (21 pages) |
-| `sn-bibliography.bib` | Bibliography (author–year, verified DOIs) |
-| `main.bbl` | Generated bibliography (included for submission) |
+| `main.tex` | Revised manuscript (single self-contained source) |
+| `main.pdf` | Compiled revised manuscript |
+| `main_changes_highlighted.pdf` / `.tex` | Marked-up version against the first submission (if present) |
+| `response_to_reviewers.tex` / `.pdf` | Point-by-point response letter |
+| `sn-bibliography.bib`, `main.bbl` | Bibliography |
 | `sn-jnl.cls`, `sn-mathphys-ay.bst`, `bst/` | Springer class and style files |
-| `figures/` | 300-dpi PNG figures |
+| `figures/` | Figures (`fig_*.png` are drawn from the saved results by `experiments/revision/make_paper_figures.py`) |
+| `cover_letter.tex/.pdf` | Cover letter of the first submission (superseded) |
 
 ## Build
 
@@ -24,16 +26,18 @@ pdflatex main
 pdflatex main
 ```
 
+## Where the numbers come from
+
+Every number and figure in the manuscript is produced by a script in
+`../experiments/revision/` (results in `../experiments/revision/results/`).
+`../src/ante_v2.py` is the revised test (truncated-loss score with a predictable bound,
+exclusion processes and the time-uniform average-synergy bound).
+
 ## Structure
 
-Storytelling introduction → related work and the gap (three synergy literatures
-vs. the anytime-valid backbone) → problem setup and the synergy null on two scales
-→ the ANTE test (interaction score, betting e-process, **validity theorem**,
-**Ville anytime-validity corollary**, **consistency/power theorem** with an
-explicit detection-time bound, **k-way group proposition**, **interaction-isolation
-proposition**) → algorithms → experiments (anytime-valid control, SOTA benchmark,
-real portfolio-variance synergy, turbulence positive, and the evidence-of-absence
-finance finding) → discussion → conclusion → declarations → proofs appendix.
-
-Target journal: *Statistics and Computing* (Springer, Q1). Free to publish
-(no submission or publication fee; open access optional).
+Introduction and scope of claims → related work and positioning → setup (interventional and
+predictive nulls) → Part A: interventional ANTE → Part B: predictive ANTE-SG (null as a
+comparison of two forecasters, exactly valid truncated-loss score, isolation analysis, exclusion,
+multiplicity, table of guarantees) → experiments (validity and stress tests, correlated
+sources and nonlinear alternatives, benchmark, positive controls, a fully specified financial
+search with placebo calibration) → discussion → declarations → appendices (proofs, bounds table).

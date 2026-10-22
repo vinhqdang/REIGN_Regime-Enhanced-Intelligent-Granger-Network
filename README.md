@@ -42,42 +42,39 @@ Received 18 May 2026, revised 29 June 2026, accepted 20 July 2026.*
 
 ---
 
-## Paper 2 — ANTE (manuscript ready; targeting Statistics and Computing)
+## Paper 2 — ANTE (major revision; revised manuscript and response letter ready)
 
-**ANTE: Anytime-valid Nonparametric Test of synErgy — Sequential Testing for
-Group (Synergistic) Causality.** A
-betting-martingale (e-process) test for the hypothesis that a set of causes acts
-on an effect *jointly*, beyond the sum of individual contributions — monitored
-anytime-valid as data streams in.
+**Anytime-Valid Sequential Testing of Group Synergy: Interventional and Predictive
+Formulations, with an Application to Financial Markets** (submitted to *Discover
+Applied Mathematics*; the first version was titled "Anytime-Valid Nonparametric Testing
+of Synergistic (Group) Causality, with an Application Establishing Its Absence in Daily
+Financial Markets"). ANTE is a betting-martingale (e-process) test of whether a set of
+variables acts on an outcome jointly, beyond the sum of its members, monitored
+anytime-valid as data stream in. It has an *interventional* part (known randomised
+design, sequential null $\theta_t\le0$) and a *predictive* part, **ANTE-SG**, for time
+series, whose null compares an additive and a joint online forecaster.
 
-The flagship algorithm is **ANTE-SG**, for **financial time series**: anytime-
-valid, regime-aware detection of *synergistic Granger causality* (super-additive
-out-of-sample predictive gain, tested by betting; generalizes to k-way groups).
+**What the revision changed.** The group-test validity proof by clipping was wrong; it is
+replaced by a truncated-loss score normalised by a bound known before each observation
+(`sequential-synergy-causality/src/ante_v2.py`), which gives an exact validity proof. The
+isolation proposition is corrected (the four-model contrast of version 1 is contaminated by
+redundancy; the add-versus-joint contrast is used), "absence" claims are withdrawn, and the
+financial search is fully specified (27,027 hypotheses, 43 families) with placebo
+(circularly shifted target) calibration.
 
-**Headline finding — group causality does NOT exist in daily finance.** Used as a
-demonstrably-powered instrument, ANTE *establishes* (evidence of absence, not
-absence of evidence) that genuine super-additive group causality is absent from
-daily markets: across ~3,700+ group triples (returns/volatility/tail-stress,
-daily/hourly, equities/ETFs/macro/crypto, 2-/3-/4-way), the financial evidence sits
-on a true-null distribution (median log₁₀E = −0.93, i.e. a bet on synergy *loses*)
-with 0 detections — while the same test detects synthetic synergy (74–100%) and
-real turbulence energy-cascade synergy (SURD's data). So synergistic group
-causality is a physics/biology phenomenon, not a daily-markets one — a quantified
-caution to in-sample synergy-in-finance claims. See
-`sequential-synergy-causality/docs/finding_group_causality.md`.
-
-*Status: algorithm design, implementation, synthetic validation,
-real-financial-data case study, SOTA benchmark, and methodology complete. Full
-manuscript drafted for* **Statistics and Computing** *(Springer, Q1, free to
-publish), in `sequential-synergy-causality/manuscript/` (Springer `sn-jnl`
-template, math-heavy with theorems/proofs; compiled PDF included).*
+**Current empirical findings (see the manuscript for the exact wording).** In daily and
+weekly returns and volatility there is no family-wise detection and the real evidence matches
+a placebo null; the test has low power on real noise and the bounds on average synergy are weak,
+so this is not proof of absence. For binary stress indicators and hourly crypto the placebo shows
+that the test rejects a true null in 10-40% of hypotheses, so rejections there are not interpreted.
+The turbulence example of version 1 is withdrawn (both tests "detect" on phase-randomised surrogates).
+Old documents under `sequential-synergy-causality/docs/` describe version 1 and are superseded.
 
 | Path | Contents |
 |------|----------|
-| `sequential-synergy-causality/src/` | e-process, IPW interaction score, subset-refinement search |
-| `sequential-synergy-causality/experiments/` | E1–E4 experiments + figures |
-| `sequential-synergy-causality/docs/` | methodology and literature review |
-| `sequential-synergy-causality/manuscript/` | Statistics and Computing manuscript (LaTeX + PDF) |
+| `sequential-synergy-causality/src/` | e-process, original `ante_sg`, revised `ante_v2.py` (exactly valid score) |
+| `sequential-synergy-causality/experiments/revision/` | all revision experiments (R1-R18), results in `results/` |
+| `sequential-synergy-causality/manuscript/` | revised manuscript (`main.tex/.pdf`), `response_to_reviewers.tex/.pdf` |
 
 See [`sequential-synergy-causality/README.md`](sequential-synergy-causality/README.md)
 for details.

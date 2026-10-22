@@ -1,3 +1,7 @@
+> **Superseded.** This document describes the first version of the study. Several of its claims
+> (group-test validity by clipping, isolation of interaction, turbulence detection, absence of group causality in daily finance)
+> were corrected or withdrawn in the revision; see `manuscript/main.tex` and `manuscript/response_to_reviewers.tex`.
+
 # ANTE: Anytime-valid Nonparametric Test of synErgy
 
 *Sequential e-processes for group (synergistic) causal effects.*

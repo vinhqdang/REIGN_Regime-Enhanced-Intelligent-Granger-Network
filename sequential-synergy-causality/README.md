@@ -1,3 +1,5 @@
+> **Revision notice.** After peer review the ANTE manuscript was revised substantially (exactly valid truncated-loss score `src/ante_v2.py`, corrected isolation analysis, fully specified financial search with placebo calibration; the first version's turbulence and "absence in daily finance" claims are withdrawn or restricted). The revised manuscript and the response letter are in `manuscript/`, all new experiments in `experiments/revision/`. Parts of this README and of `docs/` describe the first version.
+
 # ANTE: Anytime-valid Nonparametric Test of synErgy
 
 *Sequential, anytime-valid testing for group (synergistic) causality.*
