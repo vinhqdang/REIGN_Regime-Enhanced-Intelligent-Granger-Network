@@ -1,0 +1,778 @@
+{
+  "description": "R8 portfolio-variance control, explicit target RV=(0.5 rA+0.5 rB)^2",
+  "data": "data/returns_panel.csv",
+  "n_pairs": 14,
+  "p": 1,
+  "forget": 0.995,
+  "feat_clip": 5.0,
+  "cap": 3.0,
+  "gamma": 0.9,
+  "warmup": 50,
+  "alpha": 0.05,
+  "standardisation": "predictable, warm-up 30",
+  "thresholds": {
+    "raw": 20.0,
+    "familywise": 280.0,
+    "familywise_log10": 2.4471580313422194
+  },
+  "counts": {
+    "contemp_addjoint": {
+      "n": 14,
+      "raw_rejections": 14,
+      "familywise_rejections": 13,
+      "median_max_log10E": 15.0,
+      "median_final_log10E": 13.619206706126572
+    },
+    "contemp_four": {
+      "n": 14,
+      "raw_rejections": 10,
+      "familywise_rejections": 10,
+      "median_max_log10E": 8.251905637054412,
+      "median_final_log10E": 6.449220649965085
+    },
+    "lagged_addjoint": {
+      "n": 14,
+      "raw_rejections": 1,
+      "familywise_rejections": 0,
+      "median_max_log10E": 0.05096972317905003,
+      "median_final_log10E": -0.1174659141324032
+    },
+    "lagged_four": {
+      "n": 14,
+      "raw_rejections": 3,
+      "familywise_rejections": 0,
+      "median_max_log10E": 0.4201740635506812,
+      "median_final_log10E": -0.02430561387595405
+    }
+  },
+  "explain": {
+    "spearman_R2_vs_contemp_addjoint": -0.5938779123636446,
+    "spearman_corr_vs_contemp_addjoint": -0.7034045765290708,
+    "spearman_R2_vs_contemp_four": -0.39113525600795246,
+    "spearman_corr_vs_contemp_four": -0.8644978101539401,
+    "n_cross_covariance_positive": 10,
+    "R2_min": 0.026400587504921913,
+    "R2_max": 0.9948637529123444,
+    "corr_min": -0.26153602972812573,
+    "corr_max": 0.8565860338467425
+  },
+  "pairs": [
+    {
+      "pair": "GLD/USO",
+      "desc": "gold x oil",
+      "corr": 0.06601514795213072,
+      "cov_sign": 1,
+      "cross_R2": 0.026400587504921913,
+      "contemp": {
+        "addjoint": {
+          "final_E": 53779878319672.05,
+          "max_E": 53779878319672.05,
+          "final_log10E": 13.73061981527005,
+          "max_log10E": 13.73061981527005,
+          "argmax_t": 2511,
+          "reject_time": 89,
+          "mean_s": 0.08033122740420665,
+          "frac_lam_pos": 0.9800876144962166
+        },
+        "four": {
+          "final_E": 695760.9335237781,
+          "max_E": 1125640.192383177,
+          "final_log10E": 5.842460039773218,
+          "max_log10E": 6.05139959172821,
+          "argmax_t": 936,
+          "reject_time": 236,
+          "mean_s": 0.08547393702703202,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 1.0,
+          "max_E": 1.0,
+          "final_log10E": 0.0,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.004732443760665242,
+          "frac_lam_pos": 0.0
+        },
+        "four": {
+          "final_E": 1.0,
+          "max_E": 1.0,
+          "final_log10E": 0.0,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.01746528726463718,
+          "frac_lam_pos": 0.0
+        }
+      }
+    },
+    {
+      "pair": "XLF/TLT",
+      "desc": "financials x bonds",
+      "corr": -0.26153602972812573,
+      "cov_sign": -1,
+      "cross_R2": 0.4036456159530841,
+      "contemp": {
+        "addjoint": {
+          "final_E": 1000000000000000.0,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 15.0,
+          "max_log10E": 15.0,
+          "argmax_t": 610,
+          "reject_time": 78,
+          "mean_s": 0.25957207863526266,
+          "frac_lam_pos": 0.9800876144962166
+        },
+        "four": {
+          "final_E": 945678885063954.8,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.975743692300977,
+          "max_log10E": 15.0,
+          "argmax_t": 809,
+          "reject_time": 82,
+          "mean_s": 0.3501620672502223,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.7722701625866557,
+          "max_E": 1.0,
+          "final_log10E": -0.11223074422972804,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.002191675702233875,
+          "frac_lam_pos": 0.038231780167264036
+        },
+        "four": {
+          "final_E": 1.6293727570080228,
+          "max_E": 1.8760066651350116,
+          "final_log10E": 0.2120204506637142,
+          "max_log10E": 0.27323437702077197,
+          "argmax_t": 2431,
+          "reject_time": null,
+          "mean_s": 0.011586161978030512,
+          "frac_lam_pos": 0.4022301871764237
+        }
+      }
+    },
+    {
+      "pair": "SPY/TLT",
+      "desc": "equity x bonds",
+      "corr": -0.13795671168083445,
+      "cov_sign": -1,
+      "cross_R2": 0.3274592597630468,
+      "contemp": {
+        "addjoint": {
+          "final_E": 1000000000000000.0,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 15.0,
+          "max_log10E": 15.0,
+          "argmax_t": 787,
+          "reject_time": 154,
+          "mean_s": 0.2848275736573371,
+          "frac_lam_pos": 0.978494623655914
+        },
+        "four": {
+          "final_E": 600590397181156.6,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.778578383999202,
+          "max_log10E": 15.0,
+          "argmax_t": 957,
+          "reject_time": 119,
+          "mean_s": 0.35104042106413524,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.31885064445542977,
+          "max_E": 1.0,
+          "final_log10E": -0.49641270088731376,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": 0.009593799624275574,
+          "frac_lam_pos": 0.38908801274392674
+        },
+        "four": {
+          "final_E": 42.01154322822545,
+          "max_E": 44.75281435956982,
+          "final_log10E": 1.6233686349584353,
+          "max_log10E": 1.6508203518842983,
+          "argmax_t": 2504,
+          "reject_time": 2119,
+          "mean_s": 0.0105166339355347,
+          "frac_lam_pos": 0.4400637196336121
+        }
+      }
+    },
+    {
+      "pair": "GLD/TLT",
+      "desc": "gold x bonds",
+      "corr": 0.2460085007567938,
+      "cov_sign": 1,
+      "cross_R2": 0.10127475583917322,
+      "contemp": {
+        "addjoint": {
+          "final_E": 32195383082052.312,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 13.507793596983094,
+          "max_log10E": 15.0,
+          "argmax_t": 1581,
+          "reject_time": 275,
+          "mean_s": 0.1458675180084451,
+          "frac_lam_pos": 0.9800876144962166
+        },
+        "four": {
+          "final_E": 197157.9046177723,
+          "max_E": 41549686.230282255,
+          "final_log10E": 5.294814193851855,
+          "max_log10E": 7.6185677484818255,
+          "argmax_t": 2404,
+          "reject_time": 554,
+          "mean_s": 0.2023494973935162,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 5.894614136569474,
+          "max_E": 11.06490136932987,
+          "final_log10E": 0.7704553812982167,
+          "max_log10E": 1.0439475470525499,
+          "argmax_t": 1925,
+          "reject_time": null,
+          "mean_s": 0.008680841836509813,
+          "frac_lam_pos": 0.7001194743130227
+        },
+        "four": {
+          "final_E": 6.446980810437533,
+          "max_E": 13.981193344007925,
+          "final_log10E": 0.8093563775271454,
+          "max_log10E": 1.1455442415526707,
+          "argmax_t": 2368,
+          "reject_time": null,
+          "mean_s": 0.003459126121866905,
+          "frac_lam_pos": 0.4854639585822382
+        }
+      }
+    },
+    {
+      "pair": "USO/UUP",
+      "desc": "oil x dollar",
+      "corr": 0.020364170257759728,
+      "cov_sign": 1,
+      "cross_R2": 0.1956756055664215,
+      "contemp": {
+        "addjoint": {
+          "final_E": 92341311505.23012,
+          "max_E": 92341311505.23012,
+          "final_log10E": 10.965396038456833,
+          "max_log10E": 10.965396038456833,
+          "argmax_t": 2511,
+          "reject_time": 275,
+          "mean_s": 0.044364080602004224,
+          "frac_lam_pos": 0.9649542015133413
+        },
+        "four": {
+          "final_E": 16448.495066426734,
+          "max_E": 1254255.7365129166,
+          "final_log10E": 4.2161261688972385,
+          "max_log10E": 6.098386096010499,
+          "argmax_t": 1010,
+          "reject_time": 102,
+          "mean_s": 0.10998104637672966,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 1.0,
+          "max_E": 1.0,
+          "final_log10E": 0.0,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.007540555339871896,
+          "frac_lam_pos": 0.0
+        },
+        "four": {
+          "final_E": 0.19681275433763676,
+          "max_E": 1.131352850714212,
+          "final_log10E": -0.7059467607879509,
+          "max_log10E": 0.05359807549920961,
+          "argmax_t": 55,
+          "reject_time": null,
+          "mean_s": 0.006894588825120606,
+          "frac_lam_pos": 0.2831541218637993
+        }
+      }
+    },
+    {
+      "pair": "TLT/UUP",
+      "desc": "bonds x dollar",
+      "corr": -0.2401755976205378,
+      "cov_sign": -1,
+      "cross_R2": 0.44612901355915124,
+      "contemp": {
+        "addjoint": {
+          "final_E": 1000000000000000.0,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 15.0,
+          "max_log10E": 15.0,
+          "argmax_t": 903,
+          "reject_time": 124,
+          "mean_s": 0.18792869766720252,
+          "frac_lam_pos": 0.9729191557148547
+        },
+        "four": {
+          "final_E": 675939556043702.9,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.829907862139363,
+          "max_log10E": 15.0,
+          "argmax_t": 1540,
+          "reject_time": 161,
+          "mean_s": 0.22712061839456446,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.9999076781274987,
+          "max_E": 1.0,
+          "final_log10E": -4.0096730717401664e-05,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.013046908960472186,
+          "frac_lam_pos": 0.0007964954201513341
+        },
+        "four": {
+          "final_E": 0.6426447514866162,
+          "max_E": 6.318440283074195,
+          "final_log10E": -0.1920290350139197,
+          "max_log10E": 0.8006098852360161,
+          "argmax_t": 1673,
+          "reject_time": null,
+          "mean_s": 0.022060656934779363,
+          "frac_lam_pos": 0.945041816009558
+        }
+      }
+    },
+    {
+      "pair": "SPY/GLD",
+      "desc": "equity x gold",
+      "corr": 0.10610671218858461,
+      "cov_sign": 1,
+      "cross_R2": 0.24059661776325048,
+      "contemp": {
+        "addjoint": {
+          "final_E": 568853582933856.2,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.755000497842092,
+          "max_log10E": 15.0,
+          "argmax_t": 982,
+          "reject_time": 181,
+          "mean_s": 0.17341430928431356,
+          "frac_lam_pos": 0.9649542015133413
+        },
+        "four": {
+          "final_E": 11375781.981704222,
+          "max_E": 767791899.1381961,
+          "final_log10E": 7.055981260156953,
+          "max_log10E": 8.885243525626997,
+          "argmax_t": 1031,
+          "reject_time": 284,
+          "mean_s": 0.26778190359614096,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.7538742613669088,
+          "max_E": 1.624056950803693,
+          "final_log10E": -0.12270108403507839,
+          "max_log10E": 0.21060125457640982,
+          "argmax_t": 1600,
+          "reject_time": null,
+          "mean_s": -0.005737593353991851,
+          "frac_lam_pos": 0.5746714456391876
+        },
+        "four": {
+          "final_E": 0.6580798408021119,
+          "max_E": 1.0,
+          "final_log10E": -0.18172141289624935,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": 0.009038667931442637,
+          "frac_lam_pos": 0.0007964954201513341
+        }
+      }
+    },
+    {
+      "pair": "XLE/TLT",
+      "desc": "energy x bonds",
+      "corr": -0.22620261202984643,
+      "cov_sign": -1,
+      "cross_R2": 0.17859600385039887,
+      "contemp": {
+        "addjoint": {
+          "final_E": 3.4498964222587873,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 0.5378060562568319,
+          "max_log10E": 15.0,
+          "argmax_t": 827,
+          "reject_time": 126,
+          "mean_s": 0.07244447283433658,
+          "frac_lam_pos": 0.9796893667861409
+        },
+        "four": {
+          "final_E": 980248747494102.0,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.991336296055898,
+          "max_log10E": 15.0,
+          "argmax_t": 1325,
+          "reject_time": 90,
+          "mean_s": 0.232108285415597,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.07606503836568361,
+          "max_E": 50.64919926986457,
+          "final_log10E": -1.118814911346942,
+          "max_log10E": 1.7045725838438182,
+          "argmax_t": 293,
+          "reject_time": 194,
+          "mean_s": -0.019640052977096634,
+          "frac_lam_pos": 0.4233373158104341
+        },
+        "four": {
+          "final_E": 12.100327746458023,
+          "max_E": 100.74771208194812,
+          "final_log10E": 1.0827971336677304,
+          "max_log10E": 2.003235192366822,
+          "argmax_t": 1603,
+          "reject_time": 1445,
+          "mean_s": 0.0922319041358516,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      }
+    },
+    {
+      "pair": "HYG/TLT",
+      "desc": "credit x bonds",
+      "corr": 0.0881713937432412,
+      "cov_sign": 1,
+      "cross_R2": 0.1050726162553286,
+      "contemp": {
+        "addjoint": {
+          "final_E": 1000000000000000.0,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 15.0,
+          "max_log10E": 15.0,
+          "argmax_t": 1030,
+          "reject_time": 120,
+          "mean_s": 0.14909476523289814,
+          "frac_lam_pos": 0.9800876144962166
+        },
+        "four": {
+          "final_E": 4838863743.851312,
+          "max_E": 3657294001218.875,
+          "final_log10E": 9.684743393109525,
+          "max_log10E": 12.563159873648086,
+          "argmax_t": 1619,
+          "reject_time": 155,
+          "mean_s": 0.2010886832279198,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 2.041811414198309,
+          "max_E": 13.75205377220994,
+          "final_log10E": 0.3100156272928947,
+          "max_log10E": 1.1383675618267854,
+          "argmax_t": 1484,
+          "reject_time": null,
+          "mean_s": 0.019089024774599936,
+          "frac_lam_pos": 0.5639187574671446
+        },
+        "four": {
+          "final_E": 12.007594829983175,
+          "max_E": 20.159717078013465,
+          "final_log10E": 1.079456025165323,
+          "max_log10E": 1.3044844329163574,
+          "argmax_t": 2421,
+          "reject_time": 2421,
+          "mean_s": 0.041855059311612354,
+          "frac_lam_pos": 0.47192353643966545
+        }
+      }
+    },
+    {
+      "pair": "XLK/GLD",
+      "desc": "tech x gold",
+      "corr": 0.11832043873096272,
+      "cov_sign": 1,
+      "cross_R2": 0.21561760888201775,
+      "contemp": {
+        "addjoint": {
+          "final_E": 990628836039842.6,
+          "max_E": 1000000000000000.0,
+          "final_log10E": 14.995910965631811,
+          "max_log10E": 15.0,
+          "argmax_t": 886,
+          "reject_time": 164,
+          "mean_s": 0.18728415266365445,
+          "frac_lam_pos": 0.9705296694544007
+        },
+        "four": {
+          "final_E": 191451554.32037586,
+          "max_E": 2529110309.6281447,
+          "final_log10E": 8.282058896565253,
+          "max_log10E": 9.402967771937538,
+          "argmax_t": 1047,
+          "reject_time": 188,
+          "mean_s": 0.2663900062786781,
+          "frac_lam_pos": 0.9800876144962166
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.6678803236962914,
+          "max_E": 1.0,
+          "final_log10E": -0.17530135101946934,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": 0.010560485780878698,
+          "frac_lam_pos": 0.004380724810832338
+        },
+        "four": {
+          "final_E": 1.0,
+          "max_E": 1.0,
+          "final_log10E": 0.0,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": 0.01724179530065411,
+          "frac_lam_pos": 0.0
+        }
+      }
+    },
+    {
+      "pair": "XLE/XLF",
+      "desc": "energy x financials (both cyclical)",
+      "corr": 0.660522704640168,
+      "cov_sign": 1,
+      "cross_R2": 0.9729403832948619,
+      "contemp": {
+        "addjoint": {
+          "final_E": 18838.46303283136,
+          "max_E": 609932.8630067648,
+          "final_log10E": 4.27504546726849,
+          "max_log10E": 5.785282033649549,
+          "argmax_t": 924,
+          "reject_time": 285,
+          "mean_s": 0.019378680069242836,
+          "frac_lam_pos": 0.9522102747909199
+        },
+        "four": {
+          "final_E": 0.1777108195454246,
+          "max_E": 14.553430019167685,
+          "final_log10E": -0.7502861302935653,
+          "max_log10E": 1.162965361902074,
+          "argmax_t": 519,
+          "reject_time": null,
+          "mean_s": 0.07646731849100023,
+          "frac_lam_pos": 0.31342094782955
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.0746489799935492,
+          "max_E": 8.797518164183872,
+          "final_log10E": -1.1269761221144352,
+          "max_log10E": 0.9443601721934106,
+          "argmax_t": 377,
+          "reject_time": null,
+          "mean_s": -0.007561890621392228,
+          "frac_lam_pos": 0.39824771007566706
+        },
+        "four": {
+          "final_E": 0.10492858729505218,
+          "max_E": 11.380814359339276,
+          "final_log10E": -0.9791061742173599,
+          "max_log10E": 1.0561733393097958,
+          "argmax_t": 382,
+          "reject_time": null,
+          "mean_s": 0.027097166241436252,
+          "frac_lam_pos": 0.8622062923138192
+        }
+      }
+    },
+    {
+      "pair": "XLK/XLI",
+      "desc": "tech x industrials (both equity)",
+      "corr": 0.7225361377683137,
+      "cov_sign": 1,
+      "cross_R2": 0.97296518330164,
+      "contemp": {
+        "addjoint": {
+          "final_E": 22693.403160305024,
+          "max_E": 277312.8565360814,
+          "final_log10E": 4.355899628670993,
+          "max_log10E": 5.442970004425483,
+          "argmax_t": 1380,
+          "reject_time": 140,
+          "mean_s": 0.019913250666575583,
+          "frac_lam_pos": 0.9800876144962166
+        },
+        "four": {
+          "final_E": 0.3662226463201866,
+          "max_E": 11.346671002517796,
+          "final_log10E": -0.436254803486549,
+          "max_log10E": 1.0548684626478697,
+          "argmax_t": 147,
+          "reject_time": null,
+          "mean_s": 0.00909386890667487,
+          "frac_lam_pos": 0.21863799283154123
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.2511283130596481,
+          "max_E": 4.452246697934671,
+          "final_log10E": -0.6001043206905546,
+          "max_log10E": 0.6485792204837356,
+          "argmax_t": 67,
+          "reject_time": null,
+          "mean_s": -0.012509668201286076,
+          "frac_lam_pos": 0.6515332536837913
+        },
+        "four": {
+          "final_E": 0.36714853235715983,
+          "max_E": 3.6907425355965398,
+          "final_log10E": -0.4351582035053585,
+          "max_log10E": 0.5671137500805904,
+          "argmax_t": 80,
+          "reject_time": null,
+          "mean_s": 0.022937816137276638,
+          "frac_lam_pos": 0.9577857427319793
+        }
+      }
+    },
+    {
+      "pair": "XLF/XLI",
+      "desc": "financials x industrials (both equity)",
+      "corr": 0.8565860338467425,
+      "cov_sign": 1,
+      "cross_R2": 0.9948637529123444,
+      "contemp": {
+        "addjoint": {
+          "final_E": 6.814220480540473,
+          "max_E": 53.55677528587711,
+          "final_log10E": 0.8334161814674003,
+          "max_log10E": 1.728814419764345,
+          "argmax_t": 975,
+          "reject_time": 959,
+          "mean_s": 0.0054685479901480935,
+          "frac_lam_pos": 0.8407009159697332
+        },
+        "four": {
+          "final_E": 0.239214308716305,
+          "max_E": 1.3841522497130803,
+          "final_log10E": -0.6212128463781161,
+          "max_log10E": 0.14118386293405563,
+          "argmax_t": 52,
+          "reject_time": null,
+          "mean_s": -0.08756062866534566,
+          "frac_lam_pos": 0.023894862604540025
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 1.0,
+          "max_E": 1.0,
+          "final_log10E": 0.0,
+          "max_log10E": 0.0,
+          "argmax_t": 0,
+          "reject_time": null,
+          "mean_s": -0.014694761291810288,
+          "frac_lam_pos": 0.0
+        },
+        "four": {
+          "final_E": 0.8941055120247384,
+          "max_E": 1.4383753258694578,
+          "final_log10E": -0.0486112277519081,
+          "max_log10E": 0.15787222449298396,
+          "argmax_t": 977,
+          "reject_time": null,
+          "mean_s": -0.012099629293964121,
+          "frac_lam_pos": 0.035842293906810034
+        }
+      }
+    },
+    {
+      "pair": "XLE/XLB",
+      "desc": "energy x materials (both cyclical)",
+      "corr": 0.6381798648111557,
+      "cov_sign": 1,
+      "cross_R2": 0.9547202935063175,
+      "contemp": {
+        "addjoint": {
+          "final_E": 728222371.6614106,
+          "max_E": 730454509.9807365,
+          "final_log10E": 8.862264016729014,
+          "max_log10E": 8.863593174850052,
+          "argmax_t": 2510,
+          "reject_time": 319,
+          "mean_s": 0.04554898549337898,
+          "frac_lam_pos": 0.977299880525687
+        },
+        "four": {
+          "final_E": 0.40566803323787026,
+          "max_E": 1.5115361344895955,
+          "final_log10E": -0.39182921348220257,
+          "max_log10E": 0.17941853379756675,
+          "argmax_t": 54,
+          "reject_time": null,
+          "mean_s": 0.06156534307605436,
+          "frac_lam_pos": 0.04978096375945838
+        }
+      },
+      "lagged": {
+        "addjoint": {
+          "final_E": 0.09488936646167609,
+          "max_E": 1.2645600176851555,
+          "final_log10E": -1.0227824529653804,
+          "max_log10E": 0.10193944635810007,
+          "argmax_t": 57,
+          "reject_time": null,
+          "mean_s": -0.021285337907930257,
+          "frac_lam_pos": 0.14695340501792115
+        },
+        "four": {
+          "final_E": 0.05448926701654047,
+          "max_E": 1.1351054025782332,
+          "final_log10E": -1.2636890341368687,
+          "max_log10E": 0.05503619072098079,
+          "argmax_t": 51,
+          "reject_time": null,
+          "mean_s": -0.03718796322088041,
+          "frac_lam_pos": 0.10832337714058145
+        }
+      }
+    }
+  ],
+  "runtime_s": 8.3,
+  "n_rep": null,
+  "deterministic": true
+}
