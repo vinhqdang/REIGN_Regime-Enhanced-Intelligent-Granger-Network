@@ -10,7 +10,6 @@ point-by-point response to the editor and reviewers.
 |------|---------|
 | `main.tex` | Revised manuscript (single self-contained source) |
 | `main.pdf` | Compiled revised manuscript |
-| `main_changes_highlighted.pdf` / `.tex` | Marked-up version against the first submission (if present) |
 | `response_to_reviewers.tex` / `.pdf` | Point-by-point response letter |
 | `sn-bibliography.bib`, `main.bbl` | Bibliography |
 | `sn-jnl.cls`, `sn-mathphys-ay.bst`, `bst/` | Springer class and style files |
