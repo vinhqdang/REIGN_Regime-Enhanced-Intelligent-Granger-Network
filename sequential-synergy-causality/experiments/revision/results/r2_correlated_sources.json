@@ -1,0 +1,661 @@
+{
+  "script": "r2_correlated_sources",
+  "n_rep": 150,
+  "T": 2500,
+  "alpha": 0.05,
+  "rejection_rule": "max_E >= 20",
+  "settings": {
+    "gamma": 0.9,
+    "warmup": 50,
+    "cap": 3.0,
+    "forget": 0.995,
+    "p": 1,
+    "cond": "[Z]",
+    "strength_syn": 0.9,
+    "rhos": [
+      0.0,
+      0.3,
+      0.6,
+      0.8,
+      0.9,
+      0.95,
+      0.99
+    ],
+    "feat_clip": null,
+    "seeds": "200000*(dgp index+1)+1000*(rho index+1)+rep",
+    "legacy": "synergistic_granger.ante_sg defaults"
+  },
+  "cells": [
+    {
+      "dgp": "null",
+      "rho": 0.0,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.20087387362293288,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.13588471551238948,
+          "median_log10_max": 0.010458512435522531,
+          "mean_score": -0.006188620845323836,
+          "mean_raw_score": -0.013252147310735861,
+          "mean_raw_score_se": 0.022066107021791435
+        },
+        "four": {
+          "rate": 0.16,
+          "k": 24,
+          "n": 150,
+          "lo": 0.10993931727556672,
+          "hi": 0.22704105734352203,
+          "median_log10_final": -0.02345164063300991,
+          "median_log10_max": 0.41322496958652843,
+          "mean_score": 0.014087952055717329,
+          "mean_raw_score": -0.022106476040068095,
+          "mean_raw_score_se": 0.013666079375198495
+        },
+        "legacy": {
+          "rate": 0.006666666666666667,
+          "k": 1,
+          "n": 150,
+          "lo": 0.0011777710231334546,
+          "hi": 0.036793752933975674,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.022106476040068095,
+          "mean_raw_score": -0.022106476040068095,
+          "mean_raw_score_se": 0.013666079375198495
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.3,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.44083784528472186,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.10830347704572335,
+          "median_log10_max": 0.01163945446829033,
+          "mean_score": -0.006508426039715102,
+          "mean_raw_score": -0.03697707071908975,
+          "mean_raw_score_se": 0.024897613909256468
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.16314868318320067,
+          "mean_raw_score": -0.171889021237109,
+          "mean_raw_score_se": 0.04707188413582524
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.171889021237109,
+          "mean_raw_score": -0.171889021237109,
+          "mean_raw_score_se": 0.04707188413582524
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.6,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.6786445796657894,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.12919298656349337,
+          "median_log10_max": 0.01310136368218604,
+          "mean_score": -0.00666240372330608,
+          "mean_raw_score": -0.013705547631464515,
+          "mean_raw_score_se": 0.006207033504826149
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.4223836757029886,
+          "mean_raw_score": -0.5081851050030203,
+          "mean_raw_score_se": 0.011186026747191389
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.5081851050030203,
+          "mean_raw_score": -0.5081851050030203,
+          "mean_raw_score_se": 0.011186026747191389
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.8,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.8397686512707602,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.1148910078176435,
+          "median_log10_max": 0.017877040820315875,
+          "mean_score": -0.006088614535173846,
+          "mean_raw_score": -0.009070123183772927,
+          "mean_raw_score_se": 0.002107864920886463
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.6437465660190029,
+          "mean_raw_score": -0.7365159199400606,
+          "mean_raw_score_se": 0.027025782746237223
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.7365159199400606,
+          "mean_raw_score": -0.7365159199400606,
+          "mean_raw_score_se": 0.027025782746237223
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.9,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.9198055516637741,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.1639579433080543,
+          "median_log10_max": 0.022701311836946493,
+          "mean_score": -0.004998208673246057,
+          "mean_raw_score": -0.00946166328537768,
+          "mean_raw_score_se": 0.0015448829889109703
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.7762247073861794,
+          "mean_raw_score": -0.9146968871129925,
+          "mean_raw_score_se": 0.009450089487231519
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.9146968871129925,
+          "mean_raw_score": -0.9146968871129925,
+          "mean_raw_score_se": 0.009450089487231519
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.95,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.9600606914163196,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.18229869849329577,
+          "median_log10_max": 0.020142789437991596,
+          "mean_score": -0.004710503384935333,
+          "mean_raw_score": -0.008585876832572711,
+          "mean_raw_score_se": 0.0010129255489750482
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.842867829093398,
+          "mean_raw_score": -0.9997450981188524,
+          "mean_raw_score_se": 0.01696855522160023
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.9997450981188524,
+          "mean_raw_score": -0.9997450981188524,
+          "mean_raw_score_se": 0.01696855522160023
+        }
+      }
+    },
+    {
+      "dgp": "null",
+      "rho": 0.99,
+      "strength": null,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.9920478157553896,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.32247512531957684,
+          "median_log10_max": 0.05759615156562797,
+          "mean_score": -0.0030255512244195615,
+          "mean_raw_score": -0.007074651457054165,
+          "mean_raw_score_se": 0.001256654322796546
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.898173236252984,
+          "mean_raw_score": -1.0381806004118528,
+          "mean_raw_score_se": 0.007524110958276101
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -1.0381806004118528,
+          "mean_raw_score": -1.0381806004118528,
+          "mean_raw_score_se": 0.007524110958276101
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.0,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.19910075942602726,
+        "addjoint": {
+          "rate": 1.0,
+          "k": 150,
+          "n": 150,
+          "lo": 0.9750288608542812,
+          "hi": 1.0,
+          "median_log10_final": 14.763352533474983,
+          "median_log10_max": 15.0,
+          "mean_score": 0.8957119493941506,
+          "mean_raw_score": 1.4295181354202657,
+          "mean_raw_score_se": 0.016607094076979093
+        },
+        "four": {
+          "rate": 1.0,
+          "k": 150,
+          "n": 150,
+          "lo": 0.9750288608542812,
+          "hi": 1.0,
+          "median_log10_final": 14.83100389967405,
+          "median_log10_max": 15.0,
+          "mean_score": 0.9143993318573365,
+          "mean_raw_score": 1.4626361177802187,
+          "mean_raw_score_se": 0.061210832775690095
+        },
+        "legacy": {
+          "rate": 0.7266666666666667,
+          "k": 109,
+          "n": 150,
+          "lo": 0.6503534444650609,
+          "hi": 0.7916596391222133,
+          "median_log10_final": 2.647310247995308,
+          "median_log10_max": 2.6477127482524847,
+          "mean_score": 1.4626361177802187,
+          "mean_raw_score": 1.4626361177802187,
+          "mean_raw_score_se": 0.061210832775690095
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.3,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.4395230733004787,
+        "addjoint": {
+          "rate": 1.0,
+          "k": 150,
+          "n": 150,
+          "lo": 0.9750288608542812,
+          "hi": 1.0,
+          "median_log10_final": 14.800941632753872,
+          "median_log10_max": 15.0,
+          "mean_score": 0.6081595832789092,
+          "mean_raw_score": 0.8649386490948103,
+          "mean_raw_score_se": 0.011085136850129997
+        },
+        "four": {
+          "rate": 1.0,
+          "k": 150,
+          "n": 150,
+          "lo": 0.9750288608542812,
+          "hi": 1.0,
+          "median_log10_final": 14.377382234940844,
+          "median_log10_max": 15.0,
+          "mean_score": 0.6363456394816687,
+          "mean_raw_score": 0.6736732334313519,
+          "mean_raw_score_se": 0.01775841896626752
+        },
+        "legacy": {
+          "rate": 0.30666666666666664,
+          "k": 46,
+          "n": 150,
+          "lo": 0.2384689020846879,
+          "hi": 0.38451993838498993,
+          "median_log10_final": 0.6969977597962982,
+          "median_log10_max": 0.6982670040963321,
+          "mean_score": 0.6736732334313519,
+          "mean_raw_score": 0.6736732334313519,
+          "mean_raw_score_se": 0.01775841896626752
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.6,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.6800592745355258,
+        "addjoint": {
+          "rate": 1.0,
+          "k": 150,
+          "n": 150,
+          "lo": 0.9750288608542812,
+          "hi": 1.0,
+          "median_log10_final": 13.763226113056962,
+          "median_log10_max": 14.117710406411167,
+          "mean_score": 0.25146925875646686,
+          "mean_raw_score": 0.30588589371100483,
+          "mean_raw_score_se": 0.0054641645156599
+        },
+        "four": {
+          "rate": 0.013333333333333334,
+          "k": 2,
+          "n": 150,
+          "lo": 0.0036640523882232115,
+          "hi": 0.047307856380276334,
+          "median_log10_final": -0.09847926161714415,
+          "median_log10_max": 0.007978882617011438,
+          "mean_score": 0.0639441550547554,
+          "mean_raw_score": -0.6857998731222877,
+          "mean_raw_score_se": 0.06193235771741876
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.6857998731222877,
+          "mean_raw_score": -0.6857998731222877,
+          "mean_raw_score_se": 0.06193235771741876
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.8,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.8405161845293567,
+        "addjoint": {
+          "rate": 0.9666666666666667,
+          "k": 145,
+          "n": 150,
+          "lo": 0.9243471574929044,
+          "hi": 0.9856797793044249,
+          "median_log10_final": 3.0109766195717222,
+          "median_log10_max": 3.467407514855644,
+          "mean_score": 0.06908977639696828,
+          "mean_raw_score": 0.07399782691996043,
+          "mean_raw_score_se": 0.007857454174546506
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.5409274513879181,
+          "mean_raw_score": -1.7768581428312442,
+          "mean_raw_score_se": 0.017418978480006776
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -1.7768581428312442,
+          "mean_raw_score": -1.7768581428312442,
+          "mean_raw_score_se": 0.017418978480006776
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.9,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.920271079806818,
+        "addjoint": {
+          "rate": 0.18666666666666668,
+          "k": 28,
+          "n": 150,
+          "lo": 0.13242330549709996,
+          "hi": 0.25655860836755046,
+          "median_log10_final": 0.2294285160520455,
+          "median_log10_max": 0.6560106696871884,
+          "mean_score": 0.013608322488368565,
+          "mean_raw_score": 0.012104624682328528,
+          "mean_raw_score_se": 0.0023537299136185564
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -0.9529990948369713,
+          "mean_raw_score": -2.480425928360782,
+          "mean_raw_score_se": 0.04849624785397384
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -2.480425928360782,
+          "mean_raw_score": -2.480425928360782,
+          "mean_raw_score_se": 0.04849624785397384
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.95,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.9600414443858938,
+        "addjoint": {
+          "rate": 0.006666666666666667,
+          "k": 1,
+          "n": 150,
+          "lo": 0.0011777710231334546,
+          "hi": 0.036793752933975674,
+          "median_log10_final": -0.29911569137186167,
+          "median_log10_max": 0.1068305378464931,
+          "mean_score": 0.00012128505751697265,
+          "mean_raw_score": -0.0008456961409751231,
+          "mean_raw_score_se": 0.0013121668163781678
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -1.175069834229492,
+          "mean_raw_score": -2.8636609647610944,
+          "mean_raw_score_se": 0.07093679017969119
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -2.8636609647610944,
+          "mean_raw_score": -2.8636609647610944,
+          "mean_raw_score_se": 0.07093679017969119
+        }
+      }
+    },
+    {
+      "dgp": "syn",
+      "rho": 0.99,
+      "strength": 0.9,
+      "n_rep": 150,
+      "methods": {
+        "realised_corr_mean": 0.9920298196460021,
+        "addjoint": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": -0.33989119529756473,
+          "median_log10_max": 0.06035768616046061,
+          "mean_score": -0.0028735155384391918,
+          "mean_raw_score": -0.006926331646122382,
+          "mean_raw_score_se": 0.001568962924520157
+        },
+        "four": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -1.3898227302394295,
+          "mean_raw_score": -3.202210517236311,
+          "mean_raw_score_se": 0.06043082117803864
+        },
+        "legacy": {
+          "rate": 0.0,
+          "k": 0,
+          "n": 150,
+          "lo": 0.0,
+          "hi": 0.02497113914571871,
+          "median_log10_final": 0.0,
+          "median_log10_max": 0.0,
+          "mean_score": -3.202210517236311,
+          "mean_raw_score": -3.202210517236311,
+          "mean_raw_score_se": 0.06043082117803864
+        }
+      }
+    }
+  ],
+  "runtime_sec": 647.6811220645905
+}
