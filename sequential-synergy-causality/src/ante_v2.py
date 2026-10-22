@@ -332,3 +332,33 @@ def ante_group_v2(Y, sources, cond=None, p=1, contemp=False, forget=0.995, ridge
     return dict(E=E, lam=lam, s=s, b=b, u=u, k=k, final_E=float(E[-1]), max_E=float(E.max()),
                 reject_time=int(rej[0]) if len(rej) else None, rejected=bool(len(rej)),
                 mean_s=float(np.mean(s[p:])))
+
+
+# ---------------------------------------------------------------------------
+# Time-uniform upper confidence bound for the running AVERAGE of the conditional
+# predictive synergy  (1/t) sum_s E[s_s | F_{s-1}]   (Hoeffding / sub-Gaussian
+# supermartingale with predictable variance proxy b_s^2; mixture over a fixed
+# geometric grid of lambda by a union bound).
+# ---------------------------------------------------------------------------
+LAMBDA_GRID = 0.05 * 1.5 ** np.arange(0, 22)          # fixed before any data (0.05 .. ~340)
+
+
+def average_synergy_bound(s, b, start=50, alpha=0.05, m=1, lam_grid=LAMBDA_GRID):
+    """Returns dict(mean_s, upper, lower) at the final time T plus the running
+    minimum of the upper bound over t >= start+100 (valid simultaneously because
+    every grid point is a time-uniform bound).  alpha is split as alpha/(m*K) over
+    m hypotheses and K grid points.  Units: loss units per step (~ out-of-sample R^2
+    gain when targets are standardised)."""
+    s = np.asarray(s, float)[start:]
+    b = np.asarray(b, float)[start:]
+    t = np.arange(1, len(s) + 1)
+    S = np.cumsum(s)
+    V = np.cumsum(b ** 2)
+    L = np.log(len(lam_grid) * m / alpha)
+    # upper bound on avg conditional synergy:  S/t + (lam V/2 + L/lam)/t, best grid point
+    up = np.min([(S + lam * V / 2 + L / lam) / t for lam in lam_grid], axis=0)
+    # lower bound by symmetry:  S/t - (lam V/2 + L/lam)/t
+    lo = np.max([(S - lam * V / 2 - L / lam) / t for lam in lam_grid], axis=0)
+    k = min(100, len(s) - 1)
+    return dict(mean_s=float(S[-1] / t[-1]), upper_T=float(up[-1]), lower_T=float(lo[-1]),
+                upper_min=float(up[k:].min()), upper_all=up)

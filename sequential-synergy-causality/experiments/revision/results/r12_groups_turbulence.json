@@ -7,12 +7,29 @@
     "log10E_max": 0.950308921473991,
     "mean_s": -0.03837135494677686
   },
-  "turbulence_circular_shift_placebo": {
-    "rate": 0.95,
-    "k": 19,
-    "n": 20,
-    "lo": 0.7638641064874331,
-    "hi": 0.9911187805671268
+  "turbulence_legacy_real": {
+    "rejected": true,
+    "reject_time": 734,
+    "log10E_final": 4.011585550404987
+  },
+  "turbulence_phase_surrogate_placebo": {
+    "v2_reject": {
+      "rate": 1.0,
+      "k": 20,
+      "n": 20,
+      "lo": 0.8388698745050667,
+      "hi": 1.0
+    },
+    "legacy_reject": {
+      "rate": 1.0,
+      "k": 20,
+      "n": 20,
+      "lo": 0.8388698745050667,
+      "hi": 1.0
+    },
+    "v2_median_log10max": 5.196796245878491,
+    "legacy_median_log10final": 11.434880175687027,
+    "note": "surrogate target independent of sources; any rejection is a false positive"
   },
   "systemic_groups": [
     {
