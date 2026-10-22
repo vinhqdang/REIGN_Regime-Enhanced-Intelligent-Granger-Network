@@ -82,7 +82,7 @@ weekly returns and volatility, where the evidence matches a placebo null; for st
 hourly crypto data the test rejects a true placebo null in $10$--$40\%$ of hypotheses, and we do not interpret
 rejections there as synergy.}
 
-\keywords{anytime-valid inference, e-processes, testing by betting, synergy, group causality, predictive synergy, Granger causality}
+\keywords{anytime-valid inference, e-processes, testing by betting, synergy, group synergy, predictive synergy, Granger causality}
 
 \pacs[MSC Classification]{62L10, 62M10, 62G10, 91G70}
 
@@ -162,7 +162,7 @@ Type-I control (Corollary~\ref{cor:anytime}). The null is sequential, so
 nonstationarity of the contrast is allowed. (ii) Predictive ANTE-SG: the null compares
 two learned forecasters, and a truncated-loss score normalised by a bound that is
 known before each observation gives an exactly valid e-process
-(Theorem~\ref{thm:sgvalid}). This replaces an earlier clipping argument that we show
+(Theorem~\ref{thm:sgvalid}). This replaces a clipping construction that we show
 to fail in general (Example~\ref{ex:clipfail}). Part~A is a specialisation to a contrast vector of the anytime-valid average-effect e-processes of \citet{waudbysmith2024ope}; its novelty is the target (an interaction) and the sequential null, not the betting machinery.
 
 \item \textbf{Power theory, stated for what it covers.} For an oracle fixed bet we prove
@@ -185,7 +185,7 @@ additivity alone is not enough.
 \item \textbf{An empirical programme with an explicit search space and honest calibration.} Simulations cover
 heavy-tailed, correlated, nonstationary and nonlinear alternatives, with Monte Carlo
 uncertainty throughout. A formally specified financial search over daily, weekly and
-hourly panels, three target types and three lag structures ($27{,}027$ hypotheses) finds no family-wise detection in daily and weekly returns and volatility, and the real-data evidence there coincides with a placebo null;
+hourly panels, three target types and four lag structures ($27{,}027$ hypotheses) finds no family-wise detection in daily and weekly returns and volatility, and the real-data evidence there coincides with a placebo null;
 the placebo also shows that the test is \emph{not} calibrated for binary stress indicators or hourly crypto series, so rejections there are not interpreted. We report the power of the test on real noise,
 which is low, and we show that physical turbulence data, a natural positive control, fail a placebo check.
 \end{enumerate}
@@ -303,7 +303,7 @@ interaction contrast; (P2) anytime-valid causal inference; (P3) sequential infer
 groups; (P4) predictive synergy; (P5) information-theoretic synergy.
 Entries describe the cited works as we read them.}\label{tab:gap}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{6.2cm}ccccc}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{4.7cm}p{0.8cm}p{0.8cm}p{0.8cm}p{1.9cm}p{1.9cm}}
 \toprule
 Strand & P1 & P2 & P3 & P4 & P5 \\
 \midrule
@@ -351,11 +351,10 @@ $(1,0),(0,1)$. If the cell means do not depend on $t$, $\theta_t\equiv
 \end{definition}
 
 The \emph{sequential} nulls are
-\[
-H_0^{\le}:\ \theta_t\le0\ \ \text{for all }t\qquad\text{(one-sided: no super-additive
-synergy)},\qquad
-H_0^{=}:\ \theta_t=0\ \ \text{for all }t\qquad\text{(two-sided)}.
-\]
+\begin{align*}
+H_0^{\le}&:\ \theta_t\le0\ \text{for all }t \quad\text{(one-sided: no super-additive synergy)},\\
+H_0^{=}&:\ \theta_t=0\ \text{for all }t \quad\text{(two-sided)}.
+\end{align*}
 They allow the contrast to vary over time: a fixed-parameter null $\theta=0$ is the special
 case $\theta_t\equiv\theta$. The scientific question of super-additive synergy is
 inherently one-sided, and $H_0^{\le}$ is the null we use in the applications; the
@@ -607,9 +606,11 @@ forecasts and every outcome
 \end{equation}
 The bound does not use nesting and is known \emph{before} $Y_t$ is observed. Define
 \begin{equation}\label{eq:sg-score}
+\begin{gathered}
 s_t=\ell_c(Y_t-p^{\mathrm{add}}_t)-\ell_c(Y_t-p^{\mathrm{joint}}_t),\qquad
-b_t=2c\,|p^{\mathrm{add}}_t-p^{\mathrm{joint}}_t|,\qquad
+b_t=2c\,|p^{\mathrm{add}}_t-p^{\mathrm{joint}}_t|,\\
 u_t=\frac{s_t}{b_t}\,\indic\{b_t>\varepsilon\}\in[-1,1],
+\end{gathered}
 \end{equation}
 with a fixed threshold $\varepsilon\ge0$ (if $b_t=0$ the two forecasts coincide and
 $s_t=0$). Dividing by the predictable positive $b_t$ preserves the sign of the conditional
@@ -652,7 +653,7 @@ $A_{t-\ell}B_{t-\ell}$ is orthogonal to the residual of the additive projection.
 sources' feature blocks are orthogonal after conditioning on the base, but otherwise can have
 either sign. For jointly Gaussian $(A,B)$ with correlation $\rho$ and $Y=A\pm B+\varepsilon$ one
 has $\Syn_{\mathrm{aj}}=0$ while $\Syn_4=-2\rho(1+\rho)$ for the plus sign and $+2\rho(1-\rho)$ for the minus sign.
-\item[(c)] Under an additive mechanism $Y_t=m(W_t)+f(\mathcal A_t)+h(\mathcal B_t)+\varepsilon_t$,
+\item[(c)] Under an additive mechanism $Y_t=m(W_t)+f(\mathcal A_t)+h(\mathcal B_t)+\varepsilon_t$ (with $\E[\varepsilon_t\mid W_t,\mathcal A_t,\mathcal B_t]=0$ and finite fourth moments),
 $\Syn_{\mathrm{aj}}=0$ in each of the following cases: (S1) $m(W)$ lies in the span of the base features and $f$ and $h$ lie in the own-feature
 spans (linear plus quadratic lags), with arbitrary dependence between $A$ and $B$; (S2) the
 base, the $A$-past and the $B$-past are mutually independent ($f,h$ arbitrary; then $R=0$ too);
@@ -690,7 +691,7 @@ persistent alternative, and a time-uniform upper bound on the running average of
 
 \paragraph{Units.} The score is a difference of \emph{truncated} squared losses of a predictably standardised target, so its unit is a per-step gain in truncated squared error
 per unit target variance. Only about $2\%$ of the observations of the series used below lie beyond three predictable standard deviations, but they carry $34$--$63\%$ of the sum of squares
-(Section~\ref{subsec:exp-fin}), so a gain of $\delta$ in these units is smaller than the corresponding gain in untruncated out-of-sample $R^2$ by a comparable factor; we call it ``loss units''.
+(Section~\ref{subsec:exp-fin}), so a gain of $\delta$ in these units is not comparable to a gain in untruncated out-of-sample $R^2$ by a comparable factor; we call it ``loss units''.
 
 \paragraph{Persistent alternative.} For $\delta>0$ let
 $H_\delta:\ \E[s_t\mid\F_{t-1}]\ge\delta$ for all monitored $t$.
@@ -729,7 +730,7 @@ maximum, which is not an e-value); if $\tau$ depends on all streams, each null i
 whole-panel past. The price is a threshold of $m/\alpha$: $\log_{10}(m/\alpha)=4.1$ for $m=660$ and
 $4.9$ for $m=4400$, against $1.3$ at $m=1$, so detection takes roughly $3$--$4$ times longer, or the detectable
 $\delta$ is $1.8$--$2$ times larger. Zero family-wise detections are therefore weak evidence of
-absence on their own, and absence statements use the exclusion e-process at the same threshold.
+absence on their own, and absence statements use the time-uniform bound on average synergy of Proposition~\ref{prop:avg}, with the same multiplicity correction.
 
 \subsection{Algorithm and a summary of guarantees}\label{subsec:algo}
 
@@ -755,7 +756,7 @@ absence on their own, and absence statements use the exclusion e-process at the 
 \State standardise each series predictably; init two forgetting-RLS learners (add, joint); $E\gets1$
 \For{$t=p+1,\dots,T$}
   \State form $p^{\mathrm{add}}_t,\,p^{\mathrm{joint}}_t$ from information up to $t-1$ \Comment{predict before updating}
-  \State $b_t\gets2c|p^{\mathrm{add}}_t-p^{\mathrm{joint}}_t|$;\ observe $Y_t$;\ $s_t\gets\ell_c(Y_t-p^{\mathrm{add}}_t)-\ell_c(Y_t-p^{\mathrm{joint}}_t)$;\ $u_t\gets s_t/b_t$
+  \State $b_t\gets2c|p^{\mathrm{add}}_t-p^{\mathrm{joint}}_t|$;\ observe $Y_t$;\ $s_t\gets\ell_c(Y_t-p^{\mathrm{add}}_t)-\ell_c(Y_t-p^{\mathrm{joint}}_t)$;\ $u_t\gets s_t/b_t$ if $b_t>\varepsilon$ else $0$
   \State $\lambda_t\gets\min\{\max(\hat\mu_{t-1}/\hat v_{t-1},0),\gamma\}$ \textbf{if} $t>t_0$ \textbf{else} $0$
   \State $E\gets E\,(1+\lambda_t u_t)$
   \If{$E\ge1/\alpha$} \Return \textbf{joint forecaster advantage detected} at $t$ \EndIf
@@ -795,7 +796,7 @@ Level under correlated, heavy-tailed, nonstationary nulls & Empirical (Sec.~\ref
 \section{Experiments}\label{sec:experiments}
 
 The programme answers five questions in turn. Does the theory hold, including under
-nulls that stress it (\S\ref{subsec:exp-validity})? What does the revised score isolate when
+nulls that stress it (\S\ref{subsec:exp-validity})? What does the add-versus-joint score isolate when
 sources are correlated or the mechanism is nonlinear (\S\ref{subsec:exp-corr})? How does the
 test compare with batch estimators and with a classical group-sequential design
 (\S\ref{subsec:exp-benchmark})? Does it find interactions that are present in real data
@@ -848,7 +849,7 @@ simulation. With $\hat\sigma=1$ and clip level $5$, a plug-in bettor on i.i.d.\ 
 ($\E s=-0.65$) reaches $E\ge20$ in $0.978$ of $2000$ streams ($[0.970,0.983]$, median $\log_{10}$ of the running
 maximum $8.9$), although the raw null is true; with a data-dependent scale (the expanding root mean square) the same
 law is not harmful ($0.004$), which is why such a defect can go unseen in simulations.
-For the new score no such construction exists, because Theorem~\ref{thm:sgvalid} does not use the shape of the law of $s_t$.
+For the new score no such construction exists for the prequential null, because Theorem~\ref{thm:sgvalid} does not use the shape of the law of $s_t$.
 Table~\ref{tab:stress} and Fig.~\ref{fig:stress} report ANTE-SG, the four-model score and the original test on twelve
 VAR nulls ($T=2500$, $200$ replications each) built around the structure in the proof: heavy-tailed skewed
 innovations, GARCH volatility clustering, source correlation up to $0.99$, cubic additive terms outside the feature span
@@ -856,14 +857,14 @@ with correlated sources, a sign break of the additive coefficients at $T/2$, own
 sources, and short ($0.98$) and long ($0.999$) forgetting. ANTE-SG's false-rejection rate is at most $0.010$ ($2/200$) in every
 scenario. The four-model score rejects $0.170$ $[0.124,0.228]$ of nulls under persistent sources (N10)
 and $0.160$ $[0.110,0.227]$ at a realised source correlation of $0.20$ (Section~\ref{subsec:exp-corr}), although its raw mean score is negative in those cells (about $-0.004$ and $-0.02$). The rejections therefore do not
-come from redundancy, which Proposition~\ref{prop:isolation}(b) predicts to make this score negative here; they show that the prequential null of the four-model score fails in finite samples for the learned forecasters (Remark~\ref{rem:notpop}), another reason to prefer the add-versus-joint contrast.
+come from redundancy, which Proposition~\ref{prop:isolation}(b) predicts to make this score negative here; they indicate that the prequential null of the four-model score fails in finite samples for the learned forecasters (Remark~\ref{rem:notpop}; we have not isolated the cause), another reason to prefer the add-versus-joint contrast.
 As an additional check against spurious-regression behaviour, independent AR(1) series with coefficient up to $0.999$ ($100$
 replications each) give ANTE-SG false-rejection rates of at most $0.01$ ($1/100$ at $\varphi=0.97$, none otherwise) and none for the original test.
 The limits of this evidence appear in Section~\ref{subsec:exp-fin} and the discussion: smooth, near-deterministic signals break it.
 
 \begin{table}[h]
 \caption{False-rejection rate (max $E\ge20$, $200$ replications, $T=2500$) under additive or no-synergy nulls, with Wilson
-95\% intervals. Scenarios (realised source correlation in brackets): N1 Gaussian ($0.36$); N2 Student-$t_3$ and skewed innovations ($0.36$); N3 $t_3$ and GARCH ($0.36$); N4, N5 strongly correlated sources ($0.96$, $0.99$);
+95\% intervals. Scenarios (realised source correlation in brackets): N1 Gaussian ($0.36$); N2 Student-$t_3$ and skewed innovations ($0.36$); N3 $t_3$ and GARCH ($0.36$); N4, N5 strongly correlated sources (nominal $0.95$, $0.99$; realised $0.96$, $0.99$);
 N6, N7 additive cubic term outside the feature span ($0.60$, $0.92$); N8 sign break of the additive coefficients at $T/2$;
 N9 own-nonlinearity ($0.60$); N10 AR(0.9) sources ($0.60$); N11, N12 forgetting $0.98$, $0.999$}\label{tab:stress}
 \footnotesize
@@ -873,8 +874,8 @@ Scenario & ANTE-SG (add-vs-joint) & four-model score & original clipped test \\
 \midrule
 N1--N2, N7, N9 & $0/200$ each & $0/200$ each & $0/200$ each \\
 N3 (heavy tails + GARCH) & $1/200$ & $0/200$ & $0/200$ \\
-N4 ($\rho=.95$) & $1/200$ & $0/200$ & $0/200$ \\
-N5 ($\rho=.99$) & $2/200$ $[0.003,0.036]$ & $0/200$ & $0/200$ \\
+N4 (nominal $\rho=.95$) & $1/200$ & $0/200$ & $0/200$ \\
+N5 (nominal $\rho=.99$) & $2/200$ $[0.003,0.036]$ & $0/200$ & $0/200$ \\
 N6, N8, N11, N12 & $1/200$ each & $0/200$ each & $0/200$ each \\
 N10 (persistent sources) & $0/200$ & $\mathbf{34/200}$ $[0.124,0.228]$ & $0/200$ \\
 \botrule
@@ -889,7 +890,7 @@ N10 (persistent sources) & $0/200$ & $\mathbf{34/200}$ $[0.124,0.228]$ & $0/200$
 \end{figure}
 
 \paragraph{Power and detection time.} For a bilinear mechanism $Y_t=cA_{t-1}B_{t-1}+0.2A_{t-1}+0.3Z_t+\varepsilon_t$
-(realised source correlation $0.36$, $T=2500$, $500$ replications per $c$), ANTE-SG's power is $0.07$ $[0.05,0.09]$ at $c=0.1$, $0.78$ $[0.74,0.81]$ at $c=0.2$ and $\ge0.998$ for
+(realised source correlation $0.36$, $T=2500$, $500$ replications per $c$; the figures at family-wise thresholds below use $150$ other replications and agree within the intervals), ANTE-SG's power is $0.07$ $[0.05,0.09]$ at $c=0.1$, $0.78$ $[0.74,0.81]$ at $c=0.2$ and $\ge0.998$ for
 $c\ge0.3$, with false-rejection $0.000$ at $c=0$; the original test reaches only $0.34$ at $c=0.2$ and $0.60$--$0.69$ for $c\ge0.3$.
 At the family-wise thresholds the picture is less favourable (150 replications): at $c=0.2$ power falls from $0.83$ at $1/\alpha$ to $0.06$ at $m/\alpha$ with $m=660$ and $0.03$ with $m=4400$; at $c=0.3$ it is $0.99$, $0.77$ and $0.61$, and at $c=0.45$ it is $1.00$ throughout.
 The median detection time of ANTE-SG falls from $1346$ $(1256,1438)$ at $c=0.2$ to $140$ $(132,147)$ at $c=0.9$ (bootstrap intervals), directionally consistent with the $\delta^{-2}$ scaling of Proposition~\ref{prop:latency}
@@ -942,7 +943,7 @@ on interaction information with $50$ permutations at $15$ equally spaced looks. 
 \caption{Detection AUC (synergistic versus additive and own-nonlinear DGPs; $100$ replications per DGP, $T=3000$; bootstrap $95\%$ intervals) and behaviour under repeated looks on an additive null
 ($250$ replications, $15$ looks; Wilson intervals) and power on the synergistic DGP ($100$ replications)}\label{tab:bench}
 \footnotesize
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccc}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{3.7cm}p{2.5cm}p{3.0cm}p{2.1cm}}
 \toprule
 Procedure & AUC [95\% CI] & Type-I at $15$ looks & power (synergistic) \\
 \midrule
@@ -950,7 +951,7 @@ ANTE-SG (add-vs-joint) & $1.000$ $[1.000,1.000]$ & $0/250$ $[0,0.015]$ & $1.00$ 
 Original clipped test & $0.992$ $[0.983,0.998]$ & $0.020$ $[0.009,0.046]$ & $0.81$ $[0.72,0.88]$ \\
 SURD & $1.000$ $[1.000,1.000]$ & --- (point estimate) & --- \\
 PEID & $1.000$ $[1.000,1.000]$ & --- (point estimate) & --- \\
-Interaction information & $0.865$ $[0.824,0.906]$ & $0.116$ $[0.082,0.162]$ (repeated permutation) & $0.63$ $[0.53,0.72]$ \\
+Interaction information & $0.865$ $[0.824,0.906]$ & $0.116$ $[0.082,0.162]$ (permutation) & $0.63$ $[0.53,0.72]$ \\
 Group-sequential Pocock (raw score) & --- & $0/250$ $[0,0.015]$ & $0.99$ $[0.95,1.00]$ \\
 Group-sequential O'Brien--Fleming (raw score) & --- & $0/250$ $[0,0.015]$ & $1.00$ $[0.96,1.00]$ \\
 \botrule
@@ -971,7 +972,7 @@ two contemporaneous returns, so its super-additivity ($2w_Aw_B\sigma_{AB}$) is m
 example of group causality: we do not call it causal synergy, and we separate three notions (contemporaneous statistical interaction; predictive group synergy; causal/interventional synergy) throughout.
 On $14$ asset pairs (listed in the repository), $RV_t$ as target, contemporaneous features and no conditioner, ANTE-SG rejects in all $14$ at level $0.05$ and in $13$ at the family-wise threshold $14/\alpha$ (the remaining pair, XLF/XLI, has correlation $0.86$).
 The lagged counterpart is not significant for any pair at the family-wise threshold ($1/14$ at the raw level). Two features of this pattern need explanation, and both follow from the target definition. The near-collinear
-within-equity pairs have the weakest signal ($\log_{10}E$ of $5.4$ to $8.9$ for XLK/XLI, XLE/XLF, XLE/XLB; $1.7$ for XLF/XLI) because the regression of the cross product $r_Ar_B$ on the own features $(1,r_A,r_B,r_A^2,r_B^2)$ has $R^2=0.96$--$0.995$
+within-equity pairs have the weakest signal ($\log_{10}E$ of $5.4$ to $8.9$ for XLK/XLI, XLE/XLF, XLE/XLB; $1.7$ for XLF/XLI) because the regression of the cross product $r_Ar_B$ on the own features $(1,r_A,r_B,r_A^2,r_B^2)$ has $R^2=0.955$--$0.995$
 for them, so the cross term is almost fully explained by the own-quadratic terms already in the additive model; for the cross-asset pairs that $R^2$ is $0.03$--$0.45$. Equity--bond pairs have negative covariance (for example XLF/TLT, corr $-0.26$) and are detected strongly:
 the test measures the \emph{predictive gain} from the cross term, which does not depend on the sign of the covariance, so negative covariance does not make a pair ``sub-additive'' in this sense. Capital saturates the $10^{15}$ cap for most cross-asset pairs.
 
@@ -979,8 +980,8 @@ the test measures the \emph{predictive gain} from the cross term, which does not
 (daily stock returns conditioned on SPY; daily ETF volatility conditioned on $|$SPY$|$), re-standardised predictably. At $\beta=0$ (Type-I on real noise) the single-hypothesis rejection rate is $0.025$ and $0.050$ ($40$ triples each), and no triple reaches a family-wise threshold.
 Power is low even for large injected terms (Fig.~\ref{fig:semisyn}): at $\beta=0.5$, an injected term that carries on average $40\%$ ($35\%$) of the variance of $Y'$, power is $0.43$ ($0.25$) at the single-hypothesis threshold, $0.28$ ($0.13$) at the $m=660$ family-wise threshold and
 $0.23$ ($0.13$) at $m=4400$; $0.8$ power is not reached on the grid. A natural suspicion is that the truncated loss and the feature winsorisation, which make the test robust, are responsible, because the injected term (a product of two heavy-tailed standardised returns)
-concentrates its variance in a few extreme days. We tested this by relaxing both (truncation level $c=6$, no winsorisation) on the same triples: power does not improve ($0.33$ and $0.38$ at $\beta=0.5$ at the single-hypothesis threshold, with the injected term carrying $54\%$ and $68\%$ of the variance), while the
-rejection rate at $\beta=0$, a true null on real noise, rises to $0.075$ and $0.20$. We conclude that the low power is not rescued by weaker robustness, which only costs validity on real data, and we do not claim to know its mechanism; the practical consequence for interpretation is that a family-wise non-rejection does \emph{not} show that no interaction exists. Section~\ref{subsec:exp-fin} accordingly reports bounds on the average synergy of the learned forecasters.
+concentrates its variance in a few extreme days. We tested this by relaxing both (truncation level $c=6$, no winsorisation) on the same triples: power at the family-wise thresholds is still at most $0.075$ ($0.10$) at $\beta=0.5$, and the single-hypothesis power is $0.33$ and $0.38$ with the injected term carrying $54\%$ and $68\%$ of the variance (the comparison is not variance-matched), while the
+rejection rate at $\beta=0$, a true null on real noise, rises to $0.075$ and $0.20$. Relaxing the robustness therefore brings no material gain at the family-wise thresholds and costs validity on real data; we could not isolate the cause of the low power; the practical consequence for interpretation is that a family-wise non-rejection does \emph{not} show that no interaction exists. Section~\ref{subsec:exp-fin} accordingly reports bounds on the average synergy of the learned forecasters.
 
 \begin{figure}[h]
 \centering
@@ -1017,36 +1018,37 @@ stocks13 & 13 daily stocks and assets, conditioner SPY & $T=2512$ & $660$ \\
 world6 & 6 daily equity indices, conditioner US S\&P & $T=2138$ & $30$ \\
 hourly12 & 12 hourly stocks and assets, conditioner SPY & $T=3328$ & $495$ \\
 crypto10 & 10 hourly crypto assets, conditioner BTC & $T=16{,}761$ & $252$ \\
-\multicolumn{4}{p{11cm}}{\footnotesize The volatility index VIX is an index, not a traded asset; its log changes are used as a series, read as changes in implied volatility.} \\
 Synthetic VAR / interventional & ground truth & $2500$--$5000$ steps & simulations \\
 Turbulence signals & four scale-resolved signals (not used as evidence) & $21{,}760$ & --- \\
 \botrule
 \end{tabular*}
+\footnotetext{The volatility index VIX (in the ETF and stock panels) is an index, not a traded asset; its log changes are used as a series and read as changes in implied volatility.}
 \end{table}
 
 \paragraph{Results.} Table~\ref{tab:scan} summarises the search and Fig.~\ref{fig:scan} shows the distribution of running-maximum evidence per hypothesis. For \emph{returns and volatility in daily and weekly panels},
 $26$ families containing $18{,}360$ hypotheses give $143$ raw rejections ($0.8\%$, below the nominal $5\%$ as expected for a conservative e-process) and, at the family-wise threshold of their own family, \emph{no} rejection in any of the
-$22$ daily and weekly families (etf16: $0/10{,}920$; stocks13: $0/5280$; world6: $0/180$), for lag $1$, lag $5$, weekly and contemporaneous structures alike. The single family-wise rejection among returns and volatility is one of $495$ hourly stock-volatility
+$22$ daily and weekly families (etf16: $0/10{,}920$; stocks13: $0/5280$; world6: $0/180$), for lag $1$, lag $5$, weekly and contemporaneous structures alike. The single family-wise rejection among stock and ETF returns and volatility is one of $495$ hourly stock-volatility
 hypotheses in the contemporaneous structure ($\log_{10}E=4.24$ against a threshold of $4.00$); it does not survive the global threshold. The largest running-maximum evidence in any daily or weekly returns/volatility family is $\log_{10}E=3.68$. The median final $\log_{10}E$ is $-0.24$ (a typical bet on synergy
 loses about $40\%$ of its stake).
 
-\emph{Stress indicators and hourly crypto behave differently.} For stress indicators in daily and hourly stock panels, $1588$ of $7155$ hypotheses ($22\%$) reject at the raw level and $543$ at their family-wise thresholds; for hourly crypto, $599$ of $1512$ ($40\%$) and $376$. In daily and weekly returns and volatility e-BH (on final e-values, FDR $0.1$ or $0.05$) makes no discovery, whereas it makes $212$ and $195$ discoveries for stress indicators and $348$ and $339$ for crypto. These counts are not evidence of synergy, for the reason given in the next paragraph: the placebo test shows that the test over-rejects on exactly these targets.
+\emph{Stress indicators and hourly crypto behave differently.} For stress indicators in daily and hourly stock panels, $1588$ of $7155$ hypotheses ($22\%$) reject at the raw level and $543$ at their family-wise thresholds; for hourly crypto, $599$ of $1512$ ($40\%$) and $376$. e-BH on final e-values, pooled within each group (FDR $0.1$ or $0.05$), makes no discovery for returns and volatility, $212$ and $195$ discoveries for stress indicators and $348$ and $339$ for crypto ($513$ and $491$ pooled over all $27{,}027$ hypotheses). These counts are not evidence of synergy, for the reason given in the next paragraph: the placebo test shows that the test over-rejects on exactly these targets.
 
 \begin{table}[h]
 \caption{Search summary (ANTE-SG, add-vs-joint score). $m$: hypotheses; raw: running maximum $\ge20$; fw: running maximum $\ge m/\alpha$ within the family. Groups pool settings (lag $1$, lag $5$, weekly, contemporaneous)}\label{tab:scan}
 \footnotesize
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccc}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{5.8cm}rrrr}
 \toprule
-Group & families & $m$ & raw rejections & family-wise rejections \\
+Group & families & $m$ & raw & fw \\
 \midrule
-Returns and volatility, daily/weekly panels (etf16, stocks13, world6) & 22 & $16{,}380$ & $99$ & $0$ \\
-Returns and volatility, hourly stocks (hourly12) & 4 & $1980$ & $44$ & $1$ \\
-Stress indicators, daily and hourly stocks & 11 & $7155$ & $1588$ & $543$ \\
-Crypto, hourly (returns, volatility, stress) & 6 & $1512$ & $599$ & $376$ \\
+Returns, volatility: daily/weekly panels & 22 & $16{,}380$ & $99$ & $0$ \\
+Returns, volatility: hourly stocks & 4 & $1980$ & $44$ & $1$ \\
+Stress indicators: stocks and ETFs & 11 & $7155$ & $1588$ & $543$ \\
+Crypto, hourly (all targets) & 6 & $1512$ & $599$ & $376$ \\
 \midrule
-All & 43 & $27{,}027$ & $2330$ & $920$ (per-family thresholds); $657$ at the global threshold ($m=27{,}027$) \\
+All & 43 & $27{,}027$ & $2330$ & $920^{*}$ \\
 \botrule
 \end{tabular*}
+\footnotetext{$^{*}$Sum of per-family thresholds; $657$ hypotheses cross the single global threshold $m/\alpha$ with $m=27{,}027$.}
 \end{table}
 
 \begin{figure}[h]
@@ -1063,7 +1065,7 @@ the placebo median $-0.20$ to $-0.26$ and the real financial median $-0.27$ ($15
 the larger model, as the out-of-sample penalty of Section~\ref{subsec:cw} predicts, and is not driven by winning bets that later reverse (a running maximum above $0.3$ followed by a final value below $-0.3$ occurs for $13\%$ of finance triples and $8\%$--$11\%$ of simulated nulls).
 
 \emph{Where the calibration fails.} The same placebo applied to the families that do reject shows that the test is not calibrated there (Fig.~\ref{fig:placebo}). With a true null, hourly crypto returns reject in $76/200$ hypotheses ($0.38$, $[0.32,0.45]$; real data $53/200$) and hourly crypto volatility in $79/200$ ($0.40$; real $108/200$);
-binary stress indicators reject in $28/200$ ($0.14$) for the ETF panel, $19/200$ ($0.095$) for the stock panel and $56/200$ ($0.28$) for hourly stocks (real data: $68/200$, $56/200$ and $65/200$). For these targets the prequential null is violated by the learned forecasters (binary or extremely heavy-tailed series, with strong volatility clustering and a nonlinear link between the cross-product features and the target), and
+binary stress indicators reject in $28/200$ ($0.14$) for the ETF panel, $19/200$ ($0.095$) for the stock panel and $56/200$ ($0.28$) for hourly stocks (real data: $68/200$, $56/200$ and $65/200$). For these targets the prequential null is evidently violated by the learned forecasters; we conjecture that the cause is the binary or extremely heavy-tailed nature of the series, with strong volatility clustering and a nonlinear link between the cross-product features and the target, but we have not tested it. In any case
 a rejection does not indicate an $A\times B$ interaction. For daily stress indicators the real rejection rates exceed the placebo rates ($0.34$ versus $0.14$; $0.28$ versus $0.095$), which suggests some genuine cross-sectional dependence in tail events beyond the test's own bias, but we cannot separate it from a misspecified forecaster.
 
 \begin{figure}[h]
@@ -1072,12 +1074,14 @@ a rejection does not indicate an $A\times B$ interaction. For daily stress indic
 \caption{Real versus placebo (circularly shifted target) distribution of the running-maximum evidence for random samples of hypotheses; coinciding curves indicate that real data behave like the true null in the setting}\label{fig:placebo}
 \end{figure}
 
+\paragraph{Truncation share.} For the standardised series of the search, $1.5$--$2.3\%$ of the observations lie beyond three predictable standard deviations but carry $34$--$63\%$ of the sum of squares ($36\%$--$54\%$ for daily returns and volatility, $63\%$ for hourly stock volatility), so losses truncated at $c=3$ discard a large share of the variance; this is why the loss units of Section~\ref{subsec:excl} are not untruncated $R^2$.
+
 \paragraph{How much is excluded.} The persistent-alternative e-process of Proposition~\ref{prop:excl} is uninformative on these data, because the learners often agree to within the smallest $\delta$ on the grid ($0.0005$) and the process then wins mechanically. We therefore use the time-uniform bound on the \emph{running-average} conditional synergy of Proposition~\ref{prop:avg}
 (loss units; $K=22$ grid points; level $0.05$ divided over the hypotheses of a family; Table~\ref{tab:avgbound} in Appendix~\ref{secA:bounds}). For the lag-$1$ and contemporaneous families of daily returns and volatility, the median hypothesis excludes an average synergy above $0.057$--$0.122$ loss units,
-but the least well-bounded hypothesis of a family only excludes values above $0.11$--$2.15$; for lag-$5$ and weekly families, where the forecasters have more regressors or fewer observations, the median bound is $0.22$--$0.75$ and the worst case is much larger. The realised mean score is negative in every family (median $-0.005$ to $-0.034$ per step), as the out-of-sample penalty predicts.
-Because the bound uses the worst-case variance proxy $b_s^2$, it is conservative, and it is weak against magnitudes that are plausible for daily returns (a gain of order $1\%$ of the variance): the data exclude average synergies of the order of several percent of the (truncated) target variance per step, and they do \emph{not} exclude smaller ones.
+but the least well-bounded hypothesis of a family only excludes values above $0.11$--$2.15$; for lag-$5$ and weekly families, where the forecasters have more regressors or fewer observations, the median bound is $0.22$--$0.75$ and the worst case is $0.77$--$1.91$ (weekly) and $6.4$--$19.6$ (lag $5$). The realised mean score is negative in every family (median $-0.005$ to $-0.034$ per step), as the out-of-sample penalty predicts.
+Because the bound uses the worst-case variance proxy $b_s^2$, it is conservative, and it is weak against magnitudes that are plausible for daily returns (a gain of order $1\%$ of the variance): for a typical hypothesis the data exclude average synergies above roughly $6$--$12\%$ of the (truncated) target variance per step, while the simultaneous guarantee for a whole family is the maximum bound ($0.11$--$2.15$ at lag $1$ and contemporaneous), and neither excludes smaller effects.
 
-\paragraph{Crises.} Running e-processes are plotted across whole families in Fig.~\ref{fig:traj}, so that evidence that rises in a crisis and then decays is visible, which a final-value summary would hide. In the $660$ stock-volatility and $1365$ ETF-return families the maximum over hypotheses of $\log_{10}E_t$ never approaches the family-wise thresholds ($4.1$ and $4.4$): its peak is $1.59$ (January 2017) and $2.20$ (5 February 2020, \emph{before} the COVID sell-off, after which it decays), and during the three windows examined (the 2018 volatility spike, February--June 2020, and 2022) the median over hypotheses of the within-window maximum is between $-0.10$ and $-0.22$, with only $1.2\%$--$2.2\%$ of hypotheses exceeding $\log_{10}E=0.3$ at any time in a window. The cross-sectional median drifts to about $-0.26$ and the $95$th percentile stays at zero (the bet is switched off).
+\paragraph{Crises.} Running e-processes are plotted across whole families in Fig.~\ref{fig:traj}, so that evidence that rises in a crisis and then decays is visible, which a final-value summary would hide. In the $660$ stock-volatility and $1365$ ETF-return families the maximum over hypotheses of $\log_{10}E_t$ never approaches the family-wise thresholds ($4.1$ and $4.4$): its peak is $1.59$ (January 2017) and $2.20$ (5 February 2020, \emph{before} the COVID sell-off, after which it decays), and during the three windows examined (the 2018 volatility spike, February--June 2020, and 2022) the median over hypotheses of the within-window maximum is between $-0.10$ and $-0.22$, with only $1.2\%$--$2.2\%$ of hypotheses exceeding $\log_{10}E=0.3$ at any time in a window. The cross-sectional median drifts to about $-0.26$ to $-0.30$ and the $95$th percentile stays at zero (the bet is switched off).
 
 
 \begin{figure}[h]
@@ -1094,12 +1098,12 @@ $\log_{10}E$ stays between $-0.04$ and $-0.27$; $\rho=0.98$ makes the learners u
 which gives the size of the noise floor; as stated in Section~\ref{subsec:cw} we do not use it for inference.
 
 \paragraph{The pairwise layer.} \citet{billio2012} measure connectedness through pairwise Granger networks. On the same panels, the fraction of significant ordered pairs (Bonferroni at $0.05$) is $0.20$ for ETF returns and $0.78$ for ETF volatility at lag $1$
-($0.10$ and $0.61$ for stocks), and a rolling $252$-day window gives a density of up to $0.55$ (ETFs) and $0.40$ (stocks) around the 2020 crash against a median of about $0.1$. Daily markets therefore have a strong pairwise layer, particularly in volatility. For $660$ stock-volatility triples, $145$ have both single-source tests
+($0.10$ and $0.61$ for stocks), and a rolling $252$-day window (raw $5\%$ level) gives a density of up to $0.55$ (ETFs) and $0.40$ (stocks) around the 2020 crash against a median of about $0.1$. Daily markets therefore have a strong pairwise layer, particularly in volatility. For $660$ stock-volatility triples, $145$ have both single-source tests
 significant after conditioning on SPY ($29$ after Bonferroni), but only $4$ reach a raw ANTE-SG rejection and none a family-wise one: the pairwise structure is not accompanied by detectable super-additive structure.
 
 \subsection{Interpretation}\label{subsec:exp-interp}
 
-We summarise what the evidence supports, keeping the wording to the searched space. In daily and weekly returns and volatility of the panels examined, for lag $1$, lag $5$ and contemporaneous structures, the ANTE-SG test finds no statistically significant super-additive predictive group effect
+We summarise what the evidence supports, keeping the wording to the searched space. In daily and weekly returns and volatility of the panels examined, for lag $1$, lag $5$, weekly and contemporaneous structures, the ANTE-SG test finds no statistically significant super-additive predictive group effect
 at the family-wise level, and the real-data evidence has the distribution of a placebo null. Where significant evidence does appear (stress indicators; hourly crypto), a placebo test shows that the test rejects a true null in $10$--$40\%$ of hypotheses for these targets, so the rejections are not interpretable as synergy and the test would need a different forecaster or score (binary or heavy-tailed targets) to be usable there;
 We do not claim that synergy is absent from financial markets in general, and not even from the settings searched, for three reasons developed above: the test has low power on real financial noise even for large injected interactions (semi-synthetic power), the predictor class limits what can be detected,
 and non-rejection is a statement about these online forecasters (Remark~\ref{rem:notpop}).
@@ -1109,7 +1113,7 @@ and non-rejection is a statement about these online forecasters (Remark~\ref{rem
 
 ANTE reframes synergy detection from estimation to \emph{testing} and from fixed-sample to \emph{anytime-valid} inference. The methodological result is a pair of tests with time-uniform error control: an interventional test under a known randomised design
 whose null is sequential and therefore allows nonstationarity, and a predictive test for time series whose null compares two learned forecasters and whose validity proof is exact (Theorem~\ref{thm:sgvalid}) once the score is built from a truncated loss and
-a bound that is known before each observation. The cost of exactness is a loss of sensitivity to interactions concentrated in rare extreme observations, which we quantified on real noise (Section~\ref{subsec:exp-pv}); a second cost, common to every
+a bound that is known before each observation. The cost is low power on real financial noise, which we quantified by injection (Section~\ref{subsec:exp-pv}) and whose cause we could not isolate (relaxing the truncation does not cure it); a second cost, common to every
 anytime-valid procedure, is lower power than an oracle fixed-sample test at a single pre-committed sample size.
 
 \paragraph{Arguments that do not hold.} Three tempting arguments are avoided here. (i) A validity proof for the group score by clipping fails, because clipping does not in general preserve the sign of the conditional mean
@@ -1125,7 +1129,7 @@ interventional design. (2) The prequential null is not implied by zero populatio
 a sequential comparison with regret guarantees for the plug-in bet; and an information-theoretic instantiation in which a permutation-recentred PEID increment is bet on.
 
 \paragraph{Conclusion.} We introduced ANTE, an anytime-valid sequential test of group synergy with an interventional and a predictive formulation. It controls Type-I error uniformly over all stopping times for the sequential null of the interventional part and for the forecaster-comparison null of the predictive part (Theorems~\ref{thm:validity} and~\ref{thm:sgvalid}); for population-level nulls in real data, control is established only by simulation and placebo calibration. The test has power one and a high-probability detection-time bound for an oracle bet (Theorem~\ref{thm:consistency}, Proposition~\ref{prop:latency}), extends to $k$-way groups (Corollary~\ref{cor:group}), and comes with an exclusion e-process, a time-uniform bound on average synergy and a precise account of what a rejection means (Proposition~\ref{prop:isolation}).
-Empirically it holds its level under continuous monitoring and under a range of stress nulls, and in a fully specified search of financial data it finds no statistically significant super-additive predictive group effect in daily and weekly returns and volatility, with real-data evidence that matches a placebo null. The methodological result and the empirical finding are separate:
+Empirically it holds its level under continuous monitoring and under a range of simulated stress nulls and, on real data, in daily returns and volatility (but not for binary stress indicators or hourly crypto, where it is miscalibrated), and in a fully specified search of financial data it finds no statistically significant super-additive predictive group effect in daily and weekly returns and volatility, with real-data evidence that matches a placebo null. The methodological result and the empirical finding are separate:
 the first is a theorem and simulation record; the second is a finding about the specific panels searched.
 
 \backmatter
