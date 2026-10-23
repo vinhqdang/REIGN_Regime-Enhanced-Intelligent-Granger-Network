@@ -42,7 +42,9 @@ Received 18 May 2026, revised 29 June 2026, accepted 20 July 2026.*
 
 ---
 
-## Paper 2 — ANTE (major revision; revised manuscript and response letter ready)
+## Paper 2 — ANTE (revision submitted, 23 October 2026)
+
+*Status: revised manuscript and response letter submitted on 23 October 2026 to* **Discover Applied Mathematics** *(submission ID 7d12c900-4ad8-499d-aff6-602fc39f5a1e, major revision; awaiting the editor's decision).*
 
 **Anytime-Valid Sequential Testing of Group Synergy: Interventional and Predictive
 Formulations, with an Application to Financial Markets** (submitted to *Discover

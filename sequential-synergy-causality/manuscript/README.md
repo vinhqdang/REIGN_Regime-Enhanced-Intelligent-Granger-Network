@@ -1,5 +1,7 @@
 # ANTE manuscript (revision) — Discover Applied Mathematics
 
+**Status:** revision and response letter submitted on 23 October 2026 (submission ID 7d12c900-4ad8-499d-aff6-602fc39f5a1e); awaiting the editor's decision.
+
 Revised manuscript for Paper 2 (ANTE), prepared with the Springer Nature `sn-jnl`
 LaTeX template (author-year `sn-mathphys-ay` references), together with the
 point-by-point response to the editor and reviewers.
