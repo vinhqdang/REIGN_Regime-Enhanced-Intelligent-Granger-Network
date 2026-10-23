@@ -1,6 +1,6 @@
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{48}
+\begin{thebibliography}{49}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -103,6 +103,21 @@ arXiv preprint arXiv:2401.06864
 \endbibitem
 
 %%% 5
+\bibitem[\protect\citeauthoryear{Choi}{2026}]{choi2026}
+\begin{barticle}
+\bauthor{\bsnm{Choi}, \binits{I.}}:
+\batitle{Asymmetric and time-varying lag structures in {B}itcoin's {K}imchi
+  premium: rolling-window evidence from {G}ranger causality and transfer
+  entropy}.
+\bjtitle{Mathematics}
+\bvolume{14}(\bissue{9}),
+\bfpage{1501}
+(\byear{2026})
+\doiurl{10.3390/math14091501}
+\end{barticle}
+\endbibitem
+
+%%% 6
 \bibitem[\protect\citeauthoryear{Choe and Ramdas}{2024}]{choe2024}
 \begin{barticle}
 \bauthor{\bsnm{Choe}, \binits{Y.J.}},
@@ -116,7 +131,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 6
+%%% 7
 \bibitem[\protect\citeauthoryear{Clark and West}{2007}]{clarkwest2007}
 \begin{barticle}
 \bauthor{\bsnm{Clark}, \binits{T.E.}},
@@ -131,7 +146,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 7
+%%% 8
 \bibitem[\protect\citeauthoryear{Dawid}{1984}]{dawid1984}
 \begin{barticle}
 \bauthor{\bsnm{Dawid}, \binits{A.P.}}:
@@ -145,7 +160,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 8
+%%% 9
 \bibitem[\protect\citeauthoryear{Diebold and Y{\i}lmaz}{2014}]{diebold2014}
 \begin{barticle}
 \bauthor{\bsnm{Diebold}, \binits{F.X.}},
@@ -160,7 +175,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 9
+%%% 10
 \bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024}
 \begin{barticle}
 \bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
@@ -175,7 +190,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 10
+%%% 11
 \bibitem[\protect\citeauthoryear{Geweke}{1982}]{geweke1982}
 \begin{barticle}
 \bauthor{\bsnm{Geweke}, \binits{J.}}:
@@ -189,7 +204,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 11
+%%% 12
 \bibitem[\protect\citeauthoryear{Gr{\"u}nwald et~al.}{2024}]{grunwald2024ci}
 \begin{barticle}
 \bauthor{\bsnm{Gr{\"u}nwald}, \binits{P.}},
@@ -204,7 +219,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 12
+%%% 13
 \bibitem[\protect\citeauthoryear{Granger}{1969}]{granger1969}
 \begin{barticle}
 \bauthor{\bsnm{Granger}, \binits{C.W.J.}}:
@@ -218,7 +233,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 13
+%%% 14
 \bibitem[\protect\citeauthoryear{Hosmer and Lemeshow}{1992}]{hosmer1992}
 \begin{barticle}
 \bauthor{\bsnm{Hosmer}, \binits{D.W.}},
@@ -232,7 +247,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 14
+%%% 15
 \bibitem[\protect\citeauthoryear{Howard et~al.}{2021}]{howard2021}
 \begin{barticle}
 \bauthor{\bsnm{Howard}, \binits{S.R.}},
@@ -248,7 +263,7 @@ arXiv preprint arXiv:2401.06864
 \end{barticle}
 \endbibitem
 
-%%% 15
+%%% 16
 \bibitem[\protect\citeauthoryear{Jha}{2026}]{jha2026}
 \begin{botherref}
 \oauthor{\bsnm{Jha}, \binits{A.}}:
@@ -259,7 +274,7 @@ arXiv preprint arXiv:2606.22230
 \end{botherref}
 \endbibitem
 
-%%% 16
+%%% 17
 \bibitem[\protect\citeauthoryear{Johari et~al.}{2022}]{johari2022}
 \begin{barticle}
 \bauthor{\bsnm{Johari}, \binits{R.}},
@@ -275,7 +290,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 17
+%%% 18
 \bibitem[\protect\citeauthoryear{Lyu et~al.}{2026}]{lyu2026}
 \begin{barticle}
 \bauthor{\bsnm{Lyu}, \binits{A.}},
@@ -291,7 +306,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 18
+%%% 19
 \bibitem[\protect\citeauthoryear{Lan and DeMets}{1983}]{landemets1983}
 \begin{barticle}
 \bauthor{\bsnm{Lan}, \binits{K.K.G.}},
@@ -305,7 +320,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 19
+%%% 20
 \bibitem[\protect\citeauthoryear{Lee}{2013}]{lee2013}
 \begin{barticle}
 \bauthor{\bsnm{Lee}, \binits{W.-C.}}:
@@ -319,7 +334,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 20
+%%% 21
 \bibitem[\protect\citeauthoryear{Ljung}{1999}]{ljung1999}
 \begin{bbook}
 \bauthor{\bsnm{Ljung}, \binits{L.}}:
@@ -331,7 +346,7 @@ arXiv preprint arXiv:2606.22230
 \end{bbook}
 \endbibitem
 
-%%% 21
+%%% 22
 \bibitem[\protect\citeauthoryear{Lin and Lee}{2018}]{lin2018}
 \begin{barticle}
 \bauthor{\bsnm{Lin}, \binits{J.-H.}},
@@ -346,7 +361,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 22
+%%% 23
 \bibitem[\protect\citeauthoryear{La~Torre and D'Urso}{2026}]{latorre2026}
 \begin{barticle}
 \bauthor{\bsnm{La~Torre}, \binits{G.}},
@@ -359,7 +374,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 23
+%%% 24
 \bibitem[\protect\citeauthoryear{McGill}{1954}]{mcgill1954}
 \begin{barticle}
 \bauthor{\bsnm{McGill}, \binits{W.J.}}:
@@ -372,7 +387,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 24
+%%% 25
 \bibitem[\protect\citeauthoryear{Mart{\'i}nez-S{\'a}nchez
   et~al.}{2024}]{surd2024}
 \begin{barticle}
@@ -389,7 +404,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 25
+%%% 26
 \bibitem[\protect\citeauthoryear{O'Brien and Fleming}{1979}]{obrienfleming1979}
 \begin{barticle}
 \bauthor{\bsnm{O'Brien}, \binits{P.C.}},
@@ -403,7 +418,7 @@ arXiv preprint arXiv:2606.22230
 \end{barticle}
 \endbibitem
 
-%%% 26
+%%% 27
 \bibitem[\protect\citeauthoryear{Podkopaev et~al.}{2023}]{podkopaev2023}
 \begin{bchapter}
 \bauthor{\bsnm{Podkopaev}, \binits{A.}},
@@ -422,7 +437,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{bchapter}
 \endbibitem
 
-%%% 27
+%%% 28
 \bibitem[\protect\citeauthoryear{Pocock}{1977}]{pocock1977}
 \begin{barticle}
 \bauthor{\bsnm{Pocock}, \binits{S.J.}}:
@@ -436,7 +451,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{barticle}
 \endbibitem
 
-%%% 28
+%%% 29
 \bibitem[\protect\citeauthoryear{Roquero~Gimenez and
   Rothenh{\"a}usler}{2023}]{roquero2023}
 \begin{barticle}
@@ -451,7 +466,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{barticle}
 \endbibitem
 
-%%% 29
+%%% 30
 \bibitem[\protect\citeauthoryear{Ramdas et~al.}{2023}]{ramdas2023}
 \begin{barticle}
 \bauthor{\bsnm{Ramdas}, \binits{A.}},
@@ -467,7 +482,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{barticle}
 \endbibitem
 
-%%% 30
+%%% 31
 \bibitem[\protect\citeauthoryear{Rosas et~al.}{2019}]{rosas2019}
 \begin{barticle}
 \bauthor{\bsnm{Rosas}, \binits{F.E.}},
@@ -484,7 +499,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{barticle}
 \endbibitem
 
-%%% 31
+%%% 32
 \bibitem[\protect\citeauthoryear{Rothman}{1976}]{rothman1976}
 \begin{barticle}
 \bauthor{\bsnm{Rothman}, \binits{K.J.}}:
@@ -497,7 +512,7 @@ pp. \bfpage{27957}--\blpage{27993}.
 \end{barticle}
 \endbibitem
 
-%%% 32
+%%% 33
 \bibitem[\protect\citeauthoryear{Rahimi and Recht}{2007}]{rahimirecht2007}
 \begin{bchapter}
 \bauthor{\bsnm{Rahimi}, \binits{A.}},
@@ -510,7 +525,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{bchapter}
 \endbibitem
 
-%%% 33
+%%% 34
 \bibitem[\protect\citeauthoryear{Schreiber}{2000}]{schreiber2000}
 \begin{barticle}
 \bauthor{\bsnm{Schreiber}, \binits{T.}}:
@@ -523,7 +538,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 34
+%%% 35
 \bibitem[\protect\citeauthoryear{Stramaglia et~al.}{2014}]{stramaglia2014}
 \begin{barticle}
 \bauthor{\bsnm{Stramaglia}, \binits{S.}},
@@ -539,7 +554,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 35
+%%% 36
 \bibitem[\protect\citeauthoryear{Scagliarini et~al.}{2020}]{scagliarini2020}
 \begin{barticle}
 \bauthor{\bsnm{Scagliarini}, \binits{T.}},
@@ -557,7 +572,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 36
+%%% 37
 \bibitem[\protect\citeauthoryear{Shafer}{2021}]{shafer2021}
 \begin{barticle}
 \bauthor{\bsnm{Shafer}, \binits{G.}}:
@@ -571,7 +586,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 37
+%%% 38
 \bibitem[\protect\citeauthoryear{Ville}{1939}]{ville1939}
 \begin{bbook}
 \bauthor{\bsnm{Ville}, \binits{J.}}:
@@ -582,7 +597,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{bbook}
 \endbibitem
 
-%%% 38
+%%% 39
 \bibitem[\protect\citeauthoryear{VanderWeele and Knol}{2014}]{vanderweele2014}
 \begin{barticle}
 \bauthor{\bsnm{VanderWeele}, \binits{T.J.}},
@@ -596,7 +611,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 39
+%%% 40
 \bibitem[\protect\citeauthoryear{VanderWeele and
   Richardson}{2012}]{vanderweele2012}
 \begin{barticle}
@@ -612,7 +627,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 40
+%%% 41
 \bibitem[\protect\citeauthoryear{Vovk and Wang}{2021}]{vovk2021}
 \begin{barticle}
 \bauthor{\bsnm{Vovk}, \binits{V.}},
@@ -626,7 +641,7 @@ pp. \bfpage{1177}--\blpage{1184}
 \end{barticle}
 \endbibitem
 
-%%% 41
+%%% 42
 \bibitem[\protect\citeauthoryear{Williams and Beer}{2010}]{williams2010}
 \begin{botherref}
 \oauthor{\bsnm{Williams}, \binits{P.L.}},
@@ -637,7 +652,7 @@ arXiv preprint arXiv:1004.2515
 \end{botherref}
 \endbibitem
 
-%%% 42
+%%% 43
 \bibitem[\protect\citeauthoryear{Wilson}{1927}]{wilson1927}
 \begin{barticle}
 \bauthor{\bsnm{Wilson}, \binits{E.B.}}:
@@ -649,7 +664,7 @@ arXiv preprint arXiv:1004.2515
 \end{barticle}
 \endbibitem
 
-%%% 43
+%%% 44
 \bibitem[\protect\citeauthoryear{Wu and Mao}{2025}]{wu2025}
 \begin{botherref}
 \oauthor{\bsnm{Wu}, \binits{P.}},
@@ -661,7 +676,7 @@ arXiv preprint arXiv:2504.20470
 \end{botherref}
 \endbibitem
 
-%%% 44
+%%% 45
 \bibitem[\protect\citeauthoryear{Wang and Ramdas}{2022}]{wang2022}
 \begin{barticle}
 \bauthor{\bsnm{Wang}, \binits{R.}},
@@ -675,7 +690,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 45
+%%% 46
 \bibitem[\protect\citeauthoryear{Wasserman et~al.}{2020}]{wasserman2020}
 \begin{barticle}
 \bauthor{\bsnm{Wasserman}, \binits{L.}},
@@ -690,7 +705,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 46
+%%% 47
 \bibitem[\protect\citeauthoryear{Waudby-Smith and
   Ramdas}{2024}]{waudbysmith2024}
 \begin{barticle}
@@ -705,7 +720,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 47
+%%% 48
 \bibitem[\protect\citeauthoryear{Waudby-Smith
   et~al.}{2024}]{waudbysmith2024ope}
 \begin{barticle}
@@ -723,7 +738,7 @@ arXiv preprint arXiv:2504.20470
 \end{barticle}
 \endbibitem
 
-%%% 48
+%%% 49
 \bibitem[\protect\citeauthoryear{Yang et~al.}{2026}]{peid2026}
 \begin{botherref}
 \oauthor{\bsnm{Yang}, \binits{M.}},

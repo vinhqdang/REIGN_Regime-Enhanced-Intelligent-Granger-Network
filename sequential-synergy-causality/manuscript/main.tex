@@ -260,7 +260,7 @@ Granger analysis misses synergy and that conditioning reveals it. In finance,
 connectedness literature measures system-wide spillovers through variance decompositions
 \citep{diebold2014} and through pairwise Granger-causality networks \citep{billio2012}.
 These works measure synergy or connectedness in sample, at a fixed sample size, without an
-out-of-sample, error-controlled test.
+out-of-sample, error-controlled test. Closer in spirit to our empirical design, \citet{choi2026} studies time-varying lag structures of Bitcoin's Kimchi premium with rolling-window Granger causality and transfer entropy, using a stationary bootstrap with pre-specified lag grids, multiple-testing corrections and winsorisation sensitivity because the series are strongly leptokurtic; we adopt the same disciplines (pre-specified lag structures, winsorisation and truncation sensitivity, window-level reporting) for a group-level test.
 
 \subsection{Testing by betting and anytime-valid inference}\label{subsec:betting}
 
@@ -999,7 +999,7 @@ The $k$-way test (Corollary~\ref{cor:group}) is validated on synthetic data: a p
 
 \paragraph{Scope and accounting.} All data are public and listed in Table~\ref{tab:datasets}. A hypothesis is a target asset $C$, an unordered pair $\{A,B\}$ of other assets and a setting, tested conditionally on the market factor;
 the number of hypotheses per panel and setting is $N'\binom{N'-1}{2}$ with $N'$ the number of assets other than the conditioner. The search space is written down in \texttt{experiments/revision/results/r5\_search\_space.json} before the scan ran.
-It has three target types: returns, volatility ($|r|$), and stress indicators (the indicator that $|r_t|$ exceeds the expanding $90\%$ quantile of its own past); and four structures: lag $1$, lag $5$ (daily panels), weekly aggregation ($5$-day sums, lag $1$) and
+It has three target types: returns, volatility ($|r|$), and stress indicators (the indicator that $|r_t|$ exceeds the expanding $90\%$ quantile of its own past); and four structures, chosen in advance in the spirit of pre-specified lag grids \citep{choi2026}: lag $1$, lag $5$ (daily panels), weekly aggregation ($5$-day sums, lag $1$) and
 a contemporaneous variant (sources at time $t$; this is labelled ``contemporaneous interaction'', not Granger prediction). There are $43$ settings (``families'') and $27{,}027$ hypotheses in total; after removing the $132$ tuples that appear identically in the ETF
 and stock panels (shared assets GLD, SPY, TLT, USO, VIX) about $26{,}900$ are distinct. The search is \emph{not} pre-registered. Earlier exploratory scans of related questions (volatility, stress and crypto targets, other frequencies) preceded the grid, which was fixed before it was run but designed after those
 results were known; the assets and panels were chosen by the author as a standard set, not by selecting on outcomes, and no hypothesis was dropped. The tuning constants ($\rho=0.995$, $\gamma=0.9$, warm-up $50$) were set in that earlier work on the same data, and the truncation level $c=3$ and winsorisation at $\pm5$ before this scan
